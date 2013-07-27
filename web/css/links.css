@@ -1,0 +1,229 @@
+/* --- CSS of landing page only--- */
+
+body{
+	width: 100%;
+	min-width: 200px;
+	margin:0;
+	padding: 0;
+}
+
+@media only screen and (max-width: 767px) {
+	.header-collapse{
+		display: none;
+	}
+}
+
+h1, h2{
+	font-family:HelveticaNeueMdCn, 'HelveticaNeueW01-67MdCn 692710', Helvetica, sans-serif;
+	font-weight:normal;
+  	line-height:1em;
+  	font-size:42px;
+}
+
+header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+  	box-shadow:rgba(0, 0, 0, 0.15) 0 1px 2px, rgba(0, 0, 0, 0.0470588) 0 0 8px inset;
+	z-index: 9999;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: rgba(255, 255, 255, 0.9);
+	font-family: 'Proxima-regular';
+	font-size: 16px;
+}
+
+header img{
+	width: 150px;
+	margin-left: 50px;
+}
+
+header a{
+	  -webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	  transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	color:#B7B7B7;
+	vertical-align: middle;
+}
+
+header a:hover{
+	text-decoration: none;
+	color:#767676;
+}
+
+header li{
+	display: inline;
+	list-style-type: none;
+	padding-right: 30px;
+}
+
+strong{
+	font-weight: bold;
+}
+
+#login-register{
+	padding-top: 10px;
+	height:20px;
+	margin-right: 40px;
+}
+
+
+/*-----ABOUT------*/
+#vision{
+	background-image: url(' ../img/links/dock.png');
+	background-repeat:no-repeat;
+	background-size: cover; 
+	background-attachment:fixed;
+	background-position: 40%;
+	height: 400px;
+	text-align: center;
+}
+
+#about h1{
+	color:white;
+	font-size:52px;
+	line-height:1em;
+	margin-bottom:15px;
+	text-shadow:rgba(54, 54, 54, 0.6) 1px 1px 1px;
+	font-family: 'Proxima-regular'
+}
+
+#about h3{
+	color:white;
+	margin-bottom:15px;
+	text-shadow:rgba(54, 54, 54, 0.6) 1px 1px 1px;
+	font-family: 'Proxima-regular'
+}
+
+#footer{
+	background-image: url(' ../img/landing-page/feature-gradient-bck.png');
+	background-position:50% 100%;
+  	background-repeat:no-repeat no-repeat;
+}
+
+#individual-pres{
+	display: inline-block;
+}
+
+#individual-pres div{
+	display: inline-block;
+	text-align: center;
+}
+
+#individual-pres>div *{
+	margin:0;padding:0
+}
+
+#arnaud-jules p{
+	font-family:'Helvetica Neue';
+	font-size:20px;
+	line-height: 120%;
+  	font-weight: lighter;
+
+}
+
+/*------BLOG-----*/
+#blog{
+	background-image: url(' ../img/links/blog.jpg');
+	background-repeat:no-repeat;
+	background-size: cover; 
+	background-attachment:fixed;
+	background-position: 0px -80px;
+	height: 450px;
+	width: 100%;
+	text-align: center;
+}
+
+.blog-container a:hover{
+	text-decoration: none;
+}
+
+.blog-container h3{
+	color: #272727;
+}
+
+.blog-container h3:hover{
+	color: #444444;
+}
+
+
+.blog-post{
+	font-family: "Proxima-regular", Helvetica, Arial, sans-serif;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.blog-post p{
+	color: #4f4f4f;
+	font-size: 16px;
+	line-height: 1.6;
+	margin-bottom: 1.3em;
+	text-align: justify;
+	margin-top: 20px;
+}
+
+/*----BLOG FRAME------*/
+
+.blog-post-list{
+	    color: #69AACA;
+    display: block;
+    font-weight: bold;
+    padding: 6px 10px 8px;
+    position: relative;
+    text-decoration: none;
+}
+
+.blog-post-list a:hover{
+	 text-decoration: none;
+}
+
+.blog-post-list li{
+	 border-bottom: 1px solid #EFF4F6;
+	 margin: 10px 0px;
+	 padding-bottom: 10px;
+	 list-style:none;
+}
+
+.selected{
+	background: none repeat scroll 0 0 #414141;
+    border-radius: 14px 14px 14px 14px;
+    border-top: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    padding:5px 15px;
+}
+
+.selected:hover{
+	background: none repeat scroll 0 0 #6d6d6d;
+    color: #FFFFFF;
+}
+
+/*------PRESS-----*/
+#press{
+	background-image: url(' ../img/links/bonjour-paris.jpg');
+	background-repeat:no-repeat;
+	background-size: cover; 
+	background-attachment:fixed;
+	background-position: 0px 0px;
+	height: 500px;
+	width: 100%;
+	text-align: center;
+}
+
+#bfm div{
+	display: inline-block;
+}
+
+#bfm-desc strong{
+	font-weight: bold;
+}
+
+/*------Contact-----*/
+#contact{
+	background-image: url(' ../img/links/mines.jpg');
+	background-repeat:no-repeat;
+	background-size: 100% auto; 
+	background-attachment:fixed;
+	background-position: 0px -200px;
+	height: 400px;
+	width: 100%;
+	text-align: center;
+}

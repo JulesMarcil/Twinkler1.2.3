@@ -1,0 +1,457 @@
+/* --- CSS of landing page only--- */
+
+body{
+	width: 100%;
+	min-width: 200px;
+	margin:0;
+	padding: 0;
+}
+
+@media only screen and (max-width: 767px) {
+	.header-collapse{
+		display: none;
+	}
+}
+
+h1, h2{
+	font-family:HelveticaNeueMdCn, 'HelveticaNeueW01-67MdCn 692710', Helvetica, sans-serif;
+	font-weight:normal;
+  	line-height:1em;
+  	font-size:42px;
+}
+
+header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+  	box-shadow:rgba(0, 0, 0, 0.15) 0 1px 2px, rgba(0, 0, 0, 0.0470588) 0 0 8px inset;
+	z-index: 9999;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: rgba(255, 255, 255, 0.9);
+	font-family: 'Proxima-regular';
+	font-size: 16px;
+}
+
+header img{
+	width: 150px;
+	margin-left: 50px;
+}
+
+header a{
+	  -webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	  transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	color:#B7B7B7;
+	vertical-align: middle;
+}
+
+header a:hover{
+	text-decoration: none;
+	color:#767676;
+}
+
+header li{
+	display: inline;
+	list-style-type: none;
+	padding-right: 30px;
+}
+
+strong{
+	font-weight: bold;
+}
+
+#login-register{
+	padding-top: 10px;
+	height:20px;
+	margin-right: 40px;
+}
+
+@media only screen and (max-width: 767px) {
+	#login-register{
+		margin-right: 0px;
+		padding-left: 0;
+	}
+	header img{
+		margin-left: 3%;
+	}
+	header ul{
+		margin-left: 1%;
+	}
+	header li{
+		paddin-right: 5px;
+	}
+}
+
+.brand{
+	padding: 0px;
+}
+
+#section1{
+	width: 100%;
+	min-height: 520px;
+	background-image: url(' ../img/landing-page/cafe_bg.png');
+	background-size: cover;
+	padding-top: 10px;
+	border-bottom: solid 1px #B7B7B7;
+}
+
+#handiphone{
+	min-width: 350px;
+}
+
+@media only screen and (max-width: 767px) {
+	#section1-big{display: none;}
+	#section1{ padding-bottom: 80px;}
+}
+
+@media only screen and (min-width: 768px) {
+	#section1-small{display: none;}
+}
+
+#catchphrase{
+	margin-top: 140px;
+	margin-bottom: 20px;
+	padding-left: 50px;
+}
+
+#catchphrase > p{
+	font-size: 16px;
+	 color:#242728;
+  	text-shadow:#FFFFFF 0 1px 10px;
+}
+
+#myCarousel{
+	font-family: "Proxima-bold";
+	font-size: 38.5px;
+}
+
+#iphone-view{
+	min-height: 560px;
+	display: block;
+	vertical-align: bottom;
+	position: relative;
+	padding-top: 30px;
+}
+
+#iphone-view img{
+	vertical-align: bottom;
+	position: absolute;
+	bottom: 0;
+}
+
+#core-features{
+	text-align: center;
+	padding-top: 20px;
+}
+
+#core-features p{
+	max-width: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	color:#B7B7B7;
+}
+
+.learn-more{
+	width: 180px;
+	background-size: 100% auto;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.learn-more-hover {
+	display: block;
+	background-color: rgba(255,255,255,0.6);
+	width: 100%;
+	height:100%;
+	cursor: pointer;
+	vertical-align: middle;
+	opacity: 0;
+    -webkit-transition:all 0.5s ease;
+    -moz-transition:all 0.6s ease;
+    text-decoration: none;
+}
+
+.learn-more:hover .learn-more-hover{
+	opacity: 1;
+}
+
+.learn-more-hover > p{
+}
+
+.features-short{
+}
+
+#late-login{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
+
+#late-login p{
+	color:#B7B7B7;	
+}
+
+#late-login a{	
+}
+
+.feature{
+	background-image: url(' ../img/landing-page/feature-gradient-bck.png');
+	background-position:50% 100%;
+  	background-repeat:no-repeat no-repeat;
+  	border-bottom: solid 1px #E7E7E7;
+}
+
+.feature h2{
+	font-size:38.5px;
+	color:#B7B7B7;
+}
+
+.feature-container{
+	height:100%;
+}
+
+.feature-container > img{
+	margin-top: 20%;
+}
+
+.feature-description{
+	vertical-align: top;
+}
+
+.feature-description div{
+	margin-top: 10%;
+}
+
+.feature-description p{
+	color:#242728;
+	line-height: 18px;
+}
+
+
+.feature-description p strong{
+	font-weight: bold;
+}
+
+#showcase img{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#showcase h1{
+	font-size: 30px;
+	color:#B7B7B7;
+	margin-top: 30px;
+}
+
+#gettheapp{
+	background-image: url(' ../img/landing-page/get-the-app.jpg');
+	background-repeat:no-repeat;
+	background-size: auto 100%; 
+	background-attachment:fixed;
+	background-position: 40%;
+	height: 400px;
+	width: 100%;
+	text-align: center;
+}
+
+#section-transition{
+	background-color: rgba(255, 255, 255, 0.9);
+  	box-shadow:rgba(0, 0, 0, 0.15) 0 1px 2px, rgba(0, 0, 0, 0.0470588) 0 0 8px inset;
+	min-height: 40px;
+	color: black;
+	text-align: center;
+}
+
+#gettheapp img{
+	margin-top: 150px;
+	margin-right: 10px;
+}
+
+#mosaic{
+	height: 700px;
+	margin: 0px auto;
+}
+
+#login-mosaic{
+	text-align: center;
+	padding-top: 50px;
+	display: none;
+	width: 100%;
+}
+
+#login-mosaic a{
+	margin-top: 40px;
+	width: 400px;
+}
+
+#login-mosaic .btn{
+}
+
+.mosa-row{
+	margin-top:10px;
+	display: inline-block;
+	padding-left: 8px;
+}
+
+.mosa-row img{
+	display: inline-block;
+	margin-left: 4px;
+	height:200px;
+}
+
+#row1{
+	height:200px;
+}
+
+#row2{
+	height:200px;
+}
+
+#row3{
+	height:200px;
+}
+
+
+#made-with-love{
+	text-align: center;
+	color: #B7B7B7;
+	margin-bottom: 5px;
+}
+
+.repeat-bck{
+	background-image: url(' ../img/landing-page/footer_bckgd_repeat.gif');
+	background-repeat: repeat;
+}
+
+#pre-footer{
+	background-image: url(' ../img/landing-page/footer_bckgd_top.gif');
+	background-repeat: repeat-x;
+  	text-align: center;
+  	padding-top: 20px;
+  	padding-bottom: 20px;
+}
+
+.footer-box{
+	height: 122px;
+	text-align: center;
+}
+
+#pre-footer p{
+	color:#777777;
+	font-family:ProximaNovaBold, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	margin-bottom: 0px;
+}
+
+#pre-footer img{
+	margin-bottom: 5px;
+}
+
+#pre-footer i{
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-left: 5px;
+	text-shadow:#FFFFFF 1px 0.5px 0px, rgba(0, 0, 0, 0.14902) 1.5px 2px 0;
+}
+
+#footer-left a:hover{
+	text-decoration: none;
+}
+
+#footer-right a{
+	  -webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	  transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
+	color:#fb887d;
+}
+
+#footer-right a:hover{
+	text-decoration: none;
+	color: #f34c3b;
+}
+
+footer{
+	border-top: solid 1px #d2d2d2;
+	text-align: center;
+	color: #B7B7B7;
+	padding-top: 10px;
+}
+
+footer li{
+	display: inline;
+	list-style-type: none;
+	padding-right: 30px;
+}
+footer a{
+	  -webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	  transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	color:#B7B7B7;
+}
+
+footer a:hover{
+	text-decoration: none;
+	color:#767676;
+}
+/* --- responsiveness --- */
+
+@media only screen and (max-width: 767px) {
+	.feature,
+	#showcase,
+	#mosaic,
+	.learn-more-link{
+		display: none;
+	}
+	#gettheapp{
+		height: 300px;
+	}
+	#gettheapp img{
+		margin-top: 50px;
+		margin-right: 10px;
+	}
+
+}
+
+/* --- Login and register parts --- */
+
+#user-layout-body{
+	padding-top: 100px;
+	height: 100%;
+	background-image: url(' ../img/landing-page/cafe_bg.png');
+	background-size: cover;
+}
+#user-layout-body .flat-container{
+	text-align: center;
+	width: 100%;
+}
+
+#user-layout-body .flat-header{
+	padding-top: 10px;
+}
+
+#user-layout-body .flat-header h1{
+	line-height: 24px;
+}
+
+#user-layout-body .flat-footer p{
+	margin-top: 10px;
+	padding-top: 15px;
+}
+
+/*---Newsletter Modal---*/
+
+#subscribeModal{
+	background-image: url(' ../img/landing-page/modal-bck.jpg');
+	background-size: cover;
+	height: 300px;
+	margin-top: 60px;
+}
+
+#subscribe-modal{
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 100px;
+}

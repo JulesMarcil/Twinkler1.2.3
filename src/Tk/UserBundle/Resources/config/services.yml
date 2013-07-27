@@ -1,0 +1,23 @@
+parameters:
+#    tk_user.example.class: Tk\UserBundle\Example
+
+services:
+
+    login_listener:
+        class: 'Tk\UserBundle\Listener\LoginListener'
+        arguments: ['@security.context', '@doctrine']
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login' }
+
+    tk_user.registration.form.type:
+        class: Tk\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: tk_user_registration }
+
+    my_user.facebook_provider:
+        class: Tk\UserBundle\Security\User\Provider\FacebookProvider
+        arguments:
+            facebook: "@fos_facebook.api"
+            userManager: "@fos_user.user_manager"
+            validator: "@validator"

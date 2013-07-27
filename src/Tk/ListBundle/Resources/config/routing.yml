@@ -1,0 +1,19 @@
+tk_list_homepage:
+    pattern:  /group/lists
+    defaults: { _controller: TkListBundle:List:index }
+
+tk_list_change:
+    pattern: /group/lists/{id}
+    defaults: { _controller: TkListBundle:List:changeList }
+
+tk_list_new:
+    pattern: /group/new/lists
+    defaults: { _controller: TkListBundle:List:new }
+
+tk_list_ajax_content:
+    pattern: /group/ajax/lists
+    defaults: { _controller: TkListBundle:List:ajaxContent }
+
+tk_list_ajax_change:
+    pattern: /group/ajax/change/lists/{id}
+    defaults: { _controller: TkListBundle:List:ajaxChangeLists }

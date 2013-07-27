@@ -1,0 +1,25 @@
+/* --- CSS of list part of GroupBundle only--- */
+
+#list-box{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.item-input{
+	width: 10%;
+	min-width: 10px;
+}
+.item-name{
+
+}
+.item-remove{
+	width: 5%;
+	min-width: 10px;
+	text-align: right;
+}
+	
+.complete{
+	color: #bbb;
+	text-decoration: line-through;
+}

@@ -1,0 +1,116 @@
+{% include 'TkGroupBundle:Default:graph.html.twig' %}
+
+{% set group = app.user.currentMember.tgroup %}
+
+<div class="row">
+	<div class="span3  offset1">
+		<div class="group-info flat-container">
+			<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto">	
+				<span style="display: block; height:30px; vertical-align: middle; padding-top: 2px; padding-left: 10px; padding-right: 10px">
+					<h2> {{ group.name }} <i class="icon-group" style="float:right;margin-top:2px;"></i></h2>
+				<span>
+			</div>
+		</div>
+		<div id="group-edit-list" class="group-info group-edit flat-container">
+			<ul>
+				<li>
+					<a class="edit-group-a" href="{{ path('tk_group_add_members') }}">
+						<div style="width:100%; height:100%; padding-top: 10px">
+							ADD A FRIEND <i class="icon-plus-sign" style="float:right; margin-right: 15px"></i> 
+						</div>
+					</a>
+				</li>
+				<li>
+					<a class="edit-group-a accordion-toggle" data-toggle="collapse" href="#collapse-remove-member">						
+						<div style="width:100%; height:100%; padding-top: 10px">
+							<i class="icon-minus-sign" style="float:right; margin-right: 15px"></i>   
+							REMOVE MEMBER
+						</div>		
+					</a>
+				</li>
+				<li>
+					<a  class="edit-group-a" data-toggle="collapse" href="#collapse-close-group">	
+						<div style="width:100%; height:100%; padding-top: 10px">
+							<i class="icon-signout" style="float:right; margin-right: 15px"></i>   
+							CLOSE GROUP
+						</div>			
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="span7">
+		<div class="group-info flat-container left-arrow">
+				<div class="group-info-header">
+					GROUP SETTINGS
+				</div>
+				<div>
+					<div id="collapse-remove-member" class="accordion-body collapse">
+						<div class="accordion-inner">	
+							<div class="well">
+							{% include 'TkGroupBundle:GroupActions:removeMembers.html.twig' %}
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div >
+					<div id="collapse-close-group" class="accordion-body collapse">
+						<div class="accordion-inner">	
+							<div class="well">
+								<p>Are you sure you want to close the group <b>{{ app.user.currentMember.tgroup.name }}</b> ?</p>
+								<small>You will not be able to access this group anymore</small>
+								<p><a href="{{ path('tk_group_close', { 'id' : app.user.currentMember.tgroup.id}) }}" class="btn btn-danger" style="margin: 20px;">Yes</a><a href="" class="btn">No</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div id="balance" style="text-align:center;">
+				<div id="balance-slimscroll">
+					<canvas id="balanceChart" height="200px"></canvas>
+					<table id="chart-labels">
+						<tr id="balance-row">
+							{% for member in app.user.currentMember.tgroup.members %}
+							<td style='width:100px; min-width:100px; color:{% if member.balance >= 0 %}#A8BD44{% else %}#F97E76{% endif %}; vertical-align:top;overflow: hidden; padding:0'>{{ member.name }}</td>	
+							{% endfor %}	
+						</tr>
+						<tr id="member-row">
+							{% for member in app.user.currentMember.tgroup.members %}
+							<td style='width:100px; min-width:100px; color:{% if member.balance >= 0 %}#A8BD44{% else %}#F97E76{% endif %}; vertical-align:top;overflow: hidden; padding:0'>{{ member.balance }}{{ member.tgroup.currency.symbol }}</td>
+							{% endfor %}
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div>
+				<div id="collapse-edit-expense" class="accordion-body collapse" style="display:block;">
+					<div class="accordion-inner">
+						<div class="well" style="text-align: center; margin: 10px 20px;">
+							<div style="display: inline-block">
+								<a href="" class="btn btn-success" style="width: 85px">Via email</a>
+							</div>
+							<div style="display: inline-block">
+
+							</div>
+							<div style="display: inline-block">
+								<a class="btn btn-primary" style="width: 85px" href="#">Via Facebook</a>
+							</div>
+							<div style="margin-top: 20px">
+								<a class="edit-group-a accordion-toggle" data-toggle="collapse" href="#collapse-edit-expense">Hide</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:100%; height: 100%; text-align: center; margin-top: 20px; border-top: 1px solid #EFF4F6;">	
+					<div class="edit-group flat-btn flat-gn flat-large">
+						<a class="edit-group-a accordion-toggle edit-group-a" data-toggle="collapse" href="#collapse-edit-expense">
+							<div>
+								<i class="icon-envelope"></i>   
+								Send a Reminder
+							</div>		
+						</a>	
+					</div>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

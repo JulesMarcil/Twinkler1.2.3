@@ -1,0 +1,87 @@
+{% extends 'TkUserBundle::frame.html.twig' %}
+
+{% block stylesheets %}
+ {{ parent() }}
+ <link href="{{ asset('css/group-settings.css') }}" rel="stylesheet" type="text/css">
+ <link href="{{ asset('css/expenses.css') }}" rel="stylesheet" type="text/css">
+ <link href="{{ asset('css/lists.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% set group = app.user.currentMember.tgroup %}
+
+{% block navbartitle %}
+	<div  id="group-name-title">
+		<div id="title">
+			<a href="{{ path('tk_group_homepage') }}" ><h3>{{ group.name|capitalize }}</h3></a>
+		</div>
+		{% if app.user.members|length > 1 %}
+		<div id="caret">	
+			<div class="dropdown">
+			    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-caret-down"></i></a>
+			    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" >             
+				    {% for member in app.user.members %}
+				    <li><a href="{{ path('tk_group_switch_member', { 'id' : member.id, 'route' : app.request.attributes.get('_route') }) }}" style="color: rgb(90,90,90)">{{ member.tgroup.name }}</a></li>
+				    {% endfor %}
+				    <li>-------------------</li>
+				    <li><a href="{{ path('tk_group_new') }}" style="color: rgb(90,90,90)">Start a new group</a></li>
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block header %}
+	<div id="second-row-big" class="row" style="position: relative">
+		<div id="group" class="span8 offset2">
+			<div id="pictures">
+				{% for member in group.members %}
+				{% if member.user %}
+				<div class="member">
+					{% if member.user.facebookId %}
+					<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+					{% else %}
+					<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+					{% endif %}
+					<p style="color: rgb(121,136,151);text-shadow:  white 0px 1px 0px;">{{ member.name }}</p>
+				</div> 
+				{% else %}
+				<div class="member">
+					<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+					<p style="color: rgb(121,136,151);text-shadow: white 0px 1px 0px;">{{ member.name }}</p>
+				</div>
+				{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+		<small><a id="toggle-button" style="cursor: pointer">hide members</a></small>
+	</div>
+	
+{% endblock %}
+
+
+{% block selectionmenu %}
+	<div id="navbar-row" class="selection-menu" style="padding-top:0">
+		<div class="container" style="height:100%;">
+			<div  class="row" style="height:100%;">
+				<div class="span4 offset4" style="height:100%; text-align: center;">
+					<div id="navbar-settings" style="height:100%; display: inline-block; width: 32%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
+						<a href="#">Settings</a>
+					</div>
+					<div id="navbar-expenses" style="height:100%; display: inline-block; width: 32%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
+						<a href="#">Expenses</a>
+					</div>
+					<div id="navbar-lists" style="height:100%; display: inline-block; width: 32%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
+						<a href="#">Lists </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+ 	<script type='text/javascript' src="{{ asset('js/group.js') }}"></script>
+ 	<script src="{{ asset('js/listapp.js') }}"></script>
+	<script src="{{ asset('js/list.js') }}"></script>
+{% endblock %}

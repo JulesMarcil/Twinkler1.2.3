@@ -1,0 +1,18 @@
+<div class="flat-container" style="width: 100%; margin-top: 10px; padding-top: 10px; text-align: center">
+
+	<form action="{{ path('tk_list_new') }}" method="post" {{ form_enctype(form) }} style="margin:0">
+		<div class="new-group-content">
+			    {{ form_errors(form) }}
+
+			    {{ form_errors(form.name) }}
+			    {{ form_widget(form.name) }}
+
+			    {{ form_rest(form) }}
+		</div>
+
+	    <div class="flat-footer" style="padding-top: 10px; height: 40px">
+	    	<input type="submit" value="Create New List" class="flat-btn flat-pk" style="border:none;"/>
+	    </div>
+	</form>
+			
+</div>

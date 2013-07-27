@@ -1,0 +1,12 @@
+<form action="{{ path('tk_group_send_email') }}" method="post" {{ form_enctype(form) }}>
+	{{ form_errors(form) }}
+
+	{{ form_errors(form.email) }}
+	{{ form_widget(form.email, 
+	            { 'attr': { 'placeholder' : 'Email'}}) 
+	        }}
+
+	{{ form_rest(form) }}
+
+	<input type="submit" class="btn btn-success" style="vertical-align:top" value="Send invitation"/>
+</form>

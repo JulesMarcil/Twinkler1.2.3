@@ -1,0 +1,85 @@
+/*--------FLAT BUTTONS-------*/
+.flat-btn{
+	border-bottom-right-radius:4px;
+	border-top-right-radius:4px;
+	border-bottom-left-radius:4px;
+	border-top-left-radius:4px;
+	display: inline-block;
+	text-align: center;
+}
+
+.flat-btn:hover{
+	text-decoration: none;
+}
+u
+.flat-btn a:hover{
+	text-decoration: none;
+}
+
+
+.flat-pk{
+	background-color:#F97E76;
+	color: white;
+}
+
+.flat-pk:hover{
+	background-color: #f07971;
+	color: white;
+}
+
+.flat-gn{
+  	background-color:#A8BD44;
+	color: white;
+}
+
+.flat-gn:hover{
+	background-color: #90a338;
+	color: white;
+}
+
+.flat-tiny{
+	width: 50px;
+	height: 22px;
+}
+
+.flat-small{
+	width: 90px;
+}
+
+.flat-large{
+	width: 150px;
+}
+
+
+/*--------FLAT CONTAINER---------*/
+
+.flat-container{
+	background-color: white;  
+	border-bottom-left-radius:4px;
+  	border-bottom-right-radius:4px;
+  	border-top-left-radius:4px;
+  	border-top-right-radius:4px;
+	font-family: "Asap-regular";
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+}
+
+.flat-header{
+	background-color: #fb786b;
+	font-family: "Proxima-regular";
+  	border-top-left-radius:4px;
+  	border-top-right-radius:4px;
+	color: white;
+	width: 100%;
+	min-height: 50px;
+    position: relative;
+}
+
+
+.flat-footer{
+	background-color: rgb(242,242,242);
+	height: 50px;  
+	border-bottom-left-radius:4px;
+  	border-bottom-right-radius:4px;
+}

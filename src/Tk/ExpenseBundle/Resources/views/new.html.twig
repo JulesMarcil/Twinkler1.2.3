@@ -1,0 +1,69 @@
+<form id="add-expense-form" action="{{ path('tk_expense_new') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+
+    <div>
+		<span>Who paid ?</span>
+		{{ form_errors(form.owner) }}
+		{{ form_widget(form.owner, 
+	        { 'attr': { 'style' : 'width : 150px;'}}) 
+	    }}
+    </div>
+
+    <div>
+	    {{ form_errors(form.name) }}
+	    {{ form_widget(form.name, 
+	        { 'attr': { 'placeholder' : 'What ?'}}) 
+	    }}
+    </div>
+
+    <div>
+	    {{ form_errors(form.amount) }}
+	    {{ form_widget(form.amount, 
+	        { 'attr': { 'placeholder' : 'How much ?'}}) 
+	    }}
+    </div>
+
+    <div>
+    	<span>When was it paid ?</span>
+    	{{ form_errors(form.date) }}
+    	{{ form_widget(form.date) }}
+    </div>
+
+    <div id="users-row">
+    	<div id="users-label" style="margin:10px 0px">
+			<label class="required">How do we split this expense?</label>
+		</div>
+		<div id="tk_expensebundle_expensetype_users">
+		{% for member in app.user.currentMember.tgroup.members %}
+			<div class="user-box">
+				<label for="tk_expensebundle_expensetype_users_{{member.id}}">
+					<div>
+						<div>
+						{% if member.user %}
+							{% if member.user.facebookId %}
+							<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" width="50px">
+							{% else %}
+							<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="50px">
+							{% endif %}
+						{% else %}
+							<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" width="50px">
+						{% endif %}
+						</div>
+					{{member.name}}
+					</div>
+				</label>
+				<div>			
+					<input id="tk_expensebundle_expensetype_users_{{member.id}}" type="checkbox" checked="checked" value="{{member.id}}" name="tk_expensebundle_expensetype[users][]">
+				</div>	
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+
+	{{ form_widget(form._token) }}
+
+    <div class="flat-footer">
+    	<input type="submit" class="btn btn-success" value="Add Expense"/>
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</form>

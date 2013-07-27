@@ -1,0 +1,21 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     ~
+    database_name:     twinkler
+    database_user:     root
+    database_password: root
+
+    mailer_transport:  smtp
+    mailer_host:       smtp.alwaysdata.com
+    mailer_user:       jules@twinkler.co
+    mailer_password:   Ozanam1956
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    api_facebook_id:      197132947110296 # ID de l’application/Clé de l’API
+    api_facebook_secret:  2f8ee564cc8d076307d60c7dbbff3202 # Clé secrète
+    api_facebook_name:    http://apps.facebook.com/twinkler_local/ # App Namespace
+    api_facebook_server:  http://localhost:8888/twinkler/web/app_dev.php/ # URL du site
+

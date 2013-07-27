@@ -1,0 +1,125 @@
+{% extends '::base.html.twig' %}
+
+{% block head %}
+ <link href="{{ asset('css/expenses.css') }}" rel="stylesheet" type="text/css">
+ <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% set currency = group.currency.symbol %}
+
+{% block body %}
+
+<script>
+	var members={{ group.arrayMembers|json_encode|raw }};
+	var balances={{ group.arrayBalances|json_encode|raw }};		
+</script>
+
+<div id="user-body-layout">
+    <header>
+        <div>
+            <a href="{{ path('tk_user_homepage') }}">
+                <img src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">
+            </a>
+        </div>
+    </header>
+
+    <div id="invitation-block" class="container" style="margin-top: 60px;margin-bottom: 60px;">
+    	<div class="row">
+    		<div class="span12" style="text-align: center">
+    			<h3>Here is the expense summary for the group <b>{{ group.name }}</b></h3>
+    			<p><a href="{{ path('tk_welcome_choose_member', { 'id' : group.id, 'token' : group.invitationToken }) }}">Click here</a> to edit group expenses</p>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="container">	
+		<div class="row">
+			<div class="span4">
+				<div id="settlement" class="flat-container">
+					<div class="expense-header flat-header" style="text-align:left;">
+						<div id="expense-title">
+							<h2>Payback</h2>
+						</div>
+					</div>
+					{% if debts|length == 0 %}
+					<p>No debts at all, lucky you !</p>
+					{% else %}
+					{% for debt in debts %}
+						<p>{{ debt[0] }} gives {{ debt[1]|number_format(0) }}{{ currency }} to {{debt[2] }}</p>
+					{% endfor %}
+					{% endif %}
+				</div>
+				<div id="balance" class="flat-container">
+					<div class="expense-header flat-header">
+						<div id="expense-title">
+							<h2>Balance</h2>
+						</div>
+					</div>
+					<div>
+						<div style="text-align:center; margin-top: 20px;">
+							<canvas id="balanceChart" width="300" height="150"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="span8">
+				<div id="timeline">
+					<a id="today-pinpoint" href="#" data-toggle="tooltip" rel="tooltip" title="#">
+						<img class="pinpoint-button" src="{{ asset('img/frame/tmln-btn.png') }}" class="img-circle" width="20px" style="margin-top:10px;" alt="profile picture">
+					</a>
+				</div>
+				<div id="timeline-expense-container">
+					{% include "TkExpenseBundle::addExpenseModal.html.twig" %}
+					<div class="expense-list flat-container">
+						<div class="expense-header flat-header">
+							<div id="expense-title">
+								<h2>Expense Timeline</h2>
+							</div>
+							<a href="#addExpenseModal" role="button" data-toggle="modal">
+								<div id="add-expense-btn">
+									<i class="icon-plus" style="color:#fcd5d2;"></i>
+								</div>
+							</a>
+						</div>		
+					</div>
+
+					<div>
+					{% if all_expenses|length == 0 %}
+					<div class="expense-list flat-container" style="text-align: center">
+						<p>There is no expense for this group ...</p>
+					</div>
+					{% else %}
+					{% for expense in all_expenses %}
+					<div class="expense-list flat-container">
+						<div class="pinpoint-tmln">
+							<a  href="#" data-toggle="tooltip" rel="tooltip" title="{{ expense[0].date|date("d/m") }}">
+								<img class="pinpoint-button" src="{{ asset('img/frame/tmln-btn.png') }}" class="img-circle" width="20px">
+							</a>
+						</div>
+
+						<div class="expense-list-detailed">
+							<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="" style="position: relative">
+							<div class="expense-details">								
+								<div style="color:rgb(140,140,140);">
+									<font style="color:#fb786b;">{{ expense.owner.name }} </font>added <font style="color:#0088CC;">{{ expense.amount|number_format(0) }} {{ currency }}</font> for <font style="color:#fb786b;">{{ expense.name }}</font> 
+								</div>
+								<div style"text-align: middle;">
+									<p style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">Friends involved: </font> {% for member in expense.users %}{{ member.name }},  {% endfor %}</p>
+								</div>
+							</div>		
+						</div>
+					</div>
+					{% endfor %}
+					{% endif %}
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/group.js')}}"></script>
+{% endblock %}

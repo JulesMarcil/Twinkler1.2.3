@@ -1,0 +1,16 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+		<div class="flat-container" style="margin-top: 40px">
+			<div class="flat-header">
+				<h3 style="margin-top: 0px">Almost done!</h3>
+			</div>
+			<div>
+				<p> We've just sent you an e-mail!</p>
+				<p> Please click on the link provided in the e-mail to confirm your registration!</p>
+				<a class="btn btn-success" href="{{ path('tk_user_homepage') }}" style="margin-bottom:30px">Go back to the Homepage</a>
+			</div>
+		</div>
+{% endblock fos_user_content %}

@@ -1,0 +1,27 @@
+<div class="add-members">
+	<div class="subheader">
+		<span style="display: block; height: 30px; vertical-align: middle; padding-left: 10px;">
+		<h3>Add a new member</h3>
+		</span>
+	</div>
+	<div style="display: inline-block; text-align: center; position: relative; width: 100%">
+		<form action="{{ path('tk_group_add_member') }}" method="post" {{ form_enctype(form) }}>
+		    {{ form_errors(form) }}
+
+		    {{ form_errors(form.name) }}
+		    {{ form_widget(form.name, 
+	            { 'attr': { 'placeholder' : 'Enter his name', 'style' : 'width:210px'}}) 
+	        }}
+
+	        {{ form_errors(form.email) }}
+		    {{ form_widget(form.email, 
+	            { 'attr': { 'placeholder' : 'Email (optional)', 'style' : 'width:160px'}}) 
+	        }}
+
+		    {{ form_rest(form) }}
+	    	<input type="submit" value="Add" class="btn btn-success" style="vertical-align: top"/>
+		</form>
+		<p><small>You do not have his email ?<br>Share this link for him to see the invitation:</small></p>
+		<input style="width: 80%; margin: auto;" value="http://www.twinkler.co/invitation/{{app.user.currentMember.tgroup.id}}/{{app.user.currentMember.tgroup.invitationToken}}"/>
+	</div>
+</div>

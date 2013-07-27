@@ -1,0 +1,82 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block signuplogin %}
+    <a href="{{ path('fos_user_registration_register') }}">Sign up</a>
+{% endblock %}
+
+{% block fos_user_content %}
+
+{% if error %}
+<div class="alert alert-error">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  {{ error|trans }}
+</div>
+{% endif %}
+
+<div class="flat-container">
+    <div class="flat-header">
+    <h1>Log in</h1></div>
+    <p>{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'large'}) }}</p>
+
+    <div style="display: inline-block; width:100%">
+
+        <div style="display: inline-block; width:40%">
+            <div style="min-height:50%; border-bottom: 1px solid rgb(245,103,99); margin-top:-5px;"></div>
+        </div>
+
+        <div style="display: inline-block;width:10%; color:rgb(245,103,99)">
+        Or
+        </div>
+
+        <div style="display: inline-block;width:40%">
+            <div style="min-height:50%; border-bottom: 1px solid rgb(245,103,99); margin-top:-5px;"></div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <div>
+            <input type="text" id="username" placeholder="Username or Email" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+        <div>
+            <input type="password" id="password" placeholder="Password" name="_password" required="required" />
+        </div>
+        <div>
+            <input style="display:inline-block; vertical-align: top " type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label  style="display:inline-block" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
+        
+        <input type="submit" class="btn btn-success" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" style="width:130px; margin-top: 20px;" />
+        <br>
+        <a href="#forgotPasswordModal" data-toggle="modal" style="font-size:11px">Forgot your password ?</a>
+    </form>
+
+
+    <div class="flat-footer">
+    <p>Not registered yet ? <a href="{{ path('fos_user_registration_register') }}">Sign up for free!</a></p>
+    </div>
+
+</div>
+
+<!-- change password modal -->
+<div id="forgotPasswordModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Enter your email to get a new password</h3>
+    </div>
+    <div>
+
+        {% render(controller('FOSUserBundle:Resetting:request')) %}
+
+    </div>
+</div>
+
+
+
+{% endblock fos_user_content %}

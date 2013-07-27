@@ -1,0 +1,44 @@
+<h5>Click on a member to remove him from the group "{{ app.user.currentMember.tgroup.name }}"</h5>
+<div style="padding-bottom: 10px">
+	{% for member in app.user.currentMember.tgroup.members %}
+	<div style="display: inline-block">
+		<div style="margin: 5px;">	
+			<a href="#accordion-{{ member.id}}" data-toggle="collapse" data-parent="#accordion2">
+			{% if member.user %}
+				{% if member.user.facebookId %}
+				<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=120&height=120" class="img-circle" width="60px" 	alt="{{ member.name }}" style="position: relative">
+				{% else %}
+				<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="60px" 	alt="{{ member.name }}" style="position: relative">
+				{% endif %}
+			{% else %}
+				<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="60px" 	alt="{{ member.name }}" style="position: relative">
+			{% endif %}
+			<p>{{ member.name }}</p>
+			</a>
+		</div>
+	</div>
+	{% endfor %}
+	{% for member in app.user.currentMember.tgroup.members %}
+	{% if member.balance == 0 %}
+    <div id="accordion-{{ member.id}}" class="collapse out">  
+		<div class="well well-alert"> 
+			   <p>Do you confirm <b>{{ member.name}}</b> is leaving the group ?</p>
+			   <p>
+			   		<a href="{{ path('tk_group_remove_member', { 'id' : member.id }) }}" class="btn btn-danger">Yes</a> 
+			   		<a class="btn" href="#accordion-{{ member.id}}" data-toggle="collapse">Cancel</a>
+			   </p>
+		</div>
+	</div>
+	{% else %}
+    <div id="accordion-{{ member.id}}" class="collapse out"> 
+		<div class=" well well-alert">         
+		   <p><b>{{ member.name}}</b> cannot leave the group, his <b>balance is not null !</b></p>
+		   <p><a class="btn" href="#accordion-{{ member.id}}" data-toggle="collapse">ok</a></p>
+		</div>
+	</div>
+	{% endif %}
+	{% endfor %}
+</div>
+
+<a class="btn" data-toggle="collapse" href="#collapse-remove-member" style="position: absolute; bottom: 35px; right: 20px;">Hide</a>
+		

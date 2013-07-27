@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+
+{% block head %}
+ {{ parent() }}
+ <title>Twinkler - Manage social events</title>
+ <link href="{{ asset('css/links.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+
+	<header>
+		<div>
+			<a href="{{ path('tk_user_homepage') }}">
+				<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">
+			</a>
+			<div class="pull-right" id="login-register">
+				<ul>
+					<li class="header-collapse"><a href="{{ path('tk_welcome_about') }}">About</a></li>
+					<li class="header-collapse"><a href="{{ path('tk_welcome_blog') }}">Blog</a></li>
+					<li class="header-collapse"><a href="{{ path('tk_welcome_press') }}">Press</a></li>
+					<li class="header-collapse"><a href="{{ path('tk_welcome_contact') }}">Contact</a></li>
+					<li class="header-collapse"><a>|</a></li>
+					<li>
+						<a href="{{ path('fos_user_security_login')}}">Login</a> 
+						<span>or</span>
+						<a href="{{ path('fos_user_registration_register')}}">Register</a>
+					</li>
+				</ul>	
+			</div>
+		</div>
+	</header>
+
+
+
+
+		{% block links_body %}
+		{% endblock %}
+
+
+{% endblock %}

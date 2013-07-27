@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block head %}
+    {% block title %}   
+    <title>Twinkler - Manage social events</title>
+    {% endblock %}
+    {% block stylesheets %} 
+    <link href="{{ asset('css/frame.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" type="text/css">
+    {% endblock stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="container">
+            <div class="row" style="position: relative">
+                <div id="logo-big">
+                    <a class="brand" href="{{ path('tk_user_homepage') }}"><img src="{{ asset('img/logo/twinkler_logo_navbar.png') }}" width="150px" alt="twinkler logo"></a>
+                </div>
+                <div id="logo-small">
+                    <a class="brand" href="{{ path('tk_user_homepage') }}"><img src="{{ asset('img/logo/logo-etoile-transparent.png') }}" width="35px" alt="twinkler logo"></a>
+                </div>
+                <div id="group-name" class="span8 offset2">
+                    {% block navbartitle %}
+                    {% endblock %}
+                </div>
+                <div id="account-settings">
+                    <div class="profile-pic">
+                        <a href="{{ path('tk_user_homepage') }}">
+                            {% if app.user.facebookId %}
+                            <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" style="margin: 10px;" alt="profile picture">
+                            {% else %}
+                            <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="30px" style="margin: 10px;" alt="profile picture">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="dropdown" >
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-caret-down"></i></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" >
+                            <li><a href="{{ path('tk_user_homepage') }}" style="color: rgb(60,60,60)">Account Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}" style="color: rgb(60,60,60)">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>   
+            {% block header %}
+            {% endblock %}
+        </div>
+        {% block selectionmenu %}
+        {% endblock %}     
+    </header>
+
+    <section id="content" class="frame">
+        <div id="content-container" class="container">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </section>
+{% endblock %}

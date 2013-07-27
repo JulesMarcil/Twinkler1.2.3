@@ -1,0 +1,52 @@
+tk_test:
+    pattern:  /test
+    defaults: { _controller: TkWelcomeBundle:Default:test }
+
+tk_list:
+    resource: "@TkListBundle/Resources/config/routing.yml"
+    prefix:   /
+
+items:
+    type: rest
+    resource: Tk\ListBundle\Controller\ItemsController
+
+tk_expense:
+    resource: "@TkExpenseBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tk_group:
+    resource: "@TkGroupBundle/Resources/config/routing.yml"
+    prefix:   /group
+
+tk_user:
+    resource: "@TkUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tk_welcome:
+    resource: "@TkWelcomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+_security_check:
+    pattern:  /login_facebook_check
+_security_logout:
+    pattern:  /logout
+

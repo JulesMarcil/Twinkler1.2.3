@@ -1,0 +1,22 @@
+{% extends 'TkUserBundle:Profile:show.html.twig' %}
+
+{% block profile %}
+
+	<form action="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_errors(form) }}
+
+	    {{ form_row(form.username) }}
+	    {{ form_row(form.firstname) }}
+	    {{ form_row(form.lastname) }}
+	    {{ form_row(form.email) }}
+
+	    {{ form_rest(form) }}
+
+	    </div>
+	    <div class="button" style="margin-bottom:10px;">
+			<input type="submit" class="btn btn-success" value="Save changes"/>
+			<a class="btn" href="{{ path('tk_user_homepage') }}">Cancel</a>
+		</div>    
+	</form>
+
+{% endblock %}

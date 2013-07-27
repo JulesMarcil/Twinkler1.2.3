@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block head %}
+	{% block metatags%}
+    {% endblock %}  
+    <title>Twinkler - The Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/links.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="span3" style="padding-top: 80px; text-align: center">
+			<a href="{{ path('tk_user_homepage') }}">
+				<img id="tk-logo-hp" src="{{ asset('img/logo/tk-star.png') }}" width="80px" alt="twinkler logo" style="margin-bottom: 40px;margin:0 0 10px 25px;">
+			</a>
+			<div>
+				<h6 style="border-bottom: 3px double #EFF4F6; margin-top: 0px;   display:block; font-weight:bold; padding:6px 10px 8px; position:relative;margin:0 0 10px 25px;">More Blog Posts</h6>
+				<ul id="blog-post-list-js" class="blog-post-list" style="text-align: left">
+					<li><a id="130717" href="{{ path('tk_welcome_blog_post', { 'date': '130717' }) }}">
+						Work hard, play hard</a> <br> <small style="color:#D3D3D3; font-weight: normal">Jul 17th</small></li>
+					<li><a  id="130716" href="{{ path('tk_welcome_blog_post', { 'date': '130716' }) }}">
+						This is the beginning</a> <br> <small style="color:#D3D3D3; font-weight: normal"> Jul 16th</small></li>
+				</ul>
+			</div>
+			<a href="{{ path('tk_welcome_blog') }}" style="color:#D3D3D3; font-weight: normal">Back to Twinkler</a>
+		</div>
+
+		<div class="blog-post span6 offset1" style="margin-top: 40px; margin-bottom: 60px;text-align: center;">
+
+		{% block blog_post %}
+		{% endblock %}
+
+		</div>
+</div>
+	
+{% endblock %}
+
+        {% block javascripts %}
+         <script src="{{ asset('js/blog.js') }}"></script>
+        {% endblock %}

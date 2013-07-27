@@ -1,0 +1,57 @@
+jms_security_extra:
+    secure_all_services: false
+    expressions: true
+
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+        my_facebook_provider:
+            id: my_user.facebook_provider # Notre provider, nous y viendrons par la suite.
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        secured_area:
+            pattern: ^/
+            anonymous: ~
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                default_target_path: tk_user_homepage
+                provider: fos_userbundle
+                remember_me: true
+                csrf_provider: form.csrf_provider
+            remember_me:
+                key: %secret%
+                lifetime: 31536000 # 365 days in seconds
+            fos_facebook:
+                app_url: "%api_facebook_name%"
+                server_url: "%api_facebook_server%"
+                check_path: /login_facebook_check   # Pour éviter toute confusion avec le formulaire de base, j'ai spécifié une route pour Facebook
+                default_target_path: tk_user_homepage
+                provider: my_facebook_provider
+            logout:
+                path:   fos_user_security_logout
+                target: fos_user_security_login
+
+    access_control:
+        - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/invitation, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/summary, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(subscribe|about|blog|press|contact), role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/admin/, role: ROLE_ADMIN }

@@ -1,0 +1,7 @@
+parameters:
+#    tk_welcome.example.class: Tk\WelcomeBundle\Example
+
+services:
+    tk_expense.expenses:
+        class: Tk\ExpenseBundle\Services\Expenses
+        arguments: [@doctrine.orm.entity_manager]

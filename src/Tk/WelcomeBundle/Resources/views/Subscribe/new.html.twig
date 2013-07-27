@@ -1,0 +1,12 @@
+<form action="{{ path('tk_welcome_subscribe') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email, 
+            { 'attr': { 'placeholder' : 'Type in your email here', 'style' : 'width: 60%'}}) 
+	}}
+
+    {{ form_rest(form) }}
+
+    <input class="btn btn-success" type="submit" style="vertical-align:top"/>
+</form>

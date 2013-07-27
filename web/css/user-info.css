@@ -1,0 +1,277 @@
+/* --- --- USER INFO CSS --- --- */
+
+a:hover{
+	text-decoration: none;
+}
+
+
+/* --- User information --- */
+#user-info{
+	position: relative;
+	text-align: center;
+}
+
+#user-info .flat-header{
+	text-align: left;
+	height:34px;
+	min-height:34px;
+}
+
+#user-info  .flat-header > h3{
+	margin: 0px 15px;
+	color:#FCD5D2;
+	font-size:16px;
+}
+
+#profile-stats{
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	width: 92%;
+	text-align: left;
+}
+
+#profile-stats div{
+	display: inline-block;
+	height: 30px;
+	background-color: rgb(234, 243, 255);
+	color: rgb(84, 134, 198);
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 8px;
+}
+
+#profile-stats > .info-icon{
+	width: 20%;
+}
+
+.info-icon{
+	border-bottom-left-radius:4px;
+	border-top-left-radius:4px;
+}
+
+#profile-stats > .info-text{
+	width: 27%;
+	overflow: hidden;
+	border-bottom-right-radius:4px;
+	border-top-right-radius:4px;
+}
+
+.info-text{
+	border-bottom-right-radius:4px;
+	border-top-right-radius:4px;
+}
+
+.profile-info{
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 92%;
+	text-align: left;
+}
+
+.profile-info div{
+	display: inline-block;
+	height: 30px;
+	background-color: rgb(234, 243, 255);
+	color: rgb(84, 134, 198);
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 8px;
+}
+
+.profile-info > .info-icon{
+	width: 20%;
+}
+
+.profile-info > .info-text{
+	width: 78%;
+	overflow: hidden;
+}
+
+.edit-info{
+	height: 30px;
+	margin: 0px auto;
+	margin-bottom: 10px;
+	padding-top: 8px;
+	color: white;
+	text-align: center;
+}
+
+.edit-info a div{
+	width: 100%;
+	height: 100%;
+}
+
+.edit-info a{
+	color:white;
+	width: 100%;
+	height: 100%;
+}
+
+#change-password:hover{
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+/* --- Group summary --- */
+
+#group-summary{
+	width: 100%;
+	position: relative;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+#group-summary .flat-header{
+	text-align: left;
+}
+
+#group-summary .flat-header > div{
+	display: inline-block;
+	width: 40%;
+}
+
+#group-summary .flat-header h3{
+	margin: 0px 15px;
+	color:#FCD5D2;
+	font-size:16px;
+}
+
+#group-summary .flat-header > a{
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	vertical-align: middle;
+	padding: 6px 6px;
+	border-left: 1px solid rgb(243,203,199);
+	color: #E9F0F4;
+}
+
+#group-summary .accordion{
+	margin-bottom: 0;
+}
+
+.group-box{	
+	color: #5e6d82;
+	border:none;
+  	border-bottom: 1px solid rgb(200,200,200);
+	width: 100%;
+	background-color:#ffffff;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+}
+.group-box:last-child{
+	border:none;
+}
+
+.accordion-heading{
+	display: block;
+	padding-left: 20px;
+	text-align: left;
+}
+
+.accordion-group-icon{
+	position: absolute;
+	top: 5px;
+	left: 0px;
+}
+
+.accordion-heading > div{
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+}
+
+.accordion-heading-left{
+	min-width: 30%;
+	display: inline-block;
+}
+
+.accordion-heading-middle{
+	width: 30%;
+	min-width: 200px;
+	display: inline-block;
+}
+
+.accordion-heading-right{
+	min-width: 20%;
+	display: inline-block;
+}
+
+.accordion-heading-right > a,
+.accordion-heading-right > a:hover,
+.accordion-heading-right > a:active{
+	text-decoration: none;
+	color: #5E6D82;
+}
+
+.accordion-body{
+	display: inline-block;
+	width: 100%;
+}
+
+.accordion-toggle{
+	color: rgba(245,103,99,1);
+	vertical-align: top;
+}
+
+.accordion-toggle:hover{	
+	color: #f07971;
+	text-decoration: none;
+}
+
+.accordion-inner {
+	background-color:#F3F3F3;
+	border-bottom-color:#E5E5E5;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+
+/*-------GROUP CREATION-----*/
+.new-group h1{
+	font-size: 26px;
+	margin: 0px 30px;
+}
+
+.new-group-content{
+	padding: 20px 0px;
+}
+
+.new-group .currency{
+	margin: 15px 0px;
+}
+
+.new-group .currency > label,select{
+	display: inline-block;
+	margin: 0px 5px;
+}
+
+#tk_groupbundle_tgrouptype_currency{
+	width: 80px;
+}
+
+.new-group .flat-footer{
+	padding: 20px 0px;
+}
+
+.new-group .flat-footer input{
+	width: 200px;
+	height: 40px;
+	margin: 10px 30px;
+	font-size: 16px;
+
+}
+
+.new-group .flat-container .flat-header{
+	min-height: 30px
+}
+
+.new-group .flat-container .flat-header h3{
+	color:#FCD5D2;
+  	font-size:16px;
+  	margin:0px 70px;
+  	text-align: left;
+}

@@ -1,0 +1,45 @@
+{% extends 'TkWelcomeBundle:Links:links.html.twig' %}
+
+{% block links_body %}
+<section>
+	<div id="vision">
+		<div class="container">
+			<div class="row">
+				<div class="span8 offset2">
+					<div id="about" style="text-align:center; width:100%;margin-top:150px">
+						<h1>Our vision is to let people share more in beautiful, simple and meaningful ways.</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div id="footer" class="container" style="font-family:'Helvetica Neue';">
+		<div class="row">
+			<div id="individual-pres" class="span8 offset2" style=" margin-top: 80px;">
+				<div class="span3">
+					<img src="{{ asset('img/links/Arnaud.png') }}" width="150px"alt="Ping me!">
+
+						<h3>Arnaud</h3>
+						<p>Front-end Dev</p>
+						<a href="mailto:arnaud@twinkler.co">arnaud@twinkler.co</a>
+				</div>
+				<div class="span3 offset1">
+					<img src="{{ asset('img/links/Julio.png') }}" width="150px"alt="Ping me!">
+						<h3>Jules</h3>
+						<p>Back-end Dev</p>
+						<a href="mailto:jules@twinkler.co">jules@twinkler.co</a>
+				</div>
+			</div>
+			<div class="span8 offset2">
+				<div id="arnaud-jules" style="text-align: center; margin-top: 80px; padding-bottom:120px;">
+
+					<p>We're two engineering grads who absolutely love working on Twinkler together. <br> We have a lot of ideas to let you share more with the ones you love! <br>Shoot us an email if you want to say hi or you think that you would be a good fit :)</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+{% endblock %}

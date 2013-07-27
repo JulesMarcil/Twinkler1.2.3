@@ -1,0 +1,18 @@
+{% extends 'TkGroupBundle::index.html.twig' %}
+
+{% block groupinformation %}
+
+<div class="well">
+	<form action="{{ path('tk_group_edit') }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_errors(form) }}
+
+	    {{ form_row(form.name) }}
+
+	    {{ form_rest(form) }}
+
+	    <input type="submit" />
+	    <a href="{{ path('tk_group_homepage') }}">Cancel</a>
+	</form>
+</div>
+
+{% endblock %}

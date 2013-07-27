@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Twinkler team">
+        <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/font.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/flat-design.css') }}" rel="stylesheet">
+        <link rel="icon"  type="image/png" href="{{ asset('img/logo/favicon.png') }}">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body id="page-body">
+        {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
+        <script type="text/javascript" > // Script for FOSFacebookBundle
+        function goLogIn(){
+            window.location = "{{ path('_security_check') }}";
+        }
+ 
+        function onFbInit() {
+            if (typeof(FB) != 'undefined' && FB != null ) {
+                FB.Event.subscribe('auth.statusChange', function(response) {
+                    if (response.session || response.authResponse) {
+                        setTimeout(goLogIn, 50);
+                    } else {
+                        window.location = "{{ path('_security_logout') }}";
+                    }
+                });
+            }
+        }
+        </script>
+
+
+        {% block body %}
+        {% endblock %}
+        
+        <div id="javascripts">
+            <script src="{{ asset('js/jquery-1.10.1.js')}}"></script>
+            <script src="{{ asset('js/jquery-ui-1.10.3.custom.min.js')}}"></script>
+            <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>      
+            <script src="{{ asset('js/chart.js') }}"></script>
+            <script src="{{ asset('js/jquery.nicescroll.js') }}"></script>
+            <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+            <script src="{{ asset('js/underscore-min.js') }}"></script>
+            <script src="{{ asset('js/backbone.js') }}"></script>
+            {% block javascripts %}
+            {% endblock %}
+        </div>
+        
+        {% include ':external:googleAnalytics.html.twig' %}
+        {% include ':external:uservoice.html.twig' %}
+
+    </body>
+
+    <script type="text/javascript" > // Script for FOSFacebookBundle
+    $( document ).ready(function() { 
+        if ($('body').height()<$(window).height()){
+            $('body').height($(window).height());
+    }
+    })
+
+     window.onresize =function() {
+        if ($('body').height()<$(window).height()){
+            $('body').height($(window).height());
+    }
+    };
+    </script>
+</html>

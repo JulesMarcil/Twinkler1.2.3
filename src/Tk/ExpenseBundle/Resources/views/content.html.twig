@@ -1,0 +1,175 @@
+{% set currency = app.user.currentMember.tgroup.currency.symbol %}
+
+<div class="row">
+	<div class="span4">
+		<div id="settlement" class="flat-container">
+			<div class="expense-header flat-header" style="text-align:left;">
+				<div id="expense-title">
+					<h2>Payback</h2>
+				</div>
+			</div>
+				{% if debts|length == 0 %}
+				<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
+				{% else %}
+
+				<div class="payback-table">
+					<table>
+						{% for debt in debts %}
+						<tr style="height: 30px;">
+							<td style="text-align: left;">{{ debt[0] }}</td> 
+							<td class="payback-text">gives </td>
+							<td style="color:#99B335;">{{ debt[1] }} {{ currency }}</td>
+							<td class="payback-text"> to </td>
+							<td style="text-align: left;">{{ debt[2] }}</td>
+						</tr>
+						{% endfor %}
+
+					</table>
+				</div>
+
+			{% endif %}
+		</div>
+		<div id="balance" class="flat-container">
+			<div class="expense-header flat-header">
+				<div id="expense-title">
+					<h2>Balance</h2>
+				</div>
+			</div>
+			<div>
+				<div id="balance-slimscroll" style="text-align:center; margin-top: 20px; width:90%; margin: 0px auto; padding-top: 10px;; margin-bottom: 15px">
+					<canvas id="balanceChart" width="500px" height="150px"></canvas>
+					<table id="chart-labels" style="margin-top:-30px; margin-left:auto; margin-right:auto;width:100%;table-layout: fixed; margin-bottom: 5px">
+						<tr id="balance-row">
+							{% for member in app.user.currentMember.tgroup.members %}
+							<td style='width:70px; min-width:70px; color:{% if member.balance >= 0 %}#A8BD44{% else %}#F97E76{% endif %}; vertical-align:top;overflow: hidden; padding:0'>{{ member.name }}</td>	
+							{% endfor %}	
+						</tr>
+						<tr id="member-row">
+							{% for member in app.user.currentMember.tgroup.members %}
+							<td style='width:70px; min-width:70px; color:{% if member.balance >= 0 %}#A8BD44{% else %}#F97E76{% endif %}; vertical-align:top;overflow: hidden; padding:0'>{{ member.balance }}{{ member.tgroup.currency.symbol }}</td>
+							{% endfor %}
+						</tr>
+					</table>						
+				</div>
+			</div>
+		</div>
+	</div>		
+	<div class="span8" >
+		<div id="timeline" style="position: relative">
+			<img src="{{ asset('img/Frame/group-icon-pointer.png') }}" class="img-circle" width="50px" style="position:absolute; top: -5px; left:2px" alt="profile picture">
+		</div>
+		<div id="timeline-expense-container">
+			{% include "TkExpenseBundle::addExpenseModal.html.twig" %}
+			<div class="expense-list flat-container">
+				<div class="expense-header flat-header">
+					<div id="expense-title">
+						<h2>Expense Timeline</h2>
+					</div>
+					<a href="#addExpenseModal" role="button" data-toggle="modal">
+						<div id="add-expense-btn">
+							<i class="icon-plus" style="color:#fcd5d2;"></i>add expense
+						</div>
+					</a>
+				</div>
+				<div id="filter-buttons">
+					<a id="show-all-button" class="active">show all</a>
+					<a id="only-mine-button">only mine</a>
+				</div>
+				<div id="expense-summary">
+					You paid: {{ total_paid_by_me }}{{ currency }}
+					- Your due share: {{ total_paid_supposed}}{{ currency }}				
+				</div>		
+			</div>
+
+			{% if all_expenses|length == 0 %}
+			<div class="pinpoint-tmln" style="margin-left: -7.55%">
+				<a  href="#" data-toggle="tooltip" rel="tooltip" title="" >
+					<img class="pinpoint-button" src="{{ asset('img/Frame/tmln-btn.png') }}" class="img-circle" width="20px">
+				</a>
+			</div>
+			<div class="expense-list flat-container" style="text-align: center">
+				<div class="no-expense">
+				<p>There is no expense here yet</p></div>
+				<a href="#addExpenseModal" role="button" data-toggle="modal" class="flat-btn flat-pk flat-large" style="background-color: rgb(67,113,191); color:rgb(229,240,255) ; height:25px; padding-top: 5px">Add an expense</a>
+			</div>
+			{% else %}
+			<div class="accordion" id="accordion2">
+				{% set date = true %}
+				{% set previous = null %}
+				{% for expense in all_expenses %}
+				<div class="expense-block 
+				{% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}">
+
+					{% if expense[0].date == previous %}
+					{% set date = false %}
+					{% else %}
+					{% set date = true %}
+					{% endif %}
+    
+					{% if date == true %}
+				    <div class="date-block">
+				        <div style="width:70%;">
+				            <div class="liner"></div>
+				        </div>
+				        <div  class="expense-date">
+				        	<p><i class="icon-time"></i> {{ expense[0].date|date("d - m") }}</p>
+				        </div>
+				        <div style="width:8%;">
+				            <div class="liner"></div>
+				        </div>
+				    </div>
+					{% endif %}
+
+					{% set previous = expense[0].date %}
+
+					<div class="accordion-group">
+						<div class="expense-list flat-container accordion-heading">
+							<div class="pinpoint-tmln">
+								<a  href="#" data-toggle="tooltip" rel="tooltip" title="{{ expense[0].date|date("d - m") }}">
+									<img class="pinpoint-button" src="{{ asset('img/Frame/tmln-btn.png') }}" class="img-circle" width="20px">
+								</a>
+							</div>
+
+							<div class="expense-list-detailed">
+								{% if expense[0].owner.user %}
+									{% if expense[0].owner.user.facebookId %}
+									<img src="http://graph.facebook.com/{{expense[0].owner.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% else %}
+									<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% endif %}
+								{% else %}
+									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+								{% endif %}
+								<div class="expense-details">								
+									<div style="color:rgb(140,140,140);">
+										<font style="color:#fb786b;">{{ expense[0].owner.name }} </font>paid <font style="color:#0088CC;">{{ expense[0].amount }} {{ currency }}</font> for <font style="color:#fb786b;">{{ expense[0].name }}</font> 
+									</div>
+									<div style"text-align: middle;">
+										<p style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">Friends involved: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</p>
+									</div>
+								</div>
+								<div class="your-share">
+									Your share: <font style="color:rgb(153,179,53);">{{ expense[1] }} {{ currency }}</font>
+								</div>
+								<div class="edit-remove-buttons">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{expense[0].id}}"><i class="icon-edit"></i></a>
+									<a href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash"></i></a>
+								</div>
+							</div>	
+						</div>
+						<div id="collapse{{expense[0].id}}" class="accordion-body collapse out">
+	     			 		<div class="accordion-inner">
+								<div class="expense-list flat-container">
+									{% render controller('TkExpenseBundle:Expense:edit', {'id': expense[0].id } ) %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			</div>
+		</div>
+	</div>	
+</div>

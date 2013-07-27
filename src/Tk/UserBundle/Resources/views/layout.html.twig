@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block head %}
+    <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+<div id="user-layout-body">
+    <header>
+        <div>
+            <a href="{{ path('tk_user_homepage') }}">
+                <img src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">
+            </a>
+            <div class="pull-right" id="login-register">
+                {% block signuplogin %}
+                {% endblock %}
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        {% block layoutcontent %}
+        <div id="user-layout" class="row">
+            <div class="span4 offset4" style="text-align: center">
+                {% if app.session.get('invitation_id') != null %}
+                <h5>Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
+                {% endif %}
+
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="flash-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div>
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

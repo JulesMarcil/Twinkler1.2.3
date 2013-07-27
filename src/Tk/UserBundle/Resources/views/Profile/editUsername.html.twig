@@ -1,0 +1,16 @@
+{% extends 'TkUserBundle:Profile:show.html.twig' %}
+
+{% block username %}
+
+	<form action="{{ path('tk_user_username_edit', { 'id' : app.user.id }) }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_errors(form) }}
+
+	    {{ form_row(form.username) }}
+
+	    {{ form_rest(form) }}
+
+	    <input type="submit" />
+	    <a href="{{ path('tk_user_homepage') }}">Cancel</a>
+	</form>
+
+{% endblock %}

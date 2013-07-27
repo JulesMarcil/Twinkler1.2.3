@@ -1,0 +1,21 @@
+{% if member.user %}
+<div class="member">
+	<div style="position: relative; width:60px; margin-left: auto; margin-right: auto;">
+		{% if member.user.facebookId %}
+		<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+		{% else %}
+		<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+		{% endif %}
+		<a data-id="{{member.id}}" data-user="{{member.user.id}}" class="remove-added-member" style="position: absolute; top: 0; right: 0; cursor: pointer"><img src="{{ asset('img/Frame/delete-member.png') }}"  alt="{{ member.name }}" style="width:20px"></a>
+	</div>
+	<p style="color: rgb(121,136,151);text-shadow:  white 0px 1px 0px;" data-name="{{member.name}}" data-email="{{member.user.email}}">{{ member.name }}</p>
+</div> 
+{% else %}
+<div class="member">
+	<div style="position: relative; width:60px; margin-left: auto; margin-right: auto;">
+		<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+		<a data-id="{{member.id}}" class="remove-added-member" style="position: absolute; top: 0; right: 0; cursor: pointer"><img src="{{ asset('img/Frame/delete-member.png') }}"  alt="{{ member.name }}" style="width:20px"></a>
+	</div>
+	<p style="color: rgb(121,136,151);text-shadow: white 0px 1px 0px;">{{ member.name }}</p>
+</div>
+{% endif %}

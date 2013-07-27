@@ -1,0 +1,53 @@
+{% extends 'TkUserBundle::frame.html.twig' %}
+
+{% block stylesheets %}
+ {{ parent() }}
+ <link href="{{ asset('css/creation-process.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block navbartitle %}
+	<div  id="group-name-title">
+		<div id="title">
+			<a href="{{ path('tk_group_homepage') }}" ><h3>{{ app.user.currentMember.tgroup.name }}</h3></a>
+		</div>
+	</div>
+{% endblock %}
+
+{% block header %}
+<div id="second-row-big" class="row" style="position: relative">
+	<div id="group" class="span8 offset2">
+		{% for member in app.user.currentMember.tgroup.members %}
+		{% if member.user %}
+		<div class="member">
+			{% if member.user.facebookId %}
+			<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+			{% else %}
+			<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+			{% endif %}
+			<p style="color: rgb(121,136,151);text-shadow:  white 0px 1px 0px;">{{ member.name }}</p>
+		</div> 
+		{% else %}
+		<div class="member">
+			<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+			<p style="color: rgb(121,136,151);text-shadow: white 0px 1px 0px;">{{ member.name }}</p>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>	
+</div>
+{% endblock %}
+
+{% block selectionmenu %}
+<div id="navbar-row" class="selection-menu" style="padding-top:0">
+	<div class="container" style="height:100%;">
+		<div  class="row" style="height:100%;">
+			<div class="span4 offset4" style="height:100%; text-align: center;">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('js/creation-process.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,67 @@
+.new-group .flat-container .flat-header{
+	min-height: 30px
+}
+
+.flat-container .flat-header h3{
+	color:#FCD5D2;
+	font-size:16px;
+	margin:0 15px;
+}
+
+@media only screen and (min-width: 1200px) {
+	#add-friend-block{
+	margin-left: 15px;
+	}
+	#add-member-block{
+	padding-right: 14px;
+	border-right: solid 1px #C8C8C8;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+	#add-friend-block{
+	margin-left: 10px;
+	}
+	#add-member-block{
+	padding-right: 9px;
+	border-right: solid 1px #C8C8C8;
+	}
+}
+
+
+
+.subheader{
+	color: #4371BF;
+	width: 100%;
+	height: 30px;
+	background-color: #E5F0FF;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.subheader h3{
+	line-height: 28px;
+	font-size: 16px;
+}
+
+.add-members{
+	text-align: center;
+}
+.add-members table{
+	width: 90%; margin: auto;
+}
+.add-members tr{
+	height: 40px;
+	border-bottom: solid 1px #C8C8C8;
+}
+.add-members tr:last-child{
+	border-bottom: none;
+}
+.add-members .add-button{
+	width: 20%; text-align: right;
+}
+
+/* --- facebook table --- */
+
+#facebook-table tr{
+	display: none;
+}

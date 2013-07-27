@@ -1,0 +1,38 @@
+tk_welcome_summary:
+    pattern: /summary/{id}/{token}
+    defaults: { _controller: TkWelcomeBundle:Summary:summary }
+
+tk_welcome_choose_member:
+    pattern: /invitation/{id}/{token}
+    defaults: { _controller: TkWelcomeBundle:Invitation:chooseMember }
+
+tk_welcome_chosen_member:
+    pattern: /invitation/chosen/{id}/{token}
+    defaults: { _controller: TkWelcomeBundle:Invitation:chosenMember }
+
+tk_welcome_invitation_login:
+    pattern:  /login/{id}/{token}
+    defaults: { _controller: TkWelcomeBundle:Invitation:invitationLogin }
+
+tk_welcome_subscribe:
+    pattern: /subscribe
+    defaults: { _controller: TkWelcomeBundle:Default:subscribe }
+
+tk_welcome_about:
+    pattern: /about
+    defaults: { _controller: TkWelcomeBundle:Default:about }
+
+tk_welcome_blog:
+    pattern: /blog
+    defaults: { _controller: TkWelcomeBundle:Default:blog }
+tk_welcome_blog_post:
+    pattern: /blog/post/{date}
+    defaults: { _controller: TkWelcomeBundle:Default:blogPost }
+
+tk_welcome_press:
+    pattern: /press
+    defaults: { _controller: TkWelcomeBundle:Default:press }
+
+tk_welcome_contact:
+    pattern: /contact
+    defaults: { _controller: TkWelcomeBundle:Default:contact }

@@ -1,0 +1,65 @@
+<div class="add-members">
+	<div class="subheader">
+		<span style="display: block; height: 30px; vertical-align: middle; padding-left: 10px;">
+		<h3>Add a Friend from Twinkler</h3>
+		</span>
+	</div>
+
+	{% if app.user.friends|length + facebook_friends|length == 0 %}
+	<p>Yo do not have any friend on Twinkler yet, invite them !</p>
+	{% else %}
+
+	{% if app.user.friends|length + facebook_friends|length > 5 %}
+	<input placeholder="filter by name ..." id="friend-input">
+	{% endif %}
+
+	<div id="table-block" style="margin-top: 5px; height:160px">
+		<div id="friend-table">
+		<table>
+			<tbody>
+			{% for user in app.user.friends  %}
+			{% if user.currentMember == null or user.currentMember.tgroup != app.user.currentMember.tgroup %}
+
+			<tr id="tr-user-{{user.id}}">
+				<td style="width: 40px;">
+					{% if user.facebookId %}
+					<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" alt="{{ user }}" style="position: relative;" width="30px">
+					{% else %}
+					<img src="{{ asset(user.picture.path) }}" alt="{{ user }}" style="position: relative;" width="30px">
+					{% endif %}
+				</td>
+				<td class="name">
+					{{ user }}
+				</td>
+				<td class="add-button"><button data-id="{{user.id}}" class="btn btn-small">Add</button></td>
+			</tr>
+
+			{% endif %}
+			{% endfor %}
+
+			{% for user in facebook_friends  %}
+			{% if user.currentMember == null or user.currentMember.tgroup != app.user.currentMember.tgroup %}
+
+			<tr id="tr-user-{{user.id}}">
+				<td style="width: 40px;">
+					{% if user.facebookId %}
+					<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" alt="{{ user }}" style="position: relative;" width="30px">
+					{% else %}
+					<img src="{{ asset(user.picture.path) }}" alt="{{ user }}" style="position: relative;" width="30px">
+					{% endif %}
+				</td>
+				<td class="name">
+					{{ user }}
+				</td>
+				<td class="add-button"><button data-id="{{user.id}}" class="btn btn-small">Add</button></td>
+			</tr>
+
+			{% endif %}
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	</div>
+
+	{% endif %}
+</div>

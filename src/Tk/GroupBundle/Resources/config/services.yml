@@ -1,0 +1,7 @@
+parameters:
+#    tk_group.example.class: Tk\GroupBundle\Example
+
+services:
+#    tk_group.example:
+#        class: %tk_group.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

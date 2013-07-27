@@ -1,0 +1,175 @@
+{% block subject %}
+	{% autoescape false %}
+		Confirmation of your registration to Twinkler
+	{% endautoescape %}
+{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="icon"  type="image/png" href="http://twinkler.co/img/logo/favicon.png">
+<title>Twinkler</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style type="text/css">
+
+body { -webkit-text-size-adjust:100%; }
+img { -ms-interpolation-mode:bicubic; }
+
+@media only screen and (max-width: 640px) {
+
+/* basic */
+body { margin:0 !important; padding:10px !important; }
+td[class~=rha], img[class~=rha] { height:auto !important; }
+table[class~=rwf], td[class~=rwf], img[class~=rwf] { width:100% !important; }
+td[class~=rdb] { display:block !important; margin:0 !important; padding:0 !important; }
+a[class~=rfn], font[class~=rfn] { font-size:15px !important; }
+a[class~=rfm], font[class~=rfm] { font-size:13px !important; }
+a[class~=rft], font[class~=rft] { font-size:11px !important; }
+
+/* basic:frame */
+table[class~=wr_layout], table[class~=frc] { width:300px !important; }
+
+/* header */
+td[class~=home_img], td[class~=hd_btns_empty], td[class~=fb_img], td[class~=tw_img] { display:none !important; }
+td[class~=browse_img] { width:173px !important; }
+td[class~=sell_img] { width:126px !important; }
+td[class~=hd_bar_icn] { display:none !important; }
+td[class~=hd_bar_empty] { width:140px !important; }
+
+/* products */
+table[class~=prd3_box] td[class~=rdb] { margin-top:20px !important; }
+table[class~=prd3_box] td[class~=rdb]:first-child { margin-top:0 !important; }
+td[class~=prd3_btn] { padding-top:8px !important; }
+
+/* category4 */
+td[class~=cat4] { width:148px !important; }
+
+/* more3 */
+table[class~=more3_cont] { width:292px !important; }
+table[class~=more3] { width:282px !important; }
+
+}
+
+</style>
+
+</head>
+
+
+<body bgcolor="#f3f3f3" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333333; text-align:left;">
+
+<!-- html wrapper -->
+<table class="wr wr_html" width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333333; text-align:left; background-color: #f3f3f3">
+	<tr>
+		<td align="center">
+
+
+			<!-- layout wrapper -->
+			<table class="wr wr_layout" width="600" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td align="center">
+
+<!-- preheader -->
+<table class="frc prehd" width="600" border="0" cellpadding="0" cellspacing="0" style="text-decoration:none">
+	<tr>
+		<td align="center" style="padding-bottom:6px;"><font class="rfm" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666666;"><a href="mailto:jules@twinkler.co" style="color:#666666; text-decoration:none;"><font style="color:#666666;">Add Twinkler to your contacts</font></a></td>
+	</tr>
+</table>
+<!-- /preheader -->
+
+<div style="background-color: #ffffff">
+
+<!-- header bar -->
+<table class="frc hd_bar" width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#f6f6f6" style="border-bottom: solid rgb(246,139,104) 1px; border-top: solid #f68b68 1px; background: -moz-linear-gradient(top, #fb786b 0%, #fb786b 100%); background: -webkit-linear-gradient(top, #fb786b 0%,#fb786b 100%); background: -ms-linear-gradient(top, #fb786b 0%,#fb786b 100%); background: linear-gradient(top, #fb786b 0%,#fb786b 100%);">
+	<tr>
+		<td class="logo_img" width="220" height="60" align="left" valign="middle"><a target="_blank" href="http://www.twinkler.co/" style="font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#666666; text-decoration:none;" title="Twinkler"><font style="color:#666666;"><strong><img src="http://twinkler.co/img/logo/logo-text-white.png" width="220" height="55" border="0" style="display:block; margin-left: 20px" alt="Twinkler" /></strong></font></a></td>
+
+	</tr>
+</table>
+<!-- /header bar -->
+
+
+
+
+<!-- separator -->
+<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="17">&nbsp;</td>
+	</tr>
+</table>
+<!-- /separator -->
+
+
+<!-- teaser1 -->
+<table class="frc tsr1" width="600" border="0" cellpadding="0" cellspacing="0">
+	<td class="tsr1_img" align="center" style="font-family:arial, sans-serif;color:#48545D; font-size:17px;line-height:25px;">
+	<font style="color:#48545D;">	
+		 Welcome {{ user.username }} !
+
+		 <br>
+		 We are really excited to have you on <b>Twinkler!</b><br>
+
+		 Before you get started, please verify you email address below:<br>
+	</font>	
+<span>
+<a style="display: inline-block; width: 100%; background-color: rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 18px; font-weight: bold; text-align: center; padding: 15px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;" href="{{ confirmationUrl }}" target="_blank">Confirm your email address</a>
+</span>
+
+
+	</td>
+</table>
+<!-- /teaser1 -->
+
+<!-- separator -->
+<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="17">&nbsp;</td>
+	</tr>
+</table>
+<!-- /separator -->
+
+<!-- contact -->
+<table class="frc contact" width="600" border="0" cellpadding="10" cellspacing="0" bgcolor="#fb786b">
+	<tr>
+		<td align="center"><font style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#ffffff;"><a target="_blank" href="http://www.twinkler.co/about-us/" style="color:#ffffff; text-decoration:none;"><font style="color:#ffffff;">About Twinkler</font></a> &nbsp;|&nbsp; <a target="_blank" href="http://www.twinkler.co/" style="color:#ffffff; text-decoration:none;"><font style="color:#ffffff;">How it works</font></a> &nbsp;|&nbsp; <a target="_blank" href="mailto:jules@twinkler.co" style="color:#ffffff; text-decoration:none;"><font style="color:#ffffff;">Contact</font></a></font></td>
+	</tr>
+</table>
+<!-- /contact -->
+
+<!-- separator -->
+<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td height="10">&nbsp;</td>
+	</tr>
+</table>
+<!-- /separator -->
+
+</div>
+<!-- footer -->
+<table class="frc footer" width="600" border="0" cellpadding="10" cellspacing="0">
+	<tr>
+		<td align="center"><font class="rfm" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666666;">From Twinkler, with Love<br />
+		<br /></font></td>
+	</tr>
+</table>
+<!-- /footer -->
+					</td>
+				</tr>
+			</table>
+			<!-- /layout wrapper -->
+
+
+		</td>
+	</tr>
+</table>
+<!-- /html wrapper -->
+
+</body>
+</html>
+{% endblock %}

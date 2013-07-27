@@ -1,0 +1,308 @@
+{% extends '::base.html.twig' %}
+
+{% block head %}  
+    <title>Twinkler - Manage social events</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block body %}
+	<header>
+		<div>
+			<a href="{{ path('tk_user_homepage') }}">
+				<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">
+			</a>
+			<div class="pull-right" id="login-register">
+				<ul>
+					<li id="feature" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#features">Features</a></li>
+					<li id="getappstandapp" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#gettheapp">Get the App</a></li>
+					<li id="gimmemore" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#mosaic">More</a></li>
+					<li class="header-collapse"><a>|</a></li>
+					<li>
+						<a href="{{ path('fos_user_security_login')}}">Login</a> 
+						<span>or</span>
+						<a href="{{ path('fos_user_registration_register')}}">Register</a>
+					</li>
+				</ul>	
+			</div>
+		</div>
+	</header>
+
+  	{% block content %}
+
+  	<section>
+  		<div class="container" id="section1">
+  			<div class="row">
+
+  				<!-- BIG screens only (>767px) -->
+  				<div id="section1-big">
+	  				<div class="span5 offset1" id="iphone-view">
+						<img id="handiphone" src="{{ asset('img/landing-page/handiphone.png') }}" alt="twinkler app mockup">
+					</div>
+		  			<div class="span4" id="catchphrase">
+					    <h1>Sharing made easy</h1>
+					    <div id="myCarousel" class="carousel slide">
+						    <div class="carousel-inner">
+							    <div class="active item">#HOLIDAYS</div>
+							    <div class="item">#FLATSHARES</div>
+							    <div class="item">#WEEKENDS</div>
+							    <div class="item">#TRIPS</div>
+						    </div>
+					    </div>
+					    <p>Twinkler is the most beautiful, simple and convenient place to <strong>enjoy moments with friends</strong></p>
+					    
+					    <p>Twinkler manages everything from planning to expenses</p>
+					    <br>
+					    <a href="{{ path('fos_user_registration_register')}}" class="btn btn-large btn-primary">Sign up and start Sharing</a>
+					</div>
+				</div>
+
+				<!-- SMALL screens only (<768px) -->
+				<div id="section1-small">
+		  			<div class="span12" id="catchphrase">
+					    <h1>Sharing made easy</h1>
+					    <div id="myCarousel" class="carousel slide">
+						    <div class="carousel-inner">
+							    <div class="active item">#HOLIDAYS</div>
+							    <div class="item">#FLATSHARES</div>
+							    <div class="item">#WEEKENDS</div>
+							    <div class="item">#TRIPS</div>
+					    	</div>
+					    </div>
+					    <p>Twinkler is the most beautiful, simple and convenient place to</br> 
+					    <strong>enjoy moments with friends</strong></p>
+					    
+					    <a href="{{ path('fos_user_registration_register')}}" class="btn btn-large btn-primary">Sign up and start Sharing</a>
+					</div>
+				</div>
+				<!-- end of screen discrimination -->
+
+			</div>
+		</div>
+	</section>
+
+	<section >
+		<div class="container">
+			<div id="core-features" class="row">
+				<div class="span4">
+					<a href="#planning">
+						<div id="learn-more-planning" class="learn-more img-circle" style="background-image: url(' ../img/landing-page/bullet-point-planning.jpg');">
+							<div class="learn-more-hover img-circle">	
+								<img src="{{ asset('img/landing-page/learn-more-hover.png') }}" alt="twinkler app mockup">
+							</div>
+						</div>
+					</a>
+					<div class="features-short">
+						<h3>Beautiful Planning</h3>
+						<p>Share thoughts, tasks and shopping lists with your friend to organize your events the easy way</p>
+					</div>
+					<a id="learn-more-planning-link" href="#planning" class="learn-more-link">Learn more</a>
+				</div>
+				<div class="span4">
+					<a href="#expense">
+						<div id="learn-more-expense" class="learn-more img-circle" style="background-image: url(' ../img/landing-page/bullet-point-expense.jpg');">
+							<div class="learn-more-hover img-circle">
+								<img src="{{ asset('img/landing-page/learn-more-hover.png') }}" alt="twinkler app mockup">
+							</div>
+						</div>
+					</a>
+					<div class="features-short">
+						<h3>Simple Sharing</h3>
+						<p>Don't worry about who pays what, share your expenses and Twinkler tells you who owes what</p>
+					</div>
+					<a id="learn-more-expense-link" href="#expense" class="learn-more-link">Learn more</a>
+				</div>
+				<div class="span4">
+					<a href="#payback">
+						<div id="learn-more-payback" class="learn-more img-circle" style="background-image: url(' ../img/landing-page/bullet-point-payback.jpg');">
+							<div class="learn-more-hover img-circle">
+								<img src="{{ asset('img/landing-page/learn-more-hover.png') }}" alt="twinkler app mockup">
+							</div>
+						</div>
+					</a>
+					<div class="features-short">
+						<h3>Free Payback</h3>
+						<p>Send money for free. Isn't it time to use your smartphone to actually pay your friends back ?</p>
+					</div>
+				    <a id="learn-more-payback-link" href="#payback" class="learn-more-link">Learn more</a>
+				</div>
+			</div>
+			<div id="late-login" class="row">
+				  <a href="{{ path('fos_user_registration_register')}}" class="btn btn-large btn-primary">Sign up and start Sharing</a>
+				  <p>already registered? log in <a href="#subscribeModal" role="button" data-toggle="modal">here</a></p>
+			</div>
+		</div>
+	</section>
+
+	<section class="feature">
+		<div class="container" id="features">
+	    	<div id="planning" class="row">
+	    		<div class="span4 offset1 feature-container">
+	    			<img src="{{ asset('img/landing-page/iphones-chats.png') }}" alt="twinkler app mockup" width="300px">
+	    		</div>
+	    		<div class="span7 feature-description">
+	    			<div>
+		    			<h1>Beautiful Planning with Friends</h1>
+	    				<h2>Share more than moments</h2>
+		    			<p><strong>Simple group chat</strong> to plan your week ends or simply comment, smile, laugh with your friends</p>
+		    			<p>Share your lists for easy scheduling:<br>
+		    			- Get everyone on the same page with our <strong>synchronized to-do list</strong></br>
+		    			- Say what you need in our <strong>easy-to-use shopping list</strong> </p>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	</section>
+	<section class="feature">
+		<div class="container">
+		    <div id="expense" class="row">
+	    		<div class="span6 feature-description offset1">
+	    			<div>
+		    			<h1>Simple Expense Sharing</h1>
+	    				<h2>Pay for your friends</h2>
+		    			<p>Stop splitting the bill, anytime you get to pay for others just put it on Twinkler</p>
+		    			<p><strong>Access and edit the group expenses at all time:</strong> Twinkler keeps track of everything that has been paid</p>
+		    			<p>Twinkler shows you the <strong>current balances</strong> of the group and <strong>the easiest way to settle the debts</strong></p>
+		    		</div>
+	    		</div>
+	       		<div class="span4 offset1 feature-container">
+	    			<img src="{{ asset('img/landing-page/samsung-overview.png') }}" alt="twinkler app mockup" style="max-width: 200px;">
+	    		</div>
+		    </div>
+	    </div>
+	</section>
+	<section class="feature">
+		<div class="container">
+		    <div id="payback" class="row">
+	    		<div class="span5 feature-container">
+	    			<img src="{{ asset('img/landing-page/iphone_payback.png') }}" alt="twinkler app mockup">
+	    		</div>				    		
+	    		<div class="span6 feature-description">
+	    			<div>
+		    			<h1>Free and Instant Payback</h1>
+	    				<h2>Reimburse the easy way</h2>
+	    				<br>
+	    				<p>Twinkler integrates <strong>state-of-the-art free peer-to-peer mobile payments</strong> to make sure you move your money in a secured and easy way.<br></p>
+		    			<p>Advance money to your friends for tickets, diner, drinks: you will <strong>get your money back instantly and at no cost.</strong></p>
+	    			</div>
+	    		</div>
+		    </div>
+		</div>
+	</section>
+
+ 	<section>
+ 		<div id="showcase" class="row">
+ 			<div class="span7 offset3">
+		    	<h1>Available everywhere, with everyone, at anytime</h1>				
+ 				<img src="{{ asset('img/landing-page/showcase.png') }}">
+ 			</div>
+ 		</div>
+
+	 </section>
+
+	<section>
+		<div class="container" id="gettheapp">
+			<div id="section-transition" class="row">
+			    <h5>Download our Free Mobile Apps!</h5>
+			</div>
+			<div class="row">
+				<a href="#subscribeModal" role="button" data-toggle="modal">
+					<img src="{{ asset('img/landing-page/google-play-large.png') }}" alt="Get our Android App!">
+				</a>
+				<a href="#subscribeModal" role="button" data-toggle="modal">
+					<img src="{{ asset('img/landing-page/app-store-large.png') }}" alt="get our iPhone App!">
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section style="text-align:center">
+		<div id="mosaic">
+			<div id="login-mosaic">
+			    <img src="{{ asset('img/logo/twinkler_logo_mosaic.png') }}" width="600px" alt="twinkler logo">
+			    <br>
+		  		<a href="{{ path('fos_user_registration_register')}}" class="btn btn-large btn-primary">Sign up and start Sharing</a>
+			</div>
+			<div id="row1" class="row mosa-row">
+				 <img id="pic1-1" src="{{ asset('img/landing-page/mosaic/thib_michou_kayak_200.jpg') }}" alt="twinkler logo">
+				 <img id="pic1-2" src="{{ asset('img/landing-page/mosaic/friends_bw_200.jpg') }}"  alt="twinkler logo">
+				 <img id="pic1-3" src="{{ asset('img/landing-page/mosaic/pool_200.jpg') }}"  alt="twinkler logo">
+				 <img id="pic1-4" src="{{ asset('img/landing-page/mosaic/thib_beach_by_night_200.jpg') }}"  alt="twinkler logo">
+			</div>
+			<div id="row2" class="row mosa-row">
+				 <img id="pic2-1" src="{{ asset('img/landing-page/mosaic/group_200.jpg') }}"  alt="twinkler logo">
+				 <img id="pic2-2" src="{{ asset('img/landing-page/mosaic/ski_200.jpg') }}" alt="twinkler logo">
+				 <img id="pic2-3" src="{{ asset('img/landing-page/mosaic/couple_200.jpg') }}"  alt="twinkler logo">
+				 <img id="pic2-4" src="{{ asset('img/landing-page/mosaic/thib_kayak_200.jpg') }}"  alt="twinkler logo">
+				 <img id="pic2-5" src="{{ asset('img/landing-page/mosaic/soccer_200.jpg') }}"  alt="twinkler logo">
+			</div>
+			<div id="row3" class="row mosa-row">
+				 <img id="pic3-1" src="{{ asset('img/landing-page/mosaic/beer_200.jpg') }}"  alt="twinkler logo">
+				 <img id="pic3-2" src="{{ asset('img/landing-page/mosaic/golden_gate_200.jpg') }}" alt="twinkler logo">
+				 <img id="pic3-3" src="{{ asset('img/landing-page/mosaic/milk_shake_200.jpg') }}"  alt="twinkler logo">
+				 <img id="pic3-4" src="{{ asset('img/landing-page/mosaic/tv_200.jpg') }}"  alt="twinkler logo">
+			</div>
+		</div>
+		<div id="made-with-love" class="row">
+			Made with love
+		</div>
+	</section>
+
+	<section class="repeat-bck">
+		<div id="pre-footer">
+			<div class="container">
+				<div class="row">
+					<div class="span4">
+						<div id="footer-left" class="footer-box">
+							<p>Get our Apps <br></p><br>
+							<a href="#subscribeModal" role="button" data-toggle="modal">
+								<img src="{{ asset('img/landing-page/google-play-large.png') }}" alt="Get our Android App!" width="120px">
+							</a><br>
+							<a href="#subscribeModal" role="button" data-toggle="modal">
+								<img src="{{ asset('img/landing-page/app-store-large.png') }}" alt="get our iPhone App!" width="120px">
+							</a>
+							<br><br>
+						</div>
+					</div>
+					<div class="span4">
+						<div class="footer-box">
+							<p>Want to be a beta-tester? <br> Subscribe to our Newsletter!</p><br>
+							{% render(controller('TkWelcomeBundle:Default:subscribe')) %}
+						</div>
+					</div>
+					<div class="span4">
+						<div id="footer-right" class="footer-box">
+							<p style="margin-bottom: 12px;">Your likes, shares and comments <br> make us happy!
+							</p>
+							<a href="https://www.facebook.com/TwinklerCommunity"><i class="icon-facebook-sign icon-3x"></i></a>
+							<a href="https://twitter.com/Twinkler_app"><i class="icon-twitter-sign icon-3x"></i></a>
+							<a href="{{ path('tk_welcome_blog') }}"><i class="icon-rss-sign icon-3x"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div>
+			<p>Copyright © 2013 Twinkler, Inc. All rights reserved.</p>
+			<ul>
+				<li><a href="{{ path('tk_welcome_about') }}">About</a></li>
+				<li><a href="{{ path('tk_welcome_blog') }}">Blog</a></li>
+				<li><a href="{{ path('tk_welcome_press') }}">Press</a></li>
+				<li><a href="{{ path('tk_welcome_contact') }}">Contact</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Modal -->
+	{% include 'TkWelcomeBundle:Subscribe:subscribeModal.html.twig' %}
+
+	{% endblock content %}
+
+{% endblock body %}
+
+{% block javascripts %}
+	<script type='text/javascript' src="{{ asset('js/landing-page.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'TkWelcomeBundle:Links:links.html.twig' %}
+
+
+{% block links_body %}
+
+<section>
+	<div id="blog">
+		<div class="container">
+			<div class="row">
+				<div class="span8 offset2">
+					<div id="about" style="text-align:center; width:100%;margin-top:220px">
+						<h1>Twinkler's Blog</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div id="footer" class="blog-container container" style="font-family:'Helvetica Neue';">
+		<div class="row" style="padding: 60px 0px">
+			
+<!-- JOKARI PARTY -->
+			<div class="blog-post span6 offset3" style="margin-top: 20px">
+				<a href="{{ path('tk_welcome_blog_post', { 'date': '130717' }) }}">
+				<div style="text-align: center; font-family: 'Proxima-bold';">
+					<h3>Work hard, play hard!</h3>
+
+					<img src="{{ asset('img/links/blog/jokari.jpg') }}" width="500px" alt="Finalist at Generation Accenture" style="margin-top:30px;">
+
+				</div>
+
+					<p>After a hard day of work launching Twinkler, there's nothing better than a game of Jokari to relax with friends! For those who don't know, the Jokari is a game where a rubber ball is attached to an anchor by a long elastic band, which makes the ball come back when you hit it. This sounds quite dumb but it's amazingly really fun!
+ 					<br>
+ 					We met our friends from the newly formed Paris Jokari Club. They welcomed us on a beautiful rooftop in the heart of Paris. It was the perfect occasion to try our brand new website to share this moment! <br>
+ 					We hope you'll like it as much as we did last night!
+				 	</p>
+
+				<div style="text-align:right; color:#d3d3d3; font-family: 'Proxima-bold'; font-size:16px"> 
+				 	<i class="icon-heart"></i> 32 <br> 
+				 	Jul 17th, 2013
+				</div>
+				</a>
+			</div>
+
+
+<!-- TWINKLER LAUNCHED -->
+			<div class="blog-post span6 offset3" style="margin-top: 20px">
+				<a href="{{ path('tk_welcome_blog_post', { 'date': '130716' }) }}">
+				<div style="text-align: center; font-family: 'Proxima-bold'">
+					<h3>This is the beginning my friends!</h3>
+
+					<img src="{{ asset('img/links/blog/launching.jpg') }}" width="500px" alt="Finalist at Generation Accenture" style="margin-top:30px;">
+
+				</div>
+
+					<p>Today is a big day: we're launching Twinkler's beta website! It is still very early stage but this is only the premises of something bigger :) We are working hard to make this happen and offer you the most lovely place to share moments with your friends. <br>
+					So far, only the website is live but the apps will follow really really soon! In the meantime, have you tried to use Twinkler on your smartphone? Wahouuu, the website is fully responsive so you can use it on all your mobile devices!
+					Free paybacks will be added as well in late August so you can all pay back your friends after some crazy holiday trips! <br>
+					Please share with us your thoughts, ideas or comments! We love to have feedbacks from you guys!
+				 	</p>
+
+				<div style="text-align:right; color:#d3d3d3; font-family: 'Proxima-bold'; font-size:16px"> 
+				 	<i class="icon-heart"></i> 12 <br> 
+				 	Jul 16th, 2013
+				</div>
+				</a>
+			</div>
+
+
+
+
+		</div>
+	</div>
+</section>
+
+
+{% endblock %}

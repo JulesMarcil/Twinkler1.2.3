@@ -1,0 +1,49 @@
+/*-------PROXIMA---------*/
+
+@font-face {
+    font-family: "Proxima-black";
+    src: url('font/ProximaNova-Black.otf') format("opentype");
+}
+
+@font-face {
+    font-family: 'Proxima-regular';
+    src: url('font/proximanovaregular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'Proxima-condensed-regular';
+    src: url('font/ProximaNovaCond-Regular.ttf') format("truetype");
+}
+
+
+@font-face {
+    font-family: "Proxima-condensend-light";
+    src: url('font/ProximaNovaCond-Light.otf') format("opentype");
+}
+
+@font-face {
+    font-family: "Proxima-consensed-semibold";
+    src: url('css/font/ProximaNovaCond-Semibold.otf') format("truetype");
+}
+
+@font-face {
+    font-family: "Proxima-bold";
+    src: url('font/ProximaNova-Bold.otf') format("truetype");
+}
+
+
+/*-------ASAP---------*/
+@font-face {
+    font-family: "Asap-regular";
+    src: url('font/asap/Asap-Regular.otf') format("opentype");
+}
+
+@font-face {
+    font-family: "Asap-bold";
+    src: url('font/asap/Asap-Bold.otf') format("opentype");
+}
+
+@font-face {
+    font-family: "Asap-italic";
+    src: url('font/asap/Asap-Italic.otf') format("opentype");
+}
