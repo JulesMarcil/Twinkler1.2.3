@@ -1,5 +1,5 @@
 var Item = Backbone.Model.extend({
-	urlRoot: '/Twinkler1.2/web/app_dev.php/items',
+	urlRoot: '/Twinkler1.2.3/web/app_dev.php/items',
 	defaults: {
 		name: 'Empty item ...',
 		status: 'incomplete'
@@ -109,7 +109,7 @@ var EditForm = Backbone.View.extend({
 });
 
 var ItemList = Backbone.Collection.extend({
-	url: '/Twinkler1.2/web/app_dev.php/items',
+	url: '/Twinkler1.2.3/web/app_dev.php/items',
 	model: Item,
 	initialize: function(){
 		this.on('remove', this.hideModel);
@@ -167,7 +167,7 @@ var Appstart = function(){
 	$("#list-menu").find('a').on('click', function(e){
 		e.preventDefault();
 		var id = $(this).data('id');
-		$.get('/Twinkler1.2/web/app_dev.php/group/ajax/change/lists/'+id, function(response){
+		$.get('/Twinkler1.2.3/web/app_dev.php/group/ajax/change/lists/'+id, function(response){
 			$('#content-container').html(response);
 			Appstart();
 		});
