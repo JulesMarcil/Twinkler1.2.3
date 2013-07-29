@@ -1,5 +1,5 @@
 var Item = Backbone.Model.extend({
-	urlRoot: '/Twinkler1.2.3/web/app_dev.php/items',
+	url: 'items',
 	defaults: {
 		name: 'Empty item ...',
 		status: 'incomplete'
@@ -106,7 +106,7 @@ var EditForm = Backbone.View.extend({
 });
 
 var ItemList = Backbone.Collection.extend({
-	url: '/Twinkler1.2.3/web/app_dev.php/items',
+	url: 'items',
 	model: Item,
 	initialize: function(){
 		this.on('remove', this.hideModel);

@@ -9,6 +9,7 @@ tk_list:
 items:
     type: rest
     resource: Tk\ListBundle\Controller\ItemsController
+    prefix: /group
 
 tk_expense:
     resource: "@TkExpenseBundle/Resources/config/routing.yml"
