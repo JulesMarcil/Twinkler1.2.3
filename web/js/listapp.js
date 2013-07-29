@@ -27,10 +27,10 @@ var ItemView = Backbone.View.extend({
 	id: 'item-view',
 	className: 'item',
 	template: _.template('<td class="item-input"><input id="validation-checkbox" type=checkbox <% if(status == "complete") print("checked") %>/></td>'+
-		'<td class="item-name <%= status %>"><span class="name"><%= name %></span></td>' +
+		'<td class="item-name <%= status %>"><div class="name"><%= name %></div></td>' +
 		'<td class="item-remove"><div id="remove-list-item" class="remove" style="display: none"><i class="icon-remove-sign icon-large" style="cursor:pointer"></i></div></td>'),
 	events: {
-		'change .item-input input': 'toggleStatus',
+		'click .item-input': 'toggleStatus',
 		'click .name': 'edit',
 		'click .remove': 'remove'
 	},
@@ -89,18 +89,15 @@ var EditForm = Backbone.View.extend({
 	model: Item,
 	template: _.template('<form>' +
 		'<input name=name value="<%= name %>" />' +
-		'<button>Save</button></form>'),
+		'</form>'),
 	events: {
 		submit: 'save'
 	},
 	save: function(e){
 		e.preventDefault();
-		console.log('model name1: '+ this.model.get('name'));
 		var newName = this.$('input[name=name]').val();
-		this.model.set({name: newName});
-		console.log('model name2: '+ this.model.get('name')); 
+		this.model.set({name: newName}); 
 		this.model.save();
-		console.log('model name3: '+ this.model.get('name'));
 	},
 	render: function(){
 		this.$el.html(this.template(this.model.attributes));
@@ -146,34 +143,49 @@ var Appstart = function(){
 	itemList.fetch({
 		success: function(){
 
-			itemList.forEach(function(item){
-			  console.log(item.get('name'));
-			});
-
 			itemListView = new ItemListView({collection: itemList});
 			itemListView.render();
 			$('#list-box').append(itemListView.el);
+
+			$('.icon-remove-sign').mouseover(function(){
+				$(this).css('color','#fb786b');
+			});
+
+			$('.icon-remove-sign').mouseleave(function(){
+				$(this).css('color','#5486C6');
+			});
+
+			$('.item-input').click(function(){
+				var row = $(this).closest('.item');
+				row.css('border-top','1px solid #A8BD44');
+				row.css('border-bottom','1px solid #A8BD44');
+				row.animate({backgroundColor: 'rgb(214,222,155)'}, 'fast');
+				row.animate({backgroundColor: '#fff'}, 'fast');
+				row.css('border-top','1px solid #DED8D6');
+				row.css('border-bottom','1px solid #DED8D6');
+			});
+
+			$('.item').mouseover(function(){
+				$(this).find('.remove').stop().show();
+			});
+
+			$('.item').mouseleave(function(){
+				$(this).find('.remove').hide();
+			});
 		}
 	});
 	var formItem = new Item({name: "Add an item to the list ..."});
 	var itemForm = new ItemForm({model: formItem, collection: itemList});
 	itemForm.render();
 	$('#form-box').append(itemForm.el);
-
-	$("#list-menu").find('a').on('click', function(e){
-		e.preventDefault();
-		var id = $(this).data('id');
-		$.get('/Twinkler1.2.3/web/app_dev.php/group/ajax/change/lists/'+id, function(response){
-			$('#content-container').html(response);
-			Appstart();
-		});
-	});
-
-
-
 }
 
-$(document).ready(function() {	
-	Appstart();
 
-});
+
+
+
+
+
+
+
+

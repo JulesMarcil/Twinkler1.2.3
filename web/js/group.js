@@ -12,7 +12,8 @@ var addScrollOnChart=function(){
 
 
 /*--------CHARTS--------*/
-if (activePage!=="lists"){
+
+
 var graphColor=function(graphData){
 	var chartColor=[];
 	for(var i=0; i<graphData.length;i++){
@@ -25,33 +26,27 @@ var graphColor=function(graphData){
 	return chartColor
 }
 
-if (activePage!=="lists"){
 var members_chart=[];
 for (var i = 0; i < balances.length; i++) {
 	members_chart[i]='';
-
 }
-
-
 
 var colorFill=graphColor(balances);
 var data = {
-			labels : members_chart,
-			datasets : [
-						{
-							fillColor : colorFill,
-							strokeColor : "rgba(220,220,220,1)",
-							data : balances
-						}
-						]
-					}
+	labels : members_chart,
+	datasets : [
+				{
+					fillColor : colorFill,
+					strokeColor : "rgba(220,220,220,1)",
+					data : balances
+				}
+				]
+	}
 
-};
-};
 
 var loadChart=function(){
 
-	if (activePage!=="lists"){
+	
 	var graphColor=function(graphData){
 		var chartColor=[];
 		for(var i=0; i<graphData.length;i++){
@@ -64,7 +59,7 @@ var loadChart=function(){
 		return chartColor
 	}
 
-	if (activePage!=="lists"){
+	
 	var members_chart=[];
 	for (var i = 0; i < balances.length; i++) {
 		members_chart[i]='';
@@ -83,17 +78,13 @@ var loadChart=function(){
 								data : balances
 							}
 							]
-						}
-
-	};
+				}
 
 	var ctx = document.getElementById("balanceChart").getContext("2d");
-		new Chart(ctx).Bar(data,{
-		    scaleOverlay : false,
-			scaleShowLabels : false
-		});
-	};
-
+	new Chart(ctx).Bar(data,{
+	    scaleOverlay : false,
+		scaleShowLabels : false
+	});
 }
 
 /* --- Group members picture toggle --- */
@@ -116,16 +107,17 @@ window.onresize =function() {
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SETTINGS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
-/* settingsStart, expenseStart define the funciton that needs to be
+/* settingsStart, expenseStart, listsStart define the funciton that needs to be
 /* called on page load and in response for ajax request
 
 /*-------Settings Start----*/
-var settingsStart=function(){
+var settingsStart = function(){
 
 	deactivePageHighlight();
 	activePage = document.URL.split("/").pop(); /*get page name*/
-	addScrollOnChart();
 	activePageHighlight();
+
+	addScrollOnChart();
 	loadChart();
 
 	$('#action-bar-first-child').hover(
@@ -149,12 +141,13 @@ var settingsStart=function(){
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EXPENSE START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 /*-------expenseStart-----*/
-var expenseStart=function(){
+var expenseStart = function(){
 
 	deactivePageHighlight();
 	activePage = document.URL.split("/").pop(); /*get page name*/
-	addScrollOnChart();
 	activePageHighlight();
+
+	addScrollOnChart();
 	loadChart();
 
 	/*--------CHARTS & TIMLINE SIZE--------*/
@@ -211,6 +204,35 @@ var expenseStart=function(){
 
 }
 
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LISTS START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+var listsStart = function(){
+
+	deactivePageHighlight();
+	activePage = document.URL.split("/").pop(); /*get page name*/
+	activePageHighlight();
+
+	Appstart();
+
+	// ajax change list
+	$("#group-edit-list").find('a').on('click', function(e){
+		e.preventDefault();
+		var id = $(this).data('id');
+		$.get('/Twinkler1.2.3/web/app_dev.php/group/ajax/change/lists/'+id, function(response){
+			$('#content-container').html(response);
+			listsStart();
+		});
+	});
+
+	// ajax create list form
+	$("#create-list-button").on('click','a', function(e){
+		e.preventDefault();
+		$.get('/Twinkler1.2.3/web/app_dev.php/group/new/lists', function(response){
+			$('#list-menu').append(response).fadeIn();
+		});
+	});
+}
+
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LOAD FUNCTION ON START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 /* actually call the function when page is loaded for the first time */
@@ -220,7 +242,7 @@ $(document).ready(function() {
 	}else if(activePage==="settings"){
 		settingsStart();
 	}else if(activePage==="lists"){
-		activePageHighlight();
+		listsStart();
 	}
 });
 
@@ -251,7 +273,7 @@ $(document).ready(function() {
 			$('#expense-slimscroll').slimScroll({
 		        height: Math.min('450',$(window).height()-120)+'px'
 		    });
-		expenseStart();
+			expenseStart();
 		});
 	});
 
@@ -275,7 +297,7 @@ $(document).ready(function() {
 			activePage = document.URL.split("/").pop(); /*get page name*/
 			activePageHighlight();
 
-			Appstart();
+			listsStart();
 		});
 	});
 

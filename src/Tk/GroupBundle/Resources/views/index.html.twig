@@ -56,7 +56,6 @@
 		</div>
 		<small><a id="toggle-button" style="cursor: pointer">hide members</a></small>
 	</div>
-	
 {% endblock %}
 
 
@@ -78,10 +77,12 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		var balances = {{ app.user.currentMember.tgroup.arrayBalances|json_encode|raw }};
+	</script>
 {% endblock %}
 
 {% block javascripts %}
  	<script type='text/javascript' src="{{ asset('js/group.js') }}"></script>
  	<script src="{{ asset('js/listapp.js') }}"></script>
-	<script src="{{ asset('js/list.js') }}"></script>
 {% endblock %}

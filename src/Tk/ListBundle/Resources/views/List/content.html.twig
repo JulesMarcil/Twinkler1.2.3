@@ -11,21 +11,18 @@
 			</div>
 		</div>
 		<div id="group-edit-list" class="group-info group-edit flat-container">
-
+			{% if group.lists|length == 0%}
+			<p>Your group has no lists. Too bad :'(</p>
+			{% else %}
 			<ul>
-				{% if group.lists|length == 0%}
-				<p>Your group has no lists. Too bad :'(</p>
-				{% else %}
-
 				{% for list in group.lists %}
-					<li>
-						<a class="edit-group-a" href="#" data-id="{{list.id}}">
-							<div id="action-bar-first-child" style="width:100%; height:100%; padding-top: 10px">
-
-										{{ list.name|upper }}
-							</div>
-						</a>
-					</li>
+				<li>
+					<a class="edit-group-a" href="#" data-id="{{list.id}}">
+						<div id="action-bar-first-child" style="width:100%; height:100%; padding-top: 10px">
+							{{ list.name|upper }}
+						</div>
+					</a>
+				</li>
 				{% endfor %}
 
 			{% endif %}

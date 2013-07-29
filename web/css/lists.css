@@ -1,7 +1,4 @@
 /* --- CSS of list part of GroupBundle only--- */
-.flat-container{
-	padding: 0px;
-}
 
 #form-box{
 	text-align: center;
@@ -12,21 +9,18 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
 #list-box tbody tr{
 	height: 50px;
 	border-top: 1px solid rgb(222,216,214);
 	text-align: left;
 	color:#5486C6;
 }
-
 #list-box tbody tr:hover{
 	background-color:#EAF3FF;
 	color:#5486C6;
 	border-top: 1px solid #5486C6;
 	border-bottom: 1px solid #5486C6;
 }
-
 #list-box tbody tr td{
 	padding:0px 20px;
 }
@@ -34,13 +28,11 @@
 #todo-title{
 	margin-top:10px;
 }
-
 #todo-title .flat-header{
 	border-bottom-left-radius:0px;
   	border-bottom-right-radius:0px;
   	margin-bottom: 20px
 }
-
 #todo-title .flat-header h3{
 	margin:0;
 	color:#FCD5D2;
@@ -51,20 +43,21 @@
 .item{
 	cursor: pointer;
 }
-
 .item-input{
 	width: 10%;
 	min-width: 10px;
 }
-.item-name{
-
+.item-name form{
+	margin: 0;
+}
+.item-name form input{
+	width: 100%;
 }
 .item-remove{
 	width: 5%;
 	min-width: 10px;
 	text-align: right;
 }
-	
 .complete{
 	color: #bbb;
 	text-decoration: line-through;
