@@ -61,7 +61,7 @@ var ItemForm = Backbone.View.extend({
 	model: Item,
 	template: _.template('<form>' +
 		'<input name=name placeholder="<%= name %>" />' +
-		'<button>Save</button></form>'),
+		'<button>Add item</button></form>'),
 	events: {
 		submit: 'save'
 	},
@@ -123,8 +123,12 @@ var ItemListView = Backbone.View.extend({
 		this.collection.on('add', this.addOne, this);
 		this.collection.on('reset', this.addAll, this);
 	},
-	render: function(){ 
-		this.addAll();
+	render: function(){
+		if(this.collection.length === 0){
+			this.$el.append('<p>You list is empty, why don\'t you add something in the form above ?</p>');
+		}else{
+			this.addAll();	
+		} 		
 		return this;
 	},
 	addOne: function(item){

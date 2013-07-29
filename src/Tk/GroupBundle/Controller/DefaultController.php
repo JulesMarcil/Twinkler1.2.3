@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Tk\GroupBundle\Entity\TGroup;
 use Tk\GroupBundle\Form\TGroupType;
 use Tk\UserBundle\Entity\Member;
+use Tk\ListBundle\Entity\Lists;
 
 
 class DefaultController extends Controller
@@ -87,6 +88,14 @@ class DefaultController extends Controller
                 $member->setTGroup($group);
                 $user->setCurrentMember($member);
                 $group->setInvitationToken($group->generateInvitationToken());
+                $todolist = new Lists();
+                $todolist->setName('Todo List');
+                $todolist->setGroup($group);
+                $shoppinglist = new Lists();
+                $shoppinglist->setName('Shopping List');
+                $shoppinglist->setGroup($group);
+                $em->persist($todolist);
+                $em->persist($shoppinglist);
                 $em->persist($group);
                 $em->persist($member);
                 $em->flush();
