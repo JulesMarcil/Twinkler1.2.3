@@ -26,9 +26,9 @@ var ItemView = Backbone.View.extend({
 	tagName: 'tr',
 	id: 'item-view',
 	className: 'item',
-	template: _.template('<td class="item-input"><input type=checkbox <% if(status == "complete") print("checked") %>/></td>'+
+	template: _.template('<td class="item-input"><input id="validation-checkbox" type=checkbox <% if(status == "complete") print("checked") %>/></td>'+
 		'<td class="item-name <%= status %>"><span class="name"><%= name %></span></td>' +
-		'<td class="item-remove"><div class="remove">x</div></td>'),
+		'<td class="item-remove"><div id="remove-list-item" class="remove" style="display: none"><i class="icon-remove-sign icon-large" style="cursor:pointer"></i></div></td>'),
 	events: {
 		'change .item-input input': 'toggleStatus',
 		'click .name': 'edit',
@@ -153,10 +153,6 @@ var Appstart = function(){
 			itemListView = new ItemListView({collection: itemList});
 			itemListView.render();
 			$('#list-box').append(itemListView.el);
-
-			$('.item').mouseover(function(){
-			$(this).find('.remove').fadeIn();
-		});
 		}
 	});
 	var formItem = new Item({name: "Add an item to the list ..."});
@@ -172,10 +168,12 @@ var Appstart = function(){
 			Appstart();
 		});
 	});
+
+
+
 }
 
 $(document).ready(function() {	
 	Appstart();
+
 });
-
-

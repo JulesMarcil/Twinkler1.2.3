@@ -52,7 +52,10 @@
 	border-color: transparent transparent white transparent; /*border color should be same as div div background color*/
 	border-style: solid;
 	border-width: 10px;
+}
 
+.group-edit-hover:after{
+	border-color: transparent transparent #fb786b transparent; /*border color should be same as div div background color*/
 }
 
 #group-edit-list{
