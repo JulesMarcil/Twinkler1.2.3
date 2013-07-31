@@ -42,7 +42,7 @@ $(document).ready(function() {
 	$("#friend-table").find('button').on('click', function(){
 		$(this).closest('tr').fadeOut();
 		var id = $(this).data('id');
-		$.get(websiteRootUrl+'/group/add/friend/'+id+'', function(response){
+		$.get('add/friend/'+id+'', function(response){
 			$('#group').append(response).fadeIn();
 			var name = $('#group').find('p').last().data('name');
 			var email = $('#group').find('p').last().data('email');
@@ -58,7 +58,7 @@ $(document).ready(function() {
 		$(this).closest('.member').remove();
 		$("#flash-message-block").hide().html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You removed <b>'+ name +'</b> from the group<p></div>').show();;
 		$('#tr-user-'+user_id).fadeIn();
-		$.get(websiteRootUrl+'/group/add/remove/member/'+id+'', function(response){
+		$.get('add/remove/member/'+id+'', function(response){
 		});
 	});
 });
