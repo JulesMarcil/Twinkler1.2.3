@@ -1,3 +1,13 @@
+twexpenses:
+    type: rest
+    resource: Tk\ExpenseBundle\Controller\ExpensesController
+    prefix: /group/json/
+
+items:
+    type: rest
+    resource: Tk\ListBundle\Controller\ItemsController
+    prefix: /group
+
 tk_test:
     pattern:  /test
     defaults: { _controller: TkWelcomeBundle:Default:test }
@@ -5,11 +15,6 @@ tk_test:
 tk_list:
     resource: "@TkListBundle/Resources/config/routing.yml"
     prefix:   /
-
-items:
-    type: rest
-    resource: Tk\ListBundle\Controller\ItemsController
-    prefix: /group
 
 tk_expense:
     resource: "@TkExpenseBundle/Resources/config/routing.yml"

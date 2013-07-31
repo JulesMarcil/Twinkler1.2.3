@@ -10,7 +10,6 @@ var addScrollOnChart=function(){
 	$("#balance-slimscroll").niceScroll();
 }
 
-
 /*--------CHARTS--------*/
 
 
