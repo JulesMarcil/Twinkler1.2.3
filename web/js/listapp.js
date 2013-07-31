@@ -1,5 +1,5 @@
 var Item = Backbone.Model.extend({
-	url: 'items',
+	urlRoot: 'items',
 	defaults: {
 		name: 'Empty item ...',
 		status: 'incomplete'
