@@ -50,6 +50,7 @@ var ItemView = Backbone.View.extend({
 		var editForm = new EditForm({model: this.model});
 		editForm.render();
 		this.$el.find('.item-name').html(editForm.el);
+		this.$el.find('input').focus();
 	},
 	remove: function(){
 		this.$el.remove();
@@ -91,7 +92,13 @@ var EditForm = Backbone.View.extend({
 		'<input name=name value="<%= name %>" />' +
 		'</form>'),
 	events: {
-		submit: 'save'
+		submit: 'save',
+		"keyup": "checkAndHandleCancel"
+	},
+	checkAndHandleCancel: function(e) {
+		if (e.keyCode == 27) {
+			this.$el.closest('.item-name').html('<div class="name">'+this.model.get('name')+'</div>');
+		}
 	},
 	save: function(e){
 		e.preventDefault();
