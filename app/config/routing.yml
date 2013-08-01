@@ -6,7 +6,7 @@ twexpenses:
 items:
     type: rest
     resource: Tk\ListBundle\Controller\ItemsController
-    prefix: /group
+    prefix: /group/
 
 tk_test:
     pattern:  /test

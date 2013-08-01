@@ -25,12 +25,30 @@ class ExpensesController extends Controller
     public function getExpensesAction()
     {
         $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find(6);
-        $expenses = $group->getExpenses()->toArray();
+        $expenses = $group->getExpenses();
 
-        $expense = $expenses[0];
+        $response_array = array();
+
+        foreach($expenses as $expense){
+            $members = array();
+            foreach($expense->getUsers() as $member){
+                $members[] = array('id' => $member->getId(), 'name' => $member->getName());
+            }
+            $response_item = array(
+                'name' => $expense->getName(),
+                'amount' => $expense->getAmount(),
+                'owner' => array('id' => $expense->getOwner()->getId(), 'name' => $expense->getOwner()->getName()),
+                'date' => $expense->getDate()->getTimestamp(),
+                'members' => $members,
+                'active' => $expense->getActive(),
+                'author' => $expense->getAuthor()->getName(),
+                'addedDate' => $expense->getAddedDate()->getTimestamp(),
+                );
+            $response_array[] = $response_item;
+        }
 
         $serializer = $this->container->get('serializer');
-        $response = $serializer->serialize($expense->getOwner_id(), 'json');
+        $response = $serializer->serialize($response_array, 'json');
         return new Response($response); 
 
     } // "get_expenses"     [GET] /expenses
