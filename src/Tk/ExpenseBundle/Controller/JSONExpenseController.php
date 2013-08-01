@@ -15,9 +15,10 @@ use JMS\Serializer\Annotation\ExclusionPolicy,
 
 use Tk\ExpenseBundle\Entity\Expense,
     Tk\ExpenseBundle\Form\ExpenseType,
-    Tk\GroupBundle\Entity\TGroup;
+    Tk\GroupBundle\Entity\TGroup,
+    Tk\UserBundle\Entity\Member;
 
-class ExpensesController extends Controller
+class JSONExpenseController extends Controller
 {
     public function optionsExpensesAction()
     {} // "options_expenses" [OPTIONS] /expenses
@@ -57,7 +58,31 @@ class ExpensesController extends Controller
     {} // "new_expenses"     [GET] /expenses/new
 
     public function postExpensesAction()
-    {} // "post_expenses"    [POST] /expenses
+    {
+        $member_repo = $this->getDoctrine()->getRepository('TkUserBundle:Member');
+        $owner = $member_repo->find(1);
+        $author = $member_repo->find(1);
+        $group = $owner->getTGroup();
+        $data = $this->getRequest()->request->all();
+
+        $expense = new Expense();
+        $expense->setAmount($data['amount']);
+        $expense->setName($data['name']);
+        $expense->setAddedDate(new \DateTime('now'));
+        $expense->setDate(new \Datetime('today'));
+        $expense->setActive(true);
+        $expense->setAuthor($author);
+        $expense->setOwner($owner);
+        $expense->setGroup($group);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($expense);
+        $em->flush();
+
+        $serializer = $this->container->get('serializer');
+        $response = $serializer->serialize($expense->getName(), 'json');
+        return new Response($response);
+    } // "post_expenses"    [POST] /expenses
 
     public function patchExpensesAction()
     {} // "patch_expenses"   [PATCH] /expenses

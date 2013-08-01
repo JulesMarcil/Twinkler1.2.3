@@ -1,6 +1,11 @@
-twexpenses:
+jsonexpenses:
     type: rest
-    resource: Tk\ExpenseBundle\Controller\ExpensesController
+    resource: Tk\ExpenseBundle\Controller\JSONExpenseController
+    prefix: /group/json/
+
+jsonlists:
+    type: rest
+    resource: Tk\ListBundle\Controller\JSONListController
     prefix: /group/json/
 
 items:
