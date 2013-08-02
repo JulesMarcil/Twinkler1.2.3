@@ -15,7 +15,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy,
 
 use Tk\ListBundle\Entity\Lists;
 
-class JSONListController extends Controller
+class APPListController extends Controller
 {
     public function optionsListsAction()
     {} // "options_lists" [OPTIONS] /lists
@@ -33,7 +33,7 @@ class JSONListController extends Controller
     		foreach($items as $item){
     			$items_array[] = array('id' => $item->getId(), 'name' => $item->getName(), 'status' => $item->getStatus());
     		}
-    		$response_array[] = array('name' => $list->getName(), 'items' => $items_array);
+    		$response_array[] = array('id' => $list->getId(), 'name' => $list->getName(), 'items' => $items_array);
     	}
 
     	$serializer = $this->container->get('serializer');

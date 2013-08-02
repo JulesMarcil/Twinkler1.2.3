@@ -18,7 +18,7 @@ use Tk\ExpenseBundle\Entity\Expense,
     Tk\GroupBundle\Entity\TGroup,
     Tk\UserBundle\Entity\Member;
 
-class JSONExpenseController extends Controller
+class APPExpenseController extends Controller
 {
     public function optionsExpensesAction()
     {} // "options_expenses" [OPTIONS] /expenses

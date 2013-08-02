@@ -53,6 +53,6 @@ security:
         - { path: ^/invitation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/summary, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(subscribe|about|blog|press|contact), role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/group/json, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/group/app, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/admin/, role: ROLE_ADMIN }
