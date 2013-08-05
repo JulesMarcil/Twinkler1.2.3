@@ -1,0 +1,7 @@
+parameters:
+#    tk_api.example.class: Tk\APIBundle\Example
+
+services:
+#    tk_api.example:
+#        class: %tk_api.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

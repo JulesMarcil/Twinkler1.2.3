@@ -114,3 +114,15 @@ fos_rest:
     routing_loader:
         default_format: json
 
+#FOSOAuthServerBundle
+fos_oauth_server:
+    db_driver: orm
+    client_class:        Tk\APIBundle\Entity\Client
+    access_token_class:  Tk\APIBundle\Entity\AccessToken
+    refresh_token_class: Tk\APIBundle\Entity\RefreshToken
+    auth_code_class:     Tk\APIBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username_email
+        options:
+            supported_scopes: user
+

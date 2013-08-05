@@ -2,7 +2,13 @@
 
 namespace Tk\UserBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request,
+    Symfony\Component\HttpFoundation\Response,
+    Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use JMS\Serializer\Annotation\ExclusionPolicy,
+    JMS\Serializer\Annotation\Exclude;
+
 use Tk\UserBundle\Entity\User;
 use Tk\UserBundle\Form\UserType;
 use Tk\UserBundle\Form\UsernameType;
@@ -10,6 +16,17 @@ use Tk\UserBundle\Entity\ProfilePicture;
 
 class ProfileController extends Controller
 {
+
+    public function appLoginAction(){
+
+        $message = array('message' => 'tout est ok');
+
+        $serializer = $this->container->get('serializer');
+        $response = $serializer->serialize($message, 'json');
+        return new Response($response); 
+
+    }
+
     public function showAction(){ return $this->indexAction();}
     public function indexAction()
     {

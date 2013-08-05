@@ -28,6 +28,8 @@ class AppKernel extends Kernel
             new FOS\FacebookBundle\FOSFacebookBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            new Tk\APIBundle\TkAPIBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

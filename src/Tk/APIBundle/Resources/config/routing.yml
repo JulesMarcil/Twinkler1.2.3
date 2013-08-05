@@ -1,0 +1,11 @@
+tk_api_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: TkAPIBundle:Default:index }
+
+tk_api_articles:
+    pattern: /articles
+    defaults: { _controller: TkAPIBundle:Api:articles }
+
+tk_api_user:
+    pattern: /user
+    defaults: { _controller: TkAPIBundle:Api:user }
