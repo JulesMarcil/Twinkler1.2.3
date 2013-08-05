@@ -30,7 +30,7 @@ security:
             pattern:    ^/api
             fos_oauth:  true
             stateless:  true
-            
+
         oauth_token:
             pattern:    ^/oauth/v2/token
             security:   false
@@ -75,6 +75,7 @@ security:
         - { path: ^/invitation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/summary, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(subscribe|about|blog|press|contact), role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/app, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/group/app, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/admin/, role: ROLE_ADMIN }

@@ -25,7 +25,9 @@ class APPExpenseController extends Controller
 
     public function getExpensesAction()
     {
-        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find(6);
+        $data = $this->getRequest()->query->all();
+        $group_id = $data['currentGroupId'];
+        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
         $expenses = $group->getExpenses();
 
         $response_array = array();

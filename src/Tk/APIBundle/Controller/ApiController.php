@@ -28,4 +28,21 @@ class ApiController extends Controller
         ));
 
     }
+
+    public function getGroupsAction()
+    {
+        $user = $this->getDoctrine()->getRepository('TkUserBundle:User')->find(6);
+        $members = $user->getMembers();
+        $groups = array();
+
+        foreach($members as $member){
+            $group = $member->getTGroup();
+            $group_members = array();
+            foreach($group->getMembers() as $member){
+                $group_members[] = array('id' => $member->getId(), 'name' => $member->getName());
+            }
+            $groups[] = array('id' => $group->getId(), 'name' => $group->getName(), 'currency' => $group->getCurrency()->getSymbol(), 'members' => $group_members);
+        }
+        return new JsonResponse($groups);
+    }
 }

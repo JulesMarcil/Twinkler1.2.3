@@ -3,9 +3,13 @@ tk_api_homepage:
     defaults: { _controller: TkAPIBundle:Default:index }
 
 tk_api_articles:
-    pattern: /articles
+    pattern: /api/articles
     defaults: { _controller: TkAPIBundle:Api:articles }
 
 tk_api_user:
-    pattern: /user
+    pattern: /api/user
     defaults: { _controller: TkAPIBundle:Api:user }
+
+tk_api_groups:
+    pattern: /app/groups
+    defaults: { _controller: TkAPIBundle:Api:getGroups }

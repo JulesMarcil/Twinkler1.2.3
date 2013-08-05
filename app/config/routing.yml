@@ -14,7 +14,7 @@ tk_oauth_server_auth_login_check:
 
 tk_api:
     resource: "@TkAPIBundle/Resources/config/routing.yml"
-    prefix:   /api/
+    prefix:   /
 
 applogin:
     pattern: /applogin
