@@ -38,10 +38,10 @@ class ApiController extends Controller
         foreach($members as $member){
             $group = $member->getTGroup();
             $group_members = array();
-            foreach($group->getMembers() as $member){
-                $group_members[] = array('id' => $member->getId(), 'name' => $member->getName());
+            foreach($group->getMembers() as $m){
+                $group_members[] = array('id' => $m->getId(), 'name' => $m->getName());
             }
-            $groups[] = array('id' => $group->getId(), 'name' => $group->getName(), 'currency' => $group->getCurrency()->getSymbol(), 'members' => $group_members);
+            $groups[] = array('id' => $group->getId(), 'name' => $group->getName(), 'currency' => $group->getCurrency()->getSymbol(), 'members' => $group_members, 'activeMember' => array('id' => $member->getId(), 'name' => $member->getName()));
         }
         return new JsonResponse($groups);
     }

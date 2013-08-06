@@ -22,7 +22,8 @@ class APPListController extends Controller
 
     public function getListsAction()
     {
-    	$group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find(6);
+        $data = $this->getRequest()->query->all();
+    	$group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['currentGroupId']);
     	$lists = $group->getLists();
 
     	$response_array = array();

@@ -26,8 +26,7 @@ class APPExpenseController extends Controller
     public function getExpensesAction()
     {
         $data = $this->getRequest()->query->all();
-        $group_id = $data['currentGroupId'];
-        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
+        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['currentGroupId']);
         $expenses = $group->getExpenses();
 
         $response_array = array();
@@ -61,11 +60,11 @@ class APPExpenseController extends Controller
 
     public function postExpensesAction()
     {
-        $member_repo = $this->getDoctrine()->getRepository('TkUserBundle:Member');
-        $owner = $member_repo->find(1);
-        $author = $member_repo->find(1);
-        $group = $owner->getTGroup();
         $data = $this->getRequest()->request->all();
+        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['currentGroupId']);
+        $member_repo = $this->getDoctrine()->getRepository('TkUserBundle:Member');
+        $owner = $member_repo->find($data['owner_id']);
+        $author = $member_repo->find($data['author_id']);
 
         $expense = new Expense();
         $expense->setAmount($data['amount']);
@@ -82,7 +81,7 @@ class APPExpenseController extends Controller
         $em->flush();
 
         $serializer = $this->container->get('serializer');
-        $response = $serializer->serialize($expense->getName(), 'json');
+        $response = $serializer->serialize($data['owner_id'], 'json');
         return new Response($response);
     } // "post_expenses"    [POST] /expenses
 

@@ -3,6 +3,7 @@ namespace Tk\ListBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response,
+    Symfony\Component\HttpFoundation\JsonResponse,
     Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use FOS\RestBundle\View\RouteRedirectView,
@@ -14,7 +15,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy,
     JMS\Serializer\Annotation\Exclude;
 
 use Tk\ListBundle\Entity\Item,
-    Tk\ListBundle\Form\Lists;
+    Tk\ListBundle\Entity\Lists;
 
 class APPItemController extends Controller
 {
@@ -32,18 +33,16 @@ class APPItemController extends Controller
         $data = $this->getRequest()->request->all();
         $list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($data['list_id']);
 
-        $Item = new Item();
-        $Item->setName($data['name']);
-        $Item->setStatus('incomplete');
-        $Item->setList($list);
+        $item = new Item();
+        $item->setName($data['name']);
+        $item->setStatus('incomplete');
+        $item->setList($list);
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($Item);
+        $em->persist($item);
         $em->flush();
 
-        $serializer = $this->container->get('serializer');
-        $response = $serializer->serialize($Item, 'json');
-        return new Response($response);
+        return new JsonResponse($item);
 
     } // "post_app_items"    [POST] /app/items
 }
