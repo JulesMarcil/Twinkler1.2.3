@@ -28,11 +28,12 @@ var ItemView = Backbone.View.extend({
 	className: 'item',
 	template: _.template('<td class="item-input"><input id="validation-checkbox" type=checkbox <% if(status == "complete") print("checked") %>/></td>'+
 		'<td class="item-name <%= status %>"><div class="name"><%= name %></div></td>' +
-		'<td class="item-remove"><div id="remove-list-item" class="remove" style="display: none"><i class="icon-remove-sign icon-large" style="cursor:pointer"></i></div></td>'),
+		'<td class="item-remove"><div id="remove-list-item" class="remove" style="display: none"><i class="icon-edit-sign icon-large"></i><i class="icon-remove-sign icon-large"></i></div></td>'),
 	events: {
 		'click .item-input': 'toggleStatus',
-		'click .name': 'edit',
-		'click .remove': 'remove'
+		'click .item-name': 'toggleStatus',
+		'click .icon-edit-sign': 'edit',
+		'click .icon-remove-sign': 'remove'
 	},
 	initialize: function(){
 		this.model.on('change', this.render, this);
@@ -132,7 +133,7 @@ var ItemListView = Backbone.View.extend({
 	},
 	render: function(){
 		if(this.collection.length === 0){
-			this.$el.append('<p>You list is empty, why don\'t you add something in the form above ?</p>');
+			this.$el.append('<p id="empty-list-message">You list is empty, why don\'t you add something in the form above ?</p>');
 		}else{
 			this.addAll();	
 		} 		
@@ -142,6 +143,7 @@ var ItemListView = Backbone.View.extend({
 		view = new ItemView({model: item});
 	 	view.render();
 	 	this.$el.append(view.el);
+	 	$('#empty-list-message').remove();
 	},
 	addAll: function(){
 		this.collection.forEach(this.addOne, this);
@@ -158,15 +160,15 @@ var Appstart = function(){
 			itemListView.render();
 			$('#list-box').append(itemListView.el);
 
-			$('.icon-remove-sign').mouseover(function(){
+			$('#list-box').on('mouseenter', '.icon-large', function(){
 				$(this).css('color','#fb786b');
 			});
 
-			$('.icon-remove-sign').mouseleave(function(){
+			$('#list-box').on('mouseleave', '.icon-large', function(){
 				$(this).css('color','#5486C6');
 			});
 
-			$('.item-input').click(function(){
+			$('#list-box').on('click', '.item', function(){
 				var row = $(this).closest('.item');
 				row.css('border-top','1px solid #A8BD44');
 				row.css('border-bottom','1px solid #A8BD44');
@@ -176,16 +178,16 @@ var Appstart = function(){
 				row.css('border-bottom','1px solid #DED8D6');
 			});
 
-			$('.item').mouseover(function(){
+			$('#list-box').on('mouseenter', '.item', function(){
 				$(this).find('.remove').stop().show();
 			});
 
-			$('.item').mouseleave(function(){
+			$('#list-box').on('mouseleave', '.item', function(){
 				$(this).find('.remove').hide();
 			});
 		}
 	});
-	var formItem = new Item({name: "Add an item to the list ..."});
+	var formItem = new Item({name: "Add something to the list ..."});
 	var itemForm = new ItemForm({model: formItem, collection: itemList});
 	itemForm.render();
 	$('#form-box').append(itemForm.el);

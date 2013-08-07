@@ -45,7 +45,6 @@ var data = {
 
 var loadChart=function(){
 
-	
 	var graphColor=function(graphData){
 		var chartColor=[];
 		for(var i=0; i<graphData.length;i++){
@@ -57,15 +56,12 @@ var loadChart=function(){
 		};
 		return chartColor
 	}
-
 	
 	var members_chart=[];
 	for (var i = 0; i < balances.length; i++) {
 		members_chart[i]='';
 
 	}
-
-
 
 	var colorFill=graphColor(balances);
 	var data = {
@@ -104,10 +100,10 @@ window.onresize =function() {
 	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-65+'px');
 }
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SETTINGS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
 /* settingsStart, expenseStart, listsStart define the funciton that needs to be
 /* called on page load and in response for ajax request
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SETTINGS START!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 /*-------Settings Start----*/
 var settingsStart = function(){
@@ -213,6 +209,24 @@ var listsStart = function(){
 
 	Appstart();
 
+	$('#group-edit-list').on('mouseenter', 'li', function() {
+		var icon = $(this).find('i');
+		icon.show();
+	});
+	$('#group-edit-list').on('mouseleave', 'li', function() {
+		$(this).find('i').hide();
+	});
+
+	// ajax remove list
+	$("#group-edit-list").find('a').on('click', 'i', function(e){
+		e.preventDefault();
+		var id = $(this).closest('a').data('id');
+		$.get('ajax/remove/lists/'+id, function(response){
+			$('#content-container').html(response);
+			listsStart();
+		});
+	});
+
 	// ajax change list
 	$("#group-edit-list").find('a').on('click', function(e){
 		e.preventDefault();
@@ -226,9 +240,7 @@ var listsStart = function(){
 	// ajax create list form
 	$("#create-list-button").on('click','a', function(e){
 		e.preventDefault();
-		$.get('new/lists', function(response){
-			$('#list-menu').append(response).fadeIn();
-		});
+		$('#create-form').toggle();
 	});
 }
 

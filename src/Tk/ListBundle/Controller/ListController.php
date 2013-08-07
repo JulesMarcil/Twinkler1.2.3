@@ -20,11 +20,13 @@ class ListController extends Controller
         }else{
             $group = $this->getUser()->getCurrentMember()->getTGroup();
             $list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($list_id);
-            if($list->getGroup() == $group){
+            if($list and $list->getGroup() == $group){
             }else{
                 $list = $group->getLists()->first();
-                $session->set('list_id', $list->getId());
-                $session->set('list_name', $list->getName());
+                if ($list) {
+                    $session->set('list_id', $list->getId());
+                    $session->set('list_name', $list->getName());
+                }else{}
             }
         }
     }
@@ -63,6 +65,26 @@ class ListController extends Controller
         return $this->render('TkListBundle:List:content.html.twig');
     }
 
+    public function ajaxRemoveListsAction($id)
+    {
+        $list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($id);
+        
+        if ($list) {
+            $session = $this->get('session');
+            $session->set('list_id', null);
+            $session->set('list_name', null);
+
+            $em = $this->getDoctrine()->getManager();
+            foreach($list->getAllItems() as $item){
+                $em->remove($item);    
+            }
+            $em->remove($list);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('tk_list_ajax_content'));
+    }
+
     public function newAction()
     {
         $list = new Lists();
@@ -81,6 +103,10 @@ class ListController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($list);
                 $em->flush();
+
+                $session = $this->get('session');
+                $session->set('list_id', $list->getId());
+                $session->set('list_name', $list->getName());
 
                 return $this->redirect($this->generateUrl('tk_list_homepage'));
             }

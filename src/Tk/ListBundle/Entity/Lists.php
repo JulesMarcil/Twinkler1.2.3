@@ -140,4 +140,14 @@ class Lists
         }
         return $items;
     }
+
+    /**
+     * Get all items
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAllItems()
+    {
+        return $this->items;
+    }
 }

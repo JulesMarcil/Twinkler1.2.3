@@ -17,3 +17,7 @@ tk_list_ajax_content:
 tk_list_ajax_change:
     pattern: /group/ajax/change/lists/{id}
     defaults: { _controller: TkListBundle:List:ajaxChangeLists }
+
+tk_list_ajax_remove:
+    pattern: /group/ajax/remove/lists/{id}
+    defaults: { _controller: TkListBundle:List:ajaxRemoveLists }

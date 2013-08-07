@@ -68,9 +68,14 @@
 	width: 100%;
 }
 .item-remove{
-	width: 5%;
-	min-width: 10px;
+	width: 60px;
 	text-align: right;
+	padding:0;
+}
+.item-remove i{
+	display: inline-block;
+	margin: 5px;
+	cursor:pointer
 }
 .complete{
 	color: #bbb;
