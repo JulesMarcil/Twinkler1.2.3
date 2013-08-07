@@ -8,6 +8,26 @@
 
 {% block fos_user_content %}
 
+<div id="user-layout" class="row">
+            <div class="span4 offset4" style="text-align: center">
+                {% if app.session.get('invitation_id') != null %}
+                <h5>Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
+                {% endif %}
+
+                {% for type, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="flash-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div>
+
+
+
+
+
 {% if error %}
 <div class="alert alert-error">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -18,7 +38,7 @@
 <div class="flat-container">
     <div class="flat-header">
     <h1>Log in</h1></div>
-    <p>{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'large'}) }}</p>
+    <p style="margin: 15px 0px">{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'large'}) }}</p>
 
     <div style="display: inline-block; width:100%">
 
@@ -76,6 +96,12 @@
 
     </div>
 </div>
+
+
+
+</div>
+            </div>
+        </div>
 
 
 

@@ -1,38 +1,63 @@
 {% trans_default_domain 'FOSUserBundle' %}
+<div id="user-layout" class="row">
+    <div class="span6 offset3" style="text-align: center">
+        {% if app.session.get('invitation_id') != null %}
+        <h5>Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
+        {% endif %}
 
-<div class="flat-container">
-	<div class="flat-header">
-		<h1>Sign up</h1>	
-	</div>
-    <div style="margin: 10px 5px; margin-bottom: 20px; border-bottom: 1px solid rgb(239, 244, 246); padding: 20px 0px">
-	<p>{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'xlarge'}) }}</p>
-    <p style="color: #999999; font-size: 12px;">Loging in with Facebook enables you to find your friends quickly on Twinkler. We will never post anything on your behalf. </p>
-    </div>
-    <p style="color: #999999; font-size: 12px;">
-    Don't have a Facebook account? <a data-toggle="collapse" data-target="#register-form" style=" cursor: pointer"> Sign up with your e-mail</a></p>
-    <div id="register-form" class="collapse out">
-    	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" style="margin-top: 20px;">
-            {{ form_errors(form) }}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
-    	    {{ form_errors(form.username) }}
-            {{ form_widget(form.username) }}
+        <div>
+            <div class="flat-container">
+            	<div class="flat-header">
+            		<h1>Sign up</h1>	
+            	</div>
+                <div class="row">
 
-            {{ form_errors(form.email) }}
-            {{ form_widget(form.email) }}
+                    <div class="span3" style="height:300px;">
+                        <div style="height:100%;border-right: 1px solid rgb(239, 244, 246); padding: 0px 10px;">
+                            <p style="display: inline-block;width:80%; color:rgb(245,103,99); margin-bottom:40px; font-size: 18px">Do it the hip way</p>
+                        	<p>{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'large'}) }}</p>
+                            <p style="color: #999999; font-size: 12px;">Connect in a single click via Facebook to find your friends instantly on Twinkler!</p>
+                        </div>
+                    </div>
 
-            {{ form_errors(form.plainPassword) }}
-            {{ form_widget(form.plainPassword) }}
+                    <div  class="span3">
+                        <p style="display: inline-block;width:80%; color:rgb(245,103,99); font-size: 18px">Or the old school way</p>
+                        <div id="register-form">
+                        	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" style="margin-top: 20px;">
+                                {{ form_errors(form) }}
 
-            {{ form_rest(form) }}
+                        	    {{ form_errors(form.username) }}
+                                {{ form_widget(form.username) }}
 
-    	    <div>
-    	        <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}" style="width: 120px;margin-top: 20px; margin-bottom: 10px;" />
-    	    </div>
-            <div>
+                                {{ form_errors(form.email) }}
+                                {{ form_widget(form.email) }}
+
+                                {{ form_errors(form.plainPassword) }}
+                                {{ form_widget(form.plainPassword) }}
+
+                                {{ form_rest(form) }}
+
+                        	    <div>
+                        	        <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}" style="width: 120px;margin-top: 20px; margin-bottom: 10px;" />
+                        	    </div>
+                                <div>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+                <div class="flat-footer">
+            	   <p>Have an account ? <a href="{{ path('fos_user_security_login') }}">Log in</a></p>
+                </div>
             </div>
-    	</form>
-    </div>
-    <div class="flat-footer">
-	   <p>Have an account ? <a href="{{ path('fos_user_security_login') }}">Log in</a></p>
+        </div>
     </div>
 </div>

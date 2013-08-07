@@ -73,7 +73,7 @@ strong{
 	background-repeat:no-repeat;
 	background-size: cover; 
 	background-attachment:fixed;
-	background-position: 40%;
+	background-position: 50% -80px;
 	height: 400px;
 	text-align: center;
 }
@@ -218,7 +218,7 @@ strong{
 
 /*------Contact-----*/
 #contact{
-	background-image: url(' ../img/links/mines.jpg');
+	background-image: url(' ../img/links/mines-skyview.jpeg');
 	background-repeat:no-repeat;
 	background-size: 100% auto; 
 	background-attachment:fixed;

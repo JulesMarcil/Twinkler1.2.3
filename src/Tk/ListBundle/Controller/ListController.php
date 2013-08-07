@@ -15,8 +15,10 @@ class ListController extends Controller
 
         if(!$list_id){
             $list = $this->getUser()->getCurrentMember()->getTGroup()->getLists()->first();
-            $session->set('list_id', $list->getId());
-            $session->set('list_name', $list->getName());
+            if($list){
+                $session->set('list_id', $list->getId());
+                $session->set('list_name', $list->getName());
+            }
         }else{
             $group = $this->getUser()->getCurrentMember()->getTGroup();
             $list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($list_id);

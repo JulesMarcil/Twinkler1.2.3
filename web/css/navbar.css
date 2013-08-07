@@ -2,7 +2,8 @@
 
 header{
 	background-image: url('../img/Frame/navbar-bck.jpg');
-	background-size:cover;
+	background-size:fixed;
+	background-position: 50% 0px;
 }
 
 .img-shadow{

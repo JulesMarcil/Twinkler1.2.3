@@ -133,7 +133,7 @@ var ItemListView = Backbone.View.extend({
 	},
 	render: function(){
 		if(this.collection.length === 0){
-			this.$el.append('<p id="empty-list-message">You list is empty, why don\'t you add something in the form above ?</p>');
+			this.$el.append('<p id="empty-list-message" style="text-align: center">You list is empty, why don\'t you add something in the form above ?</p>');
 		}else{
 			this.addAll();	
 		} 		
