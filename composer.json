@@ -26,7 +26,9 @@
         "friendsofsymfony/facebook-bundle": "1.2.*",
         "friendsofsymfony/rest-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master",
-        "friendsofsymfony/oauth-server-bundle": "dev-master"
+        "friendsofsymfony/oauth-server-bundle": "dev-master",
+        "fsc/oauth2-facebook-grant-bundle": "dev-master",
+        "footcho/facebook-client" : "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

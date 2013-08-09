@@ -100,57 +100,6 @@
         ]
     },
     {
-        "name": "twig/twig",
-        "version": "v1.13.1",
-        "version_normalized": "1.13.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fabpot/Twig.git",
-            "reference": "v1.13.1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.1",
-            "reference": "v1.13.1",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.4"
-        },
-        "time": "2013-06-06 06:06:01",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.13-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Twig_": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Armin Ronacher",
-                "email": "armin.ronacher@active-4.com"
-            }
-        ],
-        "description": "Twig, the flexible, fast, and secure template language for PHP",
-        "homepage": "http://twig.sensiolabs.org",
-        "keywords": [
-            "templating"
-        ]
-    },
-    {
         "name": "doctrine/lexer",
         "version": "v1.0",
         "version_normalized": "1.0.0.0",
@@ -548,107 +497,6 @@
             "eventmanager",
             "persistence",
             "spl"
-        ]
-    },
-    {
-        "name": "symfony/symfony",
-        "version": "v2.2.4",
-        "version_normalized": "2.2.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/symfony.git",
-            "reference": "v2.2.4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.4",
-            "reference": "v2.2.4",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/common": "~2.2",
-            "php": ">=5.3.3",
-            "psr/log": "~1.0",
-            "twig/twig": "~1.11"
-        },
-        "replace": {
-            "symfony/browser-kit": "self.version",
-            "symfony/class-loader": "self.version",
-            "symfony/config": "self.version",
-            "symfony/console": "self.version",
-            "symfony/css-selector": "self.version",
-            "symfony/dependency-injection": "self.version",
-            "symfony/doctrine-bridge": "self.version",
-            "symfony/dom-crawler": "self.version",
-            "symfony/event-dispatcher": "self.version",
-            "symfony/filesystem": "self.version",
-            "symfony/finder": "self.version",
-            "symfony/form": "self.version",
-            "symfony/framework-bundle": "self.version",
-            "symfony/http-foundation": "self.version",
-            "symfony/http-kernel": "self.version",
-            "symfony/locale": "self.version",
-            "symfony/monolog-bridge": "self.version",
-            "symfony/options-resolver": "self.version",
-            "symfony/process": "self.version",
-            "symfony/propel1-bridge": "self.version",
-            "symfony/property-access": "self.version",
-            "symfony/routing": "self.version",
-            "symfony/security": "self.version",
-            "symfony/security-bundle": "self.version",
-            "symfony/serializer": "self.version",
-            "symfony/stopwatch": "self.version",
-            "symfony/swiftmailer-bridge": "self.version",
-            "symfony/templating": "self.version",
-            "symfony/translation": "self.version",
-            "symfony/twig-bridge": "self.version",
-            "symfony/twig-bundle": "self.version",
-            "symfony/validator": "self.version",
-            "symfony/web-profiler-bundle": "self.version",
-            "symfony/yaml": "self.version"
-        },
-        "require-dev": {
-            "doctrine/data-fixtures": "1.0.*",
-            "doctrine/dbal": "~2.2",
-            "doctrine/orm": "~2.2,>=2.2.3",
-            "monolog/monolog": "~1.3",
-            "propel/propel1": "1.6.*"
-        },
-        "time": "2013-07-15 12:28:01",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\": "src/"
-            },
-            "classmap": [
-                "src/Symfony/Component/HttpFoundation/Resources/stubs",
-                "src/Symfony/Component/Locale/Resources/stubs"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            }
-        ],
-        "description": "The Symfony PHP framework",
-        "homepage": "http://symfony.com",
-        "keywords": [
-            "framework"
         ]
     },
     {
@@ -1159,78 +1007,6 @@
         ],
         "description": "Library for (de-)serializing data of any complexity; supports XML, JSON, and YAML.",
         "homepage": "http://jmsyst.com/libs/serializer",
-        "keywords": [
-            "deserialization",
-            "jaxb",
-            "json",
-            "serialization",
-            "xml"
-        ]
-    },
-    {
-        "name": "jms/serializer-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "target-dir": "JMS/SerializerBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-            "reference": "c7f57e622ec4ad531f59ac79b2536b0cb5681559"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/c7f57e622ec4ad531f59ac79b2536b0cb5681559",
-            "reference": "c7f57e622ec4ad531f59ac79b2536b0cb5681559",
-            "shasum": ""
-        },
-        "require": {
-            "jms/serializer": "~0.11",
-            "php": ">=5.3.2",
-            "symfony/framework-bundle": "~2.1"
-        },
-        "require-dev": {
-            "doctrine/doctrine-bundle": "*",
-            "doctrine/orm": "*",
-            "symfony/browser-kit": "*",
-            "symfony/class-loader": "*",
-            "symfony/css-selector": "*",
-            "symfony/finder": "*",
-            "symfony/form": "*",
-            "symfony/process": "*",
-            "symfony/twig-bundle": "*",
-            "symfony/validator": "*",
-            "symfony/yaml": "*"
-        },
-        "suggest": {
-            "jms/di-extra-bundle": "Required to get lazy loading (de)serialization visitors, ~1.3"
-        },
-        "time": "2013-07-29 12:32:39",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "0.12-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "JMS\\SerializerBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache2"
-        ],
-        "authors": [
-            {
-                "name": "Johannes M. Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
-            }
-        ],
-        "description": "Allows you to easily serialize, and deserialize data of any complexity",
-        "homepage": "http://jmsyst.com/bundles/JMSSerializerBundle",
         "keywords": [
             "deserialization",
             "jaxb",
@@ -1870,63 +1646,6 @@
         ]
     },
     {
-        "name": "symfony/swiftmailer-bundle",
-        "version": "v2.2.4",
-        "version_normalized": "2.2.4.0",
-        "target-dir": "Symfony/Bundle/SwiftmailerBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/SwiftmailerBundle.git",
-            "reference": "v2.3.1"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.3.1",
-            "reference": "v2.3.1",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "swiftmailer/swiftmailer": ">=4.2.0,<5.1-dev",
-            "symfony/swiftmailer-bridge": "~2.1"
-        },
-        "require-dev": {
-            "symfony/config": "~2.1",
-            "symfony/dependency-injection": "~2.1",
-            "symfony/http-kernel": "~2.1",
-            "symfony/yaml": "~2.1"
-        },
-        "time": "2013-05-15 08:38:58",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\Bundle\\SwiftmailerBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony SwiftmailerBundle",
-        "homepage": "http://symfony.com"
-    },
-    {
         "name": "monolog/monolog",
         "version": "1.6.0",
         "version_normalized": "1.6.0.0",
@@ -2049,153 +1768,6 @@
             "log",
             "logging"
         ]
-    },
-    {
-        "name": "sensio/distribution-bundle",
-        "version": "v2.2.4",
-        "version_normalized": "2.2.4.0",
-        "target-dir": "Sensio/Bundle/DistributionBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-            "reference": "v2.2.4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/v2.2.4",
-            "reference": "v2.2.4",
-            "shasum": ""
-        },
-        "require": {
-            "symfony/framework-bundle": "~2.2"
-        },
-        "time": "2013-07-04 10:39:24",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Sensio\\Bundle\\DistributionBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "The base bundle for the Symfony Distributions",
-        "keywords": [
-            "configuration",
-            "distribution"
-        ]
-    },
-    {
-        "name": "sensio/framework-extra-bundle",
-        "version": "v2.2.4",
-        "version_normalized": "2.2.4.0",
-        "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-            "reference": "v2.2.4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/v2.2.4",
-            "reference": "v2.2.4",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/common": "~2.2",
-            "symfony/framework-bundle": "~2.2"
-        },
-        "time": "2013-07-09 08:03:19",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Sensio\\Bundle\\FrameworkExtraBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "This bundle provides a way to configure your controllers with annotations",
-        "keywords": [
-            "annotations",
-            "controllers"
-        ]
-    },
-    {
-        "name": "sensio/generator-bundle",
-        "version": "v2.2.4",
-        "version_normalized": "2.2.4.0",
-        "target-dir": "Sensio/Bundle/GeneratorBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-            "reference": "v2.2.4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/v2.2.4",
-            "reference": "v2.2.4",
-            "shasum": ""
-        },
-        "require": {
-            "symfony/console": "~2.0",
-            "symfony/framework-bundle": "~2.2"
-        },
-        "require-dev": {
-            "doctrine/orm": "~2.2,>=2.2.3",
-            "symfony/doctrine-bridge": "~2.2",
-            "twig/twig": "~1.11"
-        },
-        "time": "2013-06-02 13:07:01",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Sensio\\Bundle\\GeneratorBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "This bundle generates code for you"
     },
     {
         "name": "jms/cg",
@@ -2562,6 +2134,593 @@
         "homepage": "http://friendsofsymfony.github.com",
         "keywords": [
             "facebook"
+        ]
+    },
+    {
+        "name": "twig/twig",
+        "version": "v1.13.2",
+        "version_normalized": "1.13.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fabpot/Twig.git",
+            "reference": "v1.13.2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.2",
+            "reference": "v1.13.2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "time": "2013-08-03 15:35:31",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.13-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Twig_": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Armin Ronacher",
+                "email": "armin.ronacher@active-4.com"
+            }
+        ],
+        "description": "Twig, the flexible, fast, and secure template language for PHP",
+        "homepage": "http://twig.sensiolabs.org",
+        "keywords": [
+            "templating"
+        ]
+    },
+    {
+        "name": "symfony/symfony",
+        "version": "v2.2.5",
+        "version_normalized": "2.2.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/symfony.git",
+            "reference": "v2.2.5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.5",
+            "reference": "v2.2.5",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": "~2.2",
+            "php": ">=5.3.3",
+            "psr/log": "~1.0",
+            "twig/twig": "~1.11"
+        },
+        "replace": {
+            "symfony/browser-kit": "self.version",
+            "symfony/class-loader": "self.version",
+            "symfony/config": "self.version",
+            "symfony/console": "self.version",
+            "symfony/css-selector": "self.version",
+            "symfony/dependency-injection": "self.version",
+            "symfony/doctrine-bridge": "self.version",
+            "symfony/dom-crawler": "self.version",
+            "symfony/event-dispatcher": "self.version",
+            "symfony/filesystem": "self.version",
+            "symfony/finder": "self.version",
+            "symfony/form": "self.version",
+            "symfony/framework-bundle": "self.version",
+            "symfony/http-foundation": "self.version",
+            "symfony/http-kernel": "self.version",
+            "symfony/locale": "self.version",
+            "symfony/monolog-bridge": "self.version",
+            "symfony/options-resolver": "self.version",
+            "symfony/process": "self.version",
+            "symfony/propel1-bridge": "self.version",
+            "symfony/property-access": "self.version",
+            "symfony/routing": "self.version",
+            "symfony/security": "self.version",
+            "symfony/security-bundle": "self.version",
+            "symfony/serializer": "self.version",
+            "symfony/stopwatch": "self.version",
+            "symfony/swiftmailer-bridge": "self.version",
+            "symfony/templating": "self.version",
+            "symfony/translation": "self.version",
+            "symfony/twig-bridge": "self.version",
+            "symfony/twig-bundle": "self.version",
+            "symfony/validator": "self.version",
+            "symfony/web-profiler-bundle": "self.version",
+            "symfony/yaml": "self.version"
+        },
+        "require-dev": {
+            "doctrine/data-fixtures": "1.0.*",
+            "doctrine/dbal": "~2.2",
+            "doctrine/orm": "~2.2,>=2.2.3",
+            "monolog/monolog": "~1.3",
+            "propel/propel1": "1.6.*"
+        },
+        "time": "2013-08-07 15:57:43",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\": "src/"
+            },
+            "classmap": [
+                "src/Symfony/Component/HttpFoundation/Resources/stubs",
+                "src/Symfony/Component/Locale/Resources/stubs"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "The Symfony PHP framework",
+        "homepage": "http://symfony.com",
+        "keywords": [
+            "framework"
+        ]
+    },
+    {
+        "name": "symfony/swiftmailer-bundle",
+        "version": "v2.2.5",
+        "version_normalized": "2.2.5.0",
+        "target-dir": "Symfony/Bundle/SwiftmailerBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/SwiftmailerBundle.git",
+            "reference": "v2.2.5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.2.5",
+            "reference": "v2.2.5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "swiftmailer/swiftmailer": ">=4.2.0,<5.1-dev",
+            "symfony/swiftmailer-bridge": "~2.1"
+        },
+        "require-dev": {
+            "symfony/config": "~2.1",
+            "symfony/dependency-injection": "~2.1",
+            "symfony/http-kernel": "~2.1",
+            "symfony/yaml": "~2.1"
+        },
+        "time": "2013-08-05 08:18:16",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Bundle\\SwiftmailerBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony SwiftmailerBundle",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "sensio/distribution-bundle",
+        "version": "v2.2.5",
+        "version_normalized": "2.2.5.0",
+        "target-dir": "Sensio/Bundle/DistributionBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
+            "reference": "v2.2.5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/v2.2.5",
+            "reference": "v2.2.5",
+            "shasum": ""
+        },
+        "require": {
+            "symfony/framework-bundle": "~2.2"
+        },
+        "time": "2013-07-23 14:20:01",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sensio\\Bundle\\DistributionBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "The base bundle for the Symfony Distributions",
+        "keywords": [
+            "configuration",
+            "distribution"
+        ]
+    },
+    {
+        "name": "sensio/framework-extra-bundle",
+        "version": "v2.2.5",
+        "version_normalized": "2.2.5.0",
+        "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
+            "reference": "v2.2.5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/v2.2.5",
+            "reference": "v2.2.5",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": "~2.2",
+            "symfony/framework-bundle": "~2.2"
+        },
+        "time": "2013-07-20 06:48:52",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sensio\\Bundle\\FrameworkExtraBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "This bundle provides a way to configure your controllers with annotations",
+        "keywords": [
+            "annotations",
+            "controllers"
+        ]
+    },
+    {
+        "name": "sensio/generator-bundle",
+        "version": "v2.2.5",
+        "version_normalized": "2.2.5.0",
+        "target-dir": "Sensio/Bundle/GeneratorBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+            "reference": "v2.2.5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/v2.2.5",
+            "reference": "v2.2.5",
+            "shasum": ""
+        },
+        "require": {
+            "symfony/console": "~2.0",
+            "symfony/framework-bundle": "~2.2"
+        },
+        "require-dev": {
+            "doctrine/orm": "~2.2,>=2.2.3",
+            "symfony/doctrine-bridge": "~2.2",
+            "twig/twig": "~1.11"
+        },
+        "time": "2013-06-02 13:07:01",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sensio\\Bundle\\GeneratorBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "This bundle generates code for you"
+    },
+    {
+        "name": "guzzle/guzzle",
+        "version": "v3.7.2",
+        "version_normalized": "3.7.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/guzzle.git",
+            "reference": "v3.7.2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/v3.7.2",
+            "reference": "v3.7.2",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.3.2",
+            "symfony/event-dispatcher": ">=2.1"
+        },
+        "replace": {
+            "guzzle/batch": "self.version",
+            "guzzle/cache": "self.version",
+            "guzzle/common": "self.version",
+            "guzzle/http": "self.version",
+            "guzzle/inflection": "self.version",
+            "guzzle/iterator": "self.version",
+            "guzzle/log": "self.version",
+            "guzzle/parser": "self.version",
+            "guzzle/plugin": "self.version",
+            "guzzle/plugin-async": "self.version",
+            "guzzle/plugin-backoff": "self.version",
+            "guzzle/plugin-cache": "self.version",
+            "guzzle/plugin-cookie": "self.version",
+            "guzzle/plugin-curlauth": "self.version",
+            "guzzle/plugin-error-response": "self.version",
+            "guzzle/plugin-history": "self.version",
+            "guzzle/plugin-log": "self.version",
+            "guzzle/plugin-md5": "self.version",
+            "guzzle/plugin-mock": "self.version",
+            "guzzle/plugin-oauth": "self.version",
+            "guzzle/service": "self.version",
+            "guzzle/stream": "self.version"
+        },
+        "require-dev": {
+            "doctrine/cache": "*",
+            "monolog/monolog": "1.*",
+            "phpunit/phpunit": "3.7.*",
+            "psr/log": "1.0.*",
+            "symfony/class-loader": "*",
+            "zendframework/zend-cache": "2.0.*",
+            "zendframework/zend-log": "2.0.*"
+        },
+        "time": "2013-08-02 18:31:05",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.7-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Guzzle\\Tests": "tests/",
+                "Guzzle": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Guzzle Community",
+                "homepage": "https://github.com/guzzle/guzzle/contributors"
+            }
+        ],
+        "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+        "homepage": "http://guzzlephp.org/",
+        "keywords": [
+            "client",
+            "curl",
+            "framework",
+            "http",
+            "http client",
+            "rest",
+            "web service"
+        ]
+    },
+    {
+        "name": "footcho/facebook-client",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/footcho/facebook-client.git",
+            "reference": "e0988200d58bbe65a2ae54a8243c3063c049a6d7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/footcho/facebook-client/zipball/e0988200d58bbe65a2ae54a8243c3063c049a6d7",
+            "reference": "e0988200d58bbe65a2ae54a8243c3063c049a6d7",
+            "shasum": ""
+        },
+        "require": {
+            "guzzle/guzzle": "3.*"
+        },
+        "require-dev": {
+            "symfony/framework-bundle": "2.1.*"
+        },
+        "time": "2012-11-16 15:43:01",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Footcho\\FacebookClient": "src",
+                "Footcho\\FacebookClientBundle": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ]
+    },
+    {
+        "name": "fsc/oauth2-facebook-grant-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "FSC/OAuth2FacebookGrantBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/TheFootballSocialClub/FSCOAuth2FacebookGrantBundle.git",
+            "reference": "4f9147363fc76d3c71f10972efc53fb257f832e7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/TheFootballSocialClub/FSCOAuth2FacebookGrantBundle/zipball/4f9147363fc76d3c71f10972efc53fb257f832e7",
+            "reference": "4f9147363fc76d3c71f10972efc53fb257f832e7",
+            "shasum": ""
+        },
+        "require": {
+            "footcho/facebook-client": "dev-master",
+            "friendsofsymfony/oauth-server-bundle": "dev-master"
+        },
+        "time": "2012-12-04 09:31:17",
+        "type": "symfony-bundle",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "FSC\\OAuth2FacebookGrantBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/"
+    },
+    {
+        "name": "jms/serializer-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "JMS/SerializerBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
+            "reference": "5531198a73c4adee669a8a2d1452999349822771"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/5531198a73c4adee669a8a2d1452999349822771",
+            "reference": "5531198a73c4adee669a8a2d1452999349822771",
+            "shasum": ""
+        },
+        "require": {
+            "jms/serializer": "~0.11",
+            "php": ">=5.3.2",
+            "symfony/framework-bundle": "~2.1"
+        },
+        "require-dev": {
+            "doctrine/doctrine-bundle": "*",
+            "doctrine/orm": "*",
+            "symfony/browser-kit": "*",
+            "symfony/class-loader": "*",
+            "symfony/css-selector": "*",
+            "symfony/finder": "*",
+            "symfony/form": "*",
+            "symfony/process": "*",
+            "symfony/twig-bundle": "*",
+            "symfony/validator": "*",
+            "symfony/yaml": "*"
+        },
+        "suggest": {
+            "jms/di-extra-bundle": "Required to get lazy loading (de)serialization visitors, ~1.3"
+        },
+        "time": "2013-07-29 12:36:36",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.12-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "JMS\\SerializerBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache2"
+        ],
+        "authors": [
+            {
+                "name": "Johannes M. Schmitt",
+                "email": "schmittjoh@gmail.com",
+                "homepage": "http://jmsyst.com",
+                "role": "Developer of wrapped JMSSerializerBundle"
+            }
+        ],
+        "description": "Allows you to easily serialize, and deserialize data of any complexity",
+        "homepage": "http://jmsyst.com/bundles/JMSSerializerBundle",
+        "keywords": [
+            "deserialization",
+            "jaxb",
+            "json",
+            "serialization",
+            "xml"
         ]
     }
 ]

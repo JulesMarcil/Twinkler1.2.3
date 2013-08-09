@@ -1,0 +1,30 @@
+{
+    "operations": {
+        "getObject": {
+            "httpMethod": "GET",
+            "uri": "/{id}{?fields}",
+            "class": "Guzzle\\Service\\Command\\OperationCommand",
+            "parameters": {
+                "id": {
+                    "type": ["string", "integer"],
+                    "required": true,
+                    "location": "uri"
+                },
+                "fields": {
+                    "type": "array",
+                    "required": false,
+                    "location": "uri"
+                },
+                "access_token": {
+                    "type": "string",
+                    "required": false,
+                    "location": "header",
+                    "sentAs": "Authorization",
+                    "filters": [
+                        "Footcho\\FacebookClient\\Helper\\AuthorizationHelper::getAuthorizationFromAccessToken"
+                    ]
+                }
+            }
+        }
+    }
+}

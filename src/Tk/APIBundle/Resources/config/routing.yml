@@ -1,6 +1,6 @@
-tk_api_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TkAPIBundle:Default:index }
+tk_api_facebook_token:
+    pattern: /app/get/token
+    defaults: { _controller: TkAPIBundle:OAuth:facebookToken }
 
 tk_api_articles:
     pattern: /api/articles
@@ -10,6 +10,10 @@ tk_api_user:
     pattern: /api/user
     defaults: { _controller: TkAPIBundle:Api:user }
 
+tk_api_profile:
+    pattern: /api/profile
+    defaults: { _controller: TkAPIBundle:Api:getProfile }
+
 tk_api_groups:
-    pattern: /app/groups
+    pattern: /api/groups
     defaults: { _controller: TkAPIBundle:Api:getGroups }
