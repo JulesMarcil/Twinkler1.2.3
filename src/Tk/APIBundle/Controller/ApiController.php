@@ -38,7 +38,7 @@ class ApiController extends Controller
             if($facebook_id) {
                 $picture_path = 'facebook';
             }else{
-                $picture_path = $user->getPicture()->getWebPath();
+                $picture_path = $user->getPicture()->getPath();
             }
 
             return new JsonResponse(array(
