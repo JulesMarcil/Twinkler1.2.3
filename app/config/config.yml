@@ -125,8 +125,3 @@ fos_oauth_server:
         user_provider: fos_user.user_provider.username_email
         options:
             supported_scopes: user
-
-#FSCOAuth2FacebookGrantBundle
-fsc_oauth2_facebook_grant:
-    user_provider: my_user.facebook_provider 
-    uri: facebook_access_token
