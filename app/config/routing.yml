@@ -1,3 +1,7 @@
+tk_chat:
+    resource: "@TkChatBundle/Resources/config/routing.yml"
+    prefix:   /
+
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
 

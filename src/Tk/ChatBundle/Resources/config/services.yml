@@ -1,0 +1,7 @@
+parameters:
+#    tk_chat.example.class: Tk\ChatBundle\Example
+
+services:
+#    tk_chat.example:
+#        class: %tk_chat.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

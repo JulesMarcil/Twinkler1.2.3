@@ -1,0 +1,11 @@
+tk_chat_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: TkChatBundle:Default:index }
+
+tk_chat_messages_get:
+    pattern:  /api/get/messages
+    defaults: { _controller: TkChatBundle:APPChat:getMessages }
+
+tk_chat_messages_post:
+    pattern:  /api/post/message
+    defaults: { _controller: TkChatBundle:APPChat:postMessage }

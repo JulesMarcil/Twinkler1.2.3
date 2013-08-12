@@ -64,6 +64,11 @@ class TGroup
     protected $lists;
 
     /**
+     * @ORM\OneToMany(targetEntity="Tk\ChatBundle\Entity\Message", mappedBy="group", cascade={"persist"})
+     */
+    protected $messages;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -345,5 +350,38 @@ class TGroup
     public function getLists()
     {
         return $this->lists;
+    }
+
+    /**
+     * Add messages
+     *
+     * @param \Tk\ChatBundle\Entity\Message $messages
+     * @return TGroup
+     */
+    public function addMessage(\Tk\ChatBundle\Entity\Message $messages)
+    {
+        $this->messages[] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Remove messages
+     *
+     * @param \Tk\ChatBundle\Entity\Message $messages
+     */
+    public function removeMessage(\Tk\ChatBundle\Entity\Message $messages)
+    {
+        $this->messages->removeElement($messages);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessages()
+    {
+        return $this->messages;
     }
 }
