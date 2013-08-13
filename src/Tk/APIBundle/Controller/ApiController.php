@@ -67,7 +67,19 @@ class ApiController extends Controller
                 $group = $member->getTGroup();
                 $group_members = array();
                 foreach($group->getMembers() as $m){
-                    $group_members[] = array('id' => $m->getId(), 'name' => $m->getName());
+
+                    $picture_path = 'local';
+                    $member_user = $m->getUser();
+                    if($member_user){
+                        $facebook_id = $member_user->getFacebookId();
+                        if($facebook_id) {
+                            $picture_path = $facebook_id;
+                        }else{
+                            $picture_path = $member_user->getPicture()->getPath();
+                        } 
+                    }
+
+                    $group_members[] = array('id' => $m->getId(), 'name' => $m->getName(), 'picturePath' => $picture_path);
                 }
                 $groups[] = array('id' => $group->getId(), 'name' => $group->getName(), 'currency' => $group->getCurrency()->getSymbol(), 'members' => $group_members, 'activeMember' => array('id' => $member->getId(), 'name' => $member->getName()));
             }

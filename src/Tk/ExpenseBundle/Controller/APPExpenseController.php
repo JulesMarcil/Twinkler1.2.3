@@ -3,6 +3,7 @@ namespace Tk\ExpenseBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response,
+    Symfony\Component\HttpFoundation\JsonResponse,
     Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use FOS\RestBundle\View\RouteRedirectView,
@@ -76,13 +77,16 @@ class APPExpenseController extends Controller
         $expense->setOwner($owner);
         $expense->setGroup($group);
 
+        foreach($data['member_ids'] as $id) {
+            $member = $member_repo->find($id);
+            $expense->addUser($member);
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($expense);
         $em->flush();
 
-        $serializer = $this->container->get('serializer');
-        $response = $serializer->serialize($data['owner_id'], 'json');
-        return new Response($response);
+        return new JsonResponse(array('message' => 'expense ('.$expense->getId().' : '.$expense->getName().') added successfully'));
     } // "post_expenses"    [POST] /expenses
 
     public function patchExpensesAction()
