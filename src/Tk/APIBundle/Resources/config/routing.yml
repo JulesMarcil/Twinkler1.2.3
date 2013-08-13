@@ -2,6 +2,10 @@ tk_api_facebook_token:
     pattern: /app/get/token
     defaults: { _controller: TkAPIBundle:OAuth:facebookToken }
 
+tk_api_register:
+    pattern: /app/register
+    defaults: { _controller: TkAPIBundle:OAuth:appRegister }
+
 tk_api_articles:
     pattern: /api/articles
     defaults: { _controller: TkAPIBundle:Api:articles }

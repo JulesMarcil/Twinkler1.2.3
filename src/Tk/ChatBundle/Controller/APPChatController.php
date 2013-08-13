@@ -24,7 +24,8 @@ class APPChatController extends Controller
 	        	foreach($messages as $message){
 	        		$message_array = array('author' => $message->getAuthor()->getName(),
 	        							   'body'   => $message->getBody(),
-	        							   'time'   => $message->getTimestamp()
+	        							   'time'   => $message->getTimestamp(),
+	        							   'type'   => 'message'
 	        							   );
 	        		$messages_array[] = $message_array;
 	        	}
@@ -33,7 +34,8 @@ class APPChatController extends Controller
 	        	foreach($expenses as $expense){
 	        		$message_array = array('author' => $expense->getAuthor()->getName(),
 	        							   'body'   => $expense->getAuthor()->getName().' added an expense: '.$expense->getName().' - '.$expense->getAmount().''.$group->getCurrency()->getSymbol(),
-	        							   'time'   => $expense->getAddedDate()->getTimestamp()
+	        							   'time'   => $expense->getAddedDate()->getTimestamp(),
+	        							   'type'   => 'expense'
 	        							   );
 	        		$messages_array[] = $message_array;
 	        	}

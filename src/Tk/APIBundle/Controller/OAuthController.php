@@ -7,7 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\JsonResponse;
 
 use Tk\APIBundle\Entity\AccessToken,
-	Tk\APIBundle\Entity\RefreshToken;
+	Tk\APIBundle\Entity\RefreshToken,
+	Tk\UserBundle\Entity\User;
+
+use	FOS\UserBundle\Controller\RegistrationController;
 
 class OAuthController extends Controller
 {
@@ -17,9 +20,46 @@ class OAuthController extends Controller
 
     	$fbk = $this->get('fos_facebook.api');
     	$fbk->setAccessToken($facebook_access_token);
-		$user_facebook_id = $fbk->getUser();
+		$fbdata = $fbk->api('/me');
 
-		$user = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneBy(array('facebookId' => $user_facebook_id));
+		$user = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneBy(array('facebookId' => $fbdata['id']));
+
+		if (!$user) {
+			if (!empty($fbdata)) {
+                $user = new User();
+                $user->setEnabled(true);
+                $user->setPassword('');
+ 
+                $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
+            }
+
+           	$em = $this->getDoctrine()->getManager();
+           	$em->persist($user);
+           	$em->flush();
+		}
+		return $this->getTokenAction($user);
+	}
+
+	public function appRegisterAction(Request $request)
+	{
+		$userManager = $this->container->get('fos_user.user_manager');
+		$data = $this->getRequest()->query->all();
+
+	    $user = $userManager->createUser();
+
+	    $user->setUsername($data['username']);
+	    $user->setEmail($data['email']);
+	    $user->setPlainPassword($data['password']);
+	    $user->setEnabled(true);
+	    $user->setPicture($this->getDoctrine()->getRepository('TkUserBundle:ProfilePicture')->find(1));
+
+	    $userManager->updateUser($user, true);
+
+	    return $this->getTokenAction($user);
+	}
+
+	private function getTokenAction($user)
+	{
 		$client = $this->getDoctrine()->getRepository('TkAPIBundle:Client')->find(9);
 
 		$now = new \Datetime('now');
@@ -49,7 +89,7 @@ class OAuthController extends Controller
 							        	));
     }
 
-    protected function genAccessToken() 
+    private function genAccessToken() 
     {
 		if (@file_exists('/dev/urandom')) { // Get 100 bytes of random data
 		  $randomData = file_get_contents('/dev/urandom', false, null, 0, 100);
