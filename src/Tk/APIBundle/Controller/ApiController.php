@@ -4,6 +4,7 @@ namespace Tk\APIBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Tk\GroupBundle\Entity\TGroup;
 
 class ApiController extends Controller
 {
@@ -89,5 +90,54 @@ class ApiController extends Controller
         return new JsonResponse(array(
             'message' => 'User is not identified'
         ));
+    }
+
+    public function addGroupAction()
+    {
+        $user = $this->getUser();
+        $data = $this->getRequest()->query->all();
+        $currency = $ttDoctrine->getRepository('TkGroupBundle:Currency')->find($data['currency_id'])
+        $group_name = $data['group_name'];
+
+        if ($user and $currency and $group_name) {
+
+            $group = new TGroup();
+            $group->setDate(new \Datetime('now'));
+            $group->setName($group_name);
+            $group->setCurrency($currency);
+
+            $member = new Member();
+            $member->setUser($user);
+            $member->setName($user->getUsername());
+            $member->setTGroup($group);
+
+            $user->setCurrentMember($member);
+            $group->setInvitationToken($group->generateInvitationToken());
+
+            $todolist = new Lists();
+            $todolist->setName('Todo List');
+            $todolist->setGroup($group);
+
+            $shoppinglist = new Lists();
+            $shoppinglist->setName('Shopping List');
+            $shoppinglist->setGroup($group);
+
+            $em = $this->getDoctrine->getManager();
+            $em->persist($todolist);
+            $em->persist($shoppinglist);
+            $em->persist($group);
+            $em->persist($member);
+            $em->flush();
+
+            return new JsonResponse(array('message' => 'Group added successfully'));
+        } else if (!$user) {
+            return new JsonResponse(array('message' => 'User not found'));
+        } else if (!$currency) {
+            return new JsonResponse(array('message' => 'Currency not found'));
+        } else if (!$group_name) {
+            return new JsonResponse(array('message' => 'Group name not specified'));
+        } else {
+            return new JsonResponse(array('message' => 'Unidentified error'));
+        }
     }
 }

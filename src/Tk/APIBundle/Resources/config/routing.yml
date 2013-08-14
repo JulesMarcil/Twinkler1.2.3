@@ -21,3 +21,7 @@ tk_api_profile:
 tk_api_groups:
     pattern: /api/groups
     defaults: { _controller: TkAPIBundle:Api:getGroups }
+
+tk_api_groups_new:
+    pattern: /api/add/group
+    defaults: { _controller: TkAPIBundle:Api:addGroup }
