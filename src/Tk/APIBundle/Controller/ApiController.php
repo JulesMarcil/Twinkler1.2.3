@@ -2,9 +2,12 @@
 
 namespace Tk\APIBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Tk\GroupBundle\Entity\TGroup;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    Symfony\Component\HttpFoundation\JsonResponse;
+
+use Tk\GroupBundle\Entity\TGroup,
+    Tk\UserBundle\Entity\Member,
+    Tk\ListBundle\Entity\Lists;
 
 class ApiController extends Controller
 {
@@ -68,21 +71,9 @@ class ApiController extends Controller
                 $group = $member->getTGroup();
                 $group_members = array();
                 foreach($group->getMembers() as $m){
-
-                    $picture_path = 'local';
-                    $member_user = $m->getUser();
-                    if($member_user){
-                        $facebook_id = $member_user->getFacebookId();
-                        if($facebook_id) {
-                            $picture_path = $facebook_id;
-                        }else{
-                            $picture_path = $member_user->getPicture()->getPath();
-                        } 
-                    }
-
-                    $group_members[] = array('id' => $m->getId(), 'name' => $m->getName(), 'picturePath' => $picture_path);
+                    $group_members[] = array('id' => $m->getId(), 'name' => $m->getName(), 'picturePath' => $m->getPicturePath());
                 }
-                $groups[] = array('id' => $group->getId(), 'name' => $group->getName(), 'currency' => $group->getCurrency()->getSymbol(), 'members' => $group_members, 'activeMember' => array('id' => $member->getId(), 'name' => $member->getName()));
+                $groups[] = array('id' => $group->getId(), 'name' => $group->getName(), 'currency' => $group->getCurrency()->getSymbol(), 'members' => $group_members, 'activeMember' => array('id' => $member->getId(), 'name' => $member->getName(), 'picturePath' => $member->getPicturePath()));
             }
             return new JsonResponse($groups);
         }
@@ -95,8 +86,12 @@ class ApiController extends Controller
     public function addGroupAction()
     {
         $user = $this->getUser();
+
+        
         $data = $this->getRequest()->query->all();
-        $currency = $ttDoctrine->getRepository('TkGroupBundle:Currency')->find($data['currency_id'])
+
+        
+        $currency = $this->getDoctrine()->getRepository('TkGroupBundle:Currency')->find($data['currency_id']);
         $group_name = $data['group_name'];
 
         if ($user and $currency and $group_name) {
@@ -122,7 +117,7 @@ class ApiController extends Controller
             $shoppinglist->setName('Shopping List');
             $shoppinglist->setGroup($group);
 
-            $em = $this->getDoctrine->getManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($todolist);
             $em->persist($shoppinglist);
             $em->persist($group);
