@@ -22,20 +22,23 @@ class APPChatController extends Controller
 
 	        	$messages = $group->getMessages();
 	        	foreach($messages as $message){
-	        		$message_array = array('author' => $message->getAuthor()->getName(),
+	        		$message_array = array('type'   => 'message',
+                                           'author' => $message->getAuthor()->getName(),
 	        							   'body'   => $message->getBody(),
-	        							   'time'   => $message->getTimestamp(),
-	        							   'type'   => 'message'
+	        							   'time'   => $message->getTimestamp()	        							   
 	        							   );
 	        		$messages_array[] = $message_array;
 	        	}
 	        	
 	        	$expenses = $group->getExpenses();
 	        	foreach($expenses as $expense){
-	        		$message_array = array('author' => $expense->getAuthor()->getName(),
-	        							   'body'   => $expense->getAuthor()->getName().' added an expense: '.$expense->getName().' - '.$expense->getAmount().''.$group->getCurrency()->getSymbol(),
+	        		$message_array = array('type'   => 'expense',
+                                           'author' => $expense->getAuthor()->getName(),
 	        							   'time'   => $expense->getAddedDate()->getTimestamp(),
-	        							   'type'   => 'expense'
+                                           'owner'  => $expense->getOwner()->getName(),
+                                           'amount' => $expense->getAmount(),
+                                           'name'   => $expense->getName(),
+                                           'share'  => 12,
 	        							   );
 	        		$messages_array[] = $message_array;
 	        	}

@@ -53,7 +53,7 @@ class Expenses {
     	return $other_expenses;
     }
 
-    private function forYou($member, $expense)
+    public function forYou($member, $expense)
     {
     	$members = $expense->getUsers()->toArray();
     	if(in_array($member, $members)){
