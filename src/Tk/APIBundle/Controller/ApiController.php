@@ -86,11 +86,8 @@ class ApiController extends Controller
     public function addGroupAction()
     {
         $user = $this->getUser();
-
-        
         $data = $this->getRequest()->query->all();
 
-        
         $currency = $this->getDoctrine()->getRepository('TkGroupBundle:Currency')->find($data['currency_id']);
         $group_name = $data['group_name'];
 
@@ -134,5 +131,25 @@ class ApiController extends Controller
         } else {
             return new JsonResponse(array('message' => 'Unidentified error'));
         }
+    }
+
+    public function getDashboardInfoAction()
+    {
+        $data = $this->getRequest()->query->all();
+        $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);
+        $group = $member->getTGroup();
+
+        $members = array();
+        foreach($group->getMembers() as $m) {
+            $members[] = array('id'          => $m->getId(),
+                               'name'        => $m->getName(),
+                               'picturePath' => $m->getPicturePath(),
+                               'balance'     => $m->getBalance()
+                                );
+        }
+
+        $dashboard = array('members' => $members,
+            'currentMemberId' => $data['currentMemberId']);
+        return new JsonResponse($dashboard);
     }
 }
