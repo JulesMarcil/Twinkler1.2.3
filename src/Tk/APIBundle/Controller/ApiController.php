@@ -133,6 +133,45 @@ class ApiController extends Controller
         }
     }
 
+    public function getExpensesAction()
+    {
+        $data = $this->getRequest()->query->all();
+        $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);
+        $group = $member->getTGroup();
+        $expenses = $group->getExpenses();
+
+        $response_array = array();
+
+        foreach($expenses as $expense){
+
+            $members = array();
+            foreach($expense->getUsers() as $m){
+                $members[] = array('id' => $m->getId(), 'name' => $m->getName(), 'picturePath' => $m->getPicturePath());
+            }
+
+            if ($expense->getOwner() == $member) {
+                $name = 'You';
+            } else {
+                $name = $expense->getOwner()->getName();
+            }
+
+            $response_item = array(
+                'name' => $expense->getName(),
+                'amount' => $expense->getAmount(),
+                'owner' => array('id' => $expense->getOwner()->getId(), 'name' => $name, 'picturePath' => $expense->getOwner()->getPicturePath()),
+                'date' => $expense->getDate()->getTimestamp(),
+                'members' => $members,
+                'active' => $expense->getActive(),
+                'author' => $expense->getAuthor()->getName(),
+                'addedDate' => $expense->getAddedDate()->getTimestamp(),
+                'share' => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
+                );
+            $response_array[] = $response_item;
+        }
+
+        return new JsonResponse(array('balance' => $member->getBalance(), 'expenses' => $response_array));
+    }
+
     public function getDashboardInfoAction()
     {
         $data = $this->getRequest()->query->all();

@@ -63,6 +63,18 @@ class Expenses {
     	}
     }
 
+    public function youGet($member, $expense)
+    {
+        $forYou = $this->forYou($member, $expense);
+        if ($expense->getOwner() == $member) {
+            $paid = $expense->getAmount();
+        } else {
+            $paid = 0;
+        }
+
+        return $paid - $forYou;
+    }
+
     public function getTotalPaid($group)
     {
         $all_expenses = $group->getExpenses();

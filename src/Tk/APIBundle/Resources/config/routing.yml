@@ -26,6 +26,10 @@ tk_api_groups_new:
     pattern: /api/add/group
     defaults: { _controller: TkAPIBundle:Api:addGroup }
 
+tk_api_expenses:
+    pattern: /api/expenses
+    defaults: { _controller: TkAPIBundle:Api:getExpenses }
+
 tk_api_dashboard:
     pattern: /api/dashboard
     defaults: { _controller: TkAPIBundle:Api:getDashboardInfo }
