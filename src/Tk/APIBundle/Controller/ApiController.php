@@ -46,10 +46,10 @@ class ApiController extends Controller
             }
 
             return new JsonResponse(array(
-                'id' => $user->getId(),
-                'name' => $user->getUsername(),
+                'id'           => $user->getId(),
+                'name'         => $user->getUsername(),
                 'friendNumber' => sizeof($user->getFriends()),
-                'picturePath' => $picture_path
+                'picturePath'  => $picture_path
             ));
         }
 
@@ -71,9 +71,18 @@ class ApiController extends Controller
                 $group = $member->getTGroup();
                 $group_members = array();
                 foreach($group->getMembers() as $m){
-                    $group_members[] = array('id' => $m->getId(), 'name' => $m->getName(), 'picturePath' => $m->getPicturePath());
+                    $group_members[] = array('id' => $m->getId(), 'name' => $m->getName(), 'picturePath' => $m->getPicturePath(), 'balance' => $m->getBalance());
                 }
-                $groups[] = array('id' => $group->getId(), 'name' => $group->getName(), 'currency' => $group->getCurrency()->getSymbol(), 'members' => $group_members, 'activeMember' => array('id' => $member->getId(), 'name' => $member->getName(), 'picturePath' => $member->getPicturePath()));
+                $groups[] = array('id'           => $group->getId(), 
+                                  'name'         => $group->getName(), 
+                                  'currency'     => array('id'     => $group->getCurrency()->getId(),
+                                                          'name'   => $group->getCurrency()->getName(),
+                                                          'symbol' => $group->getCurrency()->getSymbol()),
+                                  'members'      => $group_members, 
+                                  'activeMember' => array('id'          => $member->getId(), 
+                                                          'name'        => $member->getName(), 
+                                                          'picturePath' => $member->getPicturePath())
+                                );
             }
             return new JsonResponse($groups);
         }
@@ -83,13 +92,10 @@ class ApiController extends Controller
         ));
     }
 
-    public function addGroupAction()
+    public function addGroupAction($group_name, $currency_id)
     {
         $user = $this->getUser();
-        $data = $this->getRequest()->query->all();
-
-        $currency = $this->getDoctrine()->getRepository('TkGroupBundle:Currency')->find($data['currency_id']);
-        $group_name = $data['group_name'];
+        $currency = $this->getDoctrine()->getRepository('TkGroupBundle:Currency')->find($currency_id);
 
         if ($user and $currency and $group_name) {
 
@@ -97,6 +103,7 @@ class ApiController extends Controller
             $group->setDate(new \Datetime('now'));
             $group->setName($group_name);
             $group->setCurrency($currency);
+            $group->setInvitationToken($group->generateInvitationToken());
 
             $member = new Member();
             $member->setUser($user);
@@ -104,7 +111,6 @@ class ApiController extends Controller
             $member->setTGroup($group);
 
             $user->setCurrentMember($member);
-            $group->setInvitationToken($group->generateInvitationToken());
 
             $todolist = new Lists();
             $todolist->setName('Todo List');
@@ -121,16 +127,33 @@ class ApiController extends Controller
             $em->persist($member);
             $em->flush();
 
-            return new JsonResponse(array('message' => 'Group added successfully'));
-        } else if (!$user) {
-            return new JsonResponse(array('message' => 'User not found'));
-        } else if (!$currency) {
-            return new JsonResponse(array('message' => 'Currency not found'));
-        } else if (!$group_name) {
-            return new JsonResponse(array('message' => 'Group name not specified'));
+            return $group;
         } else {
-            return new JsonResponse(array('message' => 'Unidentified error'));
+            return null;
         }
+    }
+
+    public function postGroupAction()
+    {
+        $data = $this->getRequest()->request->all();
+
+        /*
+        if ($data['id'] == 0) {
+            //new group
+            $group = $this->addGroupAction($data['name'], $data['currency']);
+        } else {
+            //existing group
+            $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['id']);
+        }
+
+        $members = array();
+        foreach ($data['members'] as $member) {
+            $members[] = array('id'   => $member['id'],
+                               'name' => $member['name']);
+        }
+        */
+
+        return new JsonResponse($data['id']); 
     }
 
     public function getExpensesAction()
@@ -156,15 +179,15 @@ class ApiController extends Controller
             }
 
             $response_item = array(
-                'name' => $expense->getName(),
-                'amount' => $expense->getAmount(),
-                'owner' => array('id' => $expense->getOwner()->getId(), 'name' => $name, 'picturePath' => $expense->getOwner()->getPicturePath()),
-                'date' => $expense->getDate()->getTimestamp(),
-                'members' => $members,
-                'active' => $expense->getActive(),
-                'author' => $expense->getAuthor()->getName(),
+                'name'      => $expense->getName(),
+                'amount'    => $expense->getAmount(),
+                'owner'     => array('id' => $expense->getOwner()->getId(), 'name' => $name, 'picturePath' => $expense->getOwner()->getPicturePath()),
+                'date'      => $expense->getDate()->getTimestamp(),
+                'members'   => $members,
+                'active'    => $expense->getActive(),
+                'author'    => $expense->getAuthor()->getName(),
                 'addedDate' => $expense->getAddedDate()->getTimestamp(),
-                'share' => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
+                'share'     => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
                 );
             $response_array[] = $response_item;
         }

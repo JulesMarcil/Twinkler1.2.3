@@ -107,7 +107,7 @@ fos_facebook:
     app_id: %api_facebook_id%
     secret: %api_facebook_secret%
     cookie: true
-    permissions: [email, user_birthday, user_location]
+    permissions: [email]
 
 #FOSRestBundle
 fos_rest:
