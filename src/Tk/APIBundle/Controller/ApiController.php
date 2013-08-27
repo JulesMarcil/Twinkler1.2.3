@@ -12,12 +12,6 @@ use Tk\GroupBundle\Entity\TGroup,
 
 class ApiController extends Controller
 {
-    public function articlesAction()
-    {
-        $articles = array('article1', 'article2', 'article3');
-        return new JsonResponse($articles);
-    }
-
     public function userAction()
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -57,7 +51,6 @@ class ApiController extends Controller
         return new JsonResponse(array(
             'message' => 'User is not identified'
         ));
-
     }
 
     public function getGroupsAction()
@@ -80,25 +73,80 @@ class ApiController extends Controller
         ));
     }
 
-    public function addGroupAction($group_name, $currency_id)
+    public function postGroupAction(Request $request)
     {
-        $user = $this->getUser();
+        $data = $request->request->all();
+        $em = $this->getDoctrine()->getManager();
+
+        $group_id = $data['id'];
+        $group_name = $data['name'];
+        $currency_id = $data['currency'];
+        $add_members = $data['addMembers'];
+        $add_friends = $data['addFriends'];
+
+        if ($group_id == 0) {
+            //new group
+            $group = $this->addGroupAction($group_name, $currency_id);
+
+            $user = $this->getUser();
+
+            $member = new Member();
+            $member->setUser($user);
+            $member->setName($user->getUsername());
+            $member->setTGroup($group);
+            $user->setCurrentMember($member);
+            $em->persist($member);
+            $em->flush();
+
+        } else {
+            //existing group
+            $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
+            $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($data['activeMember']);
+        }
+
+        if ($group) {
+            foreach ($add_members as $name) {
+                if($name != '-1') {
+                    $m = new Member();
+                    $m->setName($name);
+                    $m->setTGroup($group);
+                    $m->setInvitationToken($member->generateInvitationToken());
+                    $em->persist($m);
+                }
+            }
+
+            foreach ($add_friends as $id) {
+                if($id != '-1') {
+                    $u = $this->getDoctrine()->getRepository('TkUserBundle:User')->find($id);
+
+                    $m = new Member();
+                    $m->setUser($u);
+                    $m->setName($u->getUsername());
+                    $m->setTGroup($group);
+                    $u->setCurrentMember($m);
+                    $em->persist($m);
+                }
+            }
+
+            $em->flush();
+
+            return new JsonResponse($this->returnGroupAction($group, $member));
+        } else {
+            return new JsonResponse(array('message' => 'error in code, no group created or found'));
+        }
+    }
+
+    private function addGroupAction($group_name, $currency_id)
+    {
         $currency = $this->getDoctrine()->getRepository('TkGroupBundle:Currency')->find($currency_id);
 
-        if ($user and $currency and $group_name) {
+        if ($currency) {
 
             $group = new TGroup();
             $group->setDate(new \Datetime('now'));
             $group->setName($group_name);
             $group->setCurrency($currency);
             $group->setInvitationToken($group->generateInvitationToken());
-
-            $member = new Member();
-            $member->setUser($user);
-            $member->setName($user->getUsername());
-            $member->setTGroup($group);
-
-            $user->setCurrentMember($member);
 
             $todolist = new Lists();
             $todolist->setName('Todo List');
@@ -112,7 +160,6 @@ class ApiController extends Controller
             $em->persist($todolist);
             $em->persist($shoppinglist);
             $em->persist($group);
-            $em->persist($member);
             $em->flush();
 
             return $group;
@@ -121,39 +168,6 @@ class ApiController extends Controller
         }
     }
 
-    public function postGroupAction(Request $request)
-    {
-        $data = $request->request->all();
-
-        $group_id = $data['id'];
-        $group_name = $data['name'];
-        $currency_id = $data['currency'];
-        $add_members = $data['addMembers'];
-
-        if ($group_id == 0) {
-            //new group
-            $group = $this->addGroupAction($group_name, $currency_id);
-        } else {
-            //existing group
-            $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
-        }
-
-        if ($group) {
-
-            $em = $this->getDoctrine()->getManager();
-
-            foreach ($add_members as $name) {
-                $member = new Member();
-                $member->setName($name);
-                $member->setTGroup($group);
-                $member->setInvitationToken($member->generateInvitationToken());
-                $em->persist($member);
-            }
-            $em->flush();
-        }
-
-        return new JsonResponse($this->returnGroupAction($group, $member)); 
-    }
     private function returnGroupAction($group, $member)
     {
         $group_members = array();
@@ -173,6 +187,22 @@ class ApiController extends Controller
                                              'name'        => $member->getName(), 
                                              'picturePath' => $member->getPicturePath())
                     );
+    }
+
+    public function getFriendsAction()
+    {
+        $user = $this->getUser();
+        $friends = $user->getFriends();
+        $friends_array = array();
+
+        foreach($friends as $friend) {
+            $friends_array[] = array('id' => $friend->getId(),
+                                     'name' => $friend->getUsername(),
+                                     'picturePath' => $friend->getMembers()->first()->getPicturePath()
+                                     );
+        }
+
+        return new JsonResponse($friends_array);
     }
 
     public function getExpensesAction()
