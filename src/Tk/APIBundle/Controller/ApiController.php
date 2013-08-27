@@ -3,6 +3,7 @@
 namespace Tk\APIBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\JsonResponse;
 
 use Tk\GroupBundle\Entity\TGroup,
@@ -69,20 +70,7 @@ class ApiController extends Controller
 
             foreach($members as $member){
                 $group = $member->getTGroup();
-                $group_members = array();
-                foreach($group->getMembers() as $m){
-                    $group_members[] = array('id' => $m->getId(), 'name' => $m->getName(), 'picturePath' => $m->getPicturePath(), 'balance' => $m->getBalance());
-                }
-                $groups[] = array('id'           => $group->getId(), 
-                                  'name'         => $group->getName(), 
-                                  'currency'     => array('id'     => $group->getCurrency()->getId(),
-                                                          'name'   => $group->getCurrency()->getName(),
-                                                          'symbol' => $group->getCurrency()->getSymbol()),
-                                  'members'      => $group_members, 
-                                  'activeMember' => array('id'          => $member->getId(), 
-                                                          'name'        => $member->getName(), 
-                                                          'picturePath' => $member->getPicturePath())
-                                );
+                $groups[] = $this->returnGroupAction($group, $member);
             }
             return new JsonResponse($groups);
         }
@@ -133,27 +121,58 @@ class ApiController extends Controller
         }
     }
 
-    public function postGroupAction()
+    public function postGroupAction(Request $request)
     {
-        $data = $this->getRequest()->request->all();
+        $data = $request->request->all();
 
-        /*
-        if ($data['id'] == 0) {
+        $group_id = $data['id'];
+        $group_name = $data['name'];
+        $currency_id = $data['currency'];
+        $add_members = $data['addMembers'];
+
+        if ($group_id == 0) {
             //new group
-            $group = $this->addGroupAction($data['name'], $data['currency']);
+            $group = $this->addGroupAction($group_name, $currency_id);
         } else {
             //existing group
-            $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['id']);
+            $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
         }
 
-        $members = array();
-        foreach ($data['members'] as $member) {
-            $members[] = array('id'   => $member['id'],
-                               'name' => $member['name']);
-        }
-        */
+        if ($group) {
 
-        return new JsonResponse($data['id']); 
+            $em = $this->getDoctrine()->getManager();
+
+            foreach ($add_members as $name) {
+                $member = new Member();
+                $member->setName($name);
+                $member->setTGroup($group);
+                $member->setInvitationToken($member->generateInvitationToken());
+                $em->persist($member);
+            }
+            $em->flush();
+        }
+
+        return new JsonResponse($this->returnGroupAction($group, $member)); 
+    }
+    private function returnGroupAction($group, $member)
+    {
+        $group_members = array();
+        foreach($group->getMembers() as $m){
+            $group_members[] = array('id'          => $m->getId(), 
+                                     'name'        => $m->getName(), 
+                                     'picturePath' => $m->getPicturePath(), 
+                                     'balance'     => $m->getBalance());
+        }
+        return array('id'           => $group->getId(), 
+                     'name'         => $group->getName(), 
+                     'currency'     => array('id'     => $group->getCurrency()->getId(),
+                                             'name'   => $group->getCurrency()->getName(),
+                                             'symbol' => $group->getCurrency()->getSymbol()),
+                     'members'      => $group_members, 
+                     'activeMember' => array('id'          => $member->getId(), 
+                                             'name'        => $member->getName(), 
+                                             'picturePath' => $member->getPicturePath())
+                    );
     }
 
     public function getExpensesAction()
