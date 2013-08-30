@@ -76,8 +76,12 @@
 					<a id="only-mine-button">only mine</a>
 				</div>
 				<div id="expense-summary">
-					You paid: {{ total_paid_by_me }}{{ currency }}
-					- Your due share: {{ total_paid_supposed}}{{ currency }}				
+					You paid {{ total_paid_by_me }}{{ currency }} -
+					{% if total_balance >= 0 %}
+					You get {{ total_balance }}{{ currency }}	
+					{% else %}
+					You owe {{ -total_balance}}{{ currency }}	
+					{% endif %} 
 				</div>		
 			</div>
 
@@ -142,14 +146,38 @@
 								{% endif %}
 								<div class="expense-details">								
 									<div style="color:rgb(140,140,140);">
-										<font style="color:#fb786b;">{{ expense[0].owner.name }} </font>paid <font style="color:#0088CC;">{{ expense[0].amount }} {{ currency }}</font> for <font style="color:#fb786b;">{{ expense[0].name }}</font> 
+										<font style="color:#fb786b;">
+											{% if expense[0].owner.user == app.user %}
+											You
+											{% else %}
+											{{ expense[0].owner.name }} 
+											{% endif %}
+										</font>
+										paid 
+										<font style="color:#0088CC;">
+											{{ expense[0].amount }} {{ currency }}
+										</font> 
+										for 
+										<font style="color:#fb786b;">
+											{{ expense[0].name }}
+										</font> 
 									</div>
 									<div style"text-align: middle;">
 										<p style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">Friends involved: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</p>
 									</div>
 								</div>
 								<div class="your-share">
-									Your share: <font style="color:rgb(153,179,53);">{{ expense[1] }} {{ currency }}</font>
+									{% if expense[0].owner.user == app.user %}
+									<font style="color:rgb(153,179,53);">
+										You get 
+										{{ expense[1] }} {{ currency }}
+									</font>
+									{% else %}
+									You owe
+									<font style="color:#fb786b;">
+										{{ -expense[1] }} {{ currency }}
+									</font>
+									{% endif %}
 								</div>
 								<div class="edit-remove-buttons">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{expense[0].id}}"><i class="icon-edit"></i></a>
