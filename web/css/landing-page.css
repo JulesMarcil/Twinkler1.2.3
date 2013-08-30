@@ -7,12 +7,6 @@ body{
 	padding: 0;
 }
 
-@media only screen and (max-width: 767px) {
-	.header-collapse{
-		display: none;
-	}
-}
-
 h1, h2{
 	font-family:HelveticaNeueMdCn, 'HelveticaNeueW01-67MdCn 692710', Helvetica, sans-serif;
 	font-weight:normal;
@@ -66,7 +60,14 @@ strong{
 	margin-right: 40px;
 }
 
+#login-register span{
+	vertical-align: bottom;
+}
+
 @media only screen and (max-width: 767px) {
+	.header-collapse{
+		display: none;
+	}
 	#login-register{
 		margin-right: 0px;
 		padding-left: 0;
