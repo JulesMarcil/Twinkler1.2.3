@@ -10,13 +10,16 @@
 	<div class="row">
 		<div class="span4">
 		</div>
-		<div class="span4" style="text-align: center; padding-top: 30px; padding-bottom: 30px;">
+		<div class="span4" style="text-align: center; padding-top: 30px; padding-bottom: 10px;">
 			<div class="member">
 				{% if app.user.facebookId %}
 				<img class="img-circle" src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=200&height=200" width="70px" alt="profile picture"/>
 				{% else %}
 				<a href="#uploadPictureModal" role="button"	 data-toggle="modal">
 					<img class="img-circle" src="{{ asset(app.user.picture.path) }}" width="70px" alt="profile picture"/>
+					<div style="margin-top: 10px; color: #C8C8C8">
+						<small>Click to change your profile picture</small>
+					</div>
 				</a>
 				{% endif %}
 			</div>
@@ -66,6 +69,14 @@
 			
 			<div style="padding-top:0px; border-top: solid 1px #eaedf2; margin-bottom: 20px;">	
 				{% block profile %}
+				<div class="profile-info">
+				 	<div class="info-icon">
+				 		<i class="icon-bookmark icon-large"></i>
+				 	</div>
+				 	<div class="info-text">
+				 		<p> {{ app.user }}</p>
+				 	</div>
+				 </div>
 				{% if app.user.firstname != null or app.user.lastname != null %}
 				 <div class="profile-info">
 				 	<div class="info-icon">
