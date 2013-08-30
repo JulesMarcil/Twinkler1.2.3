@@ -36,7 +36,18 @@
 		<div id="group" class="span8 offset2">
 			<div id="pictures">
 				{% for member in group.members %}
-				{% if member.user %}
+				{% if member.user == app.user %}
+				<a href="{{ path('tk_user_homepage') }}">
+				<div class="member">
+					{% if member.user.facebookId %}
+					<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+					{% else %}
+					<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+					{% endif %}
+					<p style="color: rgb(121,136,151);text-shadow:  white 0px 1px 0px;">{{ member.name }}</p>
+				</div> 
+				</a>
+				{% elseif member.user %}
 				<div class="member">
 					{% if member.user.facebookId %}
 					<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
