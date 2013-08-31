@@ -74,7 +74,9 @@ class ExpenseController extends Controller
         		$em->flush();
 
                 foreach($expense->getUsers() as $member){
-                    if($member->getUser()){
+                    if ($member->getUser() == $this->getUser()){
+                        $email = null;
+                    } else if($member->getUser()){
                         $email = $member->getUser()->getEmail();
                     }else if($member->getEmail()){
                         $email = $member->getEmail();
@@ -84,7 +86,7 @@ class ExpenseController extends Controller
                     if($email){
                         $message = \Swift_Message::newInstance()
                             ->setSubject($expense->getAuthor()->getName().' tagged you in an expense on Twinkler')
-                            ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                            ->setFrom(array('noreply@twinkler.co' => 'Twinkler'))
                             ->setTo($email)
                             ->setContentType('text/html')
                             ->setBody($this->renderView(':emails:addExpense.email.twig', array('expense' => $expense, 'member' => $member)));
