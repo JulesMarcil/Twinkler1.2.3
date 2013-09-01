@@ -89,7 +89,7 @@ class ExpenseController extends Controller
                             ->setFrom(array('noreply@twinkler.co' => 'Twinkler'))
                             ->setTo($email)
                             ->setContentType('text/html')
-                            ->setBody($this->renderView(':emails:addExpense.email.twig', array('expense' => $expense, 'member' => $member)));
+                            ->setBody($this->renderView(':emails:addExpense.email.twig', array('expense' => $expense, 'member' => $member, 'share' => $this->container->get('tk_expense.expenses')->youGet($member, $expense))));
                         $this->get('mailer')->send($message);
                     }
                 }
