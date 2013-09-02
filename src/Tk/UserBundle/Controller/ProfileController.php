@@ -4,15 +4,17 @@ namespace Tk\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response,
+    Symfony\Component\HttpFoundation\JsonResponse,
     Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JMS\Serializer\Annotation\ExclusionPolicy,
     JMS\Serializer\Annotation\Exclude;
 
-use Tk\UserBundle\Entity\User;
-use Tk\UserBundle\Form\UserType;
-use Tk\UserBundle\Form\UsernameType;
-use Tk\UserBundle\Entity\ProfilePicture;
+use Tk\UserBundle\Entity\User,
+    Tk\UserBundle\Form\UserType,
+    Tk\UserBundle\Form\UsernameType,
+    Tk\UserBundle\Entity\ProfilePicture,
+    Tk\UserBundle\Entity\Member;
 
 class ProfileController extends Controller
 {
@@ -139,5 +141,21 @@ class ProfileController extends Controller
         return $this->render('TkUserBundle:Profile:picture-form.html.twig', array(
             'form' => $form->createView(),
                 ));
+    }
+
+    public function modalProfileAction($id)
+    {
+        $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($id);
+        $user = $member->getUser();
+
+        if ($user) {
+            return $this->render('TkUserBundle:Profile:userProfileModal.html.twig', array(
+            'user' => $user,
+                ));
+        } else {
+            return $this->render('TkUserBundle:Profile:memberProfileModal.html.twig', array(
+            'member' => $member,
+                ));
+        }
     }
 }

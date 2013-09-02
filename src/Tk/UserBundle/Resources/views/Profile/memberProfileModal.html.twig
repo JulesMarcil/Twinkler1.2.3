@@ -1,0 +1,45 @@
+<div style="text-align: center">
+	<div style="display: block">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
+	</div>
+	<div class="member">
+		<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
+	</div>
+	<div>
+		<div class="flat-header" style="border-radius: 0">
+			<h3>{{ member.name }}</h3>
+		</div>
+		<div>
+			{% if member.email %}
+			<p>An invitation email was sent to <b>{{ member.email }}</b><br>but your friend did not respond to it yet</p>
+			{% else %}
+			<p>Enter the email of {{ member.name }} to invite her/him to register on Twinkler</p>
+			{% endif %}
+			<input id="email-input" placeholder="Enter an email"></input>
+			<button id="send-email-button" class="btn btn-success" type="submit">Send invitation</button>
+			<div id="member-modal-flash-messages"></div>
+			<p style="margin-top: 20px"><b>or</b><br><br>share directly this link with {{ member.name }}</p>
+			<input style="width: 60%; margin: auto; margin-bottom: 20px;" value="http://www.twinkler.co/invitation/{{member.tgroup.id}}/{{member.tgroup.invitationToken}}"/>
+		</div>
+	</div>
+</div>
+
+<script language="javascript">
+$(document).ready(function() {
+/* --- Send new invitation email in member modal --- */
+	$("#send-email-button").on("click", function(e){
+		e.preventDefault();
+		var email = document.getElementById('email-input').value;
+		var filter = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		if (filter.test(email)) {
+			$.get('invitation/'+{{member.id}}+'/'+email+'', function(response){
+				$("#memberProfileModal").modal('hide');
+				$("#group-flash-messages").html('<div class="alert" style="width: 100%; height: 20px; margin:auto; margin-top: 10px; margin-bottom: 10px;"><button type="button" class="close" data-dismiss="alert">&times;</button><p>An invitation email was sent to <b>'+response.email+'</b></p></div>');
+			});
+		} else {
+			$("#member-modal-flash-messages").html('<div class="alert alert-danger" style="width: 50%; height: 20px; margin:auto; margin-top: 10px;"><button type="button" class="close" data-dismiss="alert">&times;</button><p>Please enter a valid email</p></div>');
+		}
+	});
+});
+
+</script>

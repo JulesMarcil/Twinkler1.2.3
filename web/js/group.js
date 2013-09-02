@@ -12,7 +12,6 @@ var addScrollOnChart=function(){
 
 /*--------CHARTS--------*/
 
-
 var graphColor=function(graphData){
 	var chartColor=[];
 	for(var i=0; i<graphData.length;i++){
@@ -82,9 +81,11 @@ var loadChart=function(){
 	});
 }
 
-/* --- Group members picture toggle --- */
+/* HEADER ACTIONS */
 
 $(document).ready(function() { 
+
+	/* --- Group members picture toggle --- */
 	$("#second-row-big").on("click", "#toggle-button", function(){
 		$(this).closest("#second-row-big").find("#pictures").slideToggle();
     	if($(this).text() === 'hide members'){
@@ -92,9 +93,16 @@ $(document).ready(function() {
     	}else{
     		$(this).text('hide members');
     	}
-    })
-});
+    });
 
+	/* --- Group members show profile in modal --- */
+	$("a[data-target=memberProfileModal]").on("click", function(e){
+		e.preventDefault();
+		$.get('modal/profile/'+$(this).data('id'), function(response){
+			$("#memberProfileModal").html(response).modal('show');
+		});
+	});
+});
 
 window.onresize =function() {
 	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-65+'px');

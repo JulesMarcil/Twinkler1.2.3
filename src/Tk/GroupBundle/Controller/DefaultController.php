@@ -3,6 +3,7 @@
 namespace Tk\GroupBundle\Controller;
 
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Tk\GroupBundle\Entity\TGroup;
 use Tk\GroupBundle\Form\TGroupType;
@@ -307,8 +308,27 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('tk_group_homepage'));
     }
 
-    public function sendReminderEmailAction()
-    {
+    public function emailFormAction($id, $email)
+    {   
+        $user= $this->getUser();
+        $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($id);
+        $member->setEmail($email);
 
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($member);
+        $em->flush();
+
+        $mailer = $this->get('mailer');
+        $message = \Swift_Message::newInstance();
+                $message->setSubject($user.' sent you an invitation on Twinkler')
+                        ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                        ->setTo($member->getEmail())
+                        ->setContentType('text/html')
+                        ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('invited' => $member, 'member' => $user->getCurrentMember())))
+                ;
+                $mailer->send($message);
+
+        return new jsonResponse(array('email' => $email));
+             
     }
 }

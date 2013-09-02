@@ -1,0 +1,52 @@
+<div style="text-align: center">
+	<div style="display: block">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
+	</div>
+	<div class="member">
+		{% if user.facebookId %}
+		<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ user }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
+		{% else %}
+		<img src="{{ asset(user.picture.path) }}" class="img-circle" alt="{{ user }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
+		{% endif %}
+	</div>
+	<div>
+		<div class="flat-header" style="border-radius: 0">
+			<h3>{{ user }}</h3>
+		</div>
+		<div>
+			<div style="display: inline-block; text-align: left">
+				<i class="icon-thumbs-up-alt icon-large"></i>
+				{{ user.members|length }} Groups
+			</div>
+			<div style="display: inline-block">
+				<i class="icon-smile icon-large"></i>
+				{{ user.friends|length }} Friends
+			</div>
+		</div>
+		<div>
+			<table style="margin-left:auto; margin-right: auto; margin-top: 20px; margin-bottom: 20px;">
+				<tbody>
+				 	<tr>
+				 		<td style="width: 50px;"><i class="icon-bookmark icon-large"></i></td>
+				 		<td>{{ user }}</td>
+				 	</tr>
+					{% if user.firstname != null or user.lastname != null %}
+				 	<tr>
+				 		<td><i class="icon-user icon-large"></i></td>
+				 		<td>{{ user.firstname }} {{ user.lastname }}</td>
+				 	</tr>
+					{% else %}
+				 	<tr>
+				 		<td><i class="icon-user icon-large"></i></td>
+				 		<td>No name specified</td>
+				 	</tr>
+					{% endif %}
+				 	<tr>
+				 		<td><i class="icon-envelope icon-large"></i></td>
+					 	<td>{{ user.email }}</td>
+				 	</tr>
+			 	</tbody>
+			</table>
+		</div>
+	</div>
+</div>

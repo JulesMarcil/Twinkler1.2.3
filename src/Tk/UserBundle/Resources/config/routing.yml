@@ -13,3 +13,7 @@ tk_user_username_edit:
 tk_user_profilepicture_edit:
     pattern:  /picture/upload
     defaults: { _controller: TkUserBundle:Profile:editProfilePicture }
+
+tk_user_modal:
+    pattern:  /group/modal/profile/{id}
+    defaults: { _controller: TkUserBundle:Profile:modalProfile }
