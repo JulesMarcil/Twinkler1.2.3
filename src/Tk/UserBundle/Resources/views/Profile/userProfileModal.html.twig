@@ -1,4 +1,6 @@
-<div style="text-align: center">
+ <link href="{{ asset('css/user-info.css') }}" rel="stylesheet" type="text/css">
+
+<div style="text-align: center;">
 	<div style="display: block">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
 	</div>
@@ -13,40 +15,39 @@
 		<div class="flat-header" style="border-radius: 0">
 			<h3>{{ user }}</h3>
 		</div>
-		<div>
-			<div style="display: inline-block; text-align: left">
-				<i class="icon-thumbs-up-alt icon-large"></i>
-				{{ user.members|length }} Groups
-			</div>
-			<div style="display: inline-block">
-				<i class="icon-smile icon-large"></i>
-				{{ user.friends|length }} Friends
-			</div>
-		</div>
-		<div>
-			<table style="margin-left:auto; margin-right: auto; margin-top: 20px; margin-bottom: 20px;">
-				<tbody>
-				 	<tr>
-				 		<td style="width: 50px;"><i class="icon-bookmark icon-large"></i></td>
-				 		<td>{{ user }}</td>
-				 	</tr>
+
+		<div style="padding-top:0px; border-top: solid 1px #eaedf2; margin-bottom: 20px;">	
+			<div class="profile-info">
+			 	<div class="info-icon">
+			 		<i class="icon-bookmark icon-large"></i>
+			 		Username
+			 	</div>
+			 	<div class="info-text">
+			 		<p> {{ user }}</p>
+			 	</div>
+			 </div>
+			 <div class="profile-info">
+			 	<div class="info-icon">
+			 		<i class="icon-user icon-large"></i>
+			 		Full name
+			 	</div>
+			 	<div class="info-text">
 					{% if user.firstname != null or user.lastname != null %}
-				 	<tr>
-				 		<td><i class="icon-user icon-large"></i></td>
-				 		<td>{{ user.firstname }} {{ user.lastname }}</td>
-				 	</tr>
-					{% else %}
-				 	<tr>
-				 		<td><i class="icon-user icon-large"></i></td>
-				 		<td>No name specified</td>
-				 	</tr>
-					{% endif %}
-				 	<tr>
-				 		<td><i class="icon-envelope icon-large"></i></td>
-					 	<td>{{ user.email }}</td>
-				 	</tr>
-			 	</tbody>
-			</table>
+			 		<p>{{ user.firstname }} {{ user.lastname }} </p>
+			 		{% else %}
+			 		<p> Not specified </p>
+			 		{% endif %}
+			 	</div>
+			 </div>
+			<div class="profile-info">
+			 	<div class="info-icon">
+			 		<i class="icon-envelope icon-large"></i>
+			 		Email
+			 	</div>
+			 	<div class="info-text">
+			 		<p> {{ user.email }}</p>
+			 	</div>
+			 </div>
 		</div>
 	</div>
 </div>
