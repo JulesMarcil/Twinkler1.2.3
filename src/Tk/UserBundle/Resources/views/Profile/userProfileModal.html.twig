@@ -13,8 +13,23 @@
 	</div>
 	<div>
 		<div class="flat-header" style="border-radius: 0">
-			<h3>{{ user }}</h3>
+			<h3>{{ user|capitalize }}</h3>
 		</div>
+
+		<div id="profile-stats">
+				<div class="info-icon">
+					<i class="icon-thumbs-up-alt icon-large"></i>
+				</div>
+				<div class="info-text" style="margin-right: 2%;">
+					{{ app.user.members|length }} Groups
+				</div>
+				<div class="info-icon">
+					<i class="icon-smile icon-large"></i>
+				</div>
+				<div class="info-text">
+					{{ app.user.friends|length }} Friends
+				</div>
+			</div>
 
 		<div style="padding-top:0px; border-top: solid 1px #eaedf2; margin-bottom: 20px;">	
 			<div class="profile-info">

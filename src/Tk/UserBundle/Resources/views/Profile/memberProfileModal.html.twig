@@ -7,7 +7,7 @@
 	</div>
 	<div>
 		<div class="flat-header" style="border-radius: 0">
-			<h3>{{ member.name }}</h3>
+			<h3>{{ member.name|capitalize }} <small>(virtual member)</small></h3>
 		</div>
 		<div>
 			{% if member.email %}
