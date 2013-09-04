@@ -9,10 +9,12 @@ tk_api_profile:
 tk_api_groups:
     pattern: /api/groups
     defaults: { _controller: TkAPIBundle:Api:getGroups }
-
 tk_api_groups_post:
     pattern: /api/post/group
     defaults: { _controller: TkAPIBundle:Api:postGroup }
+tk_api_close_group:
+   pattern: /api/group/close
+   defaults: { _controller: TkAPIBundle:Api:closeGroup }
 
 tk_api_friends:
     pattern: /api/friends
@@ -33,3 +35,7 @@ tk_api_facebook_token:
 tk_api_register:
     pattern: /app/register
     defaults: { _controller: TkAPIBundle:OAuth:appRegister }
+
+tk_api_feedback:
+    pattern: /api/feedback
+    defaults: { _controller: TkAPIBundle:Api:postFeedback }

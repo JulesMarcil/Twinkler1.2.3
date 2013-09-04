@@ -337,4 +337,25 @@ class Member
     {
         return $this->active;
     }
+
+    /**
+    *Get Picture Path
+    *
+    *@return string
+    */
+    public function getPicturePath()
+    {
+        $picture_path = 'local';
+        $member_user = $this->getUser();
+        if($member_user){
+            $facebook_id = $member_user->getFacebookId();
+            if($facebook_id) {
+                $picture_path = $facebook_id;
+            }else{
+                $picture_path = $member_user->getPicture()->getPath();
+            } 
+        }
+
+        return $picture_path;
+    }
 }

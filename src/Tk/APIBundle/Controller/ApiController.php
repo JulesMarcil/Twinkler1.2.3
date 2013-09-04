@@ -8,7 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 
 use Tk\GroupBundle\Entity\TGroup,
     Tk\UserBundle\Entity\Member,
-    Tk\ListBundle\Entity\Lists;
+    Tk\ListBundle\Entity\Lists,
+    Tk\UserBundle\Entity\Feedback;
 
 class ApiController extends Controller
 {
@@ -185,8 +186,41 @@ class ApiController extends Controller
                      'members'      => $group_members, 
                      'activeMember' => array('id'          => $member->getId(), 
                                              'name'        => $member->getName(), 
-                                             'picturePath' => $member->getPicturePath())
+                                             'picturePath' => $member->getPicturePath()),
+                     'link'         => $group->getInvitationToken()
                     );
+    }
+
+    public function closeGroupAction()
+    {
+        $data = $this->getRequest()->query->all();
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $member = $em->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);
+        $group = $member->getTGroup();
+
+        if ($group) {
+            foreach($group->getMembers() as $member){
+                $this->removeMemberAction($member, $em);
+            }               
+            return new JsonResponse(array('message' => 'group '.$group->getName().' closed successfully'));
+        } else {
+            return new JsonResponse(array('message' => 'group not found'));   
+        }
+    }
+
+    private function removeMemberAction($member, $em)
+    {
+        if($member->getUser()){
+            $member->getUser()->setCurrentMember(null);
+        }
+        $n = sizeof($member->getMyExpenses()) + sizeof($member->getForMeExpenses());
+        if ($n == 0){
+            $em->remove($member);
+        }else{
+            $member->setActive(false);
+        }
+        $em->flush();
     }
 
     public function getFriendsAction()
@@ -262,5 +296,29 @@ class ApiController extends Controller
         $dashboard = array('members' => $members,
             'currentMemberId' => $data['currentMemberId']);
         return new JsonResponse($dashboard);
+    }
+
+    public function postFeedbackAction()
+    {
+        $data = $this->getRequest()->request->all();
+
+        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['group_id']);
+
+        if ($group) {
+            $feedback = new Feedback();
+            $feedback->setAuthor($this->getUser());
+            $feedback->setGroup($group);
+            $feedback->setType($data['type']);
+            $feedback->setText($data['text']);
+            $feedback->setDate(new \Datetime('now'));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($feedback);
+            $em->flush();
+
+            return new JsonResponse(array('message' => 'feedback added succesfully'));
+        } else {
+            return new JsonResponse(array('message' => 'group not found'));
+        }
     }
 }
