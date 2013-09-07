@@ -29,16 +29,6 @@ appexpenses:
     resource: Tk\ExpenseBundle\Controller\APPExpenseController
     prefix: /group/app/
 
-applists:
-    type: rest
-    resource: Tk\ListBundle\Controller\APPListController
-    prefix: /group/app/
-
-appitems:
-    type: rest
-    resource: Tk\ListBundle\Controller\APPItemController
-    prefix: /group/
-
 items:
     type: rest
     resource: Tk\ListBundle\Controller\ItemsController

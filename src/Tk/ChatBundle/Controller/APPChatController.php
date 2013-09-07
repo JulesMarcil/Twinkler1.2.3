@@ -34,13 +34,20 @@ class APPChatController extends Controller
 	        	
 	        	$expenses = $group->getExpenses();
 	        	foreach($expenses as $expense){
+
+                    if ($expense->getOwner() == $member) {
+                        $name = 'You';
+                    } else {
+                        $name = $expense->getOwner()->getName();
+                    }
+
 	        		$message_array = array('type'        => 'expense',
                                            'author'      => $expense->getAuthor()->getName(),
 	        							   'time'        => $expense->getAddedDate()->getTimestamp(),
-                                           'owner'       => $expense->getOwner()->getName(),
+                                           'owner'       => $name,
                                            'amount'      => $expense->getAmount(),
                                            'name'        => $expense->getName(),
-                                           'share'       => $this->container->get('tk_expense.expenses')->forYou($member, $expense),
+                                           'share'       => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
                                            'picturePath' => $expense->getOwner()->getPicturePath()
 	        							   );
 	        		$messages_array[] = $message_array;

@@ -23,6 +23,19 @@ tk_api_friends:
 tk_api_expenses:
     pattern: /api/expenses
     defaults: { _controller: TkAPIBundle:Api:getExpenses }
+tk_api_expense:
+    pattern: /api/post/expense
+    defaults: { _controller: TkAPIBundle:Api:postExpense }
+tk_api_expense_delete:
+    pattern: /api/delete/expense
+    defaults: { _controller: TkAPIBundle:Api:deleteExpense }
+
+tk_api_lists:
+    pattern: /api/lists
+    defaults: { _controller: TkAPIBundle:Api:getLists }
+tk_api_post_item:
+    pattern: /api/post/item
+    defaults: { _controller: TkAPIBundle:Api:postItem }
 
 tk_api_dashboard:
     pattern: /api/dashboard

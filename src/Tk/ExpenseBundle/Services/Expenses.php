@@ -72,7 +72,7 @@ class Expenses {
             $paid = 0;
         }
 
-        return $paid - $forYou;
+        return round($paid - $forYou, 2);
     }
 
     public function getTotalPaid($group)
