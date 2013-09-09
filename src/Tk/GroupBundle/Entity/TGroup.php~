@@ -69,6 +69,16 @@ class TGroup
     protected $messages;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->expenses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -162,15 +172,6 @@ class TGroup
         }
 
     return $key;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->expenses = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -350,5 +351,38 @@ class TGroup
     public function getLists()
     {
         return $this->lists;
+    }
+
+    /**
+     * Add messages
+     *
+     * @param \Tk\ChatBundle\Entity\Message $messages
+     * @return TGroup
+     */
+    public function addMessage(\Tk\ChatBundle\Entity\Message $messages)
+    {
+        $this->messages[] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Remove messages
+     *
+     * @param \Tk\ChatBundle\Entity\Message $messages
+     */
+    public function removeMessage(\Tk\ChatBundle\Entity\Message $messages)
+    {
+        $this->messages->removeElement($messages);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessages()
+    {
+        return $this->messages;
     }
 }

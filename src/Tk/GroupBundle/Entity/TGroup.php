@@ -69,6 +69,16 @@ class TGroup
     protected $messages;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->expenses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -162,15 +172,6 @@ class TGroup
         }
 
     return $key;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->expenses = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

@@ -38,6 +38,24 @@ class Lists
      */
     protected $items;
 
+        /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    protected $date;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
+    }
+
     /**
      * Get id
      *
@@ -69,5 +87,78 @@ class Lists
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Tk\GroupBundle\Entity\TGroup $group
+     * @return Lists
+     */
+    public function setGroup(\Tk\GroupBundle\Entity\TGroup $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Tk\GroupBundle\Entity\TGroup 
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Add items
+     *
+     * @param \Tk\ListBundle\Entity\Item $items
+     * @return Lists
+     */
+    public function addItem(\Tk\ListBundle\Entity\Item $items)
+    {
+        $this->items[] = $items;
+
+        return $this;
+    }
+
+    /**
+     * Remove items
+     *
+     * @param \Tk\ListBundle\Entity\Item $items
+     */
+    public function removeItem(\Tk\ListBundle\Entity\Item $items)
+    {
+        $this->items->removeElement($items);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItems()
+    {
+        $all_items = $this->items;
+        $items = new \Doctrine\Common\Collections\ArrayCollection(); 
+        foreach($all_items as $item){
+            if($item->getStatus() == 'complete' or $item->getStatus() == 'incomplete'){
+                $items->add($item);
+            }
+        }
+        return $items;
+    }
+
+    /**
+     * Get all items
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAllItems()
+    {
+        return $this->items;
     }
 }

@@ -67,6 +67,13 @@ class User extends BaseUser
     protected $currentMember;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    protected $date;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -85,6 +92,7 @@ class User extends BaseUser
         $this->myExpenses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ForMeExpenses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = array('ROLE_USER');
+        $this->setDate(new \DateTime('now'));
     }
 
     /**
@@ -299,5 +307,28 @@ class User extends BaseUser
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return User
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

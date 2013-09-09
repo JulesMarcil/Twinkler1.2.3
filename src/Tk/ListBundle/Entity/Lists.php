@@ -38,6 +38,22 @@ class Lists
      */
     protected $items;
 
+        /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    protected $date;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setDate(new \DateTime('now'));
+    }
+
     /**
      * Get id
      *
@@ -69,13 +85,6 @@ class Lists
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -149,5 +158,28 @@ class Lists
     public function getAllItems()
     {
         return $this->items;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Lists
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

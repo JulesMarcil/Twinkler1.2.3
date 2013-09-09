@@ -6,16 +6,9 @@
 	<div class="span6 offset3"> 
 		<div class="flat-container">
 			<div class="flat-header">
-			<h3>You have been invited to join the group <br>"{{ group.name }}"</h3>
+			<h4>You have been invited to join the group: <b>{{ group.name| capitalize }}</b></h4>
 			</div>
 			<div>
-				{% if group.members|length == 0 %}
-			 		<div class="box">
-						<p>All the members have join the group</p>
-						<p>Ask someone to add a member to the group for you and you will see your name appear here.</p>
-						<p>Sorry for that...</p>
-					</div>
-				{% else %}
 				<p>Click on your name in the list below</p>
 				{% for member in group.members %}
 					{% if member.user != null %}
@@ -25,7 +18,9 @@
 						</div>
 					{% endif %}
 				{% endfor %}
-				{% endif %}
+				<div class="flat-footer">
+					<p>Your name does not appear ? <a href="{{ path('tk_welcome_chosen_member', { 'id' : 0, 'token' : group.invitationToken }) }}">Click here to join this group</a></p>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -68,7 +68,6 @@ class DefaultController extends Controller
     public function newAction()
     {
         $group = new TGroup();
-        $group->setDate(new \Datetime('now'));
 
         $form = $this->createForm(new TGroupType(), $group);
 
@@ -199,15 +198,11 @@ class DefaultController extends Controller
 
     private function removeMemberAction($member, $em)
     {
-        if($member->getUser()){
+        if($member->getUser()->getCurrentMember() == $member){    
             $member->getUser()->setCurrentMember(null);
         }
-        $n = sizeof($member->getMyExpenses()) + sizeof($member->getForMeExpenses());
-        if ($n == 0){
-            $em->remove($member);
-        }else{
-            $member->setActive(false);
-        }
+
+        $member->setActive(false);
         $em->flush();
     }
 

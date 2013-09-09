@@ -22,18 +22,20 @@ class InvitationController extends Controller
 
     public function chosenMemberAction($id, $token)
     {
-        $user = $this->getUser();
         $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($id);
 
         if ($token != $member->getInvitationToken()){
             throw new AccessDeniedException('The invitation has expired or the url is wrong');
-        }else{
+        } else {
+
+            $user = $this->getUser();
 
             if ($user){
 
                 foreach($user->getMembers() as $user_member){
                     if ($user_member->getTGroup() == $member->getTGroup()){
-                        throw new AccessDeniedException('You are already part of this group');
+                        $user->setCurrentMember($user_member);
+                        return $this->redirect($this->generateUrl('tk_expense_homepage'));
                     }
                 }
 
@@ -47,13 +49,12 @@ class InvitationController extends Controller
 
                 return $this->redirect($this->generateUrl('tk_expense_homepage'));
 
-            }else{
+            } else {
 
                 $session = $this->get('session');
                 $session->set('invitation_id', $id);
                 $session->set('invitation_member', $member->getName());
                 return $this->redirect($this->generateUrl('fos_user_security_login'));
-
             }
         }
     }

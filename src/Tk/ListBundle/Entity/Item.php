@@ -47,6 +47,21 @@ class Item
     protected $list;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    protected $date;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->setDate(new \DateTime('now'));
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -123,5 +138,28 @@ class Item
     public function getList()
     {
         return $this->list;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Item
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

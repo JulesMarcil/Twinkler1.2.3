@@ -87,11 +87,11 @@ class ApiController extends Controller
         $add_members = $data['addMembers'];
         $add_friends = $data['addFriends'];
 
+        $user = $this->getUser();
+
         if ($group_id == 0) {
             //new group
             $group = $this->addGroupAction($group_name, $currency_id);
-
-            $user = $this->getUser();
 
             $member = new Member();
             $member->setUser($user);
@@ -118,6 +118,8 @@ class ApiController extends Controller
                 }
             }
 
+            $mailer = $this->get('mailer'); 
+
             foreach ($add_friends as $id) {
                 if($id != '-1') {
                     $u = $this->getDoctrine()->getRepository('TkUserBundle:User')->find($id);
@@ -128,6 +130,17 @@ class ApiController extends Controller
                     $m->setTGroup($group);
                     $u->setCurrentMember($m);
                     $em->persist($m);
+
+
+                    $message = \Swift_Message::newInstance();
+                    $message->setSubject($user.' added you to a group on Twinkler')
+                            ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                            ->setTo($u->getEmail())
+                            ->setContentType('text/html')
+                            ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user'   => $u, 
+                                                                                                 'member' => $user->getCurrentMember())))
+                    ;
+                    $mailer->send($message);
                 }
             }
 
@@ -146,7 +159,6 @@ class ApiController extends Controller
         if ($currency) {
 
             $group = new TGroup();
-            $group->setDate(new \Datetime('now'));
             $group->setName($group_name);
             $group->setCurrency($currency);
             $group->setInvitationToken($group->generateInvitationToken());
@@ -383,7 +395,7 @@ class ApiController extends Controller
             $members[] = array('id'          => $m->getId(),
                                'name'        => $m->getName(),
                                'picturePath' => $m->getPicturePath(),
-                               'balance'     => gettype($m->getBalance())
+                               'balance'     => $m->getBalance()
                                 );
         }
 

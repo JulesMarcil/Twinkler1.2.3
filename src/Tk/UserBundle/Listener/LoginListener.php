@@ -57,7 +57,7 @@ class LoginListener
 	        foreach($user->getMembers() as $user_member){
 	            if ($user_member->getTGroup() == $member->getTGroup()){ 
 	            	$add = false;
-	            }else{}
+	            }
 	        }
 
 	        if ($add){
@@ -67,6 +67,9 @@ class LoginListener
 		        $user->setCurrentMember($member);
 				$this->em->flush();
 			}
+
+			$session->remove('invitation_id');
+			$session->remove('invitation_member');
 		}
 
 		if ( $user->getPicture() == null ) {

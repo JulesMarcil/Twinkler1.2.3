@@ -29,7 +29,8 @@ class ExpenseType extends AbstractType
                             }
                         ))
                 ->add('name', 'text')
-                ->add('amount', 'money', array('currency' => $group->getCurrency()->getIso()))
+                ->add('amount', 'money', array('currency' => $group->getCurrency()->getIso(),
+                                               'required' => true))
                 ->add('date', 'date', array(
                         'input'    => 'datetime',
                         'widget'   => 'choice',

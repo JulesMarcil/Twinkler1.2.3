@@ -38,7 +38,7 @@ class Feedback
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datetime", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
@@ -153,5 +153,28 @@ class Feedback
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Tk\GroupBundle\Entity\TGroup $group
+     * @return Feedback
+     */
+    public function setGroup(\Tk\GroupBundle\Entity\TGroup $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Tk\GroupBundle\Entity\TGroup 
+     */
+    public function getGroup()
+    {
+        return $this->group;
     }
 }
