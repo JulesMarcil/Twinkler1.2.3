@@ -140,7 +140,7 @@ class ApiController extends Controller
                             ->setContentType('text/html')
                             ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user'   => $user, 
                                                                                                  'dest'   => $u)))
-                    ;
+                    ;   
                     $mailer->send($message);
                 }
             }
@@ -395,6 +395,27 @@ class ApiController extends Controller
         }
 
         return new JsonResponse($response);
+    }
+
+    public function postListAction()
+    {
+        $data = $this->getRequest()->request->all();
+        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['group_id']);
+        
+        if ($group) {
+            $list = new Lists();
+            $list->setName($data['name']);
+            $list->setGroup($group);
+            $list->setDate(new \Datetime('now'));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($list);
+            $em->flush();
+
+            return new JsonResponse(array('id' => $list->getId(), 'name' => $list->getName()));
+        }
+
+        return new JsonResponse(array('message' => 'group not found'));
     }
 
     public function postItemAction()

@@ -51,7 +51,7 @@ class User extends BaseUser
     protected $lastname;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\ProfilePicture", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\ProfilePicture", cascade={"persist"})
      */
     protected $picture;
 

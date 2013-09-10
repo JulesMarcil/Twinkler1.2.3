@@ -124,14 +124,11 @@ class ProfileController extends Controller
                 
                 $user = $this->getUser();
                 $currentpicture = $user->getPicture();
-                $profilepicture->upload($user);
                 $user->setPicture($profilepicture);
-                
-                if ($currentpicture->getId() !== 1) {
-                $em->remove($currentpicture);
-                }
-                
-                $em->persist($user);
+                $profilepicture->setUser($user);
+                $em->flush();
+
+                $profilepicture->upload($user);
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('tk_user_homepage'));

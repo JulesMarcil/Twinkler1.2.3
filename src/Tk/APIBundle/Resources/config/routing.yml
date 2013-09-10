@@ -33,6 +33,9 @@ tk_api_expense_delete:
 tk_api_lists:
     pattern: /api/lists
     defaults: { _controller: TkAPIBundle:Api:getLists }
+tk_api_post_list:
+    pattern: /api/post/list
+    defaults: { _controller: TkAPIBundle:Api:postList }
 tk_api_post_item:
     pattern: /api/post/item
     defaults: { _controller: TkAPIBundle:Api:postItem }

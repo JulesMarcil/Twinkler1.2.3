@@ -34,6 +34,12 @@ class profilepicture
      */
     public $file;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\User")
+     */
+    protected $user;
+
+
     public function getAbsolutePath()
     {
         return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
@@ -99,7 +105,7 @@ class profilepicture
 
         $extension=strrchr($this->file->getClientOriginalName(),'.');
         $tempname = 'temp'.$user->getId().$extension;
-        $newname = $user->getId().'.jpg';
+        $newname = $this->id.'.jpg';
 
         $this->file->move($this->getUploadRootDir(), $tempname);
 
@@ -138,4 +144,27 @@ class profilepicture
             imagecopyresampled($new_image, $image, 0,0,$a,$b, 160, 160, $width-$a, $height-$b);
             imagejpeg($new_image, $destination_url, 50);
         }
+
+    /**
+     * Set user
+     *
+     * @param \Tk\UserBundle\Entity\User $user
+     * @return profilepicture
+     */
+    public function setUser(\Tk\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Tk\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

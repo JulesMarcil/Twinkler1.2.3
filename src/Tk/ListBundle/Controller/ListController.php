@@ -91,6 +91,7 @@ class ListController extends Controller
     {
         $list = new Lists();
         $list->setGroup($this->getUser()->getCurrentMember()->getTGroup());
+        $list->setDate(new \Datetime('now'));
 
         $form = $this->createForm(new ListsType(), $list);
 
