@@ -55,6 +55,17 @@ class OAuthController extends Controller
 
 	    $userManager->updateUser($user, true);
 
+	    $mailer = $this->get('mailer');
+
+	    $message = \Swift_Message::newInstance();
+        $message->setSubject('Thank you for joining')
+                ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+                ->setTo($user->getEmail())
+                ->setContentType('text/html')
+                ->setBody($this->renderView(':emails:joinedApp.email.twig', array('user' => $user)))
+        ;
+        $mailer->send($message);
+
 	    return $this->getTokenAction($user);
 	}
 

@@ -7,7 +7,7 @@ tk_welcome_choose_member:
     defaults: { _controller: TkWelcomeBundle:Invitation:chooseMember }
 
 tk_welcome_chosen_member:
-    pattern: /invitation/chosen/{id}/{token}
+    pattern: /invitation/chosen/{id}/{type}/{token}
     defaults: { _controller: TkWelcomeBundle:Invitation:chosenMember }
 
 tk_welcome_invitation_login:

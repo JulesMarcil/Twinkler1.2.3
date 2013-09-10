@@ -5,6 +5,8 @@ namespace Tk\WelcomeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use Tk\UserBundle\Entity\Member;
+
 class InvitationController extends Controller
 {
     public function chooseMemberAction($id, $token)
@@ -20,11 +22,40 @@ class InvitationController extends Controller
         }
     }
 
-    public function chosenMemberAction($id, $token)
+    public function chosenMemberAction($id, $token, $type)
     {
-        $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($id);
+        if ($type == 'group') {
 
-        if ($token != $member->getInvitationToken()){
+            $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($id);
+
+            if ($token != $group->getInvitationToken()){
+                throw new AccessDeniedException('The invitation has expired or the url is wrong');
+            } else {
+
+                $member = new Member();
+                $member->setName('');
+                $member->setEmail('temp@twinkler.co');
+                $member->setInvitationToken($member->generateInvitationToken());
+                $member->setTGroup($group);
+                $member->setActive(0);
+
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($member);
+                $em->flush();
+
+                $token = $member->getInvitationToken();
+            }
+
+        } else if ($type == 'member') {
+
+            $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($id);
+
+        } else {
+
+            throw new AccessDeniedException('You are trying to access a wrong url, please contact our support for debugging');
+        }
+
+        if ($token != $member->getInvitationToken()) {
             throw new AccessDeniedException('The invitation has expired or the url is wrong');
         } else {
 
@@ -32,30 +63,35 @@ class InvitationController extends Controller
 
             if ($user){
 
-                foreach($user->getMembers() as $user_member){
-                    if ($user_member->getTGroup() == $member->getTGroup()){
-                        $user->setCurrentMember($user_member);
-                        return $this->redirect($this->generateUrl('tk_expense_homepage'));
-                    }
-                }
-
-                $member->setUser($user);
-                $member->setName($user->getUsername());
-                $member->setInvitationToken(null);
-                $user->setCurrentMember($member);
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($member);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('tk_expense_homepage'));
+                return $this->setUser($user, $member);
 
             } else {
 
                 $session = $this->get('session');
-                $session->set('invitation_id', $id);
+                $session->set('invitation_id', $member->getId());
                 $session->set('invitation_member', $member->getName());
                 return $this->redirect($this->generateUrl('fos_user_security_login'));
             }
         }
+    }
+
+    private function setUser($user, $member) 
+    {
+        foreach($user->getMembers() as $user_member){
+            if ($user_member->getTGroup() == $member->getTGroup()){
+                $user->setCurrentMember($user_member);
+                return $this->redirect($this->generateUrl('tk_expense_homepage'));
+            }
+        }
+
+        $member->setUser($user);
+        $member->setName($user->getUsername());
+        $member->setInvitationToken(null);
+        $user->setCurrentMember($member);
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($member);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('tk_expense_homepage'));
     }
 }

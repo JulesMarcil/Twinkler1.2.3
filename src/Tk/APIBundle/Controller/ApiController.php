@@ -80,14 +80,14 @@ class ApiController extends Controller
     {
         $data = $request->request->all();
         $em = $this->getDoctrine()->getManager();
-
-        $group_id = $data['id'];
-        $group_name = $data['name'];
-        $currency_id = $data['currency'];
-        $add_members = $data['addMembers'];
-        $add_friends = $data['addFriends'];
-
         $user = $this->getUser();
+
+        $group_id       = $data['id'];
+        $group_name     = $data['name'];
+        $currency_id    = $data['currency'];
+        $add_members    = $data['addMembers'];
+        $add_friends    = $data['addFriends'];
+        $remove_members = $data['removeMembers'];
 
         if ($group_id == 0) {
             //new group
@@ -106,6 +106,8 @@ class ApiController extends Controller
             $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
             $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($data['activeMember']);
         }
+
+        $user->setCurrentMember($member);
 
         if ($group) {
             foreach ($add_members as $name) {
@@ -131,16 +133,44 @@ class ApiController extends Controller
                     $u->setCurrentMember($m);
                     $em->persist($m);
 
-
                     $message = \Swift_Message::newInstance();
                     $message->setSubject($user.' added you to a group on Twinkler')
-                            ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                            ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
                             ->setTo($u->getEmail())
                             ->setContentType('text/html')
-                            ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user'   => $u, 
-                                                                                                 'member' => $user->getCurrentMember())))
+                            ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user'   => $user, 
+                                                                                                 'dest'   => $u)))
                     ;
                     $mailer->send($message);
+                }
+            }
+
+            foreach ($remove_members as $id) {
+                if($id != '-1') {
+                    $em = $this->getDoctrine()->getManager();
+                    $m = $em->getRepository('TkUserBundle:Member')->find($id);
+
+                    $u = $m->getUser();
+
+                    if($u and ($u->getCurrentMember() == $member)) {    
+                        $u->setCurrentMember(null);
+                    }
+
+                    $m->setActive(false);
+                    $em->flush();
+
+                    if ($u and ($u != $user)) {
+
+                        $message = \Swift_Message::newInstance();
+                        $message->setSubject($user.' removed you from a group')
+                                ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
+                                ->setTo($u->getEmail())
+                                ->setContentType('text/html')
+                                ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $user, 
+                                                                                                         'member' => $m)))
+                        ;
+                        $mailer->send($message);
+                    }
                 }
             }
 

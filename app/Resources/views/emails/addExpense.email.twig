@@ -5,71 +5,71 @@
 	<td class="tsr1_img" align="center">
 		<font style="font-family:Arial, Helvetica, sans-serif; font-size:14px;"><strong>Hello <font style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#F97E76;">{{ member.name }},</font></strong></font><br><br>
 
-<font style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#F97E76;">
-	<strong>
-		{% if expense.author == member %}
-		You
-		{% else %}
-		{{ expense.author.name }}
-		{% endif %}
-	</strong>
-</font> 
-added an expense to the group <strong>{{ member.tgroup.name}}:</strong> <br><br>
-<div style="margin-left:auto; margin-right:auto; text-align: center">
-<table class="frc tsr1" border="0" cellpadding="0" cellspacing="0" style="display: inline-block; border: 10px solid  rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 14px; font-weight: bold; text-align: center; padding: 0px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;">
-	<tr >
-		<td style="padding: 0px 15px; margin-left: 15px;background-color: white;border-right: 5px solid  rgb(234, 243, 255); color:#8C8C8C;">
-			<font style="color:#F97E76">
-				{% if expense.owner == member %}
+		<font style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#F97E76;">
+			<strong>
+				{% if expense.author == member %}
 				You
 				{% else %}
-				{{ expense.owner.name }}
+				{{ expense.author.name }}
 				{% endif %}
-			</font> 
-			paid 
-			<font style="color:#0088CC;">{{ expense.amount }} {{ member.tgroup.currency.symbol }}</font>  for
-			<font style="color:#F97E76">{{ expense.name }}</font>
-		</td>
-		<td style="padding: 0px 15px;background-color: white;border-left: 5px solid  rgb(234, 243, 255);color:rgb(80,80,80)">
-			{% if  share > 0 %}
-			You get <font style="color:#0088CC;">{{ share }} {{ member.tgroup.currency.symbol }}</font>
-			{% else %}
-			You owe <font style="color:#0088CC;">{{ -share }} {{ member.tgroup.currency.symbol }}</font>
-			{% endif %}
-		</td>
-	</tr>
-</table>
-<br>
-<br>
+			</strong>
+		</font> 
+		added an expense to the group <strong>{{ member.tgroup.name}}:</strong> <br><br>
+		<div style="margin-left:auto; margin-right:auto; text-align: center">
+		<table class="frc tsr1" border="0" cellpadding="0" cellspacing="0" style="display: inline-block; border: 10px solid  rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 14px; font-weight: bold; text-align: center; padding: 0px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;">
+			<tr >
+				<td style="padding: 0px 15px; margin-left: 15px;background-color: white;border-right: 5px solid  rgb(234, 243, 255); color:#8C8C8C;">
+					<font style="color:#F97E76">
+						{% if expense.owner == member %}
+						You
+						{% else %}
+						{{ expense.owner.name }}
+						{% endif %}
+					</font> 
+					paid 
+					<font style="color:#0088CC;">{{ expense.amount }} {{ member.tgroup.currency.symbol }}</font>  for
+					<font style="color:#F97E76">{{ expense.name }}</font>
+				</td>
+				<td style="padding: 0px 15px;background-color: white;border-left: 5px solid  rgb(234, 243, 255);color:rgb(80,80,80)">
+					{% if  share > 0 %}
+					You get <font style="color:#0088CC;">{{ share }} {{ member.tgroup.currency.symbol }}</font>
+					{% else %}
+					You owe <font style="color:#0088CC;">{{ -share }} {{ member.tgroup.currency.symbol }}</font>
+					{% endif %}
+				</td>
+			</tr>
+		</table>
+		<br>
+		<br>
 
-Friends involved in the expense: {% for m in expense.users %} {{m.name}}, {% endfor %}<br>
-</div>
-<!-- separator -->
-<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td height="17">&nbsp;</td>
-	</tr>
-</table>
-<!-- /separator -->
-<div>
-<table class="frc tsr1" border="0" cellpadding="0" cellspacing="0" style="display: inline-block; border: 10px solid  rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 14px; font-weight: bold; text-align: center; padding: 15px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;">
-	<tr >
-		<td style="padding: 0px 15px; margin-left: 15px; background-color: white;color:rgb(80,80,80)">
-			Your current balance:
-			<font style="color:#0088CC;">{{ member.balance }} {{member.tgroup.currency.symbol}}</font>
-		</td>
-	</tr>
-</table>
-</div>
+		Friends involved in the expense: {% for m in expense.users %} {{m.name}}, {% endfor %}<br>
+		</div>
+		<!-- separator -->
+		<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td height="17">&nbsp;</td>
+			</tr>
+		</table>
+		<!-- /separator -->
+		<div>
+		<table class="frc tsr1" border="0" cellpadding="0" cellspacing="0" style="display: inline-block; border: 10px solid  rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 14px; font-weight: bold; text-align: center; padding: 15px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;">
+			<tr >
+				<td style="padding: 0px 15px; margin-left: 15px; background-color: white;color:rgb(80,80,80)">
+					Your current balance:
+					<font style="color:#0088CC;">{{ member.balance }} {{member.tgroup.currency.symbol}}</font>
+				</td>
+			</tr>
+		</table>
+		</div>
 
-<br>
-To see your full expense timeline, log in on <a target="_blank" href="http://www.twinkler.co/" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#0088CC;; text-decoration:none;"><strong>Twinkler</strong></a>
-<br>
-<br>
-Enjoy your day!
-<br>
-<br>
-Jules <br><br>
+		<br>
+		To see your full expense timeline, log in on <a target="_blank" href="http://www.twinkler.co/" style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#0088CC;; text-decoration:none;"><strong>Twinkler</strong></a>
+		<br>
+		<br>
+		Enjoy your day!
+		<br>
+		<br>
+		Twinkler<br><br>
 	</td>
 </table>
 {% endblock %}

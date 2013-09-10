@@ -3,20 +3,18 @@
 {% block teaser1 %}
 <table class="frc tsr1" width="600" border="0" cellpadding="0" cellspacing="0">
 	<td class="tsr1_img" align="center">
-		<font style="font-family:Arial, Helvetica, sans-serif; font-size:14px;"><strong>Hello {{user}},</strong></font><br><br>
+		<font style="font-family:Arial, Helvetica, sans-serif; font-size:14px;"><strong>Hello {{ dest }},</strong></font><br><br>
 
-{{member.name}} added you to his group called <b>{{member.tgroup.name}}</b> on twinkler<br><br>
+		{{ user }} added you to his group called <b>{{ user.currentMember.tgroup.name }}</b> on twinkler<br><br>
 
-To see the group settings, click here: <br><br>
+		To see the group online, click here: <br><br>
 
-<span>
-<a style="display: inline-block; width: 80%; background-color: rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 18px; font-weight: bold; text-align: center; padding: 15px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;" href="http://www.twinkler.co/group/goto/{{user.currentMember.id}}" target="_blank">Go to Twinkler</a>
-</span>
- <br><br>
+		<span>
+		<a style="display: inline-block; width: 80%; background-color: rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 18px; font-weight: bold; text-align: center; padding: 15px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;" href="http://www.twinkler.co/group/goto/{{user.currentMember.id}}" target="_blank">Go to Twinkler</a>
+		</span>
+		 <br><br>
 
-We're excited to have you onboard! <br><br>
-
-Jules <br><br>
+		We're excited to have you onboard! <br><br>
 	</td>
 </table>
 {% endblock %}

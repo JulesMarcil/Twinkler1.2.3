@@ -50,7 +50,7 @@ class LoginListener
 		// ...
 		$session = $event->getRequest()->getSession();
 		$id = $session->get('invitation_id');
-		if ($id != null) {
+		if ($id) {
 			$member = $this->em->getRepository('TkUserBundle:Member')->find($id);
 
 			$add = true;
@@ -64,6 +64,7 @@ class LoginListener
 		        $member->setUser($user);
 		        $member->setName($user->getUsername());
 				$member->setInvitationToken(null);
+				$member->setActive(1);
 		        $user->setCurrentMember($member);
 				$this->em->flush();
 			}

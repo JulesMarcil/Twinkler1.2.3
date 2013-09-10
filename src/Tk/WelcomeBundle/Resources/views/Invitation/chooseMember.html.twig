@@ -14,12 +14,12 @@
 					{% if member.user != null %}
 					{% else %}
 						<div class="box">
-							<p><a href="{{ path('tk_welcome_chosen_member', { 'id' : member.id, 'token' : member.invitationToken }) }}">{{ member.name }}</a></p>
+							<p><a href="{{ path('tk_welcome_chosen_member', { 'id' : member.id,'type' : 'member', 'token' : member.invitationToken }) }}">{{ member.name }}</a></p>
 						</div>
 					{% endif %}
 				{% endfor %}
 				<div class="flat-footer">
-					<p>Your name does not appear ? <a href="{{ path('tk_welcome_chosen_member', { 'id' : 0, 'token' : group.invitationToken }) }}">Click here to join this group</a></p>
+					<p>Your name does not appear ? <a href="{{ path('tk_welcome_chosen_member', { 'id' : group.id, 'type' : 'group', 'token' : group.invitationToken }) }}">Click here to join this group</a></p>
 				</div>
 			</div>
 		</div>

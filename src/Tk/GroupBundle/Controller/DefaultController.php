@@ -198,12 +198,29 @@ class DefaultController extends Controller
 
     private function removeMemberAction($member, $em)
     {
-        if($member->getUser()->getCurrentMember() == $member){    
-            $member->getUser()->setCurrentMember(null);
+
+        $u = $member->getUser();
+        $user = $this->getUser();
+
+        if($u and ($u->getCurrentMember() == $member)) {    
+            $u->setCurrentMember(null);
         }
 
         $member->setActive(false);
         $em->flush();
+
+        if ($u and ($u != $user)) {
+
+            $message = \Swift_Message::newInstance();
+            $message->setSubject($user.' removed you from a group')
+                    ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
+                    ->setTo($u->getEmail())
+                    ->setContentType('text/html')
+                    ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $user, 
+                                                                                             'member' => $member)))
+            ;
+            $mailer->send($message);
+        }
     }
 
     public function closeGroupAction($id)
@@ -274,7 +291,7 @@ class DefaultController extends Controller
             if(!$member->getUser() and $member->getEmail()){
                 $message = \Swift_Message::newInstance();
                 $message->setSubject($user.' sent you an invitation on Twinkler')
-                        ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                        ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
                         ->setTo($member->getEmail())
                         ->setContentType('text/html')
                         ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('invited' => $member, 'member' => $user->getCurrentMember())))
@@ -292,10 +309,11 @@ class DefaultController extends Controller
 
             $message = \Swift_Message::newInstance();
             $message->setSubject($user.' added you to a group on Twinkler')
-                    ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                    ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
                     ->setTo($u->getEmail())
                     ->setContentType('text/html')
-                    ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user' => $u, 'member' => $user->getCurrentMember())))
+                    ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user' => $user, 
+                                                                                         'dest' => $u)))
             ;
             $mailer->send($message);
         }
@@ -316,7 +334,7 @@ class DefaultController extends Controller
         $mailer = $this->get('mailer');
         $message = \Swift_Message::newInstance();
                 $message->setSubject($user.' sent you an invitation on Twinkler')
-                        ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                        ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
                         ->setTo($member->getEmail())
                         ->setContentType('text/html')
                         ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('invited' => $member, 'member' => $user->getCurrentMember())))
