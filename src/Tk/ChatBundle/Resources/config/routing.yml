@@ -5,6 +5,9 @@ tk_chat_homepage:
 tk_chat_messages_get:
     pattern:  /api/get/messages
     defaults: { _controller: TkChatBundle:APPChat:getMessages }
+tk_chat_messages_get_new:
+    pattern:  /api/get/messages/{count}
+    defaults: { _controller: TkChatBundle:APPChat:getNewMessages }
 
 tk_chat_messages_post:
     pattern:  /api/post/message
