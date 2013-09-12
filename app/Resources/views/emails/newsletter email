@@ -84,7 +84,9 @@
 								<!-- separator -->
 								<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0" background-color="#f3f3f3">
 									<tr>
-										<td height="22" align="center" style="color: #0099ff; font-family: 'Helvetica Neue', helvetica, sans-serif; border: none; font-size: 24px; color: rgb(238, 108, 38);" bgcolor="#f3f3f3" valign="top"></td>
+										<td height="22" align="center" style="color: #0099ff; font-family: 'Helvetica Neue', helvetica, sans-serif; border: none; font-size: 24px; color: rgb(238, 108, 38);" bgcolor="#f3f3f3" valign="top">										
+											<h3>Do you want to test our iPhone App ?</h3>										
+										</td>
 									</tr>
 								</table>
 								<!-- /separator -->
@@ -92,11 +94,21 @@
 								<img src="http://twinkler.co/web/other/email-images/email-top.png" width="600" height="31" border="0" style="display:block;" alt="" />
 								<div style="background-color: #ffffff">
 									<!-- separator -->
-									<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0" >
+									<table class="frc sep_empty" width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #ffffff;">
 										<tr>
-											<td align="center" style="background-color: #ffffff; padding:20px 0px;">
-												{% block teaser1 %}
-												{% endblock %}
+											<td align="center" style="background-color: #ffffff; padding:20px 20px">
+												<h3>Hello all,</h3>
+												<div>Twinkler <b>iPhone App</b> is on his way to the App Store. Test the app and help us improve it before its release.<br><br></div>
+												<div>You have an iPhone ? Reply to this email with the UDID (Unique Device Identifier) of your iPhone so that we can register you and tell you how to get the app.<br><br></div>
+												<div><a style="display: inline-block; width: 80%; background-color: rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 14px; font-weight: bold; text-align: center; padding: 5px 10px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;" href="http://whatsmyudid.com">Click here to see how to get your UDID on iTunes</a><br><br></div>
+												<div>See you soon on Twinkler</div>
+												<div><br>---<br></div>
+												<h3>Bonjour à tous,</h3>
+												<div><b>L'app iPhone</b> de Twinkler arrive bientôt sur l'App Store. Teste l'app et aide nous à l'améliorer avant sa sortie officielle<br><br></div>
+												<div>Tu as un iPhone ? Répond à cet email en fournissant l'UDID (Unique Devide ID) de ton iPhone pour que l'on puisse t'enregistrer et te dire comment obtenir l'app.<br><br></div>
+												<div><a style="display: inline-block; width: 80%; background-color: rgb(234, 243, 255); text-decoration: none; color: rgb(84, 134, 198); font-size: 14px; font-weight: bold; text-align: center; padding: 5px 10px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;" href="http://whatsmyudid.com">Clique ici pour voir comment récupérer ton UDID sur iTunes</a><br><br></div>
+												<div>A bientôt sur Twinkler<br><br></div>
+												<div>Emily</div>
 											</td>
 										</tr>
 									</table>
@@ -171,7 +183,7 @@
 								<table class="frc contact" width="600" height="30" border="0" cellpadding="10" cellspacing="0" style="border-top: solid rgb(210,210,210) 1px; border-bottom: solid rgb(210,210,210) 1px;">
 									<tr>
 										<tr>
-											<td align="center"><font style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666666;"><a target="_blank" href="http://twinkler.co/about" style="color:#666666; text-decoration:none;"><font style="color:#666666;">About</font></a> &nbsp;|&nbsp; <a target="_blank" href="http://twinkler.co/press" style="color:#666666; text-decoration:none;"><font style="color:#666666;">Press</font></a> &nbsp;|&nbsp; <a target="_blank" href="http://twinkler.co/contact" style="color:#ffffff; text-decoration:none;"><font style="color:#666666;">Contact</font></a></font></td>
+											<td align="center"><font style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#666666;"><a target="_blank" href="http://twinkler.co/about" style="color:#666666; text-decoration:none;"><font style="color:#666666;">About</font></a> &nbsp;|&nbsp; <a target="_blank" href="http://twinkler.co/press" style="color:#666666; text-decoration:none;"><font style="color:#666666;">Press</font></a> &nbsp;|&nbsp; <a target="_blank" href="http://twinkler.co/contact" style="color:#ffffff; text-decoration:none;"><font style="color:#666666;">Contact</font></a> &nbsp;|&nbsp; <a target="_blank" href="[[UNSUB_LINK_EN]]" style="color:#ffffff; text-decoration:none;"><font style="color:#666666;">Unsubscribe</font></a></font></td>
 										</tr>
 									</tr>
 								</table>

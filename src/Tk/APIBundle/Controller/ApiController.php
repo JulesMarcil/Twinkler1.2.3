@@ -33,8 +33,16 @@ class ApiController extends Controller
 
     public function getProfileAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->getUser();
         if($user) {
+
+            if ( $user->getPicture() == null ) {
+                $em = $this->getDoctrine()->getManager();
+                $picture = $em->getRepository('TkUserBundle:ProfilePicture')->find(1);
+                $user->setPicture($picture);
+                $em->persist($user);
+                $em->flush(); 
+            }
 
             $facebook_id = $user->getFacebookId();
             if($facebook_id) {

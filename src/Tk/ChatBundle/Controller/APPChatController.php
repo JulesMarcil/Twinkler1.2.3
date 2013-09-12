@@ -24,11 +24,10 @@ class APPChatController extends Controller
 	        	$messages = $group->getMessages();
 	        	foreach($messages as $message){
 	        		$message_array = array('type'        => 'message',
-
-                                           'author'      => $message->getAuthor()->getName(),
-	        							   'body'        => $message->getBody(),
-	        							   'time'        => $message->getTimestamp(),
-                                           'picturePath' => $message->getAuthor()->getPicturePath()      							   
+                                     'author'      => $message->getAuthor()->getName(),
+                                     'body'        => $message->getBody(),
+                                     'time'        => $message->getTimestamp(),
+                                     'picturePath' => $message->getAuthor()->getPicturePath()      							   
 	        							   );
 	        		$messages_array[] = $message_array;
 	        	}
@@ -43,13 +42,13 @@ class APPChatController extends Controller
                     }
 
 	        		$message_array = array('type'        => 'expense',
-                                           'author'      => $expense->getAuthor()->getName(),
-	        							   'time'        => $expense->getAddedDate()->getTimestamp(),
-                                           'owner'       => $name,
-                                           'amount'      => $expense->getAmount(),
-                                           'name'        => $expense->getName(),
-                                           'share'       => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
-                                           'picturePath' => $expense->getOwner()->getPicturePath()
+                                     'author'      => $expense->getAuthor()->getName(),
+	        							             'time'        => $expense->getAddedDate()->getTimestamp(),
+                                     'owner'       => $name,
+                                     'amount'      => $expense->getAmount(),
+                                     'name'        => $expense->getName(),
+                                     'share'       => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
+                                     'picturePath' => $expense->getOwner()->getPicturePath()
 	        							   );
 	        		$messages_array[] = $message_array;
 	        	}
