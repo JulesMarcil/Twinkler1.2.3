@@ -71,14 +71,9 @@ class LoginListener
 
 			$session->remove('invitation_id');
 			$session->remove('invitation_member');
-		}
 
-		if ( $user->getPicture() == null ) {
-	        $picture = $this->em ->getRepository('TkUserBundle:ProfilePicture')->find(1);
-	        
-	        $user->setPicture($picture);
-	        $this->em->persist($user);
-	        $this->em->flush();	
+			$this->em->persist($user);
+			$this->em->flush();
 		}
 	}
 }

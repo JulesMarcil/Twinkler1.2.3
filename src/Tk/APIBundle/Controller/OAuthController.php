@@ -10,6 +10,11 @@ use Tk\APIBundle\Entity\AccessToken,
 	Tk\APIBundle\Entity\RefreshToken,
 	Tk\UserBundle\Entity\User;
 
+use Tk\UserBundle\Entity\Member,
+	Tk\GroupBundle\Entity\TGroup,
+	Tk\ExpenseBundle\Entity\Expense,
+ 	Tk\ChatBundle\Entity\Message;
+
 use	FOS\UserBundle\Controller\RegistrationController;
 
 class OAuthController extends Controller
@@ -31,6 +36,7 @@ class OAuthController extends Controller
                 $user->setPassword('');
  
                 $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
+                $this->createDefaultGroup($user);
             }
 
            	$em = $this->getDoctrine()->getManager();
@@ -54,6 +60,8 @@ class OAuthController extends Controller
 	    $user->setPicture($this->getDoctrine()->getRepository('TkUserBundle:ProfilePicture')->find(1));
 
 	    $userManager->updateUser($user, true);
+
+	    $this->createDefaultGroup($user);
 
 	    $mailer = $this->get('mailer');
 
@@ -115,5 +123,71 @@ class OAuthController extends Controller
 		  $randomData = mt_rand().mt_rand().mt_rand().uniqid(mt_rand(), true).microtime(true).uniqid(mt_rand(), true);
 		}
 		return rtrim(strtr(base64_encode(hash('sha256', $randomData)), '+/', '-_'), '=');
+	}
+
+	private function createDefaultGroup($user)
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+	    $currency = $em->getRepository('TkGroupBundle:Currency')->find(1);	
+
+        $group = new TGroup();
+        $group->setName('Twinkler team and '.$user->getUsername());
+        $group->setCurrency($currency);
+        $group->setInvitationToken($group->generateInvitationToken());
+
+        $jules  = $em->getRepository('TkUserBundle:User')->find(1);
+        $arnaud = $em->getRepository('TkUserBundle:User')->find(2);
+
+        $member = new Member();
+        $member->setUser($user);
+        $member->setName($user->getUsername());
+        $member->setTGroup($group);
+
+        $jules_member = new Member();
+        $jules_member->setUser($jules);
+        $jules_member->setName($jules->getUsername());
+        $jules_member->setTGroup($group);
+
+        $arnaud_member = new Member();
+        $arnaud_member->setUser($arnaud);
+        $arnaud_member->setName($arnaud);
+        $arnaud_member->setTGroup($group);
+
+        $message1 = New Message();
+		$message1->setTimestamp((new \DateTime('now'))->getTimestamp());
+		$message1->setBody('As you can see I just added an expense for the Breakfast I paid to Jules yesterday, feel free to add yours or create a new group with your friends');
+		$message1->setAuthor($arnaud_member);
+		$message1->setGroup($group);
+
+        $expense = new Expense();
+        $expense->setAmount(20);
+        $expense->setName('Breakfast at Tiffany\'s');
+        $expense->setAddedDate(new \DateTime('now'));
+        $expense->setDate(new \Datetime('yesterday'));
+        $expense->setActive(true);
+        $expense->setAuthor($arnaud_member);
+        $expense->setOwner($arnaud_member);
+        $expense->setGroup($group);
+        $expense->addUser($jules_member);
+        $expense->addUser($arnaud_member);
+
+        $message2 = New Message();
+		$message2->setTimestamp((new \DateTime('now'))->getTimestamp());
+		$message2->setBody('Hello '.$user->getUsername().' and welcome to Twinkler! You can use this chat to let us know what you think about Twinkler');
+		$message2->setAuthor($jules_member);
+		$message2->setGroup($group);
+
+        $picture = $em ->getRepository('TkUserBundle:ProfilePicture')->find(1);	        
+        $user->setPicture($picture);
+
+        $em->persist($user);
+        $em->persist($group);
+        $em->persist($member);
+        $em->persist($jules_member);
+        $em->persist($arnaud_member);
+        $em->persist($message1);
+        $em->persist($expense);
+        $em->persist($message2);
+        $em->flush();
 	}
 }

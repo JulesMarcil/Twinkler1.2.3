@@ -9,6 +9,12 @@ services:
         tags:
             - { name: 'kernel.event_listener', event: 'security.interactive_login' }
 
+    register_listener:
+        class: Tk\UserBundle\Listener\RegisterListener
+        arguments: ['@doctrine']
+        tags:
+            - { name: kernel.event_subscriber }
+
     tk_user.registration.form.type:
         class: Tk\UserBundle\Form\Type\RegistrationFormType
         arguments: [%fos_user.model.user.class%]
