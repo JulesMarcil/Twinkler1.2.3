@@ -36,7 +36,7 @@ class OAuthController extends Controller
                 $user->setPassword('');
  
                 $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
-                $this->createDefaultGroup($user);
+                //$this->createDefaultGroup($user);
             }
 
            	$em = $this->getDoctrine()->getManager();
@@ -48,8 +48,21 @@ class OAuthController extends Controller
 
 	public function appRegisterAction(Request $request)
 	{
-		$userManager = $this->container->get('fos_user.user_manager');
 		$data = $this->getRequest()->query->all();
+		$user_test1 = $this->getDoctrine()->getRepository('TkUserBundle:User')->findByUsername($data['username']);		
+		$user_test2 = $this->getDoctrine()->getRepository('TkUserBundle:User')->findByEmail($data['email']);	
+
+		if ($user_test1) {
+			$response = new JSONResponse('This username is already taken');
+			$response->setStatusCode(500);
+			return $response;
+		} else if ($user_test2) {
+			$response = new JSONResponse('This email is already taken');
+			$response->setStatusCode(500);
+			return $response;
+		}
+
+		$userManager = $this->container->get('fos_user.user_manager');
 
 	    $user = $userManager->createUser();
 
@@ -61,7 +74,7 @@ class OAuthController extends Controller
 
 	    $userManager->updateUser($user, true);
 
-	    $this->createDefaultGroup($user);
+	    //$this->createDefaultGroup($user);
 
 	    $mailer = $this->get('mailer');
 
@@ -131,7 +144,7 @@ class OAuthController extends Controller
 	    $currency = $em->getRepository('TkGroupBundle:Currency')->find(1);	
 
         $group = new TGroup();
-        $group->setName('Twinkler team and '.$user->getUsername());
+        $group->setName('Twinkler team (example)');
         $group->setCurrency($currency);
         $group->setInvitationToken($group->generateInvitationToken());
 
@@ -154,7 +167,8 @@ class OAuthController extends Controller
         $arnaud_member->setTGroup($group);
 
         $message1 = New Message();
-		$message1->setTimestamp((new \DateTime('now'))->getTimestamp());
+		$date = new \DateTime('now');
+		$message1->setTimestamp($date->getTimestamp());
 		$message1->setBody('As you can see I just added an expense for the Breakfast I paid to Jules yesterday, feel free to add yours or create a new group with your friends');
 		$message1->setAuthor($arnaud_member);
 		$message1->setGroup($group);
@@ -172,7 +186,8 @@ class OAuthController extends Controller
         $expense->addUser($arnaud_member);
 
         $message2 = New Message();
-		$message2->setTimestamp((new \DateTime('now'))->getTimestamp());
+        $date = new \DateTime('now');
+		$message2->setTimestamp($date->getTimestamp());
 		$message2->setBody('Hello '.$user->getUsername().' and welcome to Twinkler! You can use this chat to let us know what you think about Twinkler');
 		$message2->setAuthor($jules_member);
 		$message2->setGroup($group);

@@ -45,12 +45,13 @@ class RegisterListener implements EventSubscriberInterface
 	 */
 	public function onRegistrationSuccess(FormEvent $event)
 	{
+        /*
         $user = $event->getForm()->getData();
 	    
 	    $currency = $this->em->getRepository('TkGroupBundle:Currency')->find(1);	
 
         $group = new TGroup();
-        $group->setName('Twinkler team and '.$user->getUsername());
+        $group->setName('Twinkler team (example)');
         $group->setCurrency($currency);
         $group->setInvitationToken($group->generateInvitationToken());
 
@@ -73,7 +74,8 @@ class RegisterListener implements EventSubscriberInterface
         $arnaud_member->setTGroup($group);
 
         $message1 = New Message();
-		$message1->setTimestamp((new \DateTime('now'))->getTimestamp());
+		$date = new \DateTime('now');
+        $message1->setTimestamp($date->getTimestamp());
 		$message1->setBody('messageBody1');
 		$message1->setAuthor($jules_member);
 		$message1->setGroup($group);
@@ -91,7 +93,8 @@ class RegisterListener implements EventSubscriberInterface
         $expense->addUser($arnaud_member);
 
         $message2 = New Message();
-		$message2->setTimestamp((new \DateTime('now'))->getTimestamp());
+		$date = new \DateTime('now');
+        $message2->setTimestamp($date->getTimestamp());
 		$message2->setBody('messageBody2');
 		$message2->setAuthor($arnaud_member);
 		$message2->setGroup($group);
@@ -108,5 +111,6 @@ class RegisterListener implements EventSubscriberInterface
         $this->em->persist($expense);
         $this->em->persist($message2);
         $this->em->flush();
+        */
 	}
 }

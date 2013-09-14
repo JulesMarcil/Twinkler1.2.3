@@ -1,5 +1,9 @@
 {% extends 'TkUserBundle::frame.html.twig' %}
 
+{% block title %}   
+<title> {{app.user}} </title>
+{% endblock %}
+
 {% block stylesheets %}
  {{ parent() }}
  <link href="{{ asset('css/user-info.css') }}" rel="stylesheet" type="text/css">

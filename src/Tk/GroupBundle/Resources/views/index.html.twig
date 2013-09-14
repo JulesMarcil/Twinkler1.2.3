@@ -1,13 +1,17 @@
 {% extends 'TkUserBundle::frame.html.twig' %}
 
+{% set group = app.user.currentMember.tgroup %}
+
+{% block title %}   
+<title> {{group.name}} </title>
+{% endblock %}
+
 {% block stylesheets %}
  {{ parent() }}
  <link href="{{ asset('css/group-settings.css') }}" rel="stylesheet" type="text/css">
  <link href="{{ asset('css/expenses.css') }}" rel="stylesheet" type="text/css">
  <link href="{{ asset('css/lists.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
-
-{% set group = app.user.currentMember.tgroup %}
 
 {% block navbartitle %}
 	<div  id="group-name-title">
