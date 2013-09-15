@@ -92,6 +92,35 @@ class RegisterListener implements EventSubscriberInterface
         $this->mailer->send($message);
 
         $session = $event->getRequest()->getSession();
+
+        $id = $session->get('invitation_id');
+        if ($id) {
+            $member = $this->em->getRepository('TkUserBundle:Member')->find($id);
+
+            $add = true;
+            $user_members = $user->getMembers();
+            if ($user_members) {
+                foreach($user->getMembers() as $user_member){
+                    if ($user_member->getTGroup() == $member->getTGroup()){ 
+                        $add = false;
+                    }
+                }
+            }
+
+            if ($add){
+                $member->setUser($user);
+                $member->setName($user->getUsername());
+                $member->setInvitationToken(null);
+                $member->setActive(1);
+                $user->setCurrentMember($member);
+                $this->em->persist($user);
+                $this->em->flush();
+            }
+
+            $session->remove('invitation_id');
+            $session->remove('invitation_member');
+        }
+
         $group_id = $session->get('created_group_id');
         if ($group_id) {
             $group = $this->em->getRepository('TkGroupBundle:TGroup')->find($group_id);

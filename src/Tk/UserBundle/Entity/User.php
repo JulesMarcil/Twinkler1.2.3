@@ -189,12 +189,16 @@ class User extends BaseUser
     {
         $all_members = $this->members;
         $active_members = new \Doctrine\Common\Collections\ArrayCollection();
-        foreach($all_members as $member){
-            if($member->getActive() == true){
-                $active_members->add($member);
+        if ($all_members) {
+            foreach($all_members as $member){
+                if($member->getActive() == true){
+                    $active_members->add($member);
+                }
             }
+            return $active_members;
+        } else {
+            return null;
         }
-        return $active_members;
     }
 
     /**
