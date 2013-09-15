@@ -89,11 +89,11 @@ strong{
 
 #section1{
 	width: 100%;
-	min-height: 520px;
-	background-image: url(' ../img/landing-page/cafe_bg.png');
+	min-height: 560px;
+	background-image: url(' ../img/landing-page/main-bck.jpg');
 	background-size: cover;
+	background-position: 0px -180px;
 	padding-top: 10px;
-	border-bottom: solid 1px #B7B7B7;
 }
 
 #handiphone{
@@ -113,17 +113,55 @@ strong{
 	margin-top: 140px;
 	margin-bottom: 20px;
 	padding-left: 50px;
+	text-align: center;
+}
+
+#catchphrase > h1{
+	color:#FEFEFE;
+  font-size:60px;
+  font-weight: bold;
+  line-height:1.6em;    
+  text-shadow: 0 1px 1px #000000;
+  margin-bottom:0;
+  text-align:center;
 }
 
 #catchphrase > p{
-	font-size: 16px;
-	 color:#242728;
-  	text-shadow:#FFFFFF 0 1px 10px;
+	font-size: 32px;
+	color:#FEFEFE;
+	font-weight: lighter;
+  text-shadow: 0 1px 1px #000000;
+  line-height:1.5em;   
 }
 
-#myCarousel{
-	font-family: "Proxima-bold";
-	font-size: 38.5px;
+#group-creation-button{
+	margin-top: 30px;
+  font-size:24px;
+  padding:15px 24px;
+}
+
+#overview-flow{
+	background-color: white;
+	text-align: center;
+	padding: 20px 0px;
+	border: solid 1px #B7B7B7;
+}
+
+#overview-flow a{
+  color:#B7B7B7;
+  font-weight: bold;
+	  -webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	  transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#overview-flow a:hover{
+	text-decoration: none;
+  color:#777777;
+}
+
+.overview-arrow{
+  color:#B7B7B7;
+
 }
 
 #iphone-view{
@@ -186,9 +224,7 @@ strong{
 
 #late-login{
 	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 30px;
+	margin: 80px auto;
 }
 
 #late-login p{
