@@ -25,6 +25,7 @@ security:
         login:
             pattern:  ^/login$
             security: false
+            context: login
 
         api:
             pattern:    ^/api
@@ -58,6 +59,7 @@ security:
                 path:   fos_user_security_logout
                 target: fos_user_security_login
                 invalidate_session: false
+            context: login
 
         oauth_authorize:
             pattern:    ^/oauth/v2/auth
@@ -72,6 +74,7 @@ security:
         - { path: ^/applogin, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/new, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/invitation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/summary, role: IS_AUTHENTICATED_ANONYMOUSLY }
