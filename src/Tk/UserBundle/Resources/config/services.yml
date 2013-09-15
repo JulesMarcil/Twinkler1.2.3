@@ -11,7 +11,7 @@ services:
 
     register_listener:
         class: Tk\UserBundle\Listener\RegisterListener
-        arguments: ['@doctrine', '@router', '@event_dispatcher']
+        arguments: ['@doctrine', '@router', '@event_dispatcher', '@mailer', '@templating']
         tags:
             - { name: kernel.event_subscriber }
 

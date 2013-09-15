@@ -14,6 +14,9 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
+use Symfony\Bundle\SwiftmailerBundle\Swift_Mailer;
+use Symfony\Bundle\TwigBundle\TwigEngine;
+
 use Tk\UserBundle\Entity\Member,
 	Tk\GroupBundle\Entity\TGroup,
 	Tk\ExpenseBundle\Entity\Expense,
@@ -33,6 +36,12 @@ class RegisterListener implements EventSubscriberInterface
     /** @var \Symfony\Component\EventDispatcher\EventDispatcher */
     private $dispatcher;
 
+    /** @var \Symfony\Component\EventDispatcher\EventDispatcher */
+    private $mailer;
+
+    /** @var \Symfony\Bundle\TwigBundle\TwigEngine */
+    private $template;
+
 	/**
 	 * Constructor
 	 * 
@@ -40,13 +49,17 @@ class RegisterListener implements EventSubscriberInterface
 	 * @param Doctrine        $doctrine
      * @param Router          $router
      * @param Dispatcher      $dispatcher
+     * @param Mailer          $mailer
+     * @param Template        $template
 	 */
 
-	public function __construct(Doctrine $doctrine, Router $router, EventDispatcher $dispatcher)
+	public function __construct(Doctrine $doctrine, Router $router, EventDispatcher $dispatcher, \Swift_Mailer $mailer, TwigEngine $template)
 	{
 		$this->em         = $doctrine->getEntityManager();
         $this->router     = $router;
         $this->dispatcher = $dispatcher;
+        $this->mailer     = $mailer;
+        $this->template   = $template;
 	}
 
 	public static function getSubscribedEvents()
@@ -69,6 +82,15 @@ class RegisterListener implements EventSubscriberInterface
         $this->em->persist($user);
         $this->em->flush();
 
+        $message = \Swift_Message::newInstance();
+        $message->setSubject('Thank you for joining')
+                ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+                ->setTo($user->getEmail())
+                ->setContentType('text/html')
+                ->setBody($this->template->render(':emails:joinedApp.email.twig', array('user' => $user)))
+        ;
+        $this->mailer->send($message);
+
         $session = $event->getRequest()->getSession();
         $group_id = $session->get('created_group_id');
         if ($group_id) {
@@ -82,11 +104,9 @@ class RegisterListener implements EventSubscriberInterface
             $this->em->persist($member);
             $this->em->persist($user);
             $this->em->flush();
+        } 
 
-            $session->remove('created_group_id');
-
-            $this->dispatcher->addListener(KernelEvents::RESPONSE, array($this, 'onKernelResponse'));
-        }
+        $this->dispatcher->addListener(KernelEvents::RESPONSE, array($this, 'onKernelResponse'));
 
         /*
 	    
@@ -155,7 +175,16 @@ class RegisterListener implements EventSubscriberInterface
 
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        $response = new RedirectResponse($this->router->generate('tk_group_add_members'));
+        $session = $event->getRequest()->getSession();
+        $group_id = $session->get('created_group_id');
+        if ($group_id) {
+            $route = 'tk_group_add_members';
+            $session->remove('created_group_id');
+        } else {
+            $route = 'tk_user_homepage';
+        }
+
+        $response = new RedirectResponse($this->router->generate($route));
         $event->setResponse($response);
     }
 }

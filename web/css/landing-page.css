@@ -96,19 +96,6 @@ strong{
 	padding-top: 10px;
 }
 
-#handiphone{
-	min-width: 350px;
-}
-
-@media only screen and (max-width: 767px) {
-	#section1-big{display: none;}
-	#section1{ padding-bottom: 80px;}
-}
-
-@media only screen and (min-width: 768px) {
-	#section1-small{display: none;}
-}
-
 #catchphrase{
 	margin-top: 140px;
 	margin-bottom: 20px;
@@ -118,27 +105,41 @@ strong{
 
 #catchphrase > h1{
 	color:#FEFEFE;
-  font-size:60px;
-  font-weight: bold;
-  line-height:1.6em;    
-  text-shadow: 0 1px 1px #000000;
-  margin-bottom:0;
-  text-align:center;
+	font-size:60px;
+	font-weight: bold;
+	line-height:1.6em;    
+	text-shadow: 0 1px 1px #000000;
+	margin-bottom:0;
+	text-align:center;
 }
 
-#catchphrase > p{
+#catchphrase > #explaination{
 	font-size: 32px;
 	color:#FEFEFE;
 	font-weight: lighter;
-  text-shadow: 0 1px 1px #000000;
-  line-height:1.5em;   
+	text-shadow: 0 1px 1px #000000;
+	line-height:1.5em;   
+}
+
+#catchphrase > a,
+#catchphrase > a:hover{
+	text-decoration: none;
+}
+
+#catchphrase > a >#learn-more{
+	margin-top: 30px;
+	font-size: 16px;
+	color:#C8C8C8;
+	font-weight: lighter;
+	text-shadow: 0 1px 1px #000000;
+	line-height:1.5em;   
 }
 
 #group-creation-button{
 	margin-top: 30px;
-  font-size:24px;
-  padding:15px 24px;
-}
+	font-size:24px;
+	padding:15px 24px;
+	}
 
 #overview-flow{
 	background-color: white;
@@ -456,7 +457,7 @@ footer a:hover{
 #user-layout-body{
 	padding-top: 100px;
 	height: 100%;
-	background-image: url(' ../img/landing-page/cafe_bg.png');
+	background-image: url(' ../img/landing-page/main-bck.jpg');
 	background-size: cover;
 }
 #user-layout-body .flat-container{
