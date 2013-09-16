@@ -5,13 +5,13 @@ services:
 
     login_listener:
         class: 'Tk\UserBundle\Listener\LoginListener'
-        arguments: ['@security.context', '@doctrine']
+        arguments: ['@security.context', '@doctrine', '@router', '@event_dispatcher']
         tags:
             - { name: 'kernel.event_listener', event: 'security.interactive_login' }
 
     register_listener:
         class: Tk\UserBundle\Listener\RegisterListener
-        arguments: ['@doctrine']
+        arguments: ['@doctrine', '@router', '@event_dispatcher', '@mailer', '@templating']
         tags:
             - { name: kernel.event_subscriber }
 

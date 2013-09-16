@@ -13,7 +13,7 @@ class TGroupType extends AbstractType
         $builder
             ->add('name', null, array(
                 'attr' => array(
-                    'placeholder' => 'Name of the group',
+                    'placeholder' => 'Enter the name of the group',
                 ),
             ))
             ->add('currency','entity', array(

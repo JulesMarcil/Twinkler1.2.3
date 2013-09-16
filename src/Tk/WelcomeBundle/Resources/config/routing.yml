@@ -36,3 +36,7 @@ tk_welcome_press:
 tk_welcome_contact:
     pattern: /contact
     defaults: { _controller: TkWelcomeBundle:Default:contact }
+
+tk_welcome_create_group:
+    pattern: /new
+    defaults: { _controller: TkWelcomeBundle:Default:newGroup }

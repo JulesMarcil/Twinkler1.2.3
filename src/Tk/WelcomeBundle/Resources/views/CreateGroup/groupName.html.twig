@@ -1,0 +1,45 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block head %}
+    {{ parent() }}
+    <title>Create your group</title>
+{% endblock %}
+
+{% block signuplogin %}
+    <a href="{{ path('fos_user_registration_register') }}">Sign up</a>
+{% endblock %}
+
+{% block fos_user_content %}
+
+<div class="new-group row">
+    <div class="span6 offset3" style="text-align: center">
+        <div class="flat-container" style="width: 100%">
+            <div class="flat-header">
+                <h3 style="text-align: center">Create a New Group</h3>
+            </div>
+            <form action="{{ path('tk_welcome_create_group') }}" method="post" {{ form_enctype(form) }} style="margin:0; margin-top:20px;">
+                <div class="new-group-content">
+                        {{ form_errors(form) }}
+                        {{ form_errors(form.name) }}
+                        {{ form_widget(form.name) }}
+                    <div class="currency">
+                        {{ form_label(form.currency) }}
+                        {{ form_errors(form.currency) }}
+                        {{ form_widget(form.currency) }}
+                    </div>
+                        {{ form_rest(form) }}
+                </div>
+
+                <div class="flat-footer" style="margin-top: 20px; padding: 20px;">
+                    <input type="submit" value="Create Group" class="btn-large flat-btn flat-pk" style="border:none;"/>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock fos_user_content %}
+
