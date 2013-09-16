@@ -126,8 +126,8 @@
 
 					{% set previous = expense[0].date %}
 
-					<div class="accordion-group">
-						<div class="expense-list flat-container accordion-heading">
+					<div>
+						<div class="expense-list flat-container">
 							<div class="pinpoint-tmln">
 								<a  href="#" data-toggle="tooltip" rel="tooltip" title="{{ expense[0].date|date("d - m") }}">
 									<img class="pinpoint-button" src="{{ asset('img/Frame/tmln-btn.png') }}" class="img-circle" width="20px">
@@ -180,17 +180,12 @@
 									{% endif %}
 								</div>
 								<div class="edit-remove-buttons">
-									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{expense[0].id}}"><i class="icon-edit"></i></a>
-									<a href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash"></i></a>
+									<a class="edit-button" data-id="{{expense[0].id }}"><i class="icon-edit"></i></a>
+									<a class="remove-button" href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash"></i></a>
 								</div>
 							</div>	
 						</div>
-						<div id="collapse{{expense[0].id}}" class="accordion-body collapse out">
-	     			 		<div class="accordion-inner">
-								<div class="expense-list flat-container">
-									{% render controller('TkExpenseBundle:Expense:edit', {'id': expense[0].id } ) %}
-								</div>
-							</div>
+						<div id="expense-edit-{{expense[0].id}}">
 						</div>
 					</div>
 				</div>

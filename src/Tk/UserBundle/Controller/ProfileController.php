@@ -62,7 +62,7 @@ class ProfileController extends Controller
                     $member->setName($user->getUsername());
                 }
 
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
 
@@ -96,7 +96,7 @@ class ProfileController extends Controller
                     $member->setName($user->getUsername());
                 }
 
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
 
@@ -120,7 +120,7 @@ class ProfileController extends Controller
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 
                 $user = $this->getUser();
                 $currentpicture = $user->getPicture();

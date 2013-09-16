@@ -140,7 +140,7 @@ class OAuthController extends Controller
 
 	private function createDefaultGroup($user)
 	{
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
 	    $currency = $em->getRepository('TkGroupBundle:Currency')->find(1);	
 
         $group = new TGroup();

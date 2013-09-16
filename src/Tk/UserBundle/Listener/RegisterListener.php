@@ -55,7 +55,7 @@ class RegisterListener implements EventSubscriberInterface
 
 	public function __construct(Doctrine $doctrine, Router $router, EventDispatcher $dispatcher, \Swift_Mailer $mailer, TwigEngine $template)
 	{
-		$this->em         = $doctrine->getEntityManager();
+		$this->em         = $doctrine->getManager();
         $this->router     = $router;
         $this->dispatcher = $dispatcher;
         $this->mailer     = $mailer;

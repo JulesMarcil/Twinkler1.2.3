@@ -39,7 +39,7 @@ class InvitationController extends Controller
                 $member->setTGroup($group);
                 $member->setActive(0);
 
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($member);
                 $em->flush();
 
@@ -88,7 +88,7 @@ class InvitationController extends Controller
         $member->setName($user->getUsername());
         $member->setInvitationToken(null);
         $user->setCurrentMember($member);
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->persist($member);
         $em->flush();
 

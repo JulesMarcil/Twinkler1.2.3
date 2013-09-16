@@ -9,8 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 use Tk\GroupBundle\Entity\TGroup,
     Tk\UserBundle\Entity\Member,
     Tk\ExpenseBundle\Entity\Expense,
-    Tk\ListBundle\Entity\Lists,
-    Tk\ListBundle\Entity\Item,
     Tk\UserBundle\Entity\Feedback;
 
 class ApiController extends Controller
@@ -247,7 +245,7 @@ class ApiController extends Controller
     {
         $data = $this->getRequest()->query->all();
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $member = $em->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);
         $group = $member->getTGroup();
 
@@ -383,64 +381,6 @@ class ApiController extends Controller
                      'addedDate' => $expense->getAddedDate()->getTimestamp(),
                      'share'     => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
                      );
-    }
-
-    public function getListsAction()
-    {
-        $data = $this->getRequest()->query->all();
-        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['currentGroupId']);
-        $lists = $group->getLists();
-
-        $response = array();
-
-        foreach($lists as $list) {
-            $items = $list->getItems();
-            $items_array = array();
-            foreach($items as $item){
-                $items_array[] = array('id' => $item->getId(), 'name' => $item->getName(), 'status' => $item->getStatus());
-            }
-            $response[] = array('id' => $list->getId(), 'name' => $list->getName(), 'items' => $items_array);
-        }
-
-        return new JsonResponse($response);
-    }
-
-    public function postListAction()
-    {
-        $data = $this->getRequest()->request->all();
-        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['group_id']);
-        
-        if ($group) {
-            $list = new Lists();
-            $list->setName($data['name']);
-            $list->setGroup($group);
-            $list->setDate(new \Datetime('now'));
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($list);
-            $em->flush();
-
-            return new JsonResponse(array('id' => $list->getId(), 'name' => $list->getName()));
-        }
-
-        return new JsonResponse(array('message' => 'group not found'));
-    }
-
-    public function postItemAction()
-    {
-        $data = $this->getRequest()->request->all();
-        $list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($data['list_id']);
-
-        $item = new Item();
-        $item->setName($data['name']);
-        $item->setStatus('incomplete');
-        $item->setList($list);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($item);
-        $em->flush();
-
-        return new JsonResponse($item);
     }
 
     public function getDashboardInfoAction()

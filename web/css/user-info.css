@@ -173,32 +173,26 @@ a:hover{
 	text-align: left;
 }
 
-.accordion-group-icon{
-	position: absolute;
-	top: 5px;
-	left: 0px;
-}
-
 .accordion-heading > div{
 	display: inline-block;
-	width: 100%;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 .accordion-heading-left{
-	min-width: 30%;
-	display: inline-block;
+	width: 80px;
 }
 
 .accordion-heading-middle{
 	width: 30%;
-	min-width: 200px;
-	display: inline-block;
+	color:#F97E76;
+	font-size: 1.2em;
 }
 
 .accordion-heading-right{
-	min-width: 20%;
-	display: inline-block;
+	width: 200px;
+	text-align: right;
+	position: absolute;
+	right: 30px;
 }
 
 .accordion-heading-right > a,

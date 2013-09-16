@@ -24,7 +24,6 @@ class AppKernel extends Kernel
             new Tk\GroupBundle\TkGroupBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Tk\ExpenseBundle\TkExpenseBundle(),
-            new Tk\ListBundle\TkListBundle(),
             new FOS\FacebookBundle\FOSFacebookBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
