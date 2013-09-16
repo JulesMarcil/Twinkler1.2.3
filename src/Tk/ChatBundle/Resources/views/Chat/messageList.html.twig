@@ -1,0 +1,38 @@
+
+<table width="90%">
+	{% for message in last_messages %}
+	{% set member = message.author %}
+
+	{% if member.user == app.user %}
+
+	<tr>
+		<td>{{message.timestamp}}</td>
+		<td>{{message.body}}</td>
+		<td>
+			{% if member.user.facebookId %}
+			<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}"  width="40px" style="position: relative">
+			{% else %}
+			<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="40px" style="position: relative">
+			{% endif %}
+		<td>
+	</tr>
+
+	{% else %}
+
+	<tr>
+		<td>
+			{% if member.user.facebookId %}
+			<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}"  width="40px" style="position: relative">
+			{% elseif member.user %}
+			<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="40px" style="position: relative">
+			{% else %}
+			<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" width="40px" style="position: relative">
+			{% endif %}
+		<td>
+		<td>{{message.body}}</td>
+		<td>{{message.timestamp}}</td>
+	</tr>
+
+	{% endif %}
+	{% endfor %}
+</table>
