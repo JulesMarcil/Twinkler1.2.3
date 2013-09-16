@@ -132,6 +132,13 @@ $(document).ready(function(){
         // Stop the link from acting like a normal anchor link
         return false;
     });
+    // When #scroll is clicked
+    jQuery('#learn-more').click(function(){
+        // Scroll down to 'catTopPosition'
+        jQuery('html, body').animate({scrollTop:catTopPosition4}, 'slow');
+        // Stop the link from acting like a normal anchor link
+        return false;
+    });
 
         var catTopPosition5 = jQuery('#expense').offset().top;
     

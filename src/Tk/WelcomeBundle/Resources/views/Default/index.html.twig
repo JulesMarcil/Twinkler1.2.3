@@ -14,14 +14,14 @@
 				</a>
 				<div class="pull-right" id="login-register">
 					<ul>
-						<li id="feature" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#features">Features</a></li>
-						<li id="getappstandapp" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#gettheapp">Get the App</a></li>
-						<li id="gimmemore" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#mosaic">More</a></li>
+						<li id="feature" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
+						<li id="getappstandapp" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
+						<li id="gimmemore" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#mosaic">MORE</a></li>
 						<li class="header-collapse"><a>|</a></li>
 						<li>
-							<a href="{{ path('fos_user_security_login')}}">Login</a> 
-							<span>or</span>
-							<a href="{{ path('fos_user_registration_register')}}">Register</a>
+							<a href="{{ path('fos_user_security_login')}}">LOGIN</a> 
+							<span>OR</span>
+							<a href="{{ path('fos_user_registration_register')}}">REGISTER</a>
 						</li>
 					</ul>	
 				</div>
@@ -37,7 +37,7 @@
 			  			<div class="span10 offset1" id="catchphrase">
 						    <h1>Group Expenses made easy</h1>
 						    <p id="explaination">Use Twinkler to manage expenses in your flatshare effortlessly, for free</p>
-						    <a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">Create a Group Now</a>
+						    <a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">Create a Group</a>
 						    <a href="#planning">
 						    	<p id="learn-more">Learn more about Twinkler<br><i class="icon-chevron-down"></i></p>
 						    </a>
@@ -49,20 +49,20 @@
 
 		<section>
 			<div class="row" id="overview-flow">
-				<div class="span3 offset1">
+				<div class="span3 offset1" id="learn-more-planning">
 					<a href="#planning">CREATE A GROUP</a>
 				</div>
 				<div class="span1">
 					<i class="overview-arrow icon-chevron-right"></i>
 				</div>
-				<div class="span3">
+				<div class="span3" id='learn-more-expense'>
 					<a href="#expense">SHARE EXPENSES</a>
 				</div>
 				<div class="span1">
 					<i class="overview-arrow icon-chevron-right"></i>
 				</div>
-				<div class="span3">
-					<a href="#payback">PAYBACK EACH OTHER</a>
+				<div class="span3" id='learn-more-payback'>
+					<a href="#payback">PAY BACK EACH OTHER</a>
 				</div>
 			</div>
 		</section>
@@ -75,7 +75,7 @@
 		    		</div>
 		    		<div class="span7 feature-description">
 		    			<div>
-			    			<h1>1. Create a Group</h1>
+			    			<h1>Create a Group</h1>
 		    				<h2>And Invite your Flatmates</h2>
 			    			<p>Creating a group takes <strong>less than one minute</strong> on Twinkler</p>
 			    			<p>You give a <strong>name</strong> to the group and choose your <strong>currency</strong></p>
@@ -90,7 +90,7 @@
 			    <div id="expense" class="row">
 		    		<div class="span6 feature-description offset1">
 		    			<div>
-			    			<h1>2. Share Expenses</h1>
+			    			<h1>Share Expenses</h1>
 		    				<h2>Stop splitting the bill</h2>
 			    			<p>Anytime you get to pay for the others, just put it on Twinkler</p>
 			    			<p><strong>Access and edit the group expenses at all time:</strong> Twinkler keeps track of everything that has been paid</p>
@@ -125,7 +125,7 @@
 		<section >
 			<div class="container">
 				<div id="late-login" class="row">
-					  <a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">Create a Group Now</a>
+					  <a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">Create a Group</a>
 					  <p>Already registered? Log in <a href="#subscribeModal" role="button" data-toggle="modal">here</a></p>
 				</div>
 			</div>
@@ -153,7 +153,7 @@
 				<div id="login-mosaic">
 				    <img src="{{ asset('img/logo/twinkler_logo_mosaic.png') }}" width="600px" alt="twinkler logo">
 				    <br>
-			  		<a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">Create a Group Now</a>
+			  		<a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">Create a Group</a>
 				</div>
 				<div id="row1" class="row mosa-row">
 					 <img id="pic1-1" src="{{ asset('img/landing-page/mosaic/thib_michou_kayak_200.jpg') }}" alt="twinkler logo">
