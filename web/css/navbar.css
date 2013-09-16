@@ -159,12 +159,17 @@ header{
 
 /* --- toolbar (bottom right) --- */
 
+
+
 #toggle-button{
 	position: absolute;
 	bottom: 0;
 	right: 0;
+	color: rgb(200,200,200);
 }
-
+#toggle-button:hover{
+	text-decoration: none
+}
 /* --- selection menu --- */
 
 .selection-menu{
