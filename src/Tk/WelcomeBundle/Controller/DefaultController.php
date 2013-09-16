@@ -7,7 +7,6 @@ use Tk\WelcomeBundle\Entity\Subscribe;
 
 use Tk\GroupBundle\Entity\TGroup;
 use Tk\GroupBundle\Form\TGroupType;
-use Tk\ListBundle\Entity\Lists;
 
 class DefaultController extends Controller
 {
@@ -28,7 +27,7 @@ class DefaultController extends Controller
 
             if ($form->isValid()) {          
         
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($subscribe);
                 $em->flush();
 
@@ -76,17 +75,8 @@ class DefaultController extends Controller
 
             if ($form->isValid()) {
 
-                $em = $this->getDoctrine()->getEntityManager();
-
                 $group->setInvitationToken($group->generateInvitationToken());
-                $todolist = new Lists();
-                $todolist->setName('Todo List');
-                $todolist->setGroup($group);
-                $shoppinglist = new Lists();
-                $shoppinglist->setName('Shopping List');
-                $shoppinglist->setGroup($group);
-                $em->persist($todolist);
-                $em->persist($shoppinglist);
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($group);
                 $em->flush();
 

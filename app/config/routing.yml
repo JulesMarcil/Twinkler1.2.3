@@ -29,15 +29,6 @@ appexpenses:
     resource: Tk\ExpenseBundle\Controller\APPExpenseController
     prefix: /group/app/
 
-items:
-    type: rest
-    resource: Tk\ListBundle\Controller\ItemsController
-    prefix: /group/
-
-tk_list:
-    resource: "@TkListBundle/Resources/config/routing.yml"
-    prefix:   /
-
 tk_expense:
     resource: "@TkExpenseBundle/Resources/config/routing.yml"
     prefix:   /

@@ -31,7 +31,7 @@ class FriendsController extends Controller
         // Split Facebook friends between Twinkler users and not
         $twinkler_facebook = array();
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         foreach($facebook_friends as $facebook_friend){
             $id = $facebook_friend['id'];
             $query = $em->createQuery(

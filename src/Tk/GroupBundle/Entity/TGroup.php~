@@ -59,11 +59,6 @@ class TGroup
     protected $expenses;
 
     /**
-     * @ORM\OneToMany(targetEntity="Tk\ListBundle\Entity\Lists", mappedBy="group", cascade={"persist"})
-     */
-    protected $lists;
-
-    /**
      * @ORM\OneToMany(targetEntity="Tk\ChatBundle\Entity\Message", mappedBy="group", cascade={"persist"})
      */
     protected $messages;
@@ -318,39 +313,6 @@ class TGroup
     public function getCurrency()
     {
         return $this->currency;
-    }
-
-    /**
-     * Add lists
-     *
-     * @param \Tk\ListBundle\Entity\Lists $lists
-     * @return TGroup
-     */
-    public function addList(\Tk\ListBundle\Entity\Lists $lists)
-    {
-        $this->lists[] = $lists;
-
-        return $this;
-    }
-
-    /**
-     * Remove lists
-     *
-     * @param \Tk\ListBundle\Entity\Lists $lists
-     */
-    public function removeList(\Tk\ListBundle\Entity\Lists $lists)
-    {
-        $this->lists->removeElement($lists);
-    }
-
-    /**
-     * Get lists
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLists()
-    {
-        return $this->lists;
     }
 
     /**

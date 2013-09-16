@@ -205,51 +205,21 @@ var expenseStart = function(){
     	$(this).addClass("active");
     });
 
-}
+    $('.edit-button').on('click', function(e){
+    	e.preventDefault();
+    	var expenseId = $(this).data('id');
+    	var editBox = $('#expense-edit-'+expenseId);
+    	if(editBox.hasClass('shown')){
+    		editBox.fadeOut();
+    		editBox.removeClass('shown');
+    	} else {
+	    	$.get('expenses/edit/'+expenseId, function(response){
+				editBox.html(response).hide().fadeIn();
+				editBox.addClass('shown');
+			});
+	    }
+    })
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LISTS START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
-var listsStart = function(){
-
-	deactivePageHighlight();
-	activePage = document.URL.split("/").pop(); /*get page name*/
-	activePageHighlight();
-
-	Appstart();
-
-	$('#group-edit-list').on('mouseenter', 'li', function() {
-		var icon = $(this).find('i');
-		icon.show();
-	});
-	$('#group-edit-list').on('mouseleave', 'li', function() {
-		$(this).find('i').hide();
-	});
-
-	// ajax remove list
-	$("#group-edit-list").find('a').on('click', 'i', function(e){
-		e.preventDefault();
-		var id = $(this).closest('a').data('id');
-		$.get('ajax/remove/lists/'+id, function(response){
-			$('#content-container').html(response);
-			listsStart();
-		});
-	});
-
-	// ajax change list
-	$("#group-edit-list").find('a').on('click', function(e){
-		e.preventDefault();
-		var id = $(this).data('id');
-		$.get('ajax/change/lists/'+id, function(response){
-			$('#content-container').html(response);
-			listsStart();
-		});
-	});
-
-	// ajax create list form
-	$("#create-list-button").on('click','a', function(e){
-		e.preventDefault();
-		$('#create-form').toggle();
-	});
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TIMELINE START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -280,7 +250,6 @@ var timelineStart = function(){
 		$.get('ajax/message/new?new_message='+message, function(response){
 			$('#message-list').html(response);
 
-
 			// rappeler les fonctions de mise en forme
 			
 		});
@@ -298,10 +267,6 @@ var timelineStart = function(){
 $(document).ready(function() { 
 	if (activePage==="expenses"){
 		expenseStart();
-	}else if(activePage==="settings"){
-		settingsStart();
-	}else if(activePage==="lists"){
-		listsStart();
 	}else if(activePage==="timeline"){
 		timelineStart();
 	}
@@ -311,17 +276,6 @@ $(document).ready(function() {
 
 /* --- AJAX FOR SELECTION MENU --- */
 $(document).ready(function() {
-
-// ---> ajax for going to settings
-	$("#navbar-settings").on('click', 'a', function(e){
-		e.preventDefault();
-		$.get('ajax/settings', function(response){
-			$('#content-container').html(response);
-			window.history.pushState("", "", 'settings');
-			// rappeler les fonctions de mise en forme
-			settingsStart();
-		});
-	});
 
 // ---> ajax for going to expenses 
 	$("#navbar-expenses").on('click', 'a', function(e){
@@ -335,23 +289,6 @@ $(document).ready(function() {
 		        height: Math.min('450',$(window).height()-120)+'px'
 		    });
 			expenseStart();
-		});
-	});
-
-// ---> ajax for going to lists 
-	$("#navbar-lists").on('click', 'a', function(e){
-		e.preventDefault();
-		$.get('ajax/lists', function(response){
-			$('#content-container').html(response);
-			window.history.pushState("", "", 'lists');
-			// rappeler les fonctions de mise en forme
-			// rappel de listapp.js
-
-			deactivePageHighlight();
-			activePage = document.URL.split("/").pop(); /*get page name*/
-			activePageHighlight();
-
-			listsStart();
 		});
 	});
 

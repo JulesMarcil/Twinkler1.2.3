@@ -42,7 +42,7 @@ class LoginListener
 	public function __construct(SecurityContext $securityContext, Doctrine $doctrine, Router $router, EventDispatcher $dispatcher)
 	{
 		$this->securityContext = $securityContext;
-		$this->em              = $doctrine->getEntityManager();
+		$this->em              = $doctrine->getManager();
 		$this->router 		   = $router;
 		$this->dispatcher 	   = $dispatcher;
 	}

@@ -69,7 +69,7 @@ class ExpenseController extends Controller
         
             if (count($form->get('users')->getData()) > 0){
 
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
         		$em->persist($expense);
         		$em->flush();
 
@@ -105,7 +105,7 @@ class ExpenseController extends Controller
 
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $expense = $em->getRepository('TkExpenseBundle:Expense')->find($id);
         $group = $expense->getGroup();
         
@@ -119,7 +119,7 @@ class ExpenseController extends Controller
 
             if ($form->isValid()) { 
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($expense);
             $em->flush();
 
@@ -134,7 +134,7 @@ class ExpenseController extends Controller
 
     public function removeAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $expense = $em->getRepository('TkExpenseBundle:Expense')->find($id);
         
         $em->remove($expense);

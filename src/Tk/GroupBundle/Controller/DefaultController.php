@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Tk\GroupBundle\Entity\TGroup;
 use Tk\GroupBundle\Form\TGroupType;
 use Tk\UserBundle\Entity\Member;
-use Tk\ListBundle\Entity\Lists;
 
 
 class DefaultController extends Controller
@@ -18,7 +17,7 @@ class DefaultController extends Controller
         if(!$this->getUser()->getCurrentMember()){
             return $this->redirect($this->generateUrl('tk_user_homepage'));
         }else{
-            return $this->render('TkGroupBundle:Default:settings.html.twig');
+            return $this->redirect($this->generateUrl('tk_expense_homepage'));
         }
     }
 
@@ -49,16 +48,9 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('tk_expense_homepage'));
     }
 
-    public function goToListsAction($id)
-    {
-        $this->changeCurrentMemberAction($id);
-
-        return $this->redirect($this->generateUrl('tk_list_homepage'));
-    }
-
     private function changeCurrentMemberAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $member = $em->getRepository('TkUserBundle:Member')->find($id);
         $user = $this->getUser();
         $user->setCurrentMember($member);
@@ -79,7 +71,7 @@ class DefaultController extends Controller
 
             if ($form->isValid()) {
 
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
 
                 $user = $this->getUser();
                 $member = new Member();
@@ -88,14 +80,6 @@ class DefaultController extends Controller
                 $member->setTGroup($group);
                 $user->setCurrentMember($member);
                 $group->setInvitationToken($group->generateInvitationToken());
-                $todolist = new Lists();
-                $todolist->setName('Todo List');
-                $todolist->setGroup($group);
-                $shoppinglist = new Lists();
-                $shoppinglist->setName('Shopping List');
-                $shoppinglist->setGroup($group);
-                $em->persist($todolist);
-                $em->persist($shoppinglist);
                 $em->persist($group);
                 $em->persist($member);
                 $em->flush();
@@ -123,7 +107,7 @@ class DefaultController extends Controller
 
             if ($form->isValid()) {
 
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($group);
                 $em->flush();
 
@@ -161,7 +145,7 @@ class DefaultController extends Controller
             $member->setInvitationToken($member->generateInvitationToken());
             $member->setTGroup($this->getUser()->getCurrentMember()->getTGroup());
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($member);
             $em->flush();
 
@@ -185,7 +169,7 @@ class DefaultController extends Controller
 
     public function removeMemberRequestAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $member = $em->getRepository('TkUserBundle:Member')->find($id);
 
         if ($this->getUser()->getCurrentMember()->getTGroup() != $member->getTGroup()){
@@ -225,7 +209,7 @@ class DefaultController extends Controller
 
     public function closeGroupAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $group = $em->getRepository('TkGroupBundle:TGroup')->find($id);
 
         if ($this->getUser()->getCurrentMember()->getTGroup() != $group){
@@ -241,7 +225,7 @@ class DefaultController extends Controller
 
     public function addFriendAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $friend = $em->getRepository('TkUserBundle:User')->find($id);
 
         $member = new Member();
@@ -265,7 +249,7 @@ class DefaultController extends Controller
 
     public function removeAddedMemberAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $member = $em->getRepository('TkUserBundle:Member')->find($id);
         $this->removeMemberAction($member, $em);
         
@@ -301,7 +285,7 @@ class DefaultController extends Controller
             }
         }
 
-        $repo = $this->getDoctrine()->getEntityManager()->getRepository('TkUserBundle:User');
+        $repo = $this->getDoctrine()->getManager()->getRepository('TkUserBundle:User');
 
         foreach($this->get('session')->get('new_ids') as $id){
 

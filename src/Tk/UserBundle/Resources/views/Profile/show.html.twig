@@ -156,34 +156,26 @@
 				{% for member in app.user.members %}
 				<div class="accordion-group group-box">
 					<div class="accordion-heading" style="display:inline-block; position:relative; width:100%;">
-						<div class="accordion-group-icon" style="width: 60px">
+						<div class="accordion-heading-left">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-{{ member.id }}" style="display: inline-block"><img src="{{ asset('img/Frame/group-icon.png') }}"	width="40px" alt="show members"></a>
 						</div>
-					    <div>
-							<a href="{{ path('tk_group_goto_member', { 'id' : member.id }) }}"  style="display: inline-block; margin-left: 45px; color:#F97E76">
+					    <div class="accordion-heading-middle">
+							<a href="{{ path('tk_group_goto_member', { 'id' : member.id }) }}">
 								<strong>{{ member.tgroup.name|capitalize }}</strong>
 							</a>
-							<p style="display: inline-block; color:#8C8C8C;font-size:12px; text-align: right; float: right; margin-right: 30px"><small>opened on {{ member.tgroup.date| date('d/m/y') }}</small></p>
 					    </div>
-						<div>
-							<div  class="accordion-heading-middle" style="display: inline-block; float: left; margin-left: 45px">
-								<a href="{{ path('tk_group_goto_expenses', { 'id' : member.id }) }}">
-									Go to Expenses
-								</a> |
-								<a href="{{ path('tk_group_goto_lists', { 'id' : member.id }) }}">
-									Go to Lists
-								</a>
-							</div>
-							<div class="accordion-heading-right" style="display: inline-block; float: right; margin-right:30px;">
-								<a href="{{ path('tk_group_goto_expenses', { 'id' : member.id }) }}">
-									<p>Your balance: 
-										{% if member.balance >= 0 %}
-										<span style="color: #a8bd44; font-family:'Asap-regular'; display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
-										{% else %}
-										<span style="color: #f97e76; font-family:'Asap-regular';display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
-										{% endif %}
-									</p>
-								</a>
+						<div class="accordion-heading-right">
+							<p style="color:#8C8C8C;font-size:12px;"><small>opened on {{ member.tgroup.date| date('d/m/y') }}</small></p>
+							<div>
+							<a href="{{ path('tk_group_goto_expenses', { 'id' : member.id }) }}">
+								<p>Your balance: 
+									{% if member.balance >= 0 %}
+									<span style="color: #a8bd44; font-family:'Asap-regular'; display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
+									{% else %}
+									<span style="color: #f97e76; font-family:'Asap-regular';display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
+									{% endif %}
+								</p>
+							</a>
 							</div>
 						</div>
 					</div>
@@ -194,9 +186,9 @@
 								<div style="display: inline-block">
 									{% if m.user %}
 									{% if m.user.facebookId %}
-									<img src="http://graph.facebook.com/{{m.user.facebookId}}/picture?width=120&height=120" class="img-circle" width="60px" 	alt="{{ m.name }}" style="position: relative">
+									<img src="http://graph.facebook.com/{{m.user.facebookId}}/picture?width=120&height=120" class="img-circle" width="60px" alt="{{ m.name }}" style="position: relative">
 									{% else %}
-									<img src="{{ asset(m.user.picture.path) }}" class="img-circle" width="60px" 	alt="{{ m.name }}" style="position: relative">
+									<img src="{{ asset(m.user.picture.path) }}" class="img-circle" width="60px" alt="{{ m.name }}" style="position: relative">
 									{% endif %}
 									{% else %}
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="60px" 	alt="{{ m.name }}" style="position: relative">
