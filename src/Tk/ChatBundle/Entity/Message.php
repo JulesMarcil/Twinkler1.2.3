@@ -78,6 +78,12 @@ class Message
         return $this->timestamp;
     }
 
+    public function getDatetime()
+    {
+        $timestamp = $this->timestamp;
+        return $timestamp->getDatetime();
+    }
+
     /**
      * Set body
      *
@@ -99,29 +105,6 @@ class Message
     public function getBody()
     {
         return $this->body;
-    }
-
-    /**
-     * Set time
-     *
-     * @param integer $time
-     * @return Message
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
-
-        return $this;
-    }
-
-    /**
-     * Get time
-     *
-     * @return integer 
-     */
-    public function getTime()
-    {
-        return $this->time;
     }
 
     /**

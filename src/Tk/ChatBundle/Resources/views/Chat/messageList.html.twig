@@ -6,7 +6,15 @@
 	{% if member.user == app.user %}
 
 	<tr>
-		<td class="message-date">{{message.timestamp}}</td>
+		<td class="message-date">
+			{% if message.timestamp|date('d') == "now"|date('d') %}
+			<p>{{message.timestamp|date('H:i')}}</p>
+			{% elseif message.timestamp|date('d') == date('-1day') %}
+			<p>Yesterday</p>
+			{% else %}
+			<p>{{message.timestamp|date('M')}} {{message.timestamp|date('d')}}</p>
+			{% endif %}
+		</td>
 		<td class="message-body msg-right">{{message.body}}</td>
 		<td class="message-pic msg-right">
 			{% if member.user.facebookId %}
@@ -21,7 +29,7 @@
 
 	<tr>
 		<td class="message-pic msg-left">
-			{% if member.user.facebookId %}
+			{% if member.user and member.user.facebookId %}
 			<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}"  width="40px" style="position: relative">
 			{% elseif member.user %}
 			<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="40px" style="position: relative">
@@ -30,7 +38,16 @@
 			{% endif %}
 		</td>
 		<td class="message-body msg-left">{{message.body}}</td>
-		<td class="message-date">{{message.timestamp}}</td>
+		<td class="message-date">
+			<p>{{message.author.name}}<br>
+			{% if message.timestamp|date('d') == "now"|date('d') %}
+			   {{message.timestamp|date('H:i')}}</p>
+			{% elseif message.timestamp|date('d') == date('-1day') %}
+			   Yesterday</p>
+			{% else %}
+			   {{message.timestamp|date('M')}} {{message.timestamp|date('d')}}</p>
+			{% endif %}
+		</td>
 	</tr>
 
 	{% endif %}
