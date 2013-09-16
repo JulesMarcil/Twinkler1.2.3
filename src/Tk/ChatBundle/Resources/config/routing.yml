@@ -1,14 +1,25 @@
 tk_chat_homepage:
-    pattern:  /hello/{name}
+    pattern:  /group/timeline
     defaults: { _controller: TkChatBundle:Default:index }
 
+tk_chat_ajax_content:
+    pattern: /group/ajax/timeline
+    defaults: { _controller: TkChatBundle:Default:ajaxContent }
+
+tk_chat_get_messages:
+    pattern: /group/messages
+    defaults: { _controller: TkChatBundle:Default:messages }
+tk_chat_ajax_new:
+    pattern: /group/ajax/message/new
+    defaults: { _controller: TkChatBundle:Default:ajaxNew }
+
+#API
 tk_chat_messages_get:
     pattern:  /api/get/messages
     defaults: { _controller: TkChatBundle:APPChat:getMessages }
 tk_chat_messages_get_new:
     pattern:  /api/get/messages/{count}
     defaults: { _controller: TkChatBundle:APPChat:getNewMessages }
-
 tk_chat_messages_post:
     pattern:  /api/post/message
     defaults: { _controller: TkChatBundle:APPChat:postMessage }

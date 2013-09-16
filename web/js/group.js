@@ -252,6 +252,41 @@ var listsStart = function(){
 	});
 }
 
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TIMELINE START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+var timelineStart = function(){
+
+	deactivePageHighlight();
+	activePage = document.URL.split("/").pop(); /*get page name*/
+	activePageHighlight();
+
+	$("#more-expenses").on('click', 'a', function(e){
+		e.preventDefault();
+		$.get('ajax/expenses', function(response){
+			$('#content-container').html(response);
+			window.history.pushState("", "", 'expenses');
+			// rappeler les fonctions de mise en forme
+			addScrollOnChart();
+			$('#expense-slimscroll').slimScroll({
+		        height: Math.min('450',$(window).height()-120)+'px'
+		    });
+			expenseStart();
+		});
+	});
+
+	$("#send-box").on('click', 'button', function(e){
+		e.preventDefault();
+		var message = $("#send-box").find('input').val();
+		$.get('ajax/message/new?new_message='+message, function(response){
+			$('#message-list').html(response);
+
+
+			// rappeler les fonctions de mise en forme
+			
+		});
+	});
+}
+
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LOAD FUNCTION ON START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 /* actually call the function when page is loaded for the first time */
@@ -262,6 +297,8 @@ $(document).ready(function() {
 		settingsStart();
 	}else if(activePage==="lists"){
 		listsStart();
+	}else if(activePage==="timeline"){
+		timelineStart();
 	}
 });
 
@@ -310,6 +347,23 @@ $(document).ready(function() {
 			activePageHighlight();
 
 			listsStart();
+		});
+	});
+
+// ---> ajax for going to timeline 
+	$("#navbar-timeline").on('click', 'a', function(e){
+		e.preventDefault();
+		$.get('ajax/timeline', function(response){
+			$('#content-container').html(response);
+			window.history.pushState("", "", 'timeline');
+			// rappeler les fonctions de mise en forme
+			// rappel de listapp.js
+
+			deactivePageHighlight();
+			activePage = document.URL.split("/").pop(); /*get page name*/
+			activePageHighlight();
+
+			timelineStart();
 		});
 	});
 
