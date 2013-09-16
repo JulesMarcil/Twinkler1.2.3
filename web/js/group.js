@@ -105,7 +105,7 @@ $(document).ready(function() {
 });
 
 window.onresize =function() {
-	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-65+'px');
+	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-100+'px');
 }
 
 /* settingsStart, expenseStart, listsStart define the funciton that needs to be
