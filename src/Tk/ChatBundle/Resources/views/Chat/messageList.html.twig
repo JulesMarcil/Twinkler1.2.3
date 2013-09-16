@@ -6,9 +6,9 @@
 	{% if member.user == app.user %}
 
 	<tr>
-		<td>{{message.timestamp}}</td>
-		<td>{{message.body}}</td>
-		<td>
+		<td class="message-date">{{message.timestamp}}</td>
+		<td class="message-body msg-right">{{message.body}}</td>
+		<td class="message-pic msg-right">
 			{% if member.user.facebookId %}
 			<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}"  width="40px" style="position: relative">
 			{% else %}
@@ -20,7 +20,7 @@
 	{% else %}
 
 	<tr>
-		<td>
+		<td class="message-pic msg-left">
 			{% if member.user.facebookId %}
 			<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}"  width="40px" style="position: relative">
 			{% elseif member.user %}
@@ -28,9 +28,9 @@
 			{% else %}
 			<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" width="40px" style="position: relative">
 			{% endif %}
-		<td>
-		<td>{{message.body}}</td>
-		<td>{{message.timestamp}}</td>
+		</td>
+		<td class="message-body msg-left">{{message.body}}</td>
+		<td class="message-date">{{message.timestamp}}</td>
 	</tr>
 
 	{% endif %}

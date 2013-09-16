@@ -285,6 +285,11 @@ var timelineStart = function(){
 			
 		});
 	});
+
+			$('#message-list').slimScroll({
+		        height: '280px',
+		        start: 'bottom'
+		    });
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LOAD FUNCTION ON START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/

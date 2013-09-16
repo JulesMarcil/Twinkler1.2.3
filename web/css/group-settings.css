@@ -200,3 +200,33 @@ border-width: 10px;
 	margin-top:10px;
 	width:70%;
 }
+
+.span6 table tr{
+
+	border-bottom: 1px solid rgb(238,238,238);
+}
+
+.message-date{
+	color:rgb(190,181,178);
+	font-size:10px;
+	width:10%;
+}
+
+.message-body{
+	width:80%;
+	padding: 0px 10px;
+}
+
+
+.message-pic{
+	width:10%;
+	padding: 10px 0px;
+}
+
+.msg-left{
+	text-align: left;
+}
+
+.msg-right{
+	text-align: right;
+}
