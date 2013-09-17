@@ -231,7 +231,7 @@ strong{
 
 #late-login{
 	text-align: center;
-	margin: 80px auto;
+	margin: 60px auto 30px;
 }
 
 #late-login p{
@@ -322,6 +322,13 @@ strong{
 
 .comment-background p{
 	color: rgb(35,161,176);
+}
+
+.comment-background p{
+	text-align: right;
+	font-style: none;
+	font-size: 12px;
+	color: #000000;
 }
 
 #gettheapp{

@@ -239,6 +239,16 @@ $('.navbar .dropdown').hover(function() {
 		var input = $("#send-box").find('input');
 		input.focus();
 
+		function refreshMessages() {
+			$.get('messages', function(response){
+				$('#message-list').html(response);
+				// rappeler les fonctions de mise en forme
+				$("#message-list").animate({ scrollTop: 100000 }, "slow");
+			});
+		}
+
+		window.setInterval(refreshMessages, 10000);
+
 		$(document).keypress(function(e) {
 		    if(e.which == 13) {
 		        var message = $("#send-box").find('input').val();
