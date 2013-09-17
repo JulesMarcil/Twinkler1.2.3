@@ -64,11 +64,9 @@ class DefaultController extends Controller
 
 	public function messagesAction()
 	{
-		$user = $this->getUser();
-    	$member = $user->getCurrentMember();
-    	$group = $member->getTGroup();
+		$messages = $this->getUser()->getCurrentMember()->getTGroup()->getMessages();
 		return $this->render('TkChatBundle:Chat:messageList.html.twig', array(
-        	'last_messages' => $group->getMessages(),
+        	'last_messages' => $messages
         	));  
     }
 

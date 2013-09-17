@@ -36,6 +36,26 @@
 					</li>
 				</ul>
 			</div>
+			<div>
+				<div id="collapse-remove-member" class="accordion-body collapse">
+					<div class="accordion-inner">	
+						<div class="well">
+						{% include 'TkGroupBundle:GroupActions:removeMembers.html.twig' %}
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div >
+				<div id="collapse-close-group" class="accordion-body collapse">
+					<div class="accordion-inner">	
+						<div class="well">
+							<p>Are you sure you want to close the group <b>{{ app.user.currentMember.tgroup.name }}</b> ?</p>
+							<small>You will not be able to access this group anymore</small>
+							<p><a href="{{ path('tk_group_close', { 'id' : app.user.currentMember.tgroup.id}) }}" class="btn btn-danger" style="margin: 20px;">Yes</a><a href="" class="btn">No</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="span6">
 			<div class="group-info flat-container">
