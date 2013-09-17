@@ -268,7 +268,7 @@
 					input.focus();
 					// rappeler les fonctions de mise en forme
 
-					$("#message-list").animate({ scrollTop: 100000 }, "fast");
+					$("#message-list").animate({ scrollTop: 100000 }, "slow");
 				});
 		    }
 		});
@@ -288,20 +288,12 @@
 		});
 
 		$('#message-list').slimScroll({
-	        height: '280px',
+	        height: Math.min('280',$('#message-list').height())+'px',
 	        start: 'bottom'
 	    });
 
 
-        function refreshMessages() { 
-        	$.get('messages', function(response){
-					$('#message-list').html(response);
-					// rappeler les fonctions de mise en forme
-					$("#message-list").animate({ scrollTop: 100000 }, "fast");
-				});
-        }
-	    window.setInterval(refreshMessages, 30000);
-
+	    
 	}
 
 	/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LOAD FUNCTION ON START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/

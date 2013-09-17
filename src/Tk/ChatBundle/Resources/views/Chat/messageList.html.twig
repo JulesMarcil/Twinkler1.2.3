@@ -1,5 +1,19 @@
 
 <table width="90%">
+
+	{% if last_messages|length == 0 %}
+
+	<tr style= "border:none">
+		<td class="message-date">
+		</td>
+		<td class="message-body msg-right" style= "text-align:center; padding: 10px 0px; color: rgb(170,170,170">No one has said anything yet :(</td>
+		<td class="message-pic msg-right">
+		<td>
+	</tr>
+
+
+	{% else %}
+
 	{% for message in last_messages %}
 	{% set member = message.author %}
 
@@ -52,4 +66,6 @@
 
 	{% endif %}
 	{% endfor %}
+{% endif %}
+
 </table>
