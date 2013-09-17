@@ -34,11 +34,11 @@
                         </a>
                     </div>
                     <div class="dropdown" >
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-caret-down"></i></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" >
-                            <li><a href="{{ path('tk_user_homepage') }}" style="color: rgb(60,60,60)">Account Settings</a></li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-caret-down" style="font-size:20px"></i></a>
+                        <ul id="dropdown-arrow"  class="dropdown-menu" role="menu" aria-labelledby="dLabel" >
+                            <li><a href="{{ path('tk_user_homepage') }}">Account Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}" style="color: rgb(60,60,60)">Logout</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                         </ul>
                     </div>
                 </div>
