@@ -1,0 +1,26 @@
+<div>We would love to hear from you</div>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
+<form id="feedback-form" action="{{ path('tk_user_feedback') }}" method="post" {{ form_enctype(form) }}>
+
+    {{ form_errors(form) }}
+
+    <div>
+        <label for="form_text" class="required">Text</label>
+        <textarea id="form_text" name="form[text]" required="required"></textarea>
+    </div>
+    <div>
+        <label class="required">Type</label>
+        <div id="form_type">
+            <input type="radio" id="form_type_0" name="form[type]" required="required" value="bug_site" checked/>
+            <label for="form_type_0" class="required">Bug</label>
+            <input type="radio" id="form_type_1" name="form[type]" required="required" value="suggestion_site" />
+            <label for="form_type_1" class="required">Suggestion</label>
+            <input type="radio" id="form_type_2" name="form[type]" required="required" value="question_site" />
+            <label for="form_type_2" class="required">Question</label>
+        </div>
+    </div>
+
+    {{ form_widget(form._token) }}
+
+    <input type="submit" />   
+</form>

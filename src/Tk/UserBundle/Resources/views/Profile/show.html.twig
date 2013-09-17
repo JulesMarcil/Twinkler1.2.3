@@ -133,6 +133,12 @@
 			</div>
 			{% endblock profile %}
 		</div>
+		<div>
+			<a data-target="feedbackModal">Send us feedbacks!</a>
+		</div>
+		<div id="feedbackModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<!-- Loaded with ajax -->
+		</div>
 	</div>	
 
 
@@ -207,4 +213,8 @@
 		<div><a href="{{ path('tk_group_new') }}" class="flat-btn flat-pk" style="height: 60px; width: 100%; margin-top: 10px; line-height: 60px;">START A NEW GROUP</a></div>
 	</div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script type='text/javascript' src="{{ asset('js/user-info.js') }}"></script>
 {% endblock %}

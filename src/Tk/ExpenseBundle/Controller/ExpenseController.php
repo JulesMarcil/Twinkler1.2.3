@@ -58,7 +58,6 @@ class ExpenseController extends Controller
 
         $form = $this->createForm(new ExpenseType($group), $expense);
                      
-
         $request = $this->get('request');
 
         if ($request->isMethod('POST')) {

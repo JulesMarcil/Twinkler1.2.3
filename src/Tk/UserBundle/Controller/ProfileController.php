@@ -14,7 +14,8 @@ use Tk\UserBundle\Entity\User,
     Tk\UserBundle\Form\UserType,
     Tk\UserBundle\Form\UsernameType,
     Tk\UserBundle\Entity\ProfilePicture,
-    Tk\UserBundle\Entity\Member;
+    Tk\UserBundle\Entity\Member,
+    Tk\UserBundle\Entity\Feedback;
 
 class ProfileController extends Controller
 {
@@ -74,40 +75,7 @@ class ProfileController extends Controller
             )); 
     }
 
-    public function editUsernameAction($id)
-    {
-        $user = $this->getUser();
 
-        if($user->getId() != $id) {
-            throw new AccessDeniedException('You do not have access to this page');
-        }
-
-        $form = $this->createForm(new UsernameType(), $user);
-        
-        $request = $this->get('request');
-
-        if ($request->isMethod('POST')) {
-            
-            $form->bind($request);
-
-            if ($form->isValid()) {
-
-                foreach ($user->getMembers() as $member){
-                    $member->setName($user->getUsername());
-                }
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('tk_user_homepage'));
-        }}
-
-        return $this->render('TkUserBundle:Profile:editUsername.html.twig', array(
-            'form' => $form->createView(),
-            'balances' => $this->getBalancesAction(),
-            )); 
-    }
 
     public function editProfilePictureAction()
     {
@@ -154,5 +122,42 @@ class ProfileController extends Controller
             'member' => $member,
                 ));
         }
+    }
+
+    public function feedbackAction()
+    {
+        $feedback = new Feedback();
+
+        $form = $this->createFormBuilder($feedback)
+            ->add('text', 'textarea')
+            ->add('type', 'choice', array(
+                 'choices' => array('bug_site' => 'bug', 'suggestion_site' => 'suggestion', 'question_site' => 'question'),
+                 'expanded' => true,
+                 'multiple' => false
+                 ))
+            ->getForm();
+
+        $request = $this->get('request');
+        if ($request->isMethod('POST')) {
+            
+            $form->bind($request);
+
+            if ($form->isValid()) {
+
+                $feedback->setAuthor($this->getUser());
+                $feedback->setGroup($this->getUser()->getCurrentMember()->getTGroup());
+                $feedback->setDate(new \Datetime('now'));
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($feedback);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('tk_user_homepage'));
+            }
+        }
+
+        return $this->render('TkUserBundle:Profile:feedbackModal.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 }
