@@ -89,17 +89,15 @@ strong{
 
 #section1{
 	width: 100%;
-	min-height: 560px;
+	height: 100%;
 	background-image: url(' ../img/landing-page/main-bck.jpg');
 	background-size: cover;
-	background-position: 0px -180px;
 	padding-top: 10px;
 }
 
 #catchphrase{
 	margin-top: 140px;
 	margin-bottom: 20px;
-	padding-left: 50px;
 	text-align: center;
 }
 
@@ -145,6 +143,22 @@ strong{
 	margin-top: 30px;
 	font-size:24px;
 	padding:15px 24px;
+}
+
+@media only screen and (max-width: 767px) {
+	#catchphrase{
+	margin-top: 70px;
+	}
+	#catchphrase > h1{
+	color:#FEFEFE;
+	font-size:40px;
+	font-weight: bold;
+	line-height:1.2em;
+	}
+	#catchphrase > #explaination{
+	font-size: 20px;
+	line-height:1.4em;   
+	}
 }
 
 #overview-flow{
@@ -234,10 +248,6 @@ strong{
 	margin: 60px auto 30px;
 }
 
-#late-login p{
-	color:#B7B7B7;	
-}
-
 #late-login a{	
 }
 
@@ -290,14 +300,9 @@ strong{
 	border-top-right-radius:3px;
 	color: #000000;
 	font-size:16px;
-	line-height:24px;
-	margin-left:85px;
-	margin-right:20px;
-	padding:10px;
 	position:relative;
-	height: 40px;
 	font-style: italic;
-	padding-top: 20px;
+	padding: 5px;
 }
 
 
@@ -320,11 +325,8 @@ strong{
 	content:""
 }
 
-.comment-background p{
+.comment-background > .feedback-name{
 	color: rgb(35,161,176);
-}
-
-.comment-background p{
 	text-align: right;
 	font-style: none;
 	font-size: 12px;
@@ -484,7 +486,6 @@ footer a:hover{
 
 @media only screen and (max-width: 767px) {
 	.feature,
-	#showcase,
 	#mosaic,
 	.learn-more-link{
 		display: none;
