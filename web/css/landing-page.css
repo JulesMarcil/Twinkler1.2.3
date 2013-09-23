@@ -185,12 +185,12 @@ header li{
 	}
 	#catchphrase > h1{
 		color:#FEFEFE;
-		font-size:30px;
+		font-size:36px;
 		font-weight: bold;
 		line-height:1.2em;
 	}
 	#catchphrase > #explaination{
-		font-size: 14px;
+		font-size: 18px;
 		line-height:1.4em;   
 	}
 }
@@ -342,10 +342,12 @@ header li{
 	border-top-right-radius:3px;
 	color: #000000;
 	font-size:20px;
+	line-height: 24px;
 	font-style: italic;
 	width: 75%;
 	min-height: 60px;
 	padding-top: 10px;
+	padding-bottom: 20px;
 }
 
 .comment-background:before{
@@ -387,6 +389,22 @@ header li{
 }
 #control-right {
 	right: -100px;
+}
+
+@media only screen and (max-width: 569px) {
+	.carousel-control{
+		display: none;
+	}
+	.item .feedback-img img {
+		margin-left: -30px;
+		height: 80px;
+		width: 80px;
+		max-width: none;
+}
+	.comment-background {
+		width: 50%;
+	}
+
 }
 
 @media only screen and (min-width: 570px) {
@@ -553,7 +571,6 @@ footer a:hover{
 	#mosaic,
 	.learn-more-link,
 	#learn-more,
-	.carousel-control,
 	footer ul {
 		display: none;
 	}
