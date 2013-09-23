@@ -145,6 +145,7 @@ class Expenses {
                     $payments[] = array($key2, $value1, $key1);
                     $positive[$key1]= 0;
                     $negative[$key2]= 0;
+                    $value1 = 0;
                 }
             }
         }
