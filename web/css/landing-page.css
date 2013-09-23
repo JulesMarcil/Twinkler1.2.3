@@ -523,9 +523,16 @@ footer a:hover{
 	background-image: url(' ../img/landing-page/main-bck.jpg');
 	background-size: cover;
 }
+
+#login-signup{
+	padding-top: 10px;
+	padding-right: 20px;
+	height:20px;
+	margin-right: 40px;
+}
+
 #user-layout-body .flat-container{
 	text-align: center;
-	width: 100%;
 }
 
 #user-layout-body .flat-header{
@@ -536,9 +543,50 @@ footer a:hover{
 	line-height: 24px;
 }
 
+#user-layout-body .flat-container #hip-way{
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+	padding: 0px 10px;
+}
+#user-layout-body .flat-container #old-school-way{
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+	border-left: 1px solid rgb(239, 244, 246); 
+}
+
 #user-layout-body .flat-footer p{
 	margin-top: 10px;
 	padding-top: 15px;
+}
+
+@media only screen and (min-width: 570px) {
+	#user-layout-body .flat-container{
+		width: 570px;
+	}
+}
+@media only screen and (max-width: 570px) {
+	#user-layout-body{
+		padding-top: 0;
+	}
+	#user-layout-body header {
+		display: none;
+	}
+	#user-layout-body .flat-container{
+		width: 100%;
+	}
+	#user-layout-body .flat-container #hip-way{
+		display: block;
+		width: 100%;
+		padding: 0px 10px;
+	}
+	#user-layout-body .flat-container #old-school-way{
+		display: block;
+		width: 100%;
+		border-top: 1px solid rgb(239, 244, 246); 
+		padding-top: 10px;
+	}
 }
 
 /*---Newsletter Modal---*/

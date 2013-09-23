@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div id="user-layout" class="row">
-    <div class="span6 offset3" style="text-align: center">
+    <div align="center">
         {% if app.session.get('invitation_id') != null %}
         <h5>Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
         {% endif %}
@@ -18,18 +18,15 @@
             	<div class="flat-header">
             		<h1 style="font-size:20px">SIGN UP</h1>	
             	</div>
-                <div class="row">
-
-                    <div class="span3" style="height:300px;">
-                        <div style="height:100%;border-right: 1px solid rgb(239, 244, 246); padding: 0px 10px;">
-                            <p style="display: inline-block;width:80%; color:rgb(245,103,99); margin-bottom:40px; font-size: 18px">Do it the hip way</p>
-                            <p style="color: #999999; font-size: 12px;">Connect in a single click via Facebook</p>
-                        	<p>{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'large'}) }}</p>
-                            <p style="color: #999999; font-size: 12px;">We will never post anything in your name but you will find your friends instantly on Twinkler</p>
-                        </div>
+                <div>
+                    <div id="hip-way">
+                        <p style="display: inline-block;width:80%; color:rgb(245,103,99); margin-bottom:40px; font-size: 18px">Do it the hip way</p>
+                        <p style="color: #999999; font-size: 12px;">Connect in a single click via Facebook</p>
+                    	<p>{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'large'}) }}</p>
+                        <p style="color: #999999; font-size: 12px;">We will never post anything in your name but you will find your friends instantly on Twinkler</p>
                     </div>
 
-                    <div  class="span3">
+                    <div id="old-school-way">
                         <p style="display: inline-block;width:80%; color:rgb(245,103,99); font-size: 18px">Or the old school way</p>
                         <div id="register-form">
                         	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" style="margin-top: 20px;">
