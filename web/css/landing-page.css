@@ -289,7 +289,27 @@ strong{
 	font-weight: bold;
 }
 
+.item {
+	position: absolute;
+	width: 80%;
+	margin: auto;
+}
+
+.item div {
+	display: inline-block;
+}
+
+.item .feedback-img {
+	width: 20%;
+}
+
+.item img {
+	height: 60px;
+	vertical-align: top;
+}
+
 .comment-background{
+	position: relative;
 	background-color: #f0f0f0;
 	background-position:initial initial;
 	background-repeat:initial initial;
@@ -299,16 +319,17 @@ strong{
 	border-top-left-radius:3px;
 	border-top-right-radius:3px;
 	color: #000000;
-	font-size:16px;
-	position:relative;
+	font-size:20px;
 	font-style: italic;
-	padding: 5px;
+	width: 78%;
+	height: 60px;
+	vertical-align: top;
+	padding-top: 10px;
 }
-
 
 .comment-background:before{
 	position:absolute;
-	top:25px;
+	top:30px;
 	left:-7px;
 	border-right:7px solid #dedede;
 	border-top:7px solid transparent;
@@ -318,7 +339,8 @@ strong{
 
 .comment-background:after{
 	position:absolute;
-	top:26px;left:-6px;
+	top:31px;
+	left:-6px;
 	border-right:6px solid #f0f0f0;
 	border-top:6px solid transparent;
 	border-bottom:6px solid transparent;
@@ -326,11 +348,14 @@ strong{
 }
 
 .comment-background > .feedback-name{
-	color: rgb(35,161,176);
+	color: #000000;
 	text-align: right;
 	font-style: none;
 	font-size: 12px;
 	color: #000000;
+	position: absolute;
+	bottom: 0;
+	right: 10px;
 }
 
 #gettheapp{
