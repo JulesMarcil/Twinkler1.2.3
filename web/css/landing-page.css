@@ -237,20 +237,6 @@ strong{
 	opacity: 1;
 }
 
-.learn-more-hover > p{
-}
-
-.features-short{
-}
-
-#late-login{
-	text-align: center;
-	margin: 60px auto 30px;
-}
-
-#late-login a{	
-}
-
 .feature{
 	background-image: url(' ../img/landing-page/feature-gradient-bck.png');
 	background-position:50% 100%;
@@ -284,28 +270,25 @@ strong{
 	line-height: 18px;
 }
 
-
 .feature-description p strong{
 	font-weight: bold;
 }
 
-.item {
-	position: absolute;
-	width: 80%;
-	margin: auto;
+#user-feedbacks {
+	text-align: center;
+	margin: 40px auto;
 }
-
 .item div {
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .item .feedback-img {
-	width: 20%;
+	width: 15%;
 }
 
-.item img {
-	height: 60px;
-	vertical-align: top;
+.item .feedback-img img {
+	height: 80px;
 }
 
 .comment-background{
@@ -321,9 +304,8 @@ strong{
 	color: #000000;
 	font-size:20px;
 	font-style: italic;
-	width: 78%;
+	width: 83%;
 	height: 60px;
-	vertical-align: top;
 	padding-top: 10px;
 }
 
@@ -357,6 +339,17 @@ strong{
 	bottom: 0;
 	right: 10px;
 }
+
+.carousel-control {
+	position: absolute;
+}
+#control-left {
+	left: -100px;
+}
+#control-right {
+	right: -100px;
+}
+
 
 #gettheapp{
 	background-image: url(' ../img/landing-page/get-the-app.jpg');
@@ -501,7 +494,8 @@ footer a:hover{
 @media only screen and (max-width: 767px) {
 	.feature,
 	#mosaic,
-	.learn-more-link{
+	.learn-more-link,
+	.carousel-control{
 		display: none;
 	}
 	#gettheapp{
