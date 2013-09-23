@@ -385,6 +385,7 @@ strong{
 #mosaic{
 	height: 700px;
 	margin: 0px auto;
+	margin-top: 20px;
 }
 
 #login-mosaic{
@@ -399,9 +400,6 @@ strong{
 	width: 400px;
 }
 
-#login-mosaic .btn{
-}
-
 .mosa-row{
 	margin-top:10px;
 	display: inline-block;
@@ -414,18 +412,9 @@ strong{
 	height:200px;
 }
 
-#row1{
+#row1, #row2, #row3{
 	height:200px;
 }
-
-#row2{
-	height:200px;
-}
-
-#row3{
-	height:200px;
-}
-
 
 #made-with-love{
 	text-align: center;
