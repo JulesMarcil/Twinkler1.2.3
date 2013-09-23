@@ -199,17 +199,7 @@ class ApiController extends Controller
             $group->setCurrency($currency);
             $group->setInvitationToken($group->generateInvitationToken());
 
-            $todolist = new Lists();
-            $todolist->setName('Todo List');
-            $todolist->setGroup($group);
-
-            $shoppinglist = new Lists();
-            $shoppinglist->setName('Shopping List');
-            $shoppinglist->setGroup($group);
-
             $em = $this->getDoctrine()->getManager();
-            $em->persist($todolist);
-            $em->persist($shoppinglist);
             $em->persist($group);
             $em->flush();
 

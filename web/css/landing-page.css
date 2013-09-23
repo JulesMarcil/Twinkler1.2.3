@@ -1,5 +1,7 @@
 /* --- CSS of landing page only--- */
 
+/* General */
+
 body{
 	width: 100%;
 	min-width: 200px;
@@ -13,6 +15,12 @@ h1, h2{
 	line-height:1em;
 	font-size:42px;
 }
+
+strong{
+	font-weight: bold;
+}
+
+/* header */
 
 header{
 	position: fixed;
@@ -50,10 +58,6 @@ header li{
 	padding-right: 30px;
 }
 
-strong{
-	font-weight: bold;
-}
-
 #login-register{
 	padding-top: 10px;
 	height:20px;
@@ -69,11 +73,19 @@ strong{
 		display: none;
 	}
 	#login-register{
+		padding-top: 5px;
+		height:20px;
 		margin-right: 0px;
 		padding-left: 0;
+		font-size: 14px;
+	}
+	header {
+		padding-top: 5px;
+		padding-bottom: 5px;
 	}
 	header img{
 		margin-left: 3%;
+		width: 100px;
 	}
 	header ul{
 		margin-left: 1%;
@@ -82,6 +94,8 @@ strong{
 		paddin-right: 5px;
 	}
 }
+
+/* body */
 
 .brand{
 	padding: 0px;
@@ -147,17 +161,37 @@ strong{
 
 @media only screen and (max-width: 767px) {
 	#catchphrase{
-	margin-top: 70px;
+		margin-top: 50px;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 	#catchphrase > h1{
-	color:#FEFEFE;
-	font-size:40px;
-	font-weight: bold;
-	line-height:1.2em;
+		color:#FEFEFE;
+		font-size:40px;
+		font-weight: bold;
+		line-height:1.2em;
 	}
 	#catchphrase > #explaination{
-	font-size: 20px;
-	line-height:1.4em;   
+		font-size: 20px;
+		line-height:1.4em;   
+	}
+}
+
+@media only screen and (max-width: 569px) {
+	#catchphrase{
+		margin-top: 50px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#catchphrase > h1{
+		color:#FEFEFE;
+		font-size:30px;
+		font-weight: bold;
+		line-height:1.2em;
+	}
+	#catchphrase > #explaination{
+		font-size: 14px;
+		line-height:1.4em;   
 	}
 }
 
@@ -355,16 +389,20 @@ strong{
 	right: -100px;
 }
 
-
-#gettheapp{
-	background-image: url(' ../img/landing-page/get-the-app.jpg');
-	background-repeat:no-repeat;
-	background-size: auto 100%; 
-	background-attachment:fixed;
-	background-position: 40%;
-	height: 400px;
-	width: 100%;
-	text-align: center;
+@media only screen and (min-width: 570px) {
+	.max-570 {
+		display: none
+	}
+	#gettheapp{
+		background-image: url(' ../img/landing-page/get-the-app.jpg');
+		background-repeat:no-repeat;
+		background-size: auto 100%; 
+		background-attachment:fixed;
+		background-position: 40%;
+		height: 400px;
+		width: 100%;
+		text-align: center;
+	}
 }
 
 #section-transition{
@@ -374,6 +412,20 @@ strong{
 	color: black;
 	text-align: center;
 }
+
+@media only screen and (max-width: 569px) {
+	#testtt {
+		display: none;
+	}
+	.min-570 {
+		display: none
+	}
+	#section-transition{
+		margin-bottom: 20px;
+	}
+}
+
+
 
 #gettheapp img{
 	margin-top: 150px;
@@ -501,7 +553,8 @@ footer a:hover{
 	#mosaic,
 	.learn-more-link,
 	#learn-more,
-	.carousel-control{
+	.carousel-control,
+	footer ul {
 		display: none;
 	}
 	#gettheapp{
@@ -513,6 +566,7 @@ footer a:hover{
 	.icon-rotate-0 {
 		display: none;
 	}
+
 }
 
 /* --- Login and register parts --- */
@@ -566,7 +620,7 @@ footer a:hover{
 		width: 570px;
 	}
 }
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 569px) {
 	#user-layout-body{
 		padding-top: 0;
 	}
@@ -586,6 +640,11 @@ footer a:hover{
 		width: 100%;
 		border-top: 1px solid rgb(239, 244, 246); 
 		padding-top: 10px;
+	}
+	.footer-box {
+		width: 90%;
+		margin-top: 20px;
+		margin-left: 20px;
 	}
 }
 
