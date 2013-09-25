@@ -10,14 +10,6 @@ header{
 	 box-shadow: #000000 0 1px 10px;
 }
 
-/* --- Logo (top left) --- */
-
-.brand{
-	position: absolute;
-	left: 10px;
-	top: 10px;
-}
-
 /* --- group name (top) --- */
 
 #group-name{
@@ -98,9 +90,6 @@ header{
 /* --- Account settings (top right) --- */
 
 #account-settings{
-	position: absolute;
-	right: 10px;
-	top:0;
 }
 
 #account-settings div{
@@ -300,11 +289,5 @@ header{
 	#group-name-title i{
 		margin-left: 4px;
 	}
-	#logo-big,
 	#second-row-big{display: none;}
 }
-
-@media only screen and (min-width: 768px) {
-	#logo-small{display: none;}
-}
-

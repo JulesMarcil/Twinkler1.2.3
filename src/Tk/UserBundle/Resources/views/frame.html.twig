@@ -10,20 +10,21 @@
 {% endblock %}
 
 {% block body %}
-    <header>
-        <div class="container">
+<header>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-fluid">
             <div class="row" style="position: relative">
-                <div id="logo-big">
-                    <a class="brand" href="{{ path('tk_user_homepage') }}"><img src="{{ asset('img/logo/twinkler_logo_navbar.png') }}" width="150px" alt="twinkler logo"></a>
+                <div id="logo-big" class="span1">
+                    <a class="brand" href="{{ path('tk_user_homepage') }}">
+                        <img src="{{ asset('img/logo/twinkler_logo_navbar.png') }}" alt="twinkler logo">
+                    </a>
                 </div>
-                <div id="logo-small">
-                    <a class="brand" href="{{ path('tk_user_homepage') }}"><img src="{{ asset('img/logo/logo-etoile-transparent.png') }}" width="35px" alt="twinkler logo"></a>
-                </div>
-                <div id="group-name" class="span8 offset2">
+                <div id="group-name" class="span2">
                     {% block navbartitle %}
                     {% endblock %}
                 </div>
-                <div id="account-settings">
+                <div id="account-settings" class="span2 offset7">
                     <div class="profile-pic">
                         <a href="{{ path('tk_user_homepage') }}">
                             {% if app.user.facebookId %}
@@ -31,6 +32,7 @@
                             {% else %}
                             <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="30px" style="margin: 10px;" alt="profile picture">
                             {% endif %}
+                            <span>{{ app.user }}</span>
                         </a>
                     </div>
                     <div class="dropdown" >
@@ -42,13 +44,17 @@
                         </ul>
                     </div>
                 </div>
-            </div>   
-            {% block header %}
-            {% endblock %}
+            </div> 
         </div>
-        {% block selectionmenu %}
-        {% endblock %}     
-    </header>
+      </div>
+    </div>  
+    <div class="container-fluid">
+        {% block header %}
+        {% endblock %}
+    </div>
+    {% block selectionmenu %}
+    {% endblock %}     
+</header>
 
     <section id="content" class="frame">
         <div id="content-container" class="container">
