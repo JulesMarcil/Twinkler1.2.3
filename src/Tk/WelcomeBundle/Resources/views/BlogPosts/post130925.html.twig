@@ -1,0 +1,34 @@
+{% extends 'TkWelcomeBundle:BlogPosts:blogFrame.html.twig' %}
+
+{% block facebook_metatags %}
+<meta property="og:url"             content="http://www.twinkler.co/blog/post/130925" />
+<meta property="og:type"            content="article" />
+<meta property="og:site_name"       content="Twinkler"/>  
+<meta property="og:title"           content="How to use Twinkler" />
+<meta property="og:image"           content="http://www.twinkler.co/img/links/blog/showcase.png" />
+{% endblock %}
+
+{% block blog_post %}
+	<div style="text-align: center; font-family: 'Proxima-bold';">
+		<div style="position: absolute; top:10px; right:0;">
+			<div class="fb-like" data-href="http://www.twinkler.co/blog/post/130925" data-send="true" data-width="200" data-font="arial"></div>
+		</div>
+		<h3>How to use Twinkler</h3>
+		<img src="{{ asset('img/links/blog/showcase.png') }}" width="500px" alt="Use of Twinkler">
+	</div>
+
+	<p>
+		<strong>Twinkler</strong> is still under construction but a lot of people ask us: "who should use Twinkler?" And the best answer I can give is: "You should tell me how you want to use Twinkler!"<br><br>
+		Yet it is not like if we had not think about it and we identified 3 people who can take advantage of Twinkler:<br>
+		- <strong>Flatmates</strong> are the first users of Twinkler. Because living in a flatshare comes along with arguments on who owes who and who paid what. Twinkler removes all the worry and let flatmates live in harmony.<br>
+		- <strong>Holidays with friends</strong> (weekends, trips, ...) are of course a good scenario for using Twinkler. Because with Twinkler, friends will not worry about splitting the bill each time there is an expense or advancing the cash with the fear of never getting paid back. With twinkler, you just enjoy holidays and do the calculation of who owes what in the end.<br>
+		- Last, people in <strong>clubs</strong> should of course use Twinkler! Because when you organize football games every sunday, you don't want to chase your friends to know who comes and of course to get the money back for the field you booked. All small clubs should use Twinkler, no need for a boring an accounting software or a spreadsheet no one understands.<br><br>
+		Of course if you use Twinkler in any other way, we would love to know about it!<br>
+		Cheers.
+ 	</p>
+
+	<div style="text-align:right; color:#d3d3d3; font-family: 'Proxima-bold'; font-size:16px"> 
+	 	<i class="icon-heart"></i> 78 <br> 
+	 	Sep 25th, 2013
+	</div>
+{% endblock %}

@@ -1,12 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block head %}
-	{% block metatags%}
-    {% endblock %}  
-    <title>Twinkler - The Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('css/links.css') }}" rel="stylesheet" media="screen">
+<title>Twinkler - The Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
+<link href="{{ asset('css/links.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block body %}
@@ -19,6 +17,8 @@
 			<div>
 				<h6 style="border-bottom: 3px double #EFF4F6; margin-top: 0px;   display:block; font-weight:bold; padding:6px 10px 8px; position:relative;margin:0 0 10px 25px;">More Blog Posts</h6>
 				<ul id="blog-post-list-js" class="blog-post-list" style="text-align: left">
+					<li><a id="130925" href="{{ path('tk_welcome_blog_post', { 'date': '130925' }) }}">
+						How to use Twinkler</a> <br> <small style="color:#D3D3D3; font-weight: normal">2013, Sep 25th</small></li>
 					<li><a id="130829" href="{{ path('tk_welcome_blog_post', { 'date': '130829' }) }}">
 						Moving to Newcastle</a> <br> <small style="color:#D3D3D3; font-weight: normal">2013, Aug 29th</small></li>
 					<li><a id="130717" href="{{ path('tk_welcome_blog_post', { 'date': '130717' }) }}">

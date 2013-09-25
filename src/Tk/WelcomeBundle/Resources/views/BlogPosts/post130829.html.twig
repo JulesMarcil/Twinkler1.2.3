@@ -1,13 +1,11 @@
 {% extends 'TkWelcomeBundle:BlogPosts:blogFrame.html.twig' %}
 
-{% block metatags %}
-<meta property="fb:app_id"          content="130641483808717" />
-<meta property="fb:admins"          content="657231643" />
+{% block facebook_metatags %}
 <meta property="og:url"             content="http://www.twinkler.co/blog/post/130829" />
 <meta property="og:type"            content="article" />
-<meta property="og:site_name"       content="Twinkler.co"/>  
+<meta property="og:site_name"       content="Twinkler"/>  
 <meta property="og:title"           content="Moving to Newcastle" /> 
-<meta property="og:image"           content="http://www.twinkler.co/img/links/blog/jokari.jpg" />
+<meta property="og:image"           content="http://www.twinkler.co/img/links/blog/newcastle.jpg" />
 {% endblock %}
 
 {% block blog_post %}
@@ -16,12 +14,13 @@
 			<div class="fb-like" data-href="http://www.twinkler.co/blog/post/130829" data-send="true" data-width="200" data-font="arial"></div>
 		</div>
 		<h3>Moving to Newcastle</h3>
-		<img src="http://www.101-charger.com/wallpapers/jeux/angleterre/Tyne-Bridge-and-Swing-Bridge-Newcastle-Upon-Tyne-United-Kingdom.jpg" width="500px" alt="Jokari">
+		<img src="{{ asset('img/links/blog/newcastle.jpg') }}" width="500px" alt="Newcastle upon Tyne">
 	</div>
 
-		<p>Goodbye Paris, hello Newcastle. As of next Monday (September 2nd) the Twinkler team will be relocated in Newcastle upon Tyne, UK, for the next 3 months<br>
+	<p>
+		Goodbye Paris, hello Newcastle. As of next Monday (September 2nd) the Twinkler team will be relocated in Newcastle upon Tyne, UK, for the next 3 months<br>
 		We are proud to join the incubator Ignite100 which will be investing in Twinkler and will support us during the next 3 months and more. Together with 9 other startups we will be working hard to build the best tool ever and especially the coming mobile apps so that you can enjoy weekends, trips, flatshares and all other moments with your friends. If you want to help us you can still shoot us an email any time.
-	 	</p>
+ 	</p>
 
 	<div style="text-align:right; color:#d3d3d3; font-family: 'Proxima-bold'; font-size:16px"> 
 	 	<i class="icon-heart"></i> 41 <br> 
