@@ -316,11 +316,15 @@ class ApiController extends Controller
         $owner = $member_repo->find($data['owner_id']);
         $author = $member_repo->find($data['author_id']);
 
+        $timestamp = $data['date'];
+        $date = new \DateTime('today');
+        $date->setTimestamp($timestamp);
+
         $expense = new Expense();
         $expense->setAmount($data['amount']);
         $expense->setName($data['name']);
         $expense->setAddedDate(new \DateTime('now'));
-        $expense->setDate(new \Datetime('today'));
+        $expense->setDate($date);
         $expense->setActive(true);
         $expense->setAuthor($author);
         $expense->setOwner($owner);
