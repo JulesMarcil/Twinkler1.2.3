@@ -1,140 +1,12 @@
 /* --- All the css of the NavBar --- */
 
-header{
-	background-image: url('../img/Frame/navbar-bck.jpg');
-	background-size:fixed;
-	background-position: 50% 0px;
-}
-
 .img-shadow{
 	 box-shadow: #000000 0 1px 10px;
 }
 
-/* --- group name (top) --- */
+/* --- Top nav bar ---  */
 
-#group-name{
-	text-align: center;
-	font-weight: bold;
-}
 
-#group-name-title{
-	background: #e6e6e6; /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(200,200,200,0.4) 0%, rgba(200,200,200,0.4) 50%, rgba(180,180,180,0.4) 51%, rgba(180,180,180,0.4) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(200,200,200,0.4)), color-stop(50%,rgba(200,200,200,0.4)), color-stop(51%,rgba(180,180,180,0.4)), color-stop(100%,rgba(180,180,180,0.4))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', endColorstr='#d2d2d2',GradientType=0 ); /* IE6-9 */border-radius: 20px;
-	border: 1px solid rgba(255, 255, 255, 1);
-	color: white;
-	display: inline-block;
-	margin: 20px 0px;
-	padding-right:15px;
-	padding-left: 25px;
-	text-align: center;
-}
-
-#group-name-title > #title > a, #group-name-title i{
-	color:white;
-	text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 0px;
-}
-
-#group-name-title a:hover,
-#group-name-title a:active{
-	text-decoration: none;
-}
-
-#group-name-title > #title {
-	display: inline-block; 
-	padding-right: 10px;
-}
-
-#group-name-title > #title h3{
-	color: white;
-	margin: 0px;
-}
-
-#group-name-title > #caret{
-	height: 40px;
-	vertical-align: top;
-	border-left: 1px solid rgba(255,255,255,0.7);
-	display: inline-block;
-	font-size: 22px;
-}
-
-#group-name-title > #caret .dropdown{
-	padding-top: 12px;
-}
-
-#group-name-title > #caret .dropdown-menu{
-	font-size: 14px;
-	position: absolute;
-	left: -130px;
-}
-
-#group-name-title > #caret i{
-	margin-left: 8px;
-}
-#group-name-title > #caret i:active,#group-name-title > #caret i:selected, #group-name-title > #caret i:hover{
-	text-decoration: none;
-}
-
-#title-dropdown{
-	text-align:left;
-}
-
-#title-dropdown a:hover{
-	color: white;
-}
-/* --- Account settings (top right) --- */
-
-#account-settings{
-}
-
-#account-settings div{
-	display: inline-block;
-	vertical-align: middle;
-}
-
-#account-settings .dropdown{
-	vertical-align: middle;
-}
-
-#account-settings .dropdown-menu{
-	text-align: center;
-	left: -150px;
-}
-
-#account-settings i{
-	color: white;
-	text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 0px;
-}
-
-#account-settings a:hover{
-	text-decoration: none;
-	color: white;
-}
-
-#account-settings li{
-	text-align: right;
-}
-
-/* --- Add group (bottom left) --- */
-
-#add-group{
-	position: absolute; 
-	bottom: 10px;
-	left: 10px;
-    -webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
-	  transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#add-group i{
-	position: absolute; 
-	bottom: 8px;
-	left: 6px;
-}
 
 /* --- Group (bottom) --- */
 
@@ -162,8 +34,6 @@ header{
 }
 
 /* --- toolbar (bottom right) --- */
-
-
 
 #toggle-button{
 	position: absolute;
@@ -261,33 +131,4 @@ header{
     left: 10px;
     top: 11px;
     left: -6px;
-}
-
-/* --- Responsiveness --- */
-
-@media only screen and (max-width: 767px) {
-	#group-name-title{
-		padding-right:10px;
-		padding-left: 15px;
-	}
-	#group-name-title > #title {
-		height: 70%;
-		padding-right: 5px
-	}
-	#group-name-title h3{
-		line-height: 24px;
-		font-size: 16px;
-		margin: 0px;
-	}
-	#group-name-title > #caret{
-		height: 24px;
-		font-size: 14px;
-	}
-	#group-name-title > #caret .dropdown{
-		padding-top: 4px;
-	}
-	#group-name-title i{
-		margin-left: 4px;
-	}
-	#second-row-big{display: none;}
 }

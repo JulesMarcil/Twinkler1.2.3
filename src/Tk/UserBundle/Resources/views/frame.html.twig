@@ -14,38 +14,28 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container-fluid">
-            <div class="row" style="position: relative">
-                <div id="logo-big" class="span1">
-                    <a class="brand" href="{{ path('tk_user_homepage') }}">
-                        <img src="{{ asset('img/logo/twinkler_logo_navbar.png') }}" alt="twinkler logo">
-                    </a>
-                </div>
-                <div id="group-name" class="span2">
-                    {% block navbartitle %}
-                    {% endblock %}
-                </div>
-                <div id="account-settings" class="span2 offset7">
-                    <div class="profile-pic">
-                        <a href="{{ path('tk_user_homepage') }}">
-                            {% if app.user.facebookId %}
-                            <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" style="margin: 10px;" alt="profile picture">
-                            {% else %}
-                            <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="30px" style="margin: 10px;" alt="profile picture">
-                            {% endif %}
-                            <span>{{ app.user }}</span>
-                        </a>
-                    </div>
-                    <div class="dropdown" >
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-caret-down" style="font-size:20px"></i></a>
-                        <ul id="dropdown-arrow"  class="dropdown-menu" role="menu" aria-labelledby="dLabel" >
-                            <li><a href="{{ path('tk_user_homepage') }}">Account Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div> 
-        </div>
+            <a class="brand" href="{{ path('tk_user_homepage') }}">
+                Twinkler
+            </a>
+            {% if app.user.currentMember.tgroup.name %}
+            <ul class="nav">
+              <li><a href="{{ path('tk_group_homepage') }}">{{ app.user.currentMember.tgroup.name }}</a></li>
+            </ul>
+            {% endif %}
+            <ul class="nav pull-right">
+              <li>
+                <a href="{{ path('tk_user_homepage') }}">
+                    {% if app.user.facebookId %}
+                    <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="20px" alt="profile picture">
+                    {% else %}
+                    <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="20px" alt="profile picture">
+                    {% endif %}
+                    {{ app.user }}
+                </a>
+              </li>
+              <li> <a href="{{ path('fos_user_security_logout') }}">Logout</a> </li>
+            </ul>
+        </div> 
       </div>
     </div>  
     <div class="container-fluid">
@@ -56,12 +46,12 @@
     {% endblock %}     
 </header>
 
-    <section id="content" class="frame">
-        <div id="content-container" class="container">
+<section id="content" class="frame">
+    <div id="content-container" class="container">
 
-            {% block content %}
-            {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-        </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
