@@ -203,20 +203,6 @@ a:hover{
 	line-height: 0px;
 	padding-top: 17px;
 }
-#groups-header:after{ /*arrow added to downarrowdiv DIV*/
-content:'';
-display:block;
-position:absolute;
-top:100%; /*should be set to 100% */
-left:30px;
-width:0;
-height:0;
-border-color: white transparent transparent transparent; /*border color should be same as div div background color*/
-border-style: solid;
-border-width: 10px;
-}
-
-
 
 .group-box{	
 	display: block;
