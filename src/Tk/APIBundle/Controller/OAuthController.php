@@ -102,14 +102,14 @@ class OAuthController extends Controller
 		$token->setToken($access_token);
 		$token->setClient($client);
 		$token->setUser($user);
-		$token->setExpiresAt($now+360);
+		$token->setExpiresAt($now+5184000);
 
 		$refresh_token = $this->genAccessToken();
 		$refresh = new RefreshToken();
 		$refresh->setToken($refresh_token);
 		$refresh->setClient($client);
 		$refresh->setUser($user);
-		$refresh->setExpiresAt($now+1209600);
+		$refresh->setExpiresAt($now+31536000);
 
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($token);
