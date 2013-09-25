@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block stylesheets %}
- {{ parent() }}
- <link href="{{ asset('css/user-info.css') }}" rel="stylesheet" type="text/css">
+{{ parent() }}
+<link href="{{ asset('css/user-info.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block header %}
@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block selectionmenu %}
- <div class="selection-menu">
+<div class="selection-menu">
 	<div class="container">
 		<div class="row">
 			<div class="span12">
@@ -52,15 +52,19 @@
 {% block content %}
 <div class="row">
 	<div class="span4 offset1">
-		<div id="user-info" class="flat-container" style="width: 100%">
-			<div class="flat-header">
-				<h3>Your Information</h3>
+		<div id="user-info" style="width: 100%">
+			<div id="info-header" class="flat-container">
+				<div class="flat-header">
+					<h3> <font  style="color:#fff">YOUR INFORMATION</font></h3>
+				</div>
 			</div>
+
+		<div class="flat-container" style="width:100%">
 			<div id="profile-stats">
 				<div class="info-icon">
 					<i class="icon-thumbs-up-alt icon-large"></i>
 				</div>
-				<div class="info-text" style="margin-right: 2%;">
+				<div class="info-text">
 					{{ app.user.members|length }} Groups
 				</div>
 				<div class="info-icon">
@@ -74,45 +78,45 @@
 			<div style="padding-top:0px; border-top: solid 1px #eaedf2; margin-bottom: 20px;">	
 				{% block profile %}
 				<div class="profile-info">
-				 	<div class="info-icon">
-				 		<i class="icon-bookmark icon-large"></i>
-				 	</div>
-				 	<div class="info-text">
-				 		<p> {{ app.user }}</p>
-				 	</div>
-				 </div>
+					<div class="info-icon">
+						<i class="icon-bookmark icon-large"></i>
+					</div>
+					<div class="info-text">
+						<p> {{ app.user | upper }}</p>
+					</div>
+				</div>
 				{% if app.user.firstname != null or app.user.lastname != null %}
-				 <div class="profile-info">
-				 	<div class="info-icon">
-				 		<i class="icon-user icon-large"></i>
-				 	</div>
-				 	<div class="info-text">
-				 		<p>{{ app.user.firstname }} {{ app.user.lastname }} </p>
-				 	</div>
-				 </div>
+				<div class="profile-info">
+					<div class="info-icon">
+						<i class="icon-user icon-large"></i>
+					</div>
+					<div class="info-text">
+						<p>{{ app.user.firstname }} {{ app.user.lastname }} </p>
+					</div>
+				</div>
 				{% else %}
 				<div class="profile-info">
-				 	<div class="info-icon">
-				 		<i class="icon-user icon-large"></i>
-				 	</div>
-				 	<div class="info-text">
-				 		<p> Edit your Name </p>
-				 	</div>
-				 </div>
+					<div class="info-icon">
+						<i class="icon-user icon-large"></i>
+					</div>
+					<div class="info-text">
+						<p> Edit your Name </p>
+					</div>
+				</div>
 				{% endif %}
 				<div class="profile-info">
-				 	<div class="info-icon">
-				 		<i class="icon-envelope icon-large"></i>
-				 	</div>
-				 	<div class="info-text">
-				 		<p> {{ app.user.email }}</p>
-				 	</div>
-				 </div>
+					<div class="info-icon">
+						<i class="icon-envelope icon-large"></i>
+					</div>
+					<div class="info-text">
+						<p> {{ app.user.email }}</p>
+					</div>
+				</div>
 			</div>
 			
 			{% if not is_granted('ROLE_FACEBOOK') %}
 			<div id="setting-buttons" style="text-align: center;">
-				<a id="change-password" data-toggle="collapse" data-target="#collapsePassword" style="color:#5486C6; font-size:12px">
+				<a id="change-password" data-toggle="collapse" data-target="#collapsePassword" style="color:#BEB5B2; font-size:12px;">
 					<i class="icon-lock icon-large"></i>
 					Change password
 				</a>		
@@ -122,7 +126,7 @@
 				<a class="edit-info-a" href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">	
 					<div>
 						<i class="icon-edit icon-large"></i>
-						Edit information
+						<font style="font-size:12px">EDIT INFORMATION</font>
 					</div>		
 				</a>				
 			</div>
@@ -133,85 +137,61 @@
 			</div>
 			{% endblock profile %}
 		</div>
-		<div>
+		<div id="feedback-link" >
 			<a data-target="feedbackModal">Send us feedbacks!</a>
 		</div>
 		<div id="feedbackModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<!-- Loaded with ajax -->
 		</div>
+	</div>
 	</div>	
 
 
 	<div class="span6">
-		<div id="group-summary" class="flat-container">
-			<div class="flat-header" style="height:34px;min-height:34px; margin-bottom:10px">
-				<div>
-					<h3>You have {{app.user.members|length}} Groups</h3>
+		<div id="group-summary" >
+			<div id="groups-header" class="flat-container">
+				<div class="flat-header">
+					<h3> <font  style="color:#fff">YOUR GROUPS ({{app.user.members|length}})</font></h3>
 				</div>
-				<a href="{{ path('tk_group_new') }}">
-					<div id="start-group-btn">
-						<i class="icon-plus" style="color:#fcd5d2;"></i> start new group
-					</div>
-				</a>
 			</div>
 
 			{% if app.user.members|length == 0 %}
-			</p>You do not have any group yet</p>
-			{% else %}
-			<div class="accordion" id="accordion2">
-				{% for member in app.user.members %}
-				<div class="accordion-group group-box">
-					<div class="accordion-heading" style="display:inline-block; position:relative; width:100%;">
-						<div class="accordion-heading-left">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-{{ member.id }}" style="display: inline-block"><img src="{{ asset('img/Frame/group-icon.png') }}"	width="40px" alt="show members"></a>
-						</div>
-					    <div class="accordion-heading-middle">
-							<a href="{{ path('tk_group_goto_member', { 'id' : member.id }) }}">
-								<strong>{{ member.tgroup.name|capitalize }}</strong>
-							</a>
-					    </div>
-						<div class="accordion-heading-right">
-							<p style="color:#8C8C8C;font-size:12px;"><small>opened on {{ member.tgroup.date| date('d/m/y') }}</small></p>
-							<div>
-							<a href="{{ path('tk_group_goto_expenses', { 'id' : member.id }) }}">
-								<p>Your balance: 
-									{% if member.balance >= 0 %}
-									<span style="color: #a8bd44; font-family:'Asap-regular'; display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
-									{% else %}
-									<span style="color: #f97e76; font-family:'Asap-regular';display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
-									{% endif %}
-								</p>
-							</a>
-							</div>
-						</div>
+
+		</p>You do not have any group yet</p>
+		{% else %}
+		{% for member in app.user.members %}
+		<a  href="{{ path('tk_group_goto_member', { 'id' : member.id }) }}">
+			<div class="flat-container accordion-group group-box">
+				<div class="accordion-heading" style="display:inline-block; position:relative; width:100%;">
+					<div class="accordion-heading-middle">
+						<font style="color:#000;font-size: 14px;"> <strong>{{ member.tgroup.name|upper }}</strong></font>
+						<p> <font style="color:#8C8C8C;font-size:14px;"><small>opened on {{ member.tgroup.date| date('d/m/y') }}</small></font></p>
 					</div>
-				    <div id="accordion-{{ member.id }}" class="accordion-body collapse out">
-				      	<div class="accordion-inner">
-					        <div>
-								{% for m in member.tgroup.members %}
-								<div style="display: inline-block">
-									{% if m.user %}
-									{% if m.user.facebookId %}
-									<img src="http://graph.facebook.com/{{m.user.facebookId}}/picture?width=120&height=120" class="img-circle" width="60px" alt="{{ m.name }}" style="position: relative">
-									{% else %}
-									<img src="{{ asset(m.user.picture.path) }}" class="img-circle" width="60px" alt="{{ m.name }}" style="position: relative">
-									{% endif %}
-									{% else %}
-									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="60px" 	alt="{{ m.name }}" style="position: relative">
-									{% endif %}
-									<p>{{m.name}}</p>
-								</div>
-								{% endfor %}
-							</div>
-				      	</div>
-				    </div>
+					<div class="accordion-heading-right">
+						<p>
+
+							{% if member.balance >= 0 %}
+							<font style="font-size: 12px; color:#BEB5B2">YOU ARE OWED:</font><br>
+							<span style="color: #a8bd44; font-family:'Asap-regular'; display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
+							{% else %}
+							<font style="font-size: 12px; color:#BEB5B2">YOU OWE:</font><br>
+							<span style="color: #f97e76; font-family:'Asap-regular';display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
+							{% endif %}
+						</p>
+					</div>
 				</div>
-				{% endfor %}
+
 			</div>
-			{% endif %}
-		</div>
-		<div><a href="{{ path('tk_group_new') }}" class="flat-btn flat-pk" style="height: 60px; width: 100%; margin-top: 10px; line-height: 60px;">START A NEW GROUP</a></div>
+		</a>
+		{% endfor %}
+		{% endif %}
 	</div>
+	<a href="{{ path('tk_group_new') }}">
+		<div id="new-group-button">
+			<i class="icon-plus-sign" style="margin-right: 6px"></i> START A NEW GROUP
+		</div>
+	</a>
+</div>
 </div>
 {% endblock %}
 

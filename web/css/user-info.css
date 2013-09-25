@@ -23,6 +23,32 @@ a:hover{
 	font-size:16px;
 }
 
+#info-header{
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	moz-box-sizing: border-box;
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 18px
+}
+#info-header > .flat-header{
+	margin:0;
+	height:34px;
+	min-height:34px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	moz-box-sizing: border-box;
+}
+
+#info-header > .flat-header h3{
+	line-height: 0px;
+	padding-top: 17px;
+}
+
 #profile-stats{
 	margin-top: 10px;
 	margin-left: auto;
@@ -35,8 +61,8 @@ a:hover{
 #profile-stats div{
 	display: inline-block;
 	height: 30px;
-	background-color: rgb(234, 243, 255);
-	color: rgb(84, 134, 198);
+	border: 1px solid rgb(234,237,242);
+	color: #BEB5B2;
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 8px;
@@ -74,8 +100,8 @@ a:hover{
 .profile-info div{
 	display: inline-block;
 	height: 30px;
-	background-color: rgb(234, 243, 255);
-	color: rgb(84, 134, 198);
+	border: 1px solid rgb(234,237,242);
+	color:#BEB5B2;
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 8px;
@@ -86,13 +112,13 @@ a:hover{
 }
 
 .profile-info > .info-text{
-	width: 78%;
+	width: 77%;
 	overflow: hidden;
 }
 
 .edit-info{
 	height: 30px;
-	margin: 0px auto;
+	margin: 10px auto;
 	margin-bottom: 10px;
 	padding-top: 8px;
 	color: white;
@@ -113,6 +139,16 @@ a:hover{
 #change-password:hover{
 	text-decoration: none;
 	cursor: pointer;
+}
+
+#feedback-link{
+	margin: 15px auto;
+}
+
+#feedback-link a{
+	cursor: pointer;
+	margin: 15px auto;
+	color:rgb(140,140,140);
 }
 
 
@@ -140,40 +176,70 @@ a:hover{
 	font-size:16px;
 }
 
-#group-summary .flat-header > a{
-	display: inline-block;
-	position: absolute;
-	right: 0;
-	vertical-align: middle;
-	padding: 6px 6px;
-	border-left: 1px solid rgb(243,203,199);
-	color: #E9F0F4;
+
+#groups-header{
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	moz-box-sizing: border-box;
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 8px
 }
 
-#group-summary .accordion{
-	margin-bottom: 0;
+#groups-header > .flat-header{
+	margin:0;
+	height:34px;
+	min-height:34px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	moz-box-sizing: border-box;
 }
+
+#groups-header > .flat-header h3{
+	line-height: 0px;
+	padding-top: 17px;
+}
+#groups-header:after{ /*arrow added to downarrowdiv DIV*/
+content:'';
+display:block;
+position:absolute;
+top:100%; /*should be set to 100% */
+left:30px;
+width:0;
+height:0;
+border-color: white transparent transparent transparent; /*border color should be same as div div background color*/
+border-style: solid;
+border-width: 10px;
+}
+
+
 
 .group-box{	
-	color: #5e6d82;
-	border:none;
-  	border-bottom: 1px solid rgb(200,200,200);
-	width: 100%;
-	background-color:#ffffff;
-	border-bottom-left-radius:0px;
-	border-bottom-right-radius:0px;
-}
-.group-box:last-child{
-	border:none;
-}
-
-.accordion-heading{
 	display: block;
-	padding-left: 20px;
+	width: 100%;
+	height: 80px;
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	moz-box-sizing: border-box;
+	padding: 18px 20px;
+	margin: 10px auto;
+	color: #5e6d82;
 	text-align: left;
+	border:none;
+	border-bottom: 1px solid rgb(200,200,200);
+	background-color:#ffffff;
 }
 
-.accordion-heading > div{
+.group-box:hover{
+	box-shadow:0 1px 1px rgba(0,0,0,0.3)
+}
+
+.group-box div{
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -184,15 +250,13 @@ a:hover{
 
 .accordion-heading-middle{
 	width: 30%;
-	color:#F97E76;
-	font-size: 1.2em;
+	color:#FCD5D2;
+	font-size: 14px;
 }
-
 .accordion-heading-right{
-	width: 200px;
-	text-align: right;
 	position: absolute;
-	right: 30px;
+	right: 0;
+	text-align: right;
 }
 
 .accordion-heading-right > a,
@@ -222,6 +286,22 @@ a:hover{
 	border-bottom-color:#E5E5E5;
 	border-bottom-style:solid;
 	border-bottom-width:1px;
+}
+
+/*---- NEW GROUP BUTTON ----*/
+#new-group-button{
+	border:dashed 2px #b7b7b7;
+	border-radius:5px;
+	color:#b7b7b7;
+	line-height: 68px; 
+	width: 99.5%; 
+	height: 68px; 
+	text-align: center;
+	cursor: pointer;
+}
+
+#new-group-button:hover{
+	background-color: rgba(255,255,255,0.5)
 }
 
 /*-------GROUP CREATION-----*/
@@ -265,24 +345,26 @@ a:hover{
 
 .new-group .flat-container .flat-header h3{
 	color:#FCD5D2;
-  	font-size:16px;
-  	margin:0px 70px;
-  	text-align: left;
+	font-size:16px;
+	margin:0px 70px;
+	text-align: left;
 }
+
+
 
 /* --- Feedback --- */
 .feedback-title{
 	text-align: center;
 	background-color: #fb786b;
 	font-family: "Proxima-regular";
-  	border-top-left-radius:4px;
-  	border-top-right-radius:4px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
 	color: white;
 	width: 100%;
-    position: relative;
-    padding: 10px 0px;
-    margin-bottom: 20px;
-    font-size: 18px;
+	position: relative;
+	padding: 10px 0px;
+	margin-bottom: 20px;
+	font-size: 18px;
 }
 
 #feedback-form{
