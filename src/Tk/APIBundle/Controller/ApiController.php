@@ -44,7 +44,7 @@ class ApiController extends Controller
 
             $facebook_id = $user->getFacebookId();
             if($facebook_id) {
-                $picture_path = 'facebook';
+                $picture_path = $facebook_id;
             }else{
                 $picture_path = $user->getPicture()->getPath();
             }
