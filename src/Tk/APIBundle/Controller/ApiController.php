@@ -85,7 +85,7 @@ class ApiController extends Controller
     public function postGroupAction(Request $request)
     {
         $data = $request->request->all();
-        $em = $this->getDoctrine()->getManager();
+        $em   = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
         $group_id       = $data['id'];
@@ -96,16 +96,17 @@ class ApiController extends Controller
         $remove_members = $data['removeMembers'];
 
         if ($group_id == 0) {
+
             //new group
             $group = $this->addGroupAction($group_name, $currency_id);
+            $em->persist($group);
 
             $member = new Member();
             $member->setUser($user);
             $member->setName($user->getUsername());
             $member->setTGroup($group);
-            $user->setCurrentMember($member);
+            $group->addMember($member);
             $em->persist($member);
-            $em->flush();
 
         } else {
             //existing group
@@ -116,12 +117,14 @@ class ApiController extends Controller
         $user->setCurrentMember($member);
 
         if ($group) {
+
             foreach ($add_members as $name) {
                 if($name != '-1') {
                     $m = new Member();
                     $m->setName($name);
                     $m->setTGroup($group);
                     $m->setInvitationToken($member->generateInvitationToken());
+                    $group->addMember($m);
                     $em->persist($m);
                 }
             }
@@ -136,8 +139,10 @@ class ApiController extends Controller
                     $m->setUser($u);
                     $m->setName($u->getUsername());
                     $m->setTGroup($group);
-                    $u->setCurrentMember($m);
+                    $group->addMember($m);
                     $em->persist($m);
+
+                    $u->setCurrentMember($m);
 
                     $message = \Swift_Message::newInstance();
                     $message->setSubject($user.' added you to a group on Twinkler')
@@ -163,7 +168,6 @@ class ApiController extends Controller
                     }
 
                     $m->setActive(false);
-                    $em->flush();
 
                     if ($u and ($u != $user)) {
 
@@ -182,7 +186,9 @@ class ApiController extends Controller
 
             $em->flush();
 
-            return new JsonResponse($this->returnGroupAction($group, $member));
+            $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group->getId());
+
+            return new JsonResponse($this->returnGroupAction($group2, $member));
         } else {
             return new JsonResponse(array('message' => 'error in code, no group created or found'));
         }
