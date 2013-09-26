@@ -294,6 +294,36 @@
 
 	/* actually call the function when page is loaded for the first time */
 	$(document).ready(function() { 
+
+		jQuery(function($) {
+			function fixDiv() {
+
+				var oritop=55;
+				if($("#toggle-button").text() === 'hide members'){
+					oritop=55;	
+				}else{
+					oritop=0;
+				}
+				
+				var $cache = $('#navbar-row'); 
+				var $cacheItem = $('#navbar-expenses');
+				if ($(window).scrollTop() > oritop) {
+					$("#navbar-"+activePage).css({'border-top-left-radius':'0px','border-top-right-radius':'0px'});
+					$cache.addClass("navbar-scroll");
+					$cache.css({'position': 'fixed', 'top': '40px','z-index':'9999999999'}); 
+					$( "#toggle-button" ).hide();
+				}
+				else{
+					$cache.css({'position': 'relative', 'top': 'auto','z-index':'0'});
+					$cache.removeClass("navbar-scroll");
+					$("#navbar-"+activePage).css({'border-top-left-radius':'4px','border-top-right-radius':'4px'});
+					$( "#toggle-button" ).show();
+				}
+			}
+			$(window).scroll(fixDiv);
+			fixDiv();
+		}); 
+
 		if (activePage==="expenses"){
 			expenseStart();
 		}else if(activePage==="timeline"){
