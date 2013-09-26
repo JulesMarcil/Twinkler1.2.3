@@ -9,7 +9,6 @@ use Tk\GroupBundle\Entity\TGroup;
 use Tk\GroupBundle\Form\TGroupType;
 use Tk\UserBundle\Entity\Member;
 
-
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -41,20 +40,21 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('tk_group_homepage'));
     }
 
-    public function goToExpensesAction($id)
-    {
-        $this->changeCurrentMemberAction($id);
-
-        return $this->redirect($this->generateUrl('tk_expense_homepage'));
-    }
-
     private function changeCurrentMemberAction($id)
-    {
+    { 
+        $user   = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $member = $em->getRepository('TkUserBundle:Member')->find($id);
-        $user = $this->getUser();
-        $user->setCurrentMember($member);
-        $em->flush();
+
+        if ($member->getUser() == $user) {
+
+            $user->setCurrentMember($member);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->persist($member);
+            $em->flush();    
+        }
     }
 
     public function newAction()
@@ -257,7 +257,6 @@ class DefaultController extends Controller
             $session = $this->get('session');
             $new_ids = $session->get('new_ids');
             $pos = array_search($member->getUser()->getId(), $new_ids);
-            print($pos);
             unset($new_ids[$pos]);
             $session->set('new_ids', $new_ids);
         }

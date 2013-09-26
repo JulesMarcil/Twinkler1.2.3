@@ -9,12 +9,6 @@ tk_group_switch_member:
 tk_group_goto_member:
     pattern:  /goto/{id}
     defaults: { _controller: TkGroupBundle:Default:goTo }
-tk_group_goto_expenses:
-    pattern:  /goto/expenses/{id}
-    defaults: { _controller: TkGroupBundle:Default:goToExpenses }
-tk_group_goto_lists:
-    pattern:  /goto/lists/{id}
-    defaults: { _controller: TkGroupBundle:Default:goToLists }
 
 tk_group_new:
     pattern:  /new

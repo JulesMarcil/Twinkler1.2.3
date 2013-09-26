@@ -13,7 +13,6 @@ class ExpenseController extends Controller
         if(!$this->getUser()->getCurrentMember()){
             return $this->redirect($this->generateUrl('tk_user_homepage'));
         }else{
-
             $member = $this->getUser()->getCurrentMember();
             $expenses_service = $this->container->get('tk_expense.expenses');
 
