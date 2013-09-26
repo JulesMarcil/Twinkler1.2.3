@@ -143,6 +143,7 @@ a:hover{
 }
 .profile-pic-info img{
 	width: 80%;
+	max-width: 78px;
 }
 .profile-pic-user{
 	display: inline-block;
