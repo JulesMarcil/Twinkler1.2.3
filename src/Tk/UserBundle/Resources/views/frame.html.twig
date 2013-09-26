@@ -19,12 +19,12 @@
             </a>
             {% if app.user.currentMember.tgroup.name %}
             <ul class="nav">
-              <li><a href="{{ path('tk_group_homepage') }}">{{ app.user.currentMember.tgroup.name }}</a></li>
+              <li><a class="navbar-link" href="{{ path('tk_group_homepage') }}">{{ app.user.currentMember.tgroup.name }}</a></li>
             </ul>
             {% endif %}
             <ul class="nav pull-right">
               <li>
-                <a href="{{ path('tk_user_homepage') }}">
+                <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
                     {% if app.user.facebookId %}
                     <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="20px" alt="profile picture">
                     {% else %}
@@ -33,7 +33,7 @@
                     {{ app.user }}
                 </a>
               </li>
-              <li> <a href="{{ path('fos_user_security_logout') }}">Logout</a> </li>
+              <li> <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">Logout</a> </li>
             </ul>
         </div> 
       </div>
