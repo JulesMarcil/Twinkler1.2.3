@@ -13,8 +13,8 @@ header{
 
 .navbar{
 	background-color:#FB786B;
+	margin-bottom: 0px;
 }
-
 .navbar-inner{
 	background-color:#FB786B;
 	background-image: none;

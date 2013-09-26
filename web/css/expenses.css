@@ -1,4 +1,7 @@
 /* ------ CSS of expense part of Expenses only ------ */
+#second-row-big #group{
+	margin-top: 10px;
+}
 
 .expense-header{
   	border-bottom-left-radius:4px;

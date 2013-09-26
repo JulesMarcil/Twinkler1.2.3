@@ -1,5 +1,6 @@
 	/*-----Function definition-------*/
 	var activePage = document.URL.split("/").pop(); /*get page name*/
+	var rowCount =1;
 	var activePageHighlight=function(){  // add top and bottom border on the active page name
 		$("#navbar-"+activePage).addClass("navbar-item");
 	};
@@ -8,13 +9,13 @@
 	};
 	var addScrollOnChart=function(){
 		$("#balance-slimscroll").niceScroll();
-	}
+	};
 
-$('.navbar .dropdown').hover(function() {
-  $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
-}, function() {
-  $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
-});
+	$('.navbar .dropdown').hover(function() {
+		$(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+	}, function() {
+		$(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
+	});
 	
 	/*--------CHARTS--------*/
 
@@ -39,13 +40,13 @@ $('.navbar .dropdown').hover(function() {
 	var data = {
 		labels : members_chart,
 		datasets : [
-					{
-						fillColor : colorFill,
-						strokeColor : "rgba(220,220,220,1)",
-						data : balances
-					}
-					]
+		{
+			fillColor : colorFill,
+			strokeColor : "rgba(220,220,220,1)",
+			data : balances
 		}
+		]
+	}
 
 
 	var loadChart=function(){
@@ -70,19 +71,19 @@ $('.navbar .dropdown').hover(function() {
 
 		var colorFill=graphColor(balances);
 		var data = {
-					labels : members_chart,
-					datasets : [
-								{
-									fillColor : colorFill,
-									strokeColor : "rgba(220,220,220,1)",
-									data : balances
-								}
-								]
-					}
+			labels : members_chart,
+			datasets : [
+			{
+				fillColor : colorFill,
+				strokeColor : "rgba(220,220,220,1)",
+				data : balances
+			}
+			]
+		}
 
 		var ctx = document.getElementById("balanceChart").getContext("2d");
 		new Chart(ctx).Bar(data,{
-		    scaleOverlay : false,
+			scaleOverlay : false,
 			scaleShowLabels : false
 		});
 	}
@@ -92,14 +93,14 @@ $('.navbar .dropdown').hover(function() {
 	$(document).ready(function() { 
 
 		/* --- Group members picture toggle --- */
-		$("#second-row-big").on("click", "#toggle-button", function(){
-			$(this).closest("#second-row-big").find("#pictures").slideToggle();
-	    	if($(this).text() === 'hide members'){
-	    		$(this).text('show members');	
-	    	}else{
-	    		$(this).text('hide members');
-	    	}
-	    });
+		$("#toggle-button").click(function(){
+			$("#second-row-big").slideToggle();
+			if($(this).text() === 'hide members'){
+				$(this).text('show members');	
+			}else{
+				$(this).text('hide members');
+			}
+		});
 
 		/* --- Group members show profile in modal --- */
 		$("a[data-target=memberProfileModal]").on("click", function(e){
@@ -137,11 +138,11 @@ $('.navbar .dropdown').hover(function() {
 			function(){
 				$('.group-edit').removeClass('group-edit-hover');
 			}
-		);
+			);
 
 		/*--------CHARTS & TIMLINE SIZE--------*/
 		if (activePage!=="lists"){
-		var members_nb= balances.length;
+			var members_nb= balances.length;
 		};
 		var navbarHeight=$("#navbar-row").height();
 		
@@ -161,7 +162,7 @@ $('.navbar .dropdown').hover(function() {
 
 		/*--------CHARTS & TIMLINE SIZE--------*/
 		if (activePage!=="lists"){
-		var members_nb= balances.length;
+			var members_nb= balances.length;
 		};
 		var navbarHeight=$("#navbar-row").height();
 
@@ -170,17 +171,17 @@ $('.navbar .dropdown').hover(function() {
 
 
 		/*-------TOOLTIPS--------*/
-		    $(function () {
-		        $("[rel='tooltip']").tooltip({placement: 'top'});
-		    });
+		$(function () {
+			$("[rel='tooltip']").tooltip({placement: 'top'});
+		});
 
 
 		/*-------Pinpoint buttons on timeline (date)--------*/
 
 		$('.pinpoint-button').hover(function () {
-		    this.src = 'http://twinkler.co/img/Frame/tmln-btn-hover.png';
+			this.src = 'http://twinkler.co/img/Frame/tmln-btn-hover.png';
 		}, function () {
-		    this.src = 'http://twinkler.co/img/Frame/tmln-btn.png';
+			this.src = 'http://twinkler.co/img/Frame/tmln-btn.png';
 		});
 
 		var today=new Date();
@@ -188,26 +189,26 @@ $('.navbar .dropdown').hover(function() {
 		var mm=today.getMonth()+1;
 
 		if(dd<10){dd='0'+dd};
-		 if(mm<10){mm='0'+mm};
+		if(mm<10){mm='0'+mm};
 
 		$('#today-pinpoint').attr('title', dd +"/"+mm);
 
 	    // --> expense modal scroll
-		$(function(){
-		    $('#expense-slimscroll').slimScroll({
-		        height: Math.min('450',$(window).height()-120)+'px'
-		    });
-		});
+	    $(function(){
+	    	$('#expense-slimscroll').slimScroll({
+	    		height: Math.min('450',$(window).height()-120)+'px'
+	    	});
+	    });
 
 	    // ---> Expense filter
 	    $("#show-all-button").on("click", function(){
 	    	$(".expense-block").fadeIn();
-			$("#only-mine-button").removeClass("active");
-			$(this).addClass("active");
+	    	$("#only-mine-button").removeClass("active");
+	    	$(this).addClass("active");
 	    });
 	    $("#only-mine-button").on("click", function(){
 	    	$(".expense-block").filter(".nottagged").fadeOut();
-			$("#show-all-button").removeClass("active");
+	    	$("#show-all-button").removeClass("active");
 	    	$(this).addClass("active");
 	    });
 
@@ -219,11 +220,11 @@ $('.navbar .dropdown').hover(function() {
 	    		editBox.fadeOut();
 	    		editBox.removeClass('shown');
 	    	} else {
-		    	$.get('expenses/edit/'+expenseId, function(response){
-					editBox.html(response).hide().fadeIn();
-					editBox.addClass('shown');
-				});
-		    }
+	    		$.get('expenses/edit/'+expenseId, function(response){
+	    			editBox.html(response).hide().fadeIn();
+	    			editBox.addClass('shown');
+	    		});
+	    	}
 	    })
 
 	}
@@ -237,21 +238,24 @@ $('.navbar .dropdown').hover(function() {
 		activePageHighlight();
 
 		var input = $("#send-box").find('input');
-		input.focus();
 
 		function refreshMessages() {
-			$.get('messages', function(response){
-				$('#message-list').html(response);
+			rowCount=$('#chat-table tr').length
+			if(activePage=="timeline"){
+				$.get('messages', function(response){
+					$('#message-list').html(response);
 				// rappeler les fonctions de mise en forme
-				$("#message-list").animate({ scrollTop: 100000 }, "slow");
+				if(rowCount!=$('#chat-table tr').length){
+					$("#message-list").animate({ scrollTop: 100000 }, "slow");
+				}
 			});
+			}
 		}
-
 		window.setInterval(refreshMessages, 10000);
 
 		$(document).keypress(function(e) {
-		    if(e.which == 13) {
-		        var message = $("#send-box").find('input').val();
+			if(e.which == 13) {
+				var message = $("#send-box").find('input').val();
 				$.get('ajax/message/new?new_message='+message, function(response){
 					$('#message-list').html(response);
 					input.val('');
@@ -260,7 +264,7 @@ $('.navbar .dropdown').hover(function() {
 
 					$("#message-list").animate({ scrollTop: 100000 }, "slow");
 				});
-		    }
+			}
 		});
 
 		$("#more-expenses").on('click', 'a', function(e){
@@ -271,19 +275,19 @@ $('.navbar .dropdown').hover(function() {
 				// rappeler les fonctions de mise en forme
 				addScrollOnChart();
 				$('#expense-slimscroll').slimScroll({
-			        height: Math.min('450',$(window).height()-120)+'px'
-			    });
+					height: Math.min('450',$(window).height()-120)+'px'
+				});
 				expenseStart();
 			});
 		});
 
 		$('#message-list').slimScroll({
-	        height: Math.min('280',$('#message-list').height())+'px',
-	        start: 'bottom'
-	    });
+			height: Math.min('280',$('#message-list').height())+'px',
+			start: 'bottom'
+		});
 
 
-	    
+
 	}
 
 	/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LOAD FUNCTION ON START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -303,26 +307,26 @@ $('.navbar .dropdown').hover(function() {
 	$(document).ready(function() {
 
 	// ---> ajax for going to expenses 
-		$("#navbar-expenses").on('click', 'a', function(e){
-			e.preventDefault();
-			$.get('ajax/expenses', function(response){
-				$('#content-container').html(response);
-				window.history.pushState("", "", 'expenses');
+	$("#navbar-expenses").on('click', 'a', function(e){
+		e.preventDefault();
+		$.get('ajax/expenses', function(response){
+			$('#content-container').html(response);
+			window.history.pushState("", "", 'expenses');
 				// rappeler les fonctions de mise en forme
 				addScrollOnChart();
 				$('#expense-slimscroll').slimScroll({
-			        height: Math.min('450',$(window).height()-120)+'px'
-			    });
+					height: Math.min('450',$(window).height()-120)+'px'
+				});
 				expenseStart();
 			});
-		});
+	});
 
 	// ---> ajax for going to timeline 
-		$("#navbar-timeline").on('click', 'a', function(e){
-			e.preventDefault();
-			$.get('ajax/timeline', function(response){
-				$('#content-container').html(response);
-				window.history.pushState("", "", 'timeline');
+	$("#navbar-timeline").on('click', 'a', function(e){
+		e.preventDefault();
+		$.get('ajax/timeline', function(response){
+			$('#content-container').html(response);
+			window.history.pushState("", "", 'timeline');
 				// rappeler les fonctions de mise en forme
 				// rappel de listapp.js
 
@@ -332,7 +336,7 @@ $('.navbar .dropdown').hover(function() {
 
 				timelineStart();
 			});
-		});
-
 	});
+
+});
 
