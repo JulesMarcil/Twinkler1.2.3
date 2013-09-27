@@ -22,6 +22,13 @@ class Expense
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @var decimal
      *
      * @ORM\Column(name="amount", type="decimal", scale=2, precision=7)
