@@ -239,7 +239,7 @@
 		var input = $("#send-box").find('input');
 
 		function refreshMessages() {
-			var rowCount=$('#chat-table tr').length
+			rowCount=$('#chat-table tr').length
 			if(activePage=="timeline"){
 				$.get('messages', function(response){
 					$('#message-list').html(response);
@@ -260,12 +260,15 @@
 					input.val('');
 					input.focus();
 					// rappeler les fonctions de mise en forme
+
 					var rowCount=$('#chat-table tr').length
 
 					if(rowCount < 7){		
-						$('#expense-slimscroll').slimScroll({
-							height: Math.min(rowCount*80,$(window).height()-120)+'px'
+						$('#message-list').slimScroll({
+							height: rowCount*80,
 						});
+						$('#chat-container').height('1000px');
+
 					}
 
 					$("#message-list").animate({ scrollTop: 100000 }, "slow");
@@ -281,14 +284,14 @@
 				// rappeler les fonctions de mise en forme
 				addScrollOnChart();
 				$('#expense-slimscroll').slimScroll({
-					height: Math.min('500',$(window).height()-120)+'px'
+					height: Math.min('450',$(window).height()-120)+'px'
 				});
 				expenseStart();
 			});
 		});
 
 		$('#message-list').slimScroll({
-			height: Math.min('400',$('#message-list').height())+'px',
+			height: Math.min('280',$('#message-list').height())+'px',
 			start: 'bottom'
 		});
 
