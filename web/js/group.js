@@ -319,7 +319,7 @@
 				if ($(window).scrollTop() > oritop && ($(document).height()-32>$(window).height())) {
 					$("#navbar-"+activePage).css({'border-top-left-radius':'0px','border-top-right-radius':'0px'});
 					$cache.addClass("navbar-scroll");
-					$cache.css({'position': 'fixed', 'top': '40px','z-index':'9999999999'}); 
+					$cache.css({'position': 'fixed', 'top': '40px','z-index':'1'}); 
 					$( "#toggle-button" ).hide();
 				}
 				else{
