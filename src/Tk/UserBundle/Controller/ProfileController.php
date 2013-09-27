@@ -37,7 +37,7 @@ class ProfileController extends Controller
         if( !$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
             return $this->render('TkWelcomeBundle:Default:index.html.twig');
         }else{
-            return $this->render('TkUserBundle:Profile:show.html.twig');
+            return $this->render($this->generateUrl('tk_group_homepage');
         }
     }
 
