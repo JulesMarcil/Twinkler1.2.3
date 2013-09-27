@@ -25,10 +25,13 @@ class PaybackType extends AbstractType
                         'query_builder' => function(MemberRepository $member) use ($group) {
                             return $member->createQueryBuilder('m')
                                       ->where('m.tgroup = :group')
-                                      ->setParameter('group', $group);
+                                      ->andWhere('m.active = :active')
+                                      ->setParameters(array(
+                                                'group'  => $group,
+                                                'active' => 1
+                                                ));
                             }
                         ))
-                ->add('name', 'text')
                 ->add('amount', 'money', array('currency' => $group->getCurrency()->getIso(),
                                                'required' => true))
                 ->add('date', 'date', array(
@@ -38,8 +41,6 @@ class PaybackType extends AbstractType
                 ->add('users', 'entity', array(
                         'class'         => 'TkUserBundle:Member',
                         'property'      => 'name',
-                        'multiple'      => 'false',
-                        'expanded'      => 'false',
                         'required'      => 'true',
                         'query_builder' => function(MemberRepository $member) use ($group) {
                             return $member->createQueryBuilder('m')
@@ -58,6 +59,6 @@ class PaybackType extends AbstractType
 
     public function getName()
     {
-        return 'tk_expensebundle_expensetype';
+        return 'tk_expensebundle_paybacktype';
     }
 }

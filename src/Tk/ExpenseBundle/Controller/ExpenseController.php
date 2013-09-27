@@ -48,6 +48,7 @@ class ExpenseController extends Controller
         $group = $member->getTGroup();
 
         $expense = new Expense();
+        $expense->setType('expense');
         $expense->setAuthor($member);
         $expense->setOwner($member);
         $expense->setGroup($group);
@@ -96,7 +97,7 @@ class ExpenseController extends Controller
         	return $this->redirect($this->generateUrl('tk_expense_homepage'));
     	}}
 
-    	return $this->render('TkExpenseBundle::new.html.twig', array(
+    	return $this->render('TkExpenseBundle:Expense:new.html.twig', array(
     		'form' => $form->createView(),
     	));
     }

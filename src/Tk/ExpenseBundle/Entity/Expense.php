@@ -269,7 +269,7 @@ class Expense
      * @param \Tk\UserBundle\Entity\Member $users
      * @return Expense
      */
-    public function addUser(\Tk\UserBundle\Entity\Member $users)
+    public function addUsers(\Tk\UserBundle\Entity\Member $users)
     {
         $this->users[] = $users;
 
@@ -281,7 +281,7 @@ class Expense
      *
      * @param \Tk\UserBundle\Entity\Member $users
      */
-    public function removeUser(\Tk\UserBundle\Entity\Member $users)
+    public function removeUsers(\Tk\UserBundle\Entity\Member $users)
     {
         $this->users->removeElement($users);
     }
@@ -294,6 +294,20 @@ class Expense
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set users
+     *
+     * @param \Doctrine\Common\Collections\Collection
+     * @return Expense 
+     */
+    public function setUsers(\Tk\UserBundle\Entity\Member $users)
+    {
+        $ausers = array($users);
+        $this->users = $ausers;
+
+        return $this;
     }
 
     /**

@@ -2,11 +2,17 @@
 
 <div class="row">
 	<div class="span4">
+		{% include "TkExpenseBundle:Payback:addPaybackModal.html.twig" %}
 		<div id="settlement" class="flat-container">
 			<div class="expense-header flat-header" style="text-align:left;">
 				<div id="expense-title">
 					<h2>PAYBACK</h2>
 				</div>
+				<a href="#addPaybackModal" role="button" data-toggle="modal">
+					<div id="add-expense-btn">
+						<i class="icon-plus-sign" style=""></i>ADD PAYBACK
+					</div>
+				</a>
 			</div>
 				{% if debts|length == 0 %}
 				<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
@@ -59,7 +65,7 @@
 			<img src="{{ asset('img/Frame/group-icon-pointer.png') }}" class="img-circle" width="50px" style="position:absolute; top: -5px; left:2px" alt="profile picture">
 		</div>
 		<div id="timeline-expense-container">
-			{% include "TkExpenseBundle::addExpenseModal.html.twig" %}
+			{% include "TkExpenseBundle:Expense:addExpenseModal.html.twig" %}
 			<div class="expense-list flat-container">
 				<div class="expense-header flat-header">
 					<div id="expense-title">

@@ -5,6 +5,9 @@ tk_expense_homepage:
 tk_expense_new:
     pattern:  /group/expenses/new
     defaults: { _controller: TkExpenseBundle:Expense:new }
+tk_payback_new:
+    pattern:  /group/payback/new
+    defaults: { _controller: TkExpenseBundle:Payback:new }
 
 tk_expense_edit:
     pattern:  /group/expenses/edit/{id}

@@ -14,6 +14,8 @@ class PaybackController extends Controller
         $group = $member->getTGroup();
 
         $expense = new Expense();
+        $expense->setType('payback');
+        $expense->setName('payback');
         $expense->setAuthor($member);
         $expense->setOwner($member);
         $expense->setGroup($group);
@@ -21,7 +23,7 @@ class PaybackController extends Controller
         $expense->setDate(new \Datetime('today'));
         $expense->setActive(true);
 
-        $form = $this->createForm(new ExpenseType($group), $expense);
+        $form = $this->createForm(new PaybackType($group), $expense);
                      
         $request = $this->get('request');
 
@@ -62,7 +64,7 @@ class PaybackController extends Controller
         	return $this->redirect($this->generateUrl('tk_expense_homepage'));
     	}}
 
-    	return $this->render('TkExpenseBundle::new.html.twig', array(
+    	return $this->render('TkExpenseBundle:Payback:new.html.twig', array(
     		'form' => $form->createView(),
     	));
     }
