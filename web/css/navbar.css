@@ -61,11 +61,8 @@ header{
 }
 
 #nav-group-name:hover{
-	background-color: rgba(246,159,146, 0.6);
-    -webkit-transition: all 0.1s ease-in;
-    -moz-transition: all 0.1s ease-in;
-    -o-transition: all 0.1s ease-in;
-    transition: all 0.1s ease-in;
+	color: rgba(255,255,255,0.8);
+	background-color: rgba(232,88,68,0.4);
 }
 
 #nav-group-name a{
