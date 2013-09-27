@@ -20,15 +20,8 @@
 <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6010599976603&amp;value=0&amp;currency=EUR" /></noscript>
 {% endblock %}
 
-{% block navbartitle %}
-	<div  id="group-name-title">
-		<div id="title">
-			<a href="{{ path('tk_group_homepage') }}" ><h3>{{ app.user.currentMember.tgroup.name }}</h3></a>
-		</div>
-	</div>
-{% endblock %}
-
 {% block header %}
+<div style="margin-bottom:60px"></div>
 <div id="second-row-big" class="row" style="position: relative">
 	<div id="group" class="span8 offset2">
 		{% for member in app.user.currentMember.tgroup.members %}

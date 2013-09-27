@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Tk\UserBundle\Entity\MemberRepository;
 
-class ExpenseType extends AbstractType
+class PaybackType extends AbstractType
 {
     protected $group;
 
@@ -25,11 +25,7 @@ class ExpenseType extends AbstractType
                         'query_builder' => function(MemberRepository $member) use ($group) {
                             return $member->createQueryBuilder('m')
                                       ->where('m.tgroup = :group')
-                                      ->andWhere('m.active = :active')
-                                      ->setParameters(array(
-                                                'group'  => $group,
-                                                'active' => 1
-                                                ));
+                                      ->setParameter('group', $group);
                             }
                         ))
                 ->add('name', 'text')
@@ -42,8 +38,8 @@ class ExpenseType extends AbstractType
                 ->add('users', 'entity', array(
                         'class'         => 'TkUserBundle:Member',
                         'property'      => 'name',
-                        'multiple'      => 'true',
-                        'expanded'      => 'true',
+                        'multiple'      => 'false',
+                        'expanded'      => 'false',
                         'required'      => 'true',
                         'query_builder' => function(MemberRepository $member) use ($group) {
                             return $member->createQueryBuilder('m')

@@ -22,6 +22,13 @@ class Expense
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @var decimal
      *
      * @ORM\Column(name="amount", type="decimal", scale=2, precision=7)
@@ -310,5 +317,28 @@ class Expense
     public function getGroup()
     {
         return $this->group;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Expense
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
