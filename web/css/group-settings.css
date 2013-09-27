@@ -54,6 +54,14 @@
   	font-size:18px;
 }
 
+.group-title{
+	display: block; height:30px; 
+	vertical-align: middle; 
+	padding-top: 2px; 
+	padding-left: 10px; 
+	padding-right: 10px
+}
+
 .group-edit:after{ /*arrow added to uparrowdiv DIV*/
 	content:'';
 	display:block;
@@ -184,7 +192,7 @@ border-width: 10px;
 
 .chat-footer{
 	width: 100%;
-	margin-bottom: 30px;
+	min-height: 100px;
 }
 
 #send-box{

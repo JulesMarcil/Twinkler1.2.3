@@ -4,9 +4,9 @@
 		<div class="span4 offset1">
 			<div class="group-info flat-container">
 				<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto">	
-					<span style="display: block; height:30px; vertical-align: middle; padding-top: 2px; padding-left: 10px; padding-right: 10px">
+					<span class="group-title">
 						<h2> {{ group.name|upper }}</h2>
-					<span>
+					</span>
 				</div>
 			</div>
 			<div id="group-edit-list" class="group-info group-edit flat-container">
@@ -40,7 +40,7 @@
 				<div id="collapse-remove-member" class="accordion-body collapse">
 					<div class="accordion-inner">	
 						<div class="well">
-						{% include 'TkGroupBundle:GroupActions:removeMembers.html.twig' %}
+							{% include 'TkGroupBundle:GroupActions:removeMembers.html.twig' %}
 						</div>
 					</div>
 				</div>
@@ -59,8 +59,10 @@
 		</div>
 		<div class="span6">
 			<div class="group-info flat-container">
-				<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto">
-					<h2>CHAT</h2>
+				<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto">	
+					<span class="group-title">
+						<h2>CHAT</h2>
+					</span>
 				</div>
 				<div id="message-list">
 					{{ render(controller('TkChatBundle:Default:messages')) }}
@@ -69,11 +71,11 @@
 
 			<div class="chat-footer">
 				<div id="send-box" style="padding-top:10px">
-				{% if app.user.facebookId %}
-				<img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ app.user }}"  width="40px" style="position: relative">
-				{% else %}
-				<img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="{{ app.user }}" width="40px" style="position: relative">
-				{% endif %}
+					{% if app.user.facebookId %}
+					<img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ app.user }}"  width="40px" style="position: relative">
+					{% else %}
+					<img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="{{ app.user }}" width="40px" style="position: relative">
+					{% endif %}
 					<input id="message-input" type="text" placeholder="Type your message here and press enter to post" style="height:24px;"></input>
 				</div>
 			</div>

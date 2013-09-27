@@ -1,6 +1,5 @@
 	/*-----Function definition-------*/
 	var activePage = document.URL.split("/").pop(); /*get page name*/
-	var rowCount =1;
 	var activePageHighlight=function(){  // add top and bottom border on the active page name
 		$("#navbar-"+activePage).addClass("navbar-item");
 	};
@@ -240,7 +239,7 @@
 		var input = $("#send-box").find('input');
 
 		function refreshMessages() {
-			rowCount=$('#chat-table tr').length
+			var rowCount=$('#chat-table tr').length
 			if(activePage=="timeline"){
 				$.get('messages', function(response){
 					$('#message-list').html(response);
@@ -261,6 +260,13 @@
 					input.val('');
 					input.focus();
 					// rappeler les fonctions de mise en forme
+					var rowCount=$('#chat-table tr').length
+
+					if(rowCount < 7){		
+						$('#expense-slimscroll').slimScroll({
+							height: Math.min(rowCount*80,$(window).height()-120)+'px'
+						});
+					}
 
 					$("#message-list").animate({ scrollTop: 100000 }, "slow");
 				});
@@ -275,14 +281,14 @@
 				// rappeler les fonctions de mise en forme
 				addScrollOnChart();
 				$('#expense-slimscroll').slimScroll({
-					height: Math.min('450',$(window).height()-120)+'px'
+					height: Math.min('500',$(window).height()-120)+'px'
 				});
 				expenseStart();
 			});
 		});
 
 		$('#message-list').slimScroll({
-			height: Math.min('280',$('#message-list').height())+'px',
+			height: Math.min('400',$('#message-list').height())+'px',
 			start: 'bottom'
 		});
 
