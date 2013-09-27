@@ -265,9 +265,11 @@
 
 					if(rowCount < 7){		
 						$('#message-list').slimScroll({
-							height: rowCount*80,
+							height: (rowCount+1)*61,
 						});
-						$('#chat-container').height('1000px');
+						$('#chat-container').height(40+(rowCount)*61+'px');
+						$('#chat-container .slimScrollDiv').height((rowCount)*61+'px');
+						$('#message-list').height((rowCount)*61+'px');
 
 					}
 
