@@ -10,10 +10,11 @@
 		$("#balance-slimscroll").niceScroll();
 	};
 
-	$('.navbar .dropdown').hover(function() {
-		$(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+
+	$('#group-dropdown-span').hover(function() {
+		$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).slideDown();
 	}, function() {
-		$(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
+		$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).slideUp()
 	});
 	
 	/*--------CHARTS--------*/
