@@ -1,12 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block head %}
-    {% block title %}   
-    {% endblock %}
-    {% block stylesheets %} 
-    <link href="{{ asset('css/frame.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" type="text/css">
-    {% endblock stylesheets %}
+{% block title %}   
+{% endblock %}
+{% block stylesheets %} 
+<link href="{{ asset('css/frame.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/navbar.css') }}" rel="stylesheet" type="text/css">
+{% endblock stylesheets %}
 {% endblock %}
 
 {% block body %}
@@ -14,39 +14,49 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div id="navbar-container" class="container" style="line-height: 24px;">
-            <a class="brand" href="{{ path('tk_user_homepage') }}">
-                Twinkler
-            </a>
+            <div class="dropdown">
+                <a class="brand dropdown-toggle" href="{{ path('tk_user_homepage') }}">
+                    <div style="min-height:29px">Twinkler</div>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <li class="dropdown-your-groups"><div>YOUR GROUPS:</div></li>
+                    <li><a tabindex="-1" href="#"><div>Action</div></a></li>
+                    <li><a tabindex="-1" href="#"><div>Another action</div></a></li>
+                    <li><a tabindex="-1" href="#"><div>Something else here</div></a></li>
+                    <li class="dropdown-start-group"><a tabindex="-1" href="#"><div>Start Group</font></div></a></li>
+                </ul>
+            </div>
+
             {% if app.user.currentMember %}
             <div id="link-container">
-            <ul class="nav">
-                <li class="divider-vertical"></li>
-              <li><a href="{{ path('tk_group_homepage') }}"><div id="nav-group-name">{{ app.user.currentMember.tgroup.name }}</div></a></li>
+                <ul class="nav">
+                    <li class="divider-vertical"></li>
+                    <li><a href="{{ path('tk_group_homepage') }}"><div id="nav-group-name">{{ app.user.currentMember.tgroup.name }}</div></a></li>
+                </ul>
+                {% endif %}
+                <ul class="nav pull-right">
+                  <li>
+                    <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
+                        {% if app.user.facebookId %}
+                        <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="20px" alt="profile picture">
+                        {% else %}
+                        <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="20px" alt="profile picture">
+                        {% endif %}
+                        {{ app.user }}
+                    </a>
+                </li>
+                <li> <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">Logout</a> </li>
             </ul>
-            {% endif %}
-            <ul class="nav pull-right">
-              <li>
-                <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
-                    {% if app.user.facebookId %}
-                    <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="20px" alt="profile picture">
-                    {% else %}
-                    <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="20px" alt="profile picture">
-                    {% endif %}
-                    {{ app.user }}
-                </a>
-              </li>
-              <li> <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">Logout</a> </li>
-            </ul>
-            </div>
-        </div> 
-      </div>
-    </div>  
-    <div class="container-fluid">
-        {% block header %}
-        {% endblock %}
-    </div>
-    {% block selectionmenu %}
-    {% endblock %}     
+        </div>
+    </div> 
+</div>
+</div>  
+<div class="container-fluid">
+    {% block header %}
+    {% endblock %}
+</div>
+{% block selectionmenu %}
+{% endblock %}     
 </header>
 
 <section id="content" class="frame">
