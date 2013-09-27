@@ -6,8 +6,6 @@ tk_user_profile_edit:
     pattern:  /profile/edit/{id}
     defaults: { _controller: TkUserBundle:Profile:edit }
 
-
-
 tk_user_profilepicture_edit:
     pattern:  /picture/upload
     defaults: { _controller: TkUserBundle:Profile:editProfilePicture }
