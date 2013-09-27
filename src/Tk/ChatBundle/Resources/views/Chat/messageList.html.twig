@@ -14,10 +14,48 @@
 
 	{% else %}
 
+	{% set previous = null %}
 	{% for message in last_messages %}
 	{% set member = message.author %}
 
-	{% if member.user == app.user %}
+	{% if previous == member and message.timestamp - 900 < previous_message.timestamp %}
+
+		<p>{{message.body}}</p>
+
+	{% else %}
+
+		{% if previous %}
+		{% if previous.user == app.user %}
+
+		</td>
+		<td class="message-pic msg-right">
+			{% if previous.user.facebookId %}
+			<img src="http://graph.facebook.com/{{previous.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ previous.name }}"  width="40px" style="position: relative">
+			{% else %}
+			<img src="{{ asset(previous.user.picture.path) }}" class="img-circle" alt="{{ previous.name }}" width="40px" style="position: relative">
+			{% endif %}
+		<td>
+	</tr>
+
+		{% else %}
+
+		</td>
+		<td class="message-date">
+			<p>{{previous.name}}<br>
+			{% if previous_message.timestamp|date('d') == "now"|date('d') %}
+			   {{previous_message.timestamp|date('H:i')}}</p>
+			{% elseif previous_message.timestamp|date('d') == date('-1day') %}
+			   Yesterday</p>
+			{% else %}
+			   {{previous_message.timestamp|date('M')}} {{previous_message.timestamp|date('d')}}</p>
+			{% endif %}
+		</td>
+	</tr>
+
+		{% endif %}
+		{% endif %}
+
+		{% if member.user == app.user %}
 
 	<tr>
 		<td class="message-date">
@@ -29,18 +67,10 @@
 			<p>{{message.timestamp|date('M')}} {{message.timestamp|date('d')}}</p>
 			{% endif %}
 		</td>
-		<td class="message-body msg-right">{{message.body}}</td>
-		<td class="message-pic msg-right">
-			{% if member.user.facebookId %}
-			<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}"  width="40px" style="position: relative">
-			{% else %}
-			<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="40px" style="position: relative">
-			{% endif %}
-		<td>
-	</tr>
+		<td class="message-body msg-right">
+			<p>{{message.body}}</p>
 
-	{% else %}
-
+		{% else %}
 	<tr>
 		<td class="message-pic msg-left">
 			{% if member.user and member.user.facebookId %}
@@ -51,21 +81,47 @@
 			<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" width="40px" style="position: relative">
 			{% endif %}
 		</td>
-		<td class="message-body msg-left">{{message.body}}</td>
+		<td class="message-body msg-left">
+			<p>{{message.body}}</p>
+
+		{% endif %}
+
+	{% set previous = member %}
+	{% set previous_message = message %}
+	
+	{% endif %}
+
+	{% endfor %}
+
+	{% if previous.user == app.user %}
+
+		</td>
+		<td class="message-pic msg-right">
+			{% if previous.user.facebookId %}
+			<img src="http://graph.facebook.com/{{previous.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ previous.name }}"  width="40px" style="position: relative">
+			{% else %}
+			<img src="{{ asset(previous.user.picture.path) }}" class="img-circle" alt="{{ previous.name }}" width="40px" style="position: relative">
+			{% endif %}
+		<td>
+	</tr>
+
+		{% else %}
+
+		</td>
 		<td class="message-date">
-			<p>{{message.author.name}}<br>
-			{% if message.timestamp|date('d') == "now"|date('d') %}
-			   {{message.timestamp|date('H:i')}}</p>
-			{% elseif message.timestamp|date('d') == date('-1day') %}
+			<p>{{previous.name}}<br>
+			{% if previous_message.timestamp|date('d') == "now"|date('d') %}
+			   {{previous_message.timestamp|date('H:i')}}</p>
+			{% elseif previous_message.timestamp|date('d') == date('-1day') %}
 			   Yesterday</p>
 			{% else %}
-			   {{message.timestamp|date('M')}} {{message.timestamp|date('d')}}</p>
+			   {{previous_message.timestamp|date('M')}} {{previous_message.timestamp|date('d')}}</p>
 			{% endif %}
 		</td>
 	</tr>
 
-	{% endif %}
-	{% endfor %}
-{% endif %}
+		{% endif %}
 
+
+	{% endif %}
 </table>
