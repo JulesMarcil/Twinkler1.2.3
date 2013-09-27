@@ -9,11 +9,13 @@ tk_group_switch_member:
 tk_group_goto_member:
     pattern:  /goto/{id}
     defaults: { _controller: TkGroupBundle:Default:goTo }
+tk_group_switch_member:
+    pattern:  /switch/{id}
+    defaults: { _controller: TkGroupBundle:Default:switch }
 
 tk_group_new:
     pattern:  /new
     defaults: { _controller: TkGroupBundle:Default:new }
-
 tk_group_edit:
     pattern:  /edit
     defaults: { _controller: TkGroupBundle:Default:edit }
@@ -44,7 +46,3 @@ tk_group_close:
 tk_group_new_invitation:
     pattern: /invitation/{id}/{email}
     defaults: { _controller: TkGroupBundle:Default:emailForm }
-
-tk_group_ajax:
-    pattern: /ajax/settings
-    defaults: { _controller: TkGroupBundle:Default:ajaxContent }

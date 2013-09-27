@@ -12,16 +12,21 @@ class DefaultController extends Controller
     {
     	$user = $this->getUser();
     	$member = $user->getCurrentMember();
-    	$group = $member->getTGroup();
 
-    	$last_expenses = $this->getLastExpenses($group);
-    	$last_messages = $this->getLastMessages($group);
+        if (!$member) {
+            return $this->redirect($this->generateUrl('tk_user_homepage'));
+        } else {
+        	$group = $member->getTGroup();
 
-        return $this->render('TkChatBundle::index.html.twig', array(
-        	'last_expenses' => $last_expenses,
-        	'last_messages' => $group->getMessages(),
-        	'count'			=> sizeof($group->getExpenses())-sizeof($last_expenses)
-        	));
+        	$last_expenses = $this->getLastExpenses($group);
+        	$last_messages = $this->getLastMessages($group);
+
+            return $this->render('TkChatBundle::index.html.twig', array(
+            	'last_expenses' => $last_expenses,
+            	'last_messages' => $group->getMessages(),
+            	'count'			=> sizeof($group->getExpenses())-sizeof($last_expenses)
+            	));
+        }
     }
 
     public function ajaxContentAction()
