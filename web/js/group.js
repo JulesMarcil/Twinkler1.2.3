@@ -81,10 +81,8 @@
 		}
 
 		var ctx = document.getElementById("balanceChart").getContext("2d");
-		new Chart(ctx).Bar(data,{
-			scaleOverlay : false,
-			scaleShowLabels : false
-		});
+
+		new Chart(ctx).Bar(data,{scaleOverlay : false,scaleShowLabels : false});
 	}
 
 	/* HEADER ACTIONS */
