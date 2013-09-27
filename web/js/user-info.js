@@ -8,7 +8,17 @@ $(document).ready(function() {
 			feedbackActions();
 		});
 	});
+
+
+	$('#group-dropdown-span').hover(function() {
+		$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).slideDown();
+	}, function() {
+		$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).slideUp()
+	});
 });
+
+
+
 
 function feedbackActions(){
 
