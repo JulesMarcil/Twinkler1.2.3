@@ -348,7 +348,7 @@
 	$(document).ready(function() {
 
 	// ---> ajax for going to expenses 
-	$("#navbar-expenses").on('click', 'a', function(e){
+	$("#navbar-expenses").on('click', function(e){
 		e.preventDefault();
 		$.get('ajax/expenses', function(response){
 			$('#content-container').html(response);
@@ -363,7 +363,7 @@
 	});
 
 	// ---> ajax for going to timeline 
-	$("#navbar-timeline").on('click', 'a', function(e){
+	$("#navbar-timeline").on('click', function(e){
 		e.preventDefault();
 		$.get('ajax/timeline', function(response){
 			$('#content-container').html(response);

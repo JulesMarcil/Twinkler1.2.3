@@ -7,13 +7,13 @@
 {% endblock %}
 
 {% block stylesheets %}
- {{ parent() }}
- <link href="{{ asset('css/group-settings.css') }}" rel="stylesheet" type="text/css">
- <link href="{{ asset('css/expenses.css') }}" rel="stylesheet" type="text/css">
+{{ parent() }}
+<link href="{{ asset('css/group-settings.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/expenses.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block header %}
-	<div style="margin-bottom:40px"></div>
+<div style="margin-bottom:40px"></div>
 <div id="second-row-big" class="row" style="position: relative">
 	<div id="group">
 		<div id="pictures">
@@ -40,8 +40,8 @@
 				{% else %}
 				<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
 					
-						<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
-						<p>{{ member.name }}</p>
+					<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+					<p>{{ member.name }}</p>
 					
 				</a>
 				{% endif %}
@@ -68,28 +68,32 @@
 
 
 {% block selectionmenu %}
-	<div id="navbar-row" class="selection-menu" style="padding-top:0">
-		<div class="container" style="height:100%;">
-			<div  class="row" style="height:100%;">
-				<div class="span6 offset3" style="height:100%; text-align: center;">
-					<div id="navbar-expenses" style="font-size:10px;height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
-						<a href="#">EXPENSES</a>
+<div id="navbar-row" class="selection-menu" style="padding-top:0">
+	<div class="container" style="height:100%;">
+		<div  class="row" style="height:100%;">
+			<div class="span6 offset3" style="height:100%; text-align: center;">
+				<a href="#">
+					<div id="navbar-expenses" style="height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
+						EXPENSES
 					</div>
-					<div id="navbar-timeline" style="font-size:10px;height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
-						<a href="#">CHAT</a>
+				</a>
+				<a href="#">
+					<div id="navbar-timeline" style="height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
+						CHAT
 					</div>
-				</div>
-				<div class="pull-right" style="padding:5px 0px; margin-right: 20px;">
-					<a id="toggle-button" style="cursor: pointer">hide members</a>
-				</div>
+				</a>
+			</div>
+			<div class="pull-right" style="padding:5px 0px; margin-right: 20px;">
+				<a id="toggle-button" style="cursor: pointer">hide members</a>
 			</div>
 		</div>
 	</div>
-	<script>
-		var balances = {{ app.user.currentMember.tgroup.arrayBalances|json_encode|raw }};
-	</script>
+</div>
+<script>
+var balances = {{ app.user.currentMember.tgroup.arrayBalances|json_encode|raw }};
+</script>
 {% endblock %}
 
 {% block javascripts %}
- 	<script type='text/javascript' src="{{ asset('js/group.js') }}"></script>
+<script type='text/javascript' src="{{ asset('js/group.js') }}"></script>
 {% endblock %}

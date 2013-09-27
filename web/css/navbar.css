@@ -171,10 +171,16 @@ header{
 	background-color: rgba(247,122,103,0.5);
 	border-top-left-radius:4px;
 	border-top-right-radius:4px;
+	color:white;
 }
 
 .navbar-item a{
 	color: white;
+}
+
+.navbar-item:hover{
+	background-color:#EC554A;
+	color:white;
 }
 
 /* --- Arrow: expand onhover and not on click --- */
