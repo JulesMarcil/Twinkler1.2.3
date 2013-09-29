@@ -8,29 +8,33 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-    	$group_id = $this->getRequest()->query->get('group_id');
-    	$user_id  = $this->getRequest()->query->get('user_id');
+    	if ($this->get('security.context')->isGranted('ROLE_ADMIN') === false) {
+		    return $this->redirect($this->generateUrl('tk_user_homepage'));
+		} else {
+	    	$group_id = $this->getRequest()->query->get('group_id');
+	    	$user_id  = $this->getRequest()->query->get('user_id');
 
-    	if ($group_id) {
-    		$group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
-    	} else {
-    		$group = null;
-    	}
+	    	if ($group_id) {
+	    		$group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
+	    	} else {
+	    		$group = null;
+	    	}
 
-    	if ($user_id) {
-    		$user = $this->getDoctrine()->getRepository('TkUserBundle:user')->find($user_id);
-    	} else {
-    		$user = null;
-    	}
+	    	if ($user_id) {
+	    		$user = $this->getDoctrine()->getRepository('TkUserBundle:user')->find($user_id);
+	    	} else {
+	    		$user = null;
+	    	}
 
-    	$userStats = $this->userStatistics();
+	    	$userStats = $this->userStatistics();
 
-        return $this->render('TkAdminBundle::index.html.twig', array(
-        	'userStats' => $this->userStatistics(),
-        	'groupStats'=> $this->groupStatistics(),
-        	'group'     => $group,
-        	'user'      => $user
-        	));
+	        return $this->render('TkAdminBundle::index.html.twig', array(
+	        	'userStats' => $this->userStatistics(),
+	        	'groupStats'=> $this->groupStatistics(),
+	        	'group'     => $group,
+	        	'user'      => $user
+	        	));
+        }
     }
 
     private function userStatistics()

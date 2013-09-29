@@ -36,14 +36,6 @@ security:
             pattern:    ^/oauth/v2/token
             security:   false
 
-        admin:
-            pattern: /admin/
-            form_login:
-                provider: fos_userbundle
-                check_path: /login_check
-                login_path: /login
-            anonymous: ~
-
         secured_area:
             pattern: ^/
             anonymous: ~
