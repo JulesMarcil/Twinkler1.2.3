@@ -107,6 +107,68 @@ var getCurSlide=function(){
             $(window).scroll(fixDiv);
             fixDiv();
         });
+
+        jQuery(function($) {
+            function fixDiv() {
+                var oritop=jQuery('#blue-arrow-container').offset().top;
+                var $cache = $('#blue-arrow');
+                var check=new Boolean();
+                check=false;
+                if ((check==false) && ($(window).scrollTop() > oritop-400)) {  
+                    check=true;    
+                    $cache.stop().animate(
+                        { height: 374 }, {
+                         duration: 400,
+                     }); 
+                }
+            }
+            $(window).scroll(fixDiv);
+            fixDiv();
+        });
+
+
+        jQuery(function($) {
+            function fixDiv() {
+                var oritop=jQuery('#blue-arrow-container-left').offset().top;
+                var $cache = $('#blue-arrow-left');
+                var check=new Boolean();
+                check=false;
+                if ((check==false) && ($(window).scrollTop() > oritop-400)) {  
+                    check=true;    
+                    $cache.stop().animate(
+                        { height: 374 }, {
+                         duration: 400,
+                     }); 
+                }
+            }
+            $(window).scroll(fixDiv);
+            fixDiv();
+        });
+
+
+        jQuery(function($) {
+            function fixDiv() {
+                var oritop=jQuery('#platform-section').offset().top;
+                var $cacheLaptop = $('#flat-laptop');
+                var $cacheIphone = $('#flat-iphone');
+                var check=new Boolean();
+                check=false;
+                if ((check==false) && ($(window).scrollTop() > oritop-400)) {  
+                    check=true;    
+                    $cacheLaptop.stop().animate(
+                        { left: 15 }, {
+                         duration: 400,
+                     });   
+                    $cacheIphone.stop().animate(
+                        { left: 0 }, {
+                         duration: 600,
+                     }); 
+                }
+            }
+            $(window).scroll(fixDiv);
+            fixDiv();
+        });
+
     }); 
 
 
