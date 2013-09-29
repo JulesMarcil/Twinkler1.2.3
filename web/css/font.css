@@ -30,7 +30,10 @@
     font-family: "Proxima-bold";
     src: url('font/ProximaNova-Bold.otf') format("truetype");
 }
-
+@font-face {
+    font-family: 'Proxima-semibold';
+    src: url('font/ProximaNova-Semiold.otf') format("truetype");
+}
 
 /*-------ASAP---------*/
 @font-face {
