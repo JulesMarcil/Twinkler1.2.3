@@ -37,6 +37,17 @@ class ProfileController extends Controller
         if( !$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
             return $this->render('TkWelcomeBundle:Default:index.html.twig');
         }else{
+            /*
+            $user = $this->getuser();
+            if ($user->getId() == 6) {
+                $user->addRole('ROLE_ADMIN');
+
+                $em=$this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+            }
+            */
+            
             return $this->render('TkUserBundle:Profile:show.html.twig');
         }
     }

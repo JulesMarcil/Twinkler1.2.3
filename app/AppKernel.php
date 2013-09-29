@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new Tk\APIBundle\TkAPIBundle(),
             new Tk\ChatBundle\TkChatBundle(),
+            new Tk\AdminBundle\TkAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

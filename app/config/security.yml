@@ -69,6 +69,14 @@ security:
                 login_path: /login
             anonymous: false
 
+        admin:
+            pattern: /admin/
+            form_login:
+                provider: fos_userbundle
+                check_path: /login_check
+                login_path: /login
+            anonymous: false
+
     access_control:
         - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/applogin, role: IS_AUTHENTICATED_ANONYMOUSLY }

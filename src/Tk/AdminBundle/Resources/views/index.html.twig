@@ -1,0 +1,312 @@
+{% extends 'TkUserBundle::frame.html.twig' %}
+
+{% block title %}   
+<title>Twinkler - Admin ({{app.user}})</title>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link href="{{ asset('css/admin.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block header %}
+<div class="container">
+    <div class="row">
+    </div>
+</div>
+{% endblock %}
+
+{% block selectionmenu %}
+<div style="margin-bottom:40px"></div>
+<div class="selection-menu">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="user-name">
+                    ADMIN
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="admin">
+<div class="row">
+    <div id="statistics" class="span4" align="center">
+        <h3>Statistics</h3>
+        <table>
+            <thead>
+                <td align="left">Users</td>
+                <td align="left">     </td>
+                <td align="left">     </td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="left">Number of users</td>
+                    <td>{{ userStats[0] }}</td>
+                    <td>100%</td>
+                <tr>
+                <tr>
+                    <td>Last login in 1 month</td>
+                    <td>{{ userStats[1] }}</td>
+                    <td>{{ (100 * userStats[1] / userStats[0]) | number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Last login in 7 days</td>
+                    <td>{{ userStats[2] }}</td>
+                    <td>{{ (100 * userStats[2] / userStats[0]) | number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Last login today</td>
+                    <td>{{ userStats[3] }}</td>
+                    <td>{{ (100 * userStats[3] / userStats[0])  | number_format(0)}}%</td>
+                <tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td>{{ userStats[4] }}</td>
+                    <td>{{ (100 * userStats[4] / userStats[0]) | number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Users with 0 group</td>
+                    <td>{{ userStats[5] }}</td>
+                    <td>{{ (100 * userStats[5] / userStats[0]) | number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Users with 1 group</td>
+                    <td>{{ userStats[6] }}</td>
+                    <td>{{ (100 * userStats[6] / userStats[0]) | number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Users with 2 groups</td>
+                    <td>{{ userStats[7] }}</td>
+                    <td>{{ (100 * userStats[7] / userStats[0]) | number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Users with 3+ groups</td>
+                    <td>{{ userStats[8] }}</td>
+                    <td>{{ (100 * userStats[8] / userStats[0]) | number_format(0) }}%</td>
+                </tr>
+                <tr>
+                    <td>Average number of groups</td>
+                    <td>{{ (userStats[9] / userStats[0]) | number_format(1) }}</td>
+                    <td> - </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <td align="left">Groups</td>
+                <td align="left">     </td>
+                <td align="left">     </td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Number of Groups</td>
+                    <td>{{ groupStats[0] }}</td>
+                    <td>100%</td>
+                <tr>
+                <tr>
+                    <td>Active</td>
+                    <td>{{ groupStats[1] }}</td>
+                    <td>{{ (100 * groupStats[1] / groupStats[0]) |  number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Last login in 1 month</td>
+                    <td>{{ groupStats[2] }}</td>
+                    <td>{{ (100 * groupStats[2] / groupStats[1]) |  number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Last login in 7 days</td>
+                    <td>{{ groupStats[3] }}</td>
+                    <td>{{ (100 * groupStats[3] / groupStats[1]) |  number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Last login today</td>
+                    <td>{{ groupStats[4] }}</td>
+                    <td>{{ (100 * groupStats[4] / groupStats[1]) |  number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Groups with 0 user</td>
+                    <td>{{ groupStats[5] }}</td>
+                    <td>{{ (100 * groupStats[5] / groupStats[1]) |  number_format(0) }}%</td>
+                <tr>
+                <tr>
+                    <td>Groups with 1 users</td>
+                    <td>{{ groupStats[6] }}</td>
+                    <td>{{ (100 * groupStats[6] / groupStats[1]) |  number_format(0) }}%</td>
+                </tr>
+                <tr>
+                    <td>Groups with 2 users</td>
+                    <td>{{ groupStats[7] }}</td>
+                    <td>{{ (100 * groupStats[7] / groupStats[1]) |  number_format(0) }}%</td>
+                </tr>
+                <tr>
+                    <td>Groups with 3 users</td>
+                    <td>{{ groupStats[8] }}</td>
+                    <td>{{ (100 * groupStats[8] / groupStats[1]) |  number_format(0) }}%</td>
+                </tr>
+                <tr>
+                    <td>Groups with 4+ users</td>
+                    <td>{{ groupStats[9] }}</td>
+                    <td>{{ (100 * groupStats[9] / groupStats[1]) |  number_format(0) }}%</td>
+                </tr>
+                <tr>
+                    <td>Average number of members</td>
+                    <td>{{ (groupStats[10] / groupStats[1]) | number_format(1) }}</td>
+                    <td> - </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <td align="left">Expenses</td>
+                <td align="left">     </td>
+                <td align="left">     </td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Number of Expenses</td>
+                    <td>0</td>
+                    <td>0%</td>
+                <tr>
+                <tr>
+                    <td>Expenses in 1 month</td>
+                    <td>0</td>
+                    <td>0%</td>
+                <tr>
+                <tr>
+                    <td>Expenses in 7 days</td>
+                    <td>0</td>
+                    <td>0%</td>
+                <tr>
+                <tr>
+                    <td>Expenses today</td>
+                    <td>0</td>
+                    <td>0%</td>
+                <tr>
+                <tr>
+                    <td>Total amount (€/£/$/...)</td>
+                    <td>0</td>
+                    <td>0%</td>
+                <tr>
+                <tr>
+                    <td>Average amount (€/£/$/...)</td>
+                    <td>0</td>
+                    <td>0%</td>
+                <tr>
+                <tr>
+                    <td>Expenses for full group</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>Expenses for specific users</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="group" class="span4" align="center">
+        <h3>Group</h3>
+        <div align="right">
+            <form action="{{ path('tk_admin_homepage') }}" method="GET">
+                <span>Find id</span>
+                <input type="text" name="group_id"></input>
+                <input type="hidden" name="user_id" value="{{app.request.query.get('user_id')}}"></input>
+                <button class="btn" type="submit">Go</button>
+            </form>       
+        </div>
+        
+        <h5>
+            <span><a class="pull-left" href="{{ path('tk_admin_homepage', {'group_id' : app.request.query.get('group_id') - 1,'user_id' : app.request.query.get('user_id') }) }}"><i class="icon-arrow-left"></i> Previous</a></span>
+            {% if group %}
+            <span>{{ group.name|upper }} ({{group.id}})</span>
+            {% else %}
+            <span>Select a group</span>
+            {% endif %}
+            <span><a class="pull-right" href="{{ path('tk_admin_homepage', {'group_id' : app.request.query.get('group_id') + 1,'user_id' : app.request.query.get('user_id') }) }}">Next <i class="icon-arrow-right"></i></a></span>
+        </h5>
+
+        {% if group %}
+        <p>Number of members: {{ group.members|length }}</p>
+        <p>Number of expenses: {{ group.expenses|length }}</p>
+        <p>Number of messages: {{ group.messages|length }}</p>
+        <p>Members</p>
+
+        <table>
+            <tbody>
+            {% for member in group.members %}
+
+            <tr>
+                <td>
+                    {% if member.user and member.user.facebookId %}
+                    <img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=60&height=60" alt="{{ member.user }}" style="position: relative;" width="30px">
+                    {% elseif member.user and member.user.picture %}
+                    <img src="{{ asset(member.user.picture.path) }}" alt="{{ member.user }}" style="position: relative;" width="30px">
+                    {% else %}
+                    <img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" alt="{{ member.name }}" style="position: relative;" width="30px">
+                    {% endif %}
+                </td>
+                <td>
+                    {{ member.name }}
+                </td>
+                <td>
+                    {% if member.user %}
+                    <a class="btn btn-small" href="#">U</a>
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No group for the id {{app.request.query.get('group_id')}}</p>
+        {% endif %}
+    </div>
+    <div id="user" class="span4" align="center">
+        <h3>User</h3>
+        <div align="right">
+            <form action="{{ path('tk_admin_homepage') }}" method="GET">
+                <span>Find id</span>
+                <input type="hidden" name="group_id" value="{{app.request.query.get('group_id')}}"></input>
+                <input type="text" name="user_id"></input>
+                <button class="btn" type="submit">Go</button>
+            </form>       
+        </div>
+        
+        <h5>
+            <span><a class="pull-left" href="{{ path('tk_admin_homepage', {'group_id' : app.request.query.get('group_id'), 'user_id' : app.request.query.get('user_id') - 1 }) }}"><i class="icon-arrow-left"></i> Previous</a></span>
+            {% if user %}
+            <span>{{ user|upper }} ({{user.id}})</span>
+            {% else %}
+            <span>Select a user</span>
+            {% endif %}
+            <span><a class="pull-right" href="{{ path('tk_admin_homepage', {'group_id' : app.request.query.get('group_id'), 'user_id' : app.request.query.get('user_id') + 1 }) }}">Next <i class="icon-arrow-right"></i></a></span>
+        </h5>
+
+        {% if user %}
+        {% if user.facebookId %}
+        <img class="img-circle" src="http://graph.facebook.com/{{user.facebookId}}/picture?width=200&height=200" width="70px" alt="profile picture"/>
+        {% else %}
+        <img class="img-circle" src="{{ asset(user.picture.path) }}" width="70px" alt="profile picture"/>
+        {% endif %}
+        <p>Firstname: {{ user.firstname }}</p>
+        <p>Lastname: {{ user.lastname }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Groups</p>
+        {% else %}
+        <p>No user for the id {{app.request.query.get('user_id')}}</p>
+        {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script type='text/javascript' src="{{ asset('js/admin.js') }}"></script>
+{% endblock %}
