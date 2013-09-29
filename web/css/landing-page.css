@@ -178,6 +178,9 @@ header li{
 		font-size: 20px;
 		line-height:1.4em;   
 	}
+	#section1 {
+		min-height: 300px;
+	}
 }
 
 @media only screen and (max-width: 569px) {
@@ -431,6 +434,30 @@ header li{
 	position: absolute;
 	top: 25px;
 	left:800px;
+}
+
+@media only screen and (max-width: 767px) {
+	#platform-section{
+		height: 300px;
+	}
+	.platform{
+		padding: 0px 0px;
+	}
+	.platform-thumbnails{
+		margin-left: 40%;
+	}
+}
+
+@media only screen and (max-width: 569px) {
+	#platform-section{
+		height: 350px;
+	}
+	.platform{
+		padding: 0px 0px;
+	}
+	.platform-thumbnails{
+		margin-left: 30%;
+	}
 }
 
 /* feedbacks */
@@ -760,6 +787,12 @@ footer a:hover{
 	background-repeat:no-repeat;
 }
 
+@media only screen and (max-width: 980px) {
+	#iphone-pic{
+		margin-left:-80px;
+	}
+}
+
 /* --- responsiveness --- */
 
 @media only screen and (max-width: 767px) {
@@ -779,11 +812,7 @@ footer a:hover{
 	.icon-rotate-0 {
 		display: none;
 	}
-
-	#iphone-pic{
-		margin-left:-50px;
-	}
-
+	
 }
 
 /* --- Login and register parts --- */
