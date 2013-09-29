@@ -111,7 +111,7 @@ class DefaultController extends Controller
                 $em->persist($group);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('tk_group_homepage'));
+                return $this->redirect($this->generateUrl('tk_chat_homepage'));
             }
         }
 

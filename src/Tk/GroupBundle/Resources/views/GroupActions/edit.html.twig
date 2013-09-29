@@ -1,18 +1,16 @@
-{% extends 'TkGroupBundle::index.html.twig' %}
+<form action="{{ path('tk_group_edit') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
 
-{% block groupinformation %}
+    <div>
+    {{ form_errors(form.name) }}
+	{{ form_widget(form.name) }}
 
-<div class="well">
-	<form action="{{ path('tk_group_edit') }}" method="post" {{ form_enctype(form) }}>
-	    {{ form_errors(form) }}
+    {{ form_errors(form.currency) }}
+    {{ form_widget(form.currency) }}
+    </div>
 
-	    {{ form_row(form.name) }}
+    {{ form_rest(form) }}
 
-	    {{ form_rest(form) }}
-
-	    <input type="submit" />
-	    <a href="{{ path('tk_group_homepage') }}">Cancel</a>
-	</form>
-</div>
-
-{% endblock %}
+    <input class="btn btn-success" type="submit" />
+    <a  class="btn" href="">Cancel</a>
+</form>

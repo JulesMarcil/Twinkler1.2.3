@@ -36,13 +36,21 @@ security:
             pattern:    ^/oauth/v2/token
             security:   false
 
+        admin:
+            pattern: /admin/
+            form_login:
+                provider: fos_userbundle
+                check_path: /login_check
+                login_path: /login
+            anonymous: ~
+
         secured_area:
             pattern: ^/
             anonymous: ~
             form_login:
                 login_path: /login
                 check_path: /login_check
-                default_target_path: tk_user_homepage
+                default_target_path: tk_group_homepage
                 provider: fos_userbundle
                 remember_me: true
                 csrf_provider: form.csrf_provider
@@ -83,3 +91,4 @@ security:
         - { path: ^/group/app, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/admin/, role: ROLE_ADMIN }
+
