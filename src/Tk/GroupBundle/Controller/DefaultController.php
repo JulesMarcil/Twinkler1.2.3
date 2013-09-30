@@ -20,9 +20,26 @@ class DefaultController extends Controller
         }
     }
 
+    public function dashboardAction()
+    {
+        if(!$this->getUser()->getCurrentMember()){
+            return $this->redirect($this->generateUrl('tk_user_homepage'));
+        }else{
+            $member = $this->getUser()->getCurrentMember();
+            $expenses_service = $this->container->get('tk_expense.expenses');
+            return $this->render('TkGroupBundle:Dashboard:dashboard.html.twig', array(
+                    'debts' => $expenses_service->getCurrentDebts($member->getTGroup()),
+                ));
+        }
+    }
+
     public function ajaxContentAction()
     {
-      return $this->render('TkGroupBundle:Default:content.html.twig');
+        $member = $this->getUser()->getCurrentMember();
+        $expenses_service = $this->container->get('tk_expense.expenses');
+        return $this->render('TkGroupBundle:Dashboard:content.html.twig', array(
+                'debts' => $expenses_service->getCurrentDebts($member->getTGroup()),
+            ));
     }
 
     public function switchAction($id)

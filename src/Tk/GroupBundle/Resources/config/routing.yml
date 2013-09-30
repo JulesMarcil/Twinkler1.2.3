@@ -1,6 +1,14 @@
 tk_group_homepage:
-    pattern:  /settings
+    pattern:  /group
     defaults: { _controller: TkGroupBundle:Default:index }
+
+tk_group_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: TkGroupBundle:Default:dashboard }
+
+tk_group_ajax:
+    pattern:  /ajax/dashboard
+    defaults: { _controller: TkGroupBundle:Default:ajaxContent }
 
 tk_group_switch_member:
     pattern:  /switch/{id}

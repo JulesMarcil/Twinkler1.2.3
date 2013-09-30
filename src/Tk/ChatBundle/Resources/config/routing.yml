@@ -1,9 +1,9 @@
 tk_chat_homepage:
-    pattern:  /group/timeline
+    pattern:  /group/chat
     defaults: { _controller: TkChatBundle:Default:index }
 
 tk_chat_ajax_content:
-    pattern: /group/ajax/timeline
+    pattern: /group/ajax/chat
     defaults: { _controller: TkChatBundle:Default:ajaxContent }
 
 tk_chat_get_messages:
