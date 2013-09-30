@@ -4,10 +4,10 @@
 }
 
 .expense-header{
-  	border-bottom-left-radius:4px;
-  	border-bottom-right-radius:4px;
-  	min-height: 34px;
-  	margin: 5px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	min-height: 34px;
+	margin: 5px;
 }
 
 .expense-header{
@@ -214,10 +214,10 @@
 	font-size: 12px;
 	background-color: rgb(242,242,242);
 	color: rgb(140,140,140);
-  	border-bottom-left-radius:4px;
-  	border-bottom-right-radius:4px;
-  	border-top-left-radius:4px;
-  	border-top-right-radius:4px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
 }
 
 .expense-list{
@@ -240,10 +240,10 @@
 	font-size: 12px;
 	background-color: rgb(242,242,242);
 	color: rgb(140,140,140);
-  	border-bottom-left-radius:4px;
-  	border-bottom-right-radius:4px;
-  	border-top-left-radius:4px;
-  	border-top-right-radius:4px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
 }
 
 .expense-list:after{ /*arrow added to leftarrowdiv DIV*/
@@ -306,13 +306,13 @@
 
 .liner:before{
 	content:""; 
-    display:block; 
-    position:absolute; 
-    left:0; 
-    bottom:0px; 
-    width:100%; 
-    height:1px;                          
-    background:#d4d4d4;
+	display:block; 
+	position:absolute; 
+	left:0; 
+	bottom:0px; 
+	width:100%; 
+	height:1px;                          
+	background:#d4d4d4;
 }
 
 /*------ Date ---------*/
@@ -388,9 +388,9 @@
 /* --- edit accordion --- */
 
 .accordion-group {
-    border: none;
-    border-radius: none;
-    margin-bottom: none;
+	border: none;
+	border-radius: none;
+	margin-bottom: none;
 }
 
 .edit-remove-buttons .accordion-toggle{
@@ -404,9 +404,83 @@
 }
 
 .collapse {
-    overflow: hidden;
+	overflow: hidden;
 }
 
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*--expense table----*/
+#expense-table-container{
+	margin-top: 15px;
+	margin-left: 10px;
+	width: 100%;
+	padding: 5px;
+}
+
+#expense-table{
+	width: 100%;
+}
+
+#expense-table-header tr{
+	color: white;
+	background-color:#C8C8C8;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+}
+
+.expense-row{
+	padding: 10px 0px;
+}
+
+#expense-table tr{
+	border-bottom: 1px solid #EAEDF2;
+}
+
+#expense-table tr:last-child{
+	border-bottom: none;
+}
+
+.expense-row{
+
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.expense-row td{
+	vertical-align: top;
+	padding-top: 12px;
+}
+
+#profile-pic-row{
+	min-width: 30px;
+	padding: 8px;
+	text-align: center;
+}
+
+#amount-column div{
+	min-height: 60px;
+}
+
+#amount-column{
+	min-width: 80px;
+}
+
+#balance-column{
+	min-width: 80px;
+	text-align: center;
+}
+
+#edit-column{
+	text-align: center;
+}
+
+#edit-column a:hover{
+	text-decoration: none;
+	cursor: pointer;
+}
 
 /* --- Payback --- */
 
