@@ -856,16 +856,25 @@ footer a:hover{
 	border-left: 1px solid rgb(239, 244, 246); 
 }
 
+#user-layout-body .flat-container #old-school-way ul{
+	list-style-type: none;
+}
+
 #user-layout-body .flat-footer p{
 	margin-top: 10px;
 	padding-top: 15px;
 }
 
-@media only screen and (min-width: 570px) {
-	#user-layout-body .flat-container{
-		width: 570px;
-	}
+#login-box{
+	max-width: 570px;
 }
+
+#login-box .flat-container{
+	width: 100%;
+}
+
+
+
 @media only screen and (max-width: 569px) {
 	#user-layout-body{
 		padding-top: 0;
