@@ -64,6 +64,13 @@ class TGroup
     protected $messages;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active = true;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -259,6 +266,16 @@ class TGroup
     }
 
     /**
+     * Get all members
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAllMembers()
+    {
+        return $this->members;
+    }
+
+    /**
      * Get array_members
      *
      * @return array
@@ -346,5 +363,28 @@ class TGroup
     public function getMessages()
     {
         return $this->messages;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return TGroup
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
     }
 }

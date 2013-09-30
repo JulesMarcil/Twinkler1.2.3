@@ -211,14 +211,15 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $group = $em->getRepository('TkGroupBundle:TGroup')->find($id);
+        $user = $this->getUser();
 
         if ($this->getUser()->getCurrentMember()->getTGroup() != $group){
             throw new AccessDeniedException('You are not allowed to do this');
         }
-        else{
-            foreach($group->getMembers() as $member){
-                $this->removeMemberAction($member, $em);
-            }               
+        else{   
+            $user->setCurrentMember(null);
+            $group->setActive(0);
+            $em->flush();               
         }
         return $this->redirect($this->generateUrl('tk_user_homepage')); 
     }
