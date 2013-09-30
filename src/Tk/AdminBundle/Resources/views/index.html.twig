@@ -299,7 +299,10 @@
         <p>Firstname: {{ user.firstname }}</p>
         <p>Lastname: {{ user.lastname }}</p>
         <p>Email: {{ user.email }}</p>
-        <p>Groups</p>
+        <p>Groups:</p>
+        {% for member in user.members %}
+        <p>{{ member.tgroup.name }} - {{ member.tgroup.members|length }} members - {{ member.tgroup.expenses|length }} expenses</p>
+        {% endfor %}
         {% else %}
         <p>No user for the id {{app.request.query.get('user_id')}}</p>
         {% endif %}
