@@ -2,7 +2,7 @@
     {{ form_errors(form) }}
 
     <div>
-		<span>Who paid?</span>
+		<span>Who paid?<br></span>
 		{{ form_errors(form.owner) }}
 		{{ form_widget(form.owner, 
 	        { 'attr': { 'style' : 'width : 150px;'}}) 
@@ -17,21 +17,21 @@
     </div>
 
     <div>
-		<span>To who?</span>
+		<span>To who?<br></span>
     	{{ form_errors(form.users) }}
     	{{ form_widget(form.users) }}
     </div>
 
-    <div>
-    	<span>When was it paid?</span>
+    <div class="payback-date">
+    	<span>When was it paid?<br></span>
     	{{ form_errors(form.date) }}
     	{{ form_widget(form.date) }}
     </div>
 
 	{{ form_widget(form._token) }}
 
-    <div class="flat-footer">
+    <div class="flat-footer" style="margin: 0px">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
     	<input type="submit" class="btn btn-success" value="Record Payback"/>
-    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
     </div>
 </form>

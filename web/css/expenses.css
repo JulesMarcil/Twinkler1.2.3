@@ -406,3 +406,40 @@
 .collapse {
     overflow: hidden;
 }
+
+
+/* --- Payback --- */
+
+#addPaybackModal .flat-header{
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	text-align: center;
+}
+
+#addPaybackModal h3{
+	margin: 0px;
+	font-size: 16px;
+}
+
+#addPaybackModal .flat-container{
+	position: relative;
+	width: 100%
+}
+
+#addPaybackModal .payback-date select{
+	width: 100px;
+	margin: 0px 15px;
+}
+
+#addPaybackModal #expense-slimscroll div{
+	margin: 15px 10px;
+}
+
+
+#addPaybackModal .flat-footer{
+	padding-top: 20px;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	margin: 0px;
+}
