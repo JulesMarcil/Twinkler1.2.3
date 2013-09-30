@@ -161,6 +161,7 @@ header li{
 	font-size:24px;
 	padding:15px 24px;
 	padding-right: 44px;
+	overflow: hidden;
 }
 
 .wrapper{
@@ -176,7 +177,12 @@ header li{
 .wrapper span{
 color:white;
   -webkit-box-shadow:rgba(0, 0, 0, 0.298039) 0 0 3px;
+
+  transform:rotate(40deg);
+  -ms-transform:rotate(40deg);
+  -moz-transform:rotate(40deg);
   -webkit-transform:rotate(40deg);
+  -o-transform:rotate(40deg);
   background-color:#4FADE3;
   background-position:initial initial;
   background-repeat:initial initial;
@@ -189,6 +195,10 @@ color:white;
   text-transform:uppercase;
   top:5px;
   margin-right: 5px;
+  background:#4fade3;
+  -webkit-box-shadow:0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:0px 0px 3px rgba(0,0,0,0.3)
 }
 
 @media only screen and (max-width: 767px) {
