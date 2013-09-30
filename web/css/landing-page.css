@@ -115,7 +115,7 @@ header li{
 	margin-top: 140px;
 	margin-bottom: 20px;
 	text-align: center;
-
+	position: relative;
 }
 
 #catchphrase > h1{
@@ -160,6 +160,35 @@ header li{
 	margin-top: 30px;
 	font-size:24px;
 	padding:15px 24px;
+	padding-right: 44px;
+}
+
+.wrapper{
+  height:50px;
+  overflow:hidden;
+  position:absolute;
+  right:-1px;
+  text-align:center;
+  top:-2px;
+  width:130px;
+}
+
+.wrapper span{
+color:white;
+  -webkit-box-shadow:rgba(0, 0, 0, 0.298039) 0 0 3px;
+  -webkit-transform:rotate(40deg);
+  background-color:#4FADE3;
+  background-position:initial initial;
+  background-repeat:initial initial;
+  box-shadow:rgba(0, 0, 0, 0.298039) 0 0 3px;
+  font-size:11px;
+  padding:4px 34px;
+  position:absolute;
+  right:-32px;
+  text-align:center;
+  text-transform:uppercase;
+  top:5px;
+  margin-right: 5px;
 }
 
 @media only screen and (max-width: 767px) {
