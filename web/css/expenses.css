@@ -68,7 +68,7 @@
 /* --- BALANCE (left) --- */
 
 #balance{
-	margin:0px;
+	margin: 20px 0px;
 	min-height:40px; /*min height of DIV should be set to at least 2x the width of the arrow*/
 	width:100%;
 	color:white;
@@ -105,7 +105,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-	#balance:after{ /*arrow added to rightarrowdiv DIV*/
+	#settlement:after{ /*arrow added to rightarrowdiv DIV*/
 		content:'';
 		display:block;
 		position:absolute;
@@ -125,14 +125,16 @@
 #timeline{
 	display: inline-block;
 	width: 8%;
+	height:300px;
 	vertical-align: top;
 	background-image: url(' ../img/Frame/timeline-bck.png') ;
 	background-repeat: repeat-y;
+	position: relative;
+	z-index: -1;
 }
 
 #timeline #today-pinpoint{
-	margin-left: 18px;
-	z-index: -1;
+	margin-left: 15px;
 }
 
 /*------ EXPENSE TABLE ---------*/
@@ -264,7 +266,8 @@
 	display: inline-block;
 	float: left;
 	margin-left: -10%;
-	margin-top: 22px;
+	margin-top: 18px;
+	z-index: 10000px;
 }
 
 .expense-list-detailed{
@@ -417,9 +420,9 @@
 	margin-left: 10px;
 	width: 100%;
 	padding: 5px;
-	margin-bottom: 50px;
+	position: relative;
+	margin-bottom: 40px;
 }
-
 
 #expense-table-container:after{ /*arrow added to leftarrowdiv DIV*/
 	content:'';
@@ -439,7 +442,7 @@
 }
 
 #expense-table-header tr{
-	color: white;
+	color: red;
 	background-color:#C8C8C8;
 	border-top-left-radius:4px;
 	border-top-right-radius:4px;
@@ -458,6 +461,7 @@
 }
 
 .expense-row{
+
 	box-sizing: border-box;
 	ms-box-sizing: border-box;
 	webkit-box-sizing: border-box;
@@ -481,7 +485,6 @@
 
 #amount-column{
 	min-width: 80px;
-	text-align: center;
 }
 
 #balance-column{
@@ -497,82 +500,6 @@
 	text-decoration: none;
 	cursor: pointer;
 }
-
-/*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-/* --- CSS Chart --- */
-.balance-table-container{
-	position:relative;
-	height: 100%;
-}
-
-#balance-table{
-	width: 95%;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-.odd-row{background: rgb(250,250,250)}
-
-#balance-owner{
-	width:20%;
-	text-align: center;
-	border: dashed 1px rgb(243,243,243);
-}
-
-.neg{
-	color:rgba(231, 76, 60,1.0);
-}
-
-.pos{
-	color:rgba(153, 179, 53, 1.0);
-}
-
-.negative-balance{
-	border: solid 1px rgb(243,243,243);
-	width: 20%;
-	background-color: white;
-	position: relative;
-}
-.negative-balance > div{
-	min-height: 50px;
-}
-
-.positive-balance{
-	border: solid 1px rgb(243,243,243);
-	width: 20%;
-	background-color: white;
-	position: relative;
-}
-
-.positive-balance > div{
-	min-height: 50px;
-}
-
-.neg-bar{
-	position: absolute;
-	right: 0;
-	top:10px;
-	background-color: rgba(250,132,101,1.0);
-	border-bottom-left-radius: 3px;
-	border-top-left-radius: 3px;
-	border-right: none;
-	width: 0px;
-	height: 32px;
-}
-
-.pos-bar{
-	position: absolute;
-	left: 0;
-	top:10px;
-	background-color:  rgba(154,193,33,0.6);
-	border-bottom-right-radius: 3px;
-	border-top-right-radius: 3px;
-	border-left: none;
-	width: 0px;
-	height: 32px;
-}
-
 
 /* --- Payback --- */
 

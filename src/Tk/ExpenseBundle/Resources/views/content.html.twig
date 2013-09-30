@@ -2,66 +2,21 @@
 
 <div class="row">
 	<div class="span4">
-		{% include "TkExpenseBundle:Payback:addPaybackModal.html.twig" %}
-		<div id="settlement" class="flat-container">
-			<div class="expense-header flat-header" style="text-align:left;">
-				<div id="expense-title">
-					<h2>PAYBACK</h2>
-				</div>
-				<a href="#addPaybackModal" role="button" data-toggle="modal">
-					<div id="add-expense-btn">
-						<i class="icon-plus-sign" style=""></i>ADD PAYBACK
-					</div>
-				</a>
-			</div>
-			{% if debts|length == 0 %}
-			<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
-			{% else %}
-
-			<div class="payback-table">
-				<table>
-					{% for debt in debts %}
-					<tr style="height: 30px;">
-						<td style="text-align: left;">{{ debt[0] }}</td> 
-						<td class="payback-text">gives </td>
-						<td style="color:#99B335;">{{ debt[1] }} {{ currency }}</td>
-						<td class="payback-text"> to </td>
-						<td style="text-align: left;">{{ debt[2] }}</td>
-					</tr>
-					{% endfor %}
-
-				</table>
-			</div>
-
-			{% endif %}
-		</div>
 		<div id="balance" class="flat-container">
 			<div class="expense-header flat-header">
 				<div id="expense-title">
 					<h2>BALANCE</h2>
 				</div>
 			</div>
-			<div>
-				<div id="balance-slimscroll" style="text-align:center; margin-top: 20px; width:90%; margin: 0px auto; padding-top: 10px;; margin-bottom: 15px">
-					<canvas id="balanceChart" width="500px" height="150px"></canvas>
-					<table id="chart-labels" style="margin-top:-30px; margin-left:auto; margin-right:auto;table-layout: fixed; margin-bottom: 5px">
-						<tr id="balance-row">
-							{% for member in app.user.currentMember.tgroup.members %}
-							<td style='width:70px; min-width:70px; color:{% if member.balance >= 0 %}#A8BD44{% else %}#F97E76{% endif %}; vertical-align:top;overflow: hidden; padding:0'>{{ member.name }}</td>	
-							{% endfor %}	
-						</tr>
-						<tr id="member-row">
-							{% for member in app.user.currentMember.tgroup.members %}
-							<td style='width:70px; min-width:70px; color:{% if member.balance >= 0 %}#A8BD44{% else %}#F97E76{% endif %}; vertical-align:top;overflow: hidden; padding:0; border: none'>{{ member.balance }}{{ member.tgroup.currency.symbol }}</td>
-							{% endfor %}
-						</tr>
-					</table>						
-				</div>
+			<div id="blce-tbl" class="balance-table-container">
+				<table id="balance-table">
+
+				</table>
 			</div>
 		</div>
 	</div>		
 	<div class="span8" >
-		<div id="timeline" style="position: relative">
+		<div id="timeline" style="position: relative; height:120px;">
 			<img src="{{ asset('img/Frame/group-icon-pointer.png') }}" class="img-circle" width="50px" style="position:absolute; top: -5px; left:2px" alt="profile picture">
 		</div>
 		<div id="timeline-expense-container">
@@ -93,13 +48,13 @@
 
 
 			<!-- ---------------------------------------->
-			{% if all_expenses|length == 0 %}
-			<div class="pinpoint-tmln" style="margin-left: -7.55%">
+			<div class="pinpoint-tmln" style="margin-left: -7.55%;">
 				<a  href="#" data-toggle="tooltip" rel="tooltip" title="" >
 					<img class="pinpoint-button" src="{{ asset('img/Frame/tmln-btn.png') }}" class="img-circle" width="20px">
 				</a>
 			</div>
-			<div class="expense-list flat-container" style="text-align: center">
+			{% if all_expenses|length == 0 %}
+			<div class="expense-list flat-container" style="text-align: center; margin-top:15px;">
 				<div class="no-expense">
 					<p>There is no expense here yet</p></div>
 					<a href="#addExpenseModal" role="button" data-toggle="modal" class="flat-btn flat-pk flat-large" style="background-color: rgb(67,113,191); color:rgb(229,240,255) ; height:25px; padding-top: 5px">Add an expense</a>
@@ -107,7 +62,6 @@
 
 				{% else %}
 
-				<div class="accordion" id="accordion2">
 					{% set date = true %}
 					{% set previous = null %}
 
@@ -116,7 +70,7 @@
 								<thead id="expense-table-header">
 									<tr>
 									<td style="text-align: center;">Who</td>
-									<td>How Much</td>
+									<td style="text-align: center;">How Much</td>
 									<td>What</td>
 									<td style="text-align: center;">Your Share</td>
 									<td></td>
@@ -194,7 +148,6 @@
 						</table>
 
 					</div>
-				</div>
 
 
 

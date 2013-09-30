@@ -19,72 +19,45 @@ $('#group-dropdown-span').hover(function() {
 
 /*--------CHARTS--------*/
 
-var graphColor=function(graphData){
-	var chartColor=[];
-	for(var i=0; i<graphData.length;i++){
-		if(graphData[i]>=0){
-			chartColor.push("rgba(168,189,68,0.5)");
-		}else{			
-			chartColor.push("rgba(249,126,118,0.5)");
-		}
+var getChart=function(){
+	var max=Math.max.apply( Math, balances );
+	console.log(max);
+	for (var i=0;i<members.length;i++){
+
+
+            var newRow = document.createElement("tr");
+		    newRow.setAttribute("id", members[i]);
+            if (balances[i]<0){
+            $('#'+members[i]).html('<td id="balance-owner"></td><td class="negative-balance"><div><div class="neg-bar"></div></div></td><td class="positive-balance"><div></div></td>');
+            	$('#'+members[i]+' #balance-owner').html(members[i] +'</br>'+ currency +' '+ balances[i]);
+            	$('#'+members[i]+' #balance-owner').addClass('neg');
+            	$('#'+members[i]+' .pos-bar').width(0+'px');
+		        $('#'+members[i]+' .neg-bar').animate(
+		            { width: balances[i]/max*(-90)+'%' }, {
+		             duration: 800,
+		         }); 
+            }else{
+            	$('#'+members[i]).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div><div class="pos-bar"></div></div></td>');
+            	$('#'+members[i]+' #balance-owner').html(members[i] +'</br>'+ currency +' '+  balances[i]);
+            	$('#'+members[i]+' #balance-owner').addClass('pos');
+
+            	$('#'+members[i]+' .neg-bar').width(0+'px');
+		        $('#'+members[i]+' .pos-bar').animate(
+		            { width: balances[i]/max*90+'%' }, {
+		             duration: 800,
+		         }); 
+            };
+
+            if((i % 2 ==0) && (i!=0)){
+            	$('#'+members[i]+' .positive-balance').css({"background-color":"rgb(250,250,250)"});
+		        $('#'+members[i]+' .negative-balance').css({"background-color":"rgb(250,250,250)"});
+            }
+
+		$('#balance-table').append(newRow);
 	};
-	return chartColor
+	$('#blce-tbl').height($('#balance-table').height()+10);
 }
 
-var members_chart=[];
-for (var i = 0; i < balances.length; i++) {
-	members_chart[i]='';
-}
-
-var colorFill=graphColor(balances);
-var data = {
-	labels : members_chart,
-	datasets : [
-	{
-		fillColor : colorFill,
-		strokeColor : "rgba(220,220,220,1)",
-		data : balances
-	}
-	]
-}
-
-
-var loadChart=function(){
-
-	var graphColor=function(graphData){
-		var chartColor=[];
-		for(var i=0; i<graphData.length;i++){
-			if(graphData[i]>=0){
-				chartColor.push("rgba(168,189,68,0.5)");
-			}else{			
-				chartColor.push("rgba(249,126,118,0.5)");
-			}
-		};
-		return chartColor
-	}
-	
-	var members_chart=[];
-	for (var i = 0; i < balances.length; i++) {
-		members_chart[i]='';
-
-	}
-
-	var colorFill=graphColor(balances);
-	var data = {
-		labels : members_chart,
-		datasets : [
-		{
-			fillColor : colorFill,
-			strokeColor : "rgba(220,220,220,1)",
-			data : balances
-		}
-		]
-	}
-
-	var ctx = document.getElementById("balanceChart").getContext("2d");
-
-	new Chart(ctx).Bar(data,{scaleOverlay : false,scaleShowLabels : false});
-}
 
 /* HEADER ACTIONS */
 
@@ -109,10 +82,6 @@ $(document).ready(function() {
 	});
 });
 
-window.onresize =function() {
-	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-100+'px');
-}
-
 /* settingsStart, expenseStart, listsStart define the funciton that needs to be
 /* called on page load and in response for ajax request
 
@@ -125,17 +94,13 @@ var expenseStart = function(){
 	activePageHighlight();
 
 	addScrollOnChart();
-	loadChart();
+	getChart();
 
 	/*--------CHARTS & TIMLINE SIZE--------*/
 	if (activePage!=="lists"){
 		var members_nb= balances.length;
 	};
 	var navbarHeight=$("#navbar-row").height();
-
-
-	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-65+'px');
-
 
 	/*-------TOOLTIPS--------*/
 	$(function () {
@@ -322,6 +287,7 @@ $(document).ready(function() {
 
 	if (activePage==="expenses"){
 		expenseStart();
+		getChart();
 	}else if(activePage==="chat"){
 		chatStart();
 	}else if(activePage==="dashboard"){
@@ -329,6 +295,13 @@ $(document).ready(function() {
 	}
 });
 
+$(window).load(function() {
+	if (activePage==="expenses"){
+		getChart();
+	}else if(activePage==="dashboard"){
+		
+	}
+});
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 /* --- AJAX FOR SELECTION MENU --- */
@@ -346,6 +319,7 @@ $(document).ready(function() {
 				height: Math.min('450',$(window).height()-120)+'px'
 			});
 			expenseStart();
+			getChart();
 		});
 	});
 
