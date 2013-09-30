@@ -112,14 +112,12 @@ var getCurSlide=function(){
             function fixDiv() {
                 var oritop=jQuery('#blue-arrow-container').offset().top;
                 var $cache = $('#blue-arrow');
-                var check=new Boolean();
-                check=false;
-                if ((check==false) && ($(window).scrollTop() > oritop-400)) {  
-                    check=true;    
-                    $cache.stop().animate(
+                if (($(window).scrollTop() > oritop-400)) {   
+                    $cache.animate(
                         { height: 374 }, {
                          duration: 400,
                      }); 
+                    $cache.off('scroll');
                 }
             }
             $(window).scroll(fixDiv);
@@ -131,14 +129,12 @@ var getCurSlide=function(){
             function fixDiv() {
                 var oritop=jQuery('#blue-arrow-container-left').offset().top;
                 var $cache = $('#blue-arrow-left');
-                var check=new Boolean();
-                check=false;
-                if ((check==false) && ($(window).scrollTop() > oritop-400)) {  
-                    check=true;    
-                    $cache.stop().animate(
+                if (($(window).scrollTop() > oritop-400)) {     
+                    $cache.animate(
                         { height: 374 }, {
                          duration: 400,
                      }); 
+                    $cache.off('scroll');
                 }
             }
             $(window).scroll(fixDiv);
@@ -151,18 +147,17 @@ var getCurSlide=function(){
                 var oritop=jQuery('#platform-section').offset().top;
                 var $cacheLaptop = $('#flat-laptop');
                 var $cacheIphone = $('#flat-iphone');
-                var check=new Boolean();
-                check=false;
-                if ((check==false) && ($(window).scrollTop() > oritop-400)) {  
-                    check=true;    
-                    $cacheLaptop.stop().animate(
+                if (($(window).scrollTop() > oritop-400)) {    
+                    $cacheLaptop.animate(
                         { left: 15 }, {
                          duration: 400,
                      });   
-                    $cacheIphone.stop().animate(
+                    $cacheLaptop.off('scroll');
+                    $cacheIphone.animate(
                         { left: 0 }, {
                          duration: 600,
                      }); 
+                    $cacheIphone.off('scroll');
                 }
             }
             $(window).scroll(fixDiv);
