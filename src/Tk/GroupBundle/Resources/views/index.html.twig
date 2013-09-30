@@ -8,8 +8,9 @@
 
 {% block stylesheets %}
 {{ parent() }}
-<link href="{{ asset('css/group-settings.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/expenses.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/group-dashboard.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/group-chat.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/group-expenses.css') }}" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block header %}
@@ -78,8 +79,13 @@
 					</div>
 				</a>
 				<a href="#">
-					<div id="navbar-timeline" style="font-family: 'Proxima-regular';height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
+					<div id="navbar-chat" style="font-family: 'Proxima-regular';height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
 						CHAT
+					</div>
+				</a>
+				<a href="#">
+					<div id="navbar-dashboard" style="font-family: 'Proxima-regular';height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
+						DASHBOARD
 					</div>
 				</a>
 			</div>

@@ -8,6 +8,7 @@ class AdminController extends Controller
 {
 	public function defaultAction()
 	{
+		/*
 		if ($this->get('security.context')->isGranted('ROLE_ADMIN') === false) {
 		    return $this->redirect($this->generateUrl('tk_user_homepage'));
 		} else {
@@ -29,7 +30,7 @@ class AdminController extends Controller
 			}
 			$em->flush();
 			return $this->redirect($this->generateUrl('tk_admin_homepage'));
-		}	
+		}*/	
 	}
 
     public function indexAction()
