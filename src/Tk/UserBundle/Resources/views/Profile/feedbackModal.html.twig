@@ -4,23 +4,29 @@
 
     {{ form_errors(form) }}
 
-    <div>
-        <label for="form_text" class="required">Text</label>
-        <textarea id="form_text" name="form[text]" required="required"></textarea>
+    <div style="display: inline-block; width: 60%">
+        <textarea id="form_text" name="form[text]" required="required" placeholder="What is the problem?" style="width: 80%; height: 100px;"></textarea>
     </div>
-    <div >
-        <label class="required">Type</label>
-        <div id="form_type" class="form-inline">
+    <div style="display: inline-block; width: 30%;">
+        <div id="form_type" class="form-inline" align="left">
+            <div>
             <input type="radio" id="form_type_0" name="form[type]" required="required" value="bug_site" checked/>
             <label for="form_type_0" class="required">Bug</label>
+            </div>
+            <div>
             <input type="radio" id="form_type_1" name="form[type]" required="required" value="suggestion_site" />
             <label for="form_type_1" class="required">Suggestion</label>
+            </div>
+            <div>
             <input type="radio" id="form_type_2" name="form[type]" required="required" value="question_site" />
             <label for="form_type_2" class="required">Question</label>
+        </div>
         </div>
     </div>
 
     {{ form_widget(form._token) }}
 
-    <input type="submit" />   
+    <div>
+    <input type="submit" class="btn btn-success" value="Thank you"/>   
+    </div>
 </form>
