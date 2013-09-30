@@ -54,7 +54,7 @@ class TGroup
 
     /**
      * @ORM\OneToMany(targetEntity="Tk\ExpenseBundle\Entity\Expense", mappedBy="group", cascade={"persist"})
-     * @ORM\OrderBy({"date" = "DESC"})
+     * @ORM\OrderBy({"id" = "DESC", "date" = "DESC"})
      */
     protected $expenses;
 
@@ -62,6 +62,13 @@ class TGroup
      * @ORM\OneToMany(targetEntity="Tk\ChatBundle\Entity\Message", mappedBy="group", cascade={"persist"})
      */
     protected $messages;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean")
+     */
+    private $active = true;
 
     /**
      * Constructor

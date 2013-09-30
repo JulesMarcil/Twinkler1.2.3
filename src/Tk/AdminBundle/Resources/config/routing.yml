@@ -1,3 +1,7 @@
+tk_admin_default:
+    pattern:  /admin/default
+    defaults: { _controller: TkAdminBundle:Admin:default }
+
 tk_admin_homepage:
     pattern:  /admin
     defaults: { _controller: TkAdminBundle:Admin:index }

@@ -6,6 +6,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AdminController extends Controller
 {
+	public function defaultAction()
+	{
+		if ($this->get('security.context')->isGranted('ROLE_ADMIN') === false) {
+		    return $this->redirect($this->generateUrl('tk_user_homepage'));
+		} else {
+			$groups = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->findAll();
+			$em = $this->getDoctrine()->getmanager();
+			foreach($groups as $group){
+				$members = $group->getMembers();
+				$all_members = $group->getAllMembers();
+				if (sizeof($members) > 0) {
+					$group->setActive(1);	
+				} else {
+					$group->setActive(0);
+					foreach($all_members as $m){
+						$m->setActive(1);
+						$em->persist($m);
+					}
+				}
+				$em->persist($group);
+			}
+			$em->flush();
+			return $this->redirect($this->generateUrl('tk_admin_homepage'));
+		}	
+	}
+
     public function indexAction()
     {
     	if ($this->get('security.context')->isGranted('ROLE_ADMIN') === false) {
