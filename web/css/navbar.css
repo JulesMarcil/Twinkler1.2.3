@@ -233,10 +233,21 @@ header{
 	color:#f6a79f;
 }
 
+#navbar-expenses, #navbar-chat, #navbar-dashboard{
+	position: relative;
+	display: none;
+	border:solid 1px rgb(243,243,243);
+	border-bottom: none;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+	background-color: white;
+	font-family: 'Proxima-regular';height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;
+}
+
 .navbar-item{
 	position: relative;
 	display: none;
-	background-color: rgba(247,122,103,0.5);
+	background-color: rgba(247,122,103,0.5) !important;
 	border-top-left-radius:4px;
 	border-top-right-radius:4px;
 	color:white;
@@ -247,6 +258,6 @@ header{
 }
 
 .navbar-item:hover{
-	background-color:#EC554A;
+	background-color:#EC554A !important;
 	color:white;
 }
