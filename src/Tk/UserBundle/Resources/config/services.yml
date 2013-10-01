@@ -27,3 +27,9 @@ services:
             facebook: "@fos_facebook.api"
             userManager: "@fos_user.user_manager"
             validator: "@validator"
+
+    tk_locale.locale_listener:
+        class: Tk\UserBundle\Listener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
