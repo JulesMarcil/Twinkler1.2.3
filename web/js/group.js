@@ -217,6 +217,7 @@ var dashboardStart = function(){
 	deactivePageHighlight();
 	activePage = document.URL.split("/").pop(); /*get page name*/
 	activePageHighlight();
+	getChart();
 
 	$('#action-bar-first-child').hover(
 		function()
@@ -227,6 +228,39 @@ var dashboardStart = function(){
 			$('.group-edit').removeClass('group-edit-hover');
 		}
 	);
+
+	// --> hover and click on payback table
+
+	$('#my-settlement .payback-table tr').hover(
+		function(){
+		$(this).css({"background-color":"rgb(250,250,250)"});
+        $(this).find('#payback-cta').animate(
+            { left: 0 }, {
+             duration: 100,
+         }); 
+		},
+		function(){
+		$(this).css({"background-color":"#fff"});
+        $(this).find('#payback-cta').animate(
+            { left: -300 }, {
+             duration: 100,
+         }); 
+		}
+	);
+
+	$(document).on("click", "#my-settlement .payback-table tr", function(){
+	    $("#payback-btn").trigger("click");
+	});
+
+	$('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));
+
+
+    // --> expense modal scroll
+    $(function(){
+    	$('#expense-slimscroll').slimScroll({
+    		height: Math.min('450',$(window).height()-120)+'px'
+    	});
+    });
 }
 
 
@@ -271,6 +305,7 @@ $(document).ready(function() {
 		chatStart();
 	}else if(activePage==="dashboard"){
 		dashboardStart();
+		getChart();
 	}
 });
 
@@ -326,6 +361,7 @@ $(document).ready(function() {
 			activePageHighlight();
 
 			dashboardStart();
+			getChart();
 		});
 	});
 });

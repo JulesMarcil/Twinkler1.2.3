@@ -1,10 +1,8 @@
 {% set group = app.user.currentMember.tgroup %}
 {% set currency = app.user.currentMember.tgroup.currency.symbol %}
 
-<div class="row">
-
 <div class="row" align="center">
-	<div class="span3 offset1">
+	<div class="span3">
 		<div class="group-info flat-container">
 			<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto">	
 				<span class="group-title">
@@ -78,13 +76,40 @@
 		</div>
 	</div>
 	<div class="span6">
+				{% include "TkExpenseBundle:Payback:addPaybackModal.html.twig" %}
+		<div id="my-settlement" class="flat-container">
+			<div class="expense-header flat-header" style="text-align:left;">
+				<div id="expense-title">
+					<h2>MY BALANCE</h2>
+				</div>
+			</div>
+				{% if debts|length == 0 %}
+				<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
+				{% else %}
+
+				<div class="payback-table">
+					<table>
+						{% for debt in debts %}
+						<tr style="height: 30px;">
+							<td style="text-align: left; overflow: hidden;"><div id="my-payback-owner">{{ debt[0] }}<div id="payback-cta">CLICK TO RECORD A PAYBACK</div></div></td> 
+							<td class="payback-text">gives </td>
+							<td style="color:#99B335;">{{ debt[1] }} {{ currency }}</td>
+							<td class="payback-text"> to </td>
+							<td style="text-align: left;">{{ debt[2] }}</td>
+						</tr>
+						{% endfor %}
+
+					</table>
+				</div>
+			{% endif %}
+		</div>
 		{% include "TkExpenseBundle:Payback:addPaybackModal.html.twig" %}
 		<div id="settlement" class="flat-container">
 			<div class="expense-header flat-header" style="text-align:left;">
 				<div id="expense-title">
 					<h2>PAYBACK</h2>
 				</div>
-				<a href="#addPaybackModal" role="button" data-toggle="modal">
+				<a id="payback-btn" href="#addPaybackModal" role="button" data-toggle="modal">
 					<div id="add-expense-btn">
 						<i class="icon-plus-sign" style=""></i>ADD PAYBACK
 					</div>
@@ -98,7 +123,7 @@
 					<table>
 						{% for debt in debts %}
 						<tr style="height: 30px;">
-							<td style="text-align: left;">{{ debt[0] }}</td> 
+							<td style="text-align: left;"><div style="">{{ debt[0] }}</div></td> 
 							<td class="payback-text">gives </td>
 							<td style="color:#99B335;">{{ debt[1] }} {{ currency }}</td>
 							<td class="payback-text"> to </td>
@@ -110,5 +135,21 @@
 				</div>
 			{% endif %}
 		</div>
+	</div>
+	<div class="span3">
+
+		<div id="chart-balance" class="flat-container">
+			<div class="expense-header flat-header">
+				<div id="expense-title">
+					<h2>BALANCE</h2>
+				</div>
+			</div>
+			<div id="blce-tbl" class="balance-table-container">
+				<table id="balance-table">
+
+				</table>
+			</div>
+		</div>
+		
 	</div>
 </div>
