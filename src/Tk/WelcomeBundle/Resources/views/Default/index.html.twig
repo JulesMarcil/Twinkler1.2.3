@@ -1,9 +1,10 @@
 	{% extends '::base.html.twig' %}
 
-	{% block head %}  
-	<title>Twinkler - Manage group expenses</title>
+	{% block head %}
+	{% block title %}<title>Twinkler - Manage group expenses</title>{% endblock %}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
+	{% block css %}{% endblock %}
 	{% endblock %}
 
 	{% block body %}
@@ -14,8 +15,11 @@
 			</a>
 			<div class="pull-right" id="login-register">
 				<ul>
+					{% block header_links %}
 					<li id="feature" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
 					<li id="getappstandapp" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
+					<li id="blog-button" class="header-collapse"><a href="{{ path('tk_welcome_blog') }}">BLOG</a></li>
+					{% endblock %}
 					<li class="header-collapse"><a>|</a></li>
 					<li>
 						<a href="{{ path('fos_user_security_login')}}">LOGIN</a> 
@@ -185,7 +189,7 @@
 							</div>
 							<div class="comment-background">
 								<p>"Twinkler saves so much time in our flatshare!"</p>
-								<p class="feedback-name"><STRONG>Mary,</STRONG> London</p>
+								<p class="feedback-name"><STRONG>Emily,</STRONG> London</p>
 							</div>
 						</div>
 						<div class="item">
@@ -311,7 +315,6 @@
 			<p>Copyright © 2013 Twinkler, Inc. All rights reserved.</p>
 			<ul>
 				<li><a href="{{ path('tk_welcome_about') }}">About</a></li>
-				<li><a href="{{ path('tk_welcome_blog') }}">Blog</a></li>
 				<li><a href="{{ path('tk_welcome_press') }}">Press</a></li>
 				<li><a href="{{ path('tk_welcome_contact') }}">Contact</a></li>
 			</ul>

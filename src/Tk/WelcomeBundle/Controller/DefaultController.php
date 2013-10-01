@@ -40,12 +40,12 @@ class DefaultController extends Controller
         ));
     }
 
-    public function aboutAction(){
-        return $this->render('TkWelcomeBundle:Links:about.html.twig');
+    public function blogAction(){
+        return $this->render('TkWelcomeBundle:Default:blog.html.twig');
     }
 
-    public function blogAction(){
-        return $this->render('TkWelcomeBundle:Links:blog.html.twig');
+    public function aboutAction(){
+        return $this->render('TkWelcomeBundle:Links:about.html.twig');
     }
 
     public function blogPostAction($date)
