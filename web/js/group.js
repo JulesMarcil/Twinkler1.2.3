@@ -130,7 +130,8 @@ var expenseStart = function(){
     		editBox.fadeOut();
     		editBox.removeClass('shown');
     	} else {
-    		console.log('ok3');
+    		console.log('ok3: '+expenseId);
+    		console.log('ok3: '+editBox);
     		$.get('expenses/edit/'+expenseId, function(response){
     			editBox.html(response).hide().fadeIn();
     			editBox.addClass('shown');
@@ -317,8 +318,9 @@ $(document).ready(function() {
 	// ---> ajax for going to expenses 
 	$("#navbar-expenses").on('click', function(e){
 		e.preventDefault();
+		$('#content-container').fadeOut()
 		$.get('ajax/expenses', function(response){
-			$('#content-container').html(response);
+			$('#content-container').html(response).fadeIn();
 			window.history.pushState("", "", 'expenses');
 			// rappeler les fonctions de mise en forme
 			addScrollOnChart();
@@ -333,8 +335,9 @@ $(document).ready(function() {
 	// ---> ajax for going to chat 
 	$("#navbar-chat").on('click', function(e){
 		e.preventDefault();
+		$('#content-container').fadeOut()
 		$.get('ajax/chat', function(response){
-			$('#content-container').html(response);
+			$('#content-container').html(response).fadeIn();
 			window.history.pushState("", "", 'chat');
 			// rappeler les fonctions de mise en forme
 			// rappel de listapp.js
@@ -350,8 +353,9 @@ $(document).ready(function() {
 	// ---> ajax for going to dashboard
 	$("#navbar-dashboard").on('click', function(e){
 		e.preventDefault();
+		$('#content-container').fadeOut()
 		$.get('ajax/dashboard', function(response){
-			$('#content-container').html(response);
+			$('#content-container').html(response).fadeIn();
 			window.history.pushState("", "", 'dashboard');
 			// rappeler les fonctions de mise en forme
 			// rappel de listapp.js
