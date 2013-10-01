@@ -3,13 +3,17 @@
 
 namespace Tk\ExpenseBundle\Services;
 
+use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
+
 class Expenses {
 
+    protected $doctrine;
 	protected $em;
 
-	public function __construct(\Doctrine\ORM\EntityManager $em)
+	public function __construct(Doctrine $doctrine)
 	{
-		$this->em = $em;
+        $this->doctrine = $doctrine;
+		$this->em = $doctrine->getManager();
 	}
 
 	public function getAllExpenses($member)
@@ -131,10 +135,10 @@ class Expenses {
         foreach($balances as $balance){
 
             if ($balance[1] > 0){
-                $positive[$balance[0]->getName()] = $balance[1]; 
+                $positive[$balance[0]->getId()] = $balance[1]; 
             }
             elseif ($balance[1] < 0){
-                $negative[$balance[0]->getName()] = $balance[1];
+                $negative[$balance[0]->getId()] = $balance[1];
             }
             else{}
         }
@@ -182,7 +186,16 @@ class Expenses {
             if (current($positive) <= 0.02*sizeof($balances)) { $continue = false; } else { $continue = true; }
         }
 
-        return $payments;
+        $repo = $this->doctrine->getRepository('TkUserBundle:Member');
+        $debts = array();
+
+        foreach($payments as $key => $value){
+            $member1 = $repo->find($value[0]);
+            $member2 = $repo->find($value[2]);
+            $debts[] = array($member1, $value[1], $member2); 
+        }
+
+        return $debts;
     }
 
     private function getBalances($group)

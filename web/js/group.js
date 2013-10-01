@@ -249,9 +249,11 @@ var dashboardStart = function(){
 		}
 	);
 
+	/* A jeter car remplacer par une fonction dans payback.js
 	$(document).on("click", "#my-settlement .payback-table tr", function(){
 	    $("#payback-btn").trigger("click");
 	});
+	*/
 
 	$('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));
 
