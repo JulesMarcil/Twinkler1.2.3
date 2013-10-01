@@ -21,36 +21,38 @@ $('#group-dropdown-span').hover(function() {
 
 var getChart=function(){
 	var max=Math.max.apply( Math, balances );
-	console.log(max);
 	for (var i=0;i<members.length;i++){
 
 
             var newRow = document.createElement("tr");
-		    newRow.setAttribute("id", members[i]);
+		    newRow.setAttribute("id", i);
             if (balances[i]<0){
-            $('#'+members[i]).html('<td id="balance-owner"></td><td class="negative-balance"><div><div class="neg-bar"></div></div></td><td class="positive-balance"><div></div></td>');
-            	$('#'+members[i]+' #balance-owner').html(members[i] +'</br>'+ currency +' '+ balances[i]);
-            	$('#'+members[i]+' #balance-owner').addClass('neg');
-            	$('#'+members[i]+' .pos-bar').width(0+'px');
-		        $('#'+members[i]+' .neg-bar').animate(
+            $('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div><div class="neg-bar"></div></div></td><td class="positive-balance"><div></div></td>');
+            	$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+ balances[i]);
+            	$('#'+i+' #balance-owner').addClass('neg');
+            	$('#'+i+' .pos-bar').width(0+'px');
+		        $('#'+i+' .neg-bar').animate(
 		            { width: balances[i]/max*(-90)+'%' }, {
 		             duration: 800,
 		         }); 
             }else{
-            	$('#'+members[i]).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div><div class="pos-bar"></div></div></td>');
-            	$('#'+members[i]+' #balance-owner').html(members[i] +'</br>'+ currency +' '+  balances[i]);
-            	$('#'+members[i]+' #balance-owner').addClass('pos');
+            	$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div><div class="pos-bar"></div></div></td>');
+            	$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+  balances[i]);
+            	$('#'+i+' #balance-owner').addClass('pos');
 
-            	$('#'+members[i]+' .neg-bar').width(0+'px');
-		        $('#'+members[i]+' .pos-bar').animate(
+            	$('#'+i+' .neg-bar').width(0+'px');
+		        $('#'+i+' .pos-bar').animate(
 		            { width: balances[i]/max*90+'%' }, {
 		             duration: 800,
 		         }); 
             };
 
-            if((i % 2 ==0) && (i!=0)){
-            	$('#'+members[i]+' .positive-balance').css({"background-color":"rgb(250,250,250)"});
-		        $('#'+members[i]+' .negative-balance').css({"background-color":"rgb(250,250,250)"});
+            console.log(i);
+            console.log((i % 2 ==0));
+
+            if((i % 2 ==0)){
+            	$('#'+i+' .positive-balance').css({"background-color":"rgb(250,250,250)"});
+		        $('#'+i+' .negative-balance').css({"background-color":"rgb(250,250,250)"});
             }
 
 		$('#balance-table').append(newRow);
