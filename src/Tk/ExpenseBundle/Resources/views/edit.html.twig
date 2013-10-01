@@ -1,4 +1,4 @@
-<div class="expense-list flat-container">
+<div id="edit-expense" class="expense-list flat-container">
 	<div style="text-align: center">
 		<div class="expense-header flat-header">
 			<div id="expense-title">
@@ -72,7 +72,18 @@
 			{{ form_widget(form._token) }}
 
 		    <input type="submit" class="btn btn-success" value="save changes"/>
-		    <button class="btn" aria-hidden="true">Cancel</button>
+		    <button id="cancel-edit-expense" class="btn" aria-hidden="true">Cancel</button>
 		</form>
 	</div>
 </div>
+
+<script language="javascript">
+$(document).ready(function() {
+
+	$("#cancel-edit-expense").on("click", function(e){
+		e.preventDefault();
+		$('#edit-expense').fadeOut();
+	});
+});
+
+</script>

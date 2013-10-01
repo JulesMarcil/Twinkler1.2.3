@@ -47,9 +47,6 @@ var getChart=function(){
 		         }); 
             };
 
-            console.log(i);
-            console.log((i % 2 ==0));
-
             if((i % 2 ==0)){
             	$('#'+i+' .positive-balance').css({"background-color":"rgb(250,250,250)"});
 		        $('#'+i+' .negative-balance').css({"background-color":"rgb(250,250,250)"});
@@ -125,12 +122,15 @@ var expenseStart = function(){
 
     $('.edit-button').on('click', function(e){
     	e.preventDefault();
+    	console.log('ok1');
     	var expenseId = $(this).data('id');
     	var editBox = $('#expense-edit-'+expenseId);
     	if(editBox.hasClass('shown')){
+    		console.log('ok2');
     		editBox.fadeOut();
     		editBox.removeClass('shown');
     	} else {
+    		console.log('ok3');
     		$.get('expenses/edit/'+expenseId, function(response){
     			editBox.html(response).hide().fadeIn();
     			editBox.addClass('shown');

@@ -134,11 +134,13 @@
 											{% endif %}
 										</td>
 										<td id="edit-column">
-											<div id="expense-edit-{{expense[0].id}}">
+											<div>
 												<a class="edit-button" data-id="{{expense[0].id }}"><i class="icon-edit"></i></a>
 												<a class="remove-button" href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash"></i></a>
 											</div>
 										</td>
+									</tr id="expense-edit-{{expense[0].id}}">
+									<tr>
 									</tr>
 							</div>
 							{% endfor %}
