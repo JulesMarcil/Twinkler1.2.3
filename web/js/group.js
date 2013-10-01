@@ -102,29 +102,6 @@ var expenseStart = function(){
 	};
 	var navbarHeight=$("#navbar-row").height();
 
-	/*-------TOOLTIPS--------*/
-	$(function () {
-		$("[rel='tooltip']").tooltip({placement: 'top'});
-	});
-
-
-	/*-------Pinpoint buttons on timeline (date)--------*/
-
-	$('.pinpoint-button').hover(function () {
-		this.src = 'http://twinkler.co/img/Frame/tmln-btn-hover.png';
-	}, function () {
-		this.src = 'http://twinkler.co/img/Frame/tmln-btn.png';
-	});
-
-	var today=new Date();
-	var dd=today.getDate();
-	var mm=today.getMonth()+1;
-
-	if(dd<10){dd='0'+dd};
-	if(mm<10){mm='0'+mm};
-
-	$('#today-pinpoint').attr('title', dd +"/"+mm);
-
     // --> expense modal scroll
     $(function(){
     	$('#expense-slimscroll').slimScroll({
@@ -295,13 +272,6 @@ $(document).ready(function() {
 	}
 });
 
-$(window).load(function() {
-	if (activePage==="expenses"){
-		getChart();
-	}else if(activePage==="dashboard"){
-		
-	}
-});
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 /* --- AJAX FOR SELECTION MENU --- */
