@@ -249,21 +249,28 @@ var dashboardStart = function(){
 		}
 	);
 
-	/* A jeter car remplacer par une fonction dans payback.js
-	$(document).on("click", "#my-settlement .payback-table tr", function(){
-	    $("#payback-btn").trigger("click");
+
+	/* --- Prefilled payback form in modal --- */
+	$(".payback-table tr").on("click", function(e){
+		e.preventDefault();
+		var id1 = $(this).data('payer');
+		var amount = $(this).data('amount');
+		var id2 = $(this).data('paid');
+		$.get('payback/prefilled/'+id1+'/'+amount+'/'+id2, function(response){
+			$("#prefilledPaybackModal").html(response).modal('show');
+		});
 	});
-	*/
 
 	$('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));
 
 
-    // --> expense modal scroll
+	// --> expense modal scroll
     $(function(){
-    	$('#expense-slimscroll').slimScroll({
-    		height: Math.min('450',$(window).height()-120)+'px'
+    	$('#payback-slimscroll').slimScroll({
+    		height: Math.min('400','400')+'px'
     	});
     });
+    
 }
 
 

@@ -76,7 +76,6 @@
 		</div>
 	</div>
 	<div class="span6">
-		<div id="prefilledPaybackModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 		{% set balance = app.user.currentMember.balance %}
 		{% if balance != 0 %}
 		<div id="my-settlement" class="flat-container">
@@ -112,6 +111,8 @@
 		</div>
 		{% endif %}
 		{% include "TkExpenseBundle:Payback:addPaybackModal.html.twig" %}
+		<div id="prefilledPaybackModal" class="modal hide fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+		<!--
 		<div id="settlement" class="flat-container">
 			<div class="expense-header flat-header" style="text-align:left;">
 				<div id="expense-title">
@@ -138,11 +139,10 @@
 							<td style="text-align: left;">{{ debt[2].name	 }}</td>
 						</tr>
 						{% endfor %}
-
 					</table>
 				</div>
 			{% endif %}
-		</div>
+		</div>-->
 	</div>
 	<div class="span3">
 

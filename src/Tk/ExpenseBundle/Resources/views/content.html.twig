@@ -153,14 +153,14 @@
 									<td id="balance-column" style="vertical-align: middle; padding-top:0px">
 										{% if expense[0].owner.user == app.user %}
 										<font style="color:rgba(69,69,69,0.6);">
-											YOU GET<br>
+											YOU GAVE<br>
 										</font>
 										<font style="color:rgb(153,179,53); font-weight: bold">
 											{{ expense[1] }} {{ currency }}
 										</font>
-										{% else %}
+										{% elseif  expense[0].users[0].user == app.user %}
 										<font style="color:rgba(69,69,69,0.6);">
-											YOU OWE<br>
+											YOU RECEIVED<br>
 										</font>
 										<font style="color:rgba(227,79,52,1); font-weight: bold">
 											{{ -expense[1] }} {{ currency }}
