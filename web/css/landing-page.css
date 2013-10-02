@@ -58,6 +58,10 @@ header li{
 	padding-right: 30px;
 }
 
+.brand{
+	padding: 0px;
+}
+
 #login-register{
 	padding-top: 10px;
 	height:20px;
@@ -97,14 +101,10 @@ header li{
 
 /* body */
 
-.brand{
-	padding: 0px;
-}
-
 #section1{
 	width: 100%;
 	height: 100%;
-	min-height: 500px;
+	min-height: 400px;
 	background-image: url(' ../img/landing-page/bck.png');
 	background-position: 0px -20px;
 	background-size: cover;
@@ -201,11 +201,17 @@ color:white;
   box-shadow:0px 0px 3px rgba(0,0,0,0.3)
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 979px) {
 	#catchphrase{
 		margin-top: 50px;
 		padding-left: 10px;
 		padding-right: 10px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#catchphrase{
+		margin-top: 50px;
 	}
 	#catchphrase > h1{
 		color:#FEFEFE;
@@ -224,7 +230,6 @@ color:white;
 
 @media only screen and (max-width: 569px) {
 	#catchphrase{
-		margin-top: 50px;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
@@ -415,7 +420,6 @@ color:white;
 
 .transition-arrows-container{
 	position:relative;
-
 }
 .transition-arrows{
 	width: 98px;
@@ -427,8 +431,6 @@ color:white;
 	right: -110px;
 	top:30px;
 }
-
-
 .transition-arrows-left{
 	width: 98px;
 	height: 0px;
@@ -851,7 +853,12 @@ footer a:hover{
 	.icon-rotate-0 {
 		display: none;
 	}
-	
+}
+
+@media only screen and (min-width: 767px) {
+	#overview-flow .row{
+		margin-left: -7%;
+	}
 }
 
 /* --- Login and register parts --- */
