@@ -8,9 +8,6 @@ $(document).ready(function() {
 		var id1 = $(this).data('payer');
 		var amount = $(this).data('amount');
 		var id2 = $(this).data('paid');
-		console.log(id1);
-		console.log(amount);
-		console.log(id2);
 		$.get('payback/prefilled/'+id1+'/'+amount+'/'+id2, function(response){
 			$("#prefilledPaybackModal").html(response).modal('show');
 		});
