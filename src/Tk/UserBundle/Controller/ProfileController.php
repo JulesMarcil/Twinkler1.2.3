@@ -19,35 +19,18 @@ use Tk\UserBundle\Entity\User,
 
 class ProfileController extends Controller
 {
-
-    public function appLoginAction(){
-
-        $message = array('message' => 'tout est ok');
-
-        $serializer = $this->container->get('serializer');
-        $response = $serializer->serialize($message, 'json');
-        return new Response($response); 
-
-    }
-
     public function showAction(){ return $this->indexAction();}
     public function indexAction()
     {
         $securityContext = $this->container->get('security.context');
         if( !$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+
+            $request = $this->getRequest();
+            $language = $request->getPreferredLanguage();
+            $request->setLocale($language);
+
             return $this->render('TkWelcomeBundle:Default:index.html.twig');
         }else{
-            /*
-            $user = $this->getuser();
-            if ($user->getId() == 6) {
-                $user->addRole('ROLE_ADMIN');
-
-                $em=$this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-            }
-            */
-            
             return $this->render('TkUserBundle:Profile:show.html.twig');
         }
     }
