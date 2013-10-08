@@ -327,6 +327,7 @@ class ApiController extends Controller
         $date->setTimestamp($timestamp);
 
         $expense = new Expense();
+        $expense->setType('expense');
         $expense->setAmount($data['amount']);
         $expense->setName($data['name']);
         $expense->setAddedDate(new \DateTime('now'));
@@ -338,7 +339,7 @@ class ApiController extends Controller
 
         foreach($data['member_ids'] as $id) {
             $member = $member_repo->find($id);
-            $expense->addUser($member);
+            $expense->addUsers($member);
         }
 
         $em = $this->getDoctrine()->getManager();
