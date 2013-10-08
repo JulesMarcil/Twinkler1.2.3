@@ -32,6 +32,7 @@ class APPChatController extends Controller
 	        		$messages_array[] = $message_array;
 	        	}
 	        	
+                /*
 	        	$expenses = $group->getExpenses();
 	        	foreach($expenses as $expense){
 
@@ -54,6 +55,7 @@ class APPChatController extends Controller
 	        	}
 
 	        	usort($messages_array, array('Tk\ChatBundle\Controller\APPChatController', 'cmp'));
+                */
 
 				return new JsonResponse($messages_array);
 			}
