@@ -13,16 +13,12 @@
 				{{ form_widget(form.owner, 
 			        { 'attr': { 'style' : 'width : 150px;'}}) 
 			    }}
-		    </div>
 
-		    <div>
+			    <span>Who paid?<br></span>
 			    {{ form_errors(form.amount) }}
 			    {{ form_widget(form.amount, 
 			        { 'attr': { 'placeholder' : 'How much ?'}}) 
 			    }}
-		    </div>
-
-		    <div>
 				<span>To who?<br></span>
 		    	{{ form_errors(form.users) }}
 		    	{{ form_widget(form.users) }}

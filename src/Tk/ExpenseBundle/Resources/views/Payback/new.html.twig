@@ -1,37 +1,60 @@
-<form id="add-expense-form" action="{{ path('tk_payback_new') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
-
-    <div>
-		<span>Who paid?<br></span>
-		{{ form_errors(form.owner) }}
-		{{ form_widget(form.owner, 
-	        { 'attr': { 'style' : 'width : 150px;'}}) 
-	    }}
+<div class="flat-container">
+    <div class="flat-header">
+        <h3>RECORD A PAYBACK</h3>
     </div>
-
-    <div>
-	    {{ form_errors(form.amount) }}
-	    {{ form_widget(form.amount, 
-	        { 'attr': { 'placeholder' : 'How much ?'}}) 
-	    }}
+    <div id="expense-slimscroll">
+        <div id="payback-slimscroll" style="margin: 0px">
+            <form id="add-expense-form" action="{{ path('tk_payback_new', {'id1' : id1, 'amount' : amount, 'id2' : id2 }) }}" method="post" {{ form_enctype(form) }}>
+                {{ form_errors(form) }}
+                <div style="display: inline-block">
+                    <span>Who paid?<br></span>
+                    {{ form_errors(form.owner) }}
+                    {{ form_widget(form.owner, 
+                        { 'attr': { 'style' : 'width : 130px;'}}) 
+                    }}
+                </div>
+                <div style="display: inline-block">
+                    gives
+                </div>
+                <div style="display: inline-block">
+                    <span>How much?<br></span>
+                    {{ form_errors(form.amount) }}
+                    {{ form_widget(form.amount, 
+                        { 'attr': { 'style' : 'width : 80px;'}}) 
+                    }}
+                </div>
+                <div style="display: inline-block">
+                    to
+                </div>
+                <div style="display: inline-block">
+                    <span>To who?<br></span>
+                    {{ form_errors(form.users) }}
+                    {{ form_widget(form.users, 
+                        { 'attr': { 'style' : 'width : 130px;'}}) 
+                    }}
+                </div>
+                <div class="payback-date">
+                    <span>When was it paid?</span>
+                    {{ form_errors(form.date) }}
+                    {{ form_widget(form.date) }}
+                </div>
+                {{ form_widget(form._token) }}
+                <div class="flat-footer" style="margin: 0px">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                    <input type="submit" class="btn btn-success" value="Record Payback"/>
+                </div>
+            </form>
+        </div>
     </div>
+</div>
 
-    <div>
-		<span>To who?<br></span>
-    	{{ form_errors(form.users) }}
-    	{{ form_widget(form.users) }}
-    </div>
+<script language="javascript">
+$(document).ready(function() { 
 
-    <div class="payback-date">
-    	<span>When was it paid?<br></span>
-    	{{ form_errors(form.date) }}
-    	{{ form_widget(form.date) }}
-    </div>
-
-	{{ form_widget(form._token) }}
-
-    <div class="flat-footer" style="margin: 0px">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    	<input type="submit" class="btn btn-success" value="Record Payback"/>
-    </div>
-</form>
+    $(function(){
+        $('#expense-slimscroll').slimScroll({
+            height: Math.min('300',$(window).height()-120)+'px'
+        });
+    });
+});
+</script>

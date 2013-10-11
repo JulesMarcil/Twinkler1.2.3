@@ -141,7 +141,7 @@ var expenseStart = function(){
 
 }
 
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! chat START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHAT START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 var chatStart = function(){
 
@@ -256,20 +256,21 @@ var dashboardStart = function(){
 		var id1 = $(this).data('payer');
 		var amount = $(this).data('amount');
 		var id2 = $(this).data('paid');
-		$.get('payback/prefilled/'+id1+'/'+amount+'/'+id2, function(response){
+		$.get('payback/new/'+id1+'/'+amount+'/'+id2, function(response){
 			$("#prefilledPaybackModal").html(response).modal('show');
 		});
 	});
 
-	$('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));
+	/* --- New payback form in modal --- */
+	$("#new-payback").on("click", function(e){
+		e.preventDefault();
+		$.get('payback/new/0/0/0', function(response){
+			$("#prefilledPaybackModal").html(response).modal('show');
+		});
+	});
 
-
-	// --> expense modal scroll
-    $(function(){
-    	$('#payback-slimscroll').slimScroll({
-    		height: Math.min('400','400')+'px'
-    	});
-    });
+    // Height set
+    $('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));
     
 }
 

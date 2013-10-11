@@ -6,11 +6,8 @@ tk_expense_new:
     pattern:  /group/expenses/new
     defaults: { _controller: TkExpenseBundle:Expense:new }
 tk_payback_new:
-    pattern:  /group/payback/new
+    pattern:  /group/payback/new/{id1}/{amount}/{id2}
     defaults: { _controller: TkExpenseBundle:Payback:new }
-tk_payback_prefilled:
-    pattern:  /group/payback/prefilled/{id1}/{amount}/{id2}
-    defaults: { _controller: TkExpenseBundle:Payback:prefilled }
 
 tk_expense_edit:
     pattern:  /group/expenses/edit/{id}
