@@ -110,12 +110,12 @@ var expenseStart = function(){
 
     // ---> Expense filter
     $("#show-all-button").on("click", function(){
-    	$(".expense-block").fadeIn();
+    	$(".expense-row").fadeIn();
     	$("#only-mine-button").removeClass("active");
     	$(this).addClass("active");
     });
     $("#only-mine-button").on("click", function(){
-    	$(".expense-block").filter(".nottagged").fadeOut();
+    	$(".expense-row").filter(".nottagged").fadeOut();
     	$("#show-all-button").removeClass("active");
     	$(this).addClass("active");
     });
@@ -270,8 +270,7 @@ var dashboardStart = function(){
 	});
 
     // Height set
-    $('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));
-    
+    $('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));  
 }
 
 

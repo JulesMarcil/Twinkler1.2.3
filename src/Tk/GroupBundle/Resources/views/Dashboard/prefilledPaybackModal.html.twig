@@ -1,42 +1,12 @@
 <div class="flat-container">
 	<div class="flat-header">
-		<h3>RECORD A PAYBACK</h3>
+		<h3>SETTLE ALL DEBTS</h3>
 	</div>
 	<div id="expense-slimscroll">
-			<div id="payback-slimscroll" style="margin: 0px">
-		<form id="add-expense-form" action="{{ path('tk_payback_prefilled', {'id1' : id1, 'amount' : amount, 'id2' : id2 }) }}" method="post" {{ form_enctype(form) }}>
-		    {{ form_errors(form) }}
-
-		    <div>
-				<span>Who paid?<br></span>
-				{{ form_errors(form.owner) }}
-				{{ form_widget(form.owner, 
-			        { 'attr': { 'style' : 'width : 150px;'}}) 
-			    }}
-
-			    <span>Who paid?<br></span>
-			    {{ form_errors(form.amount) }}
-			    {{ form_widget(form.amount, 
-			        { 'attr': { 'placeholder' : 'How much ?'}}) 
-			    }}
-				<span>To who?<br></span>
-		    	{{ form_errors(form.users) }}
-		    	{{ form_widget(form.users) }}
-		    </div>
-
-		    <div class="payback-date">
-		    	<span>When was it paid?<br></span>
-		    	{{ form_errors(form.date) }}
-		    	{{ form_widget(form.date) }}
-		    </div>
-
-			{{ form_widget(form._token) }}
-
-		    <div class="flat-footer" style="margin: 0px">
-		        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		    	<input type="submit" class="btn btn-success" value="Record Payback"/>
-		    </div>
-		</form>
+	
 	</div>
-	</div>
+	<div class="flat-footer" style="margin: 0px">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    	<a class="btn btn-success" href="">Settle all debts</a>
+    </div>
 </div>
