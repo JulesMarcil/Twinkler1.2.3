@@ -402,6 +402,7 @@ class ApiController extends Controller
         $data = $this->getRequest()->query->all();
         $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);
         $group = $member->getTGroup();
+        $service = $this->container->get('tk_expense.expenses');
 
         $members = array();
         foreach($group->getMembers() as $m) {
@@ -412,8 +413,11 @@ class ApiController extends Controller
                                 );
         }
 
-        $dashboard = array('members' => $members,
-            'currentMemberId' => $data['currentMemberId']);
+        $dashboard = array('total_paid'      => $service->getTotalPaid($group),
+                           'member_paid'     => $service->getTotalPaidByMe($member),
+                           'members'         => $members,
+                           'currentMemberId' => $data['currentMemberId']);
+
         return new JsonResponse($dashboard);
     }
 
