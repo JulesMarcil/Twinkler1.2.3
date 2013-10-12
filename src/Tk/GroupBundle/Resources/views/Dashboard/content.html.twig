@@ -114,9 +114,10 @@
 			<p>Or you can also</p>
 			<div style="border-top: solid 1px">
 				<a id="new-payback" href=""><button id="new-payback" class="btn-jules">Record a single payback</button></a>
-				<button class="btn-jules">Settle all debts</button>
+				<button class="btn-jules" href="#settleDebtsModal" role="button" data-toggle="modal">Settle all debts</button>
 			</div>
 		</div>
+		{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
 		<!--
 		<div id="settlement" class="flat-container">
 			<div class="expense-header flat-header" style="text-align:left;">

@@ -5,17 +5,20 @@ tk_expense_homepage:
 tk_expense_new:
     pattern:  /group/expenses/new
     defaults: { _controller: TkExpenseBundle:Expense:new }
+tk_expense_edit:
+    pattern:  /group/expenses/edit/{id}
+    defaults: { _controller: TkExpenseBundle:Expense:edit }
+tk_expense_remove:
+    pattern:  /group/expenses/remove/{id}
+    defaults: { _controller: TkExpenseBundle:Expense:remove }
+
 tk_payback_new:
     pattern:  /group/payback/new/{id1}/{amount}/{id2}
     defaults: { _controller: TkExpenseBundle:Payback:new }
 
-tk_expense_edit:
-    pattern:  /group/expenses/edit/{id}
-    defaults: { _controller: TkExpenseBundle:Expense:edit }
-
-tk_expense_remove:
-    pattern:  /group/expenses/remove/{id}
-    defaults: { _controller: TkExpenseBundle:Expense:remove }
+tk_payback_settle:
+    pattern:  /group/payback/settle
+    defaults: { _controller: TkExpenseBundle:Payback:settle }
 
 tk_expense_ajax:
     pattern: /group/ajax/expenses

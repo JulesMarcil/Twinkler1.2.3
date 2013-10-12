@@ -1,0 +1,21 @@
+<div id="settleDebtsModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="flat-container">
+		<div class="flat-header">
+			<h3>SETTLE ALL DEBTS</h3>
+		</div>
+		<form action="{{ path('tk_payback_settle') }}" method="get">
+			<div>
+				<p><b>Are you sure you want to settle all debts?</b><br></p>
+				<p>Settling all debts will record paybacks for all debts listed and optionaly remove all past expenses by selecting the tickbox below</p>
+				<input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="on" checked="checked"/>
+                <label  style="display:inline-block" for="remove_expenses">Remove past expenses</label><br>
+                <input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="off" />
+                <label  style="display:inline-block" for="remove_expenses">Keep past expenses</label>
+			</div>
+			<div class="flat-footer" style="margin: 0px">
+		        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		    	<input class="btn btn-success" type="submit">Settle all debts</a>
+		    </div>
+		</form>
+	</div>
+</div>

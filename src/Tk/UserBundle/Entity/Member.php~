@@ -226,6 +226,27 @@ class Member
      */
     public function getMyExpenses()
     {
+        $all_expenses = $this->myExpenses;
+        $active_expenses = new \Doctrine\Common\Collections\ArrayCollection();
+        if ($all_expenses) {
+            foreach($all_expenses as $expense){
+                if($expense->getActive() == 1){
+                    $active_expenses->add($expense);
+                }
+            }
+            return $active_expenses;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Get all myExpenses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAllMyExpenses()
+    {
         return $this->myExpenses;
     }
 
@@ -259,6 +280,28 @@ class Member
      */
     public function getForMeExpenses()
     {
+        $all_expenses = $this->forMeExpenses;
+        $active_expenses = new \Doctrine\Common\Collections\ArrayCollection();
+        if ($all_expenses) {
+            foreach($all_expenses as $expense){
+                if($expense->getActive() == 1){
+                    $active_expenses->add($expense);
+                }
+            }
+            return $active_expenses;
+        } else {
+            return null;
+        }
+
+    }
+
+    /**
+     * Get all forMeExpenses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAllForMeExpenses()
+    {
         return $this->forMeExpenses;
     }
 
@@ -270,12 +313,12 @@ class Member
     public function getBalance()
     {   
         $supposed_paid = 0;
-        foreach($this->forMeExpenses as $expense){
+        foreach($this->getForMeExpenses() as $expense){
             $supposed_paid += $this->forMe($expense);
         }
 
         $paid = 0;
-        foreach($this->myExpenses as $expense){
+        foreach($this->getMyExpenses() as $expense){
             $paid += $expense->getAmount();
         }
 

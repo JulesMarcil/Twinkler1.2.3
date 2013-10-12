@@ -57,11 +57,11 @@ class Expense
     private $date;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="active", type="integer")
      */
-    private $active = true;
+    private $active = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\Member", cascade={"persist"})
@@ -354,5 +354,28 @@ class Expense
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \Tk\UserBundle\Entity\Member $users
+     * @return Expense
+     */
+    public function addUser(\Tk\UserBundle\Entity\Member $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Tk\UserBundle\Entity\Member $users
+     */
+    public function removeUser(\Tk\UserBundle\Entity\Member $users)
+    {
+        $this->users->removeElement($users);
     }
 }

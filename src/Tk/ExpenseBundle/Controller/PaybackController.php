@@ -2,7 +2,8 @@
 
 namespace Tk\ExpenseBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    Symfony\Component\HttpFoundation\JsonResponse;
 use Tk\ExpenseBundle\Entity\Expense;
 use Tk\ExpenseBundle\Form\PaybackType;
 
@@ -84,5 +85,44 @@ class PaybackController extends Controller
             'amount' => $amount,
             'id2'    => $id2
         ));
+    }
+
+    public function settleAction()
+    {
+        $request = $this->get('request');
+        $remove = $request->query->get('_remove_expenses');
+        
+        $member = $this->getUser()->getCurrentMember();
+        $group = $member->getTGroup();
+        $expenses_service = $this->container->get('tk_expense.expenses');
+        $debts = $expenses_service->getCurrentDebts($group);
+
+        $em = $this->getDoctrine()->getManager();
+
+        foreach($debts as $debt) {
+            $expense = new Expense();
+            $expense->setType('payback');
+            $expense->setName('payback');
+            $expense->setAuthor($member);
+            $expense->setOwner($debt[0]);
+            $expense->setAmount($debt[1]);
+            $expense->setUsers($debt[2]);
+            $expense->setGroup($group);
+            $expense->setAddedDate(new \DateTime('now'));
+            $expense->setDate(new \Datetime('now'));
+            $expense->setActive(true);
+            $em->persist($expense);
+        }
+        $em->flush();
+
+        if($remove == 'on'){
+            $expenses = $group->getAllExpenses();
+            foreach($expenses as $expense) {
+                $expense->setActive(1);
+            }
+        }
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('tk_group_dashboard'));
     }
 }

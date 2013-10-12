@@ -206,6 +206,27 @@ class TGroup
      */
     public function getExpenses()
     {
+        $all_expenses = $this->expenses;
+        $active_expenses = new \Doctrine\Common\Collections\ArrayCollection();
+        if ($all_expenses) {
+            foreach($all_expenses as $expense){
+                if($expense->getActive() == 1){
+                    $active_expenses->add($expense);
+                }
+            }
+            return $active_expenses;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Get all expenses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAllExpenses()
+    {
         return $this->expenses;
     }
 

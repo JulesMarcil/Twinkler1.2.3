@@ -20,7 +20,6 @@ class ExpenseController extends Controller
                 'all_expenses'        => $expenses_service->getAllExpenses($member),
                 'total_paid'          => $expenses_service->getTotalPaid($member->getTGroup()),
                 'total_paid_by_me'    => $expenses_service->getTotalPaidByMe($member),
-                'total_balance'       => $member->getBalance(),
                 'total_paid_for_me'   => $expenses_service->getTotalPaidForMe($member),
                 'debts'               => $expenses_service->getCurrentDebts($member->getTGroup()),
                 ));
@@ -36,7 +35,6 @@ class ExpenseController extends Controller
                 'all_expenses'        => $expenses_service->getAllExpenses($member),
                 'total_paid'          => $expenses_service->getTotalPaid($member->getTGroup()),
                 'total_paid_by_me'    => $expenses_service->getTotalPaidByMe($member),
-                'total_balance'       => $member->getBalance(),
                 'total_paid_for_me'   => $expenses_service->getTotalPaidForMe($member),
                 'debts'               => $expenses_service->getCurrentDebts($member->getTGroup()),
                 ));

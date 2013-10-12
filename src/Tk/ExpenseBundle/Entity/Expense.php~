@@ -57,11 +57,11 @@ class Expense
     private $date;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="active", type="integer")
      */
-    private $active = true;
+    private $active = 1;
 
     /**
      * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\Member", cascade={"persist"})
@@ -269,7 +269,7 @@ class Expense
      * @param \Tk\UserBundle\Entity\Member $users
      * @return Expense
      */
-    public function addUser(\Tk\UserBundle\Entity\Member $users)
+    public function addUsers(\Tk\UserBundle\Entity\Member $users)
     {
         $this->users[] = $users;
 
@@ -281,7 +281,7 @@ class Expense
      *
      * @param \Tk\UserBundle\Entity\Member $users
      */
-    public function removeUser(\Tk\UserBundle\Entity\Member $users)
+    public function removeUsers(\Tk\UserBundle\Entity\Member $users)
     {
         $this->users->removeElement($users);
     }
@@ -294,6 +294,20 @@ class Expense
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set users
+     *
+     * @param \Doctrine\Common\Collections\Collection
+     * @return Expense 
+     */
+    public function setUsers(\Tk\UserBundle\Entity\Member $users)
+    {
+        $ausers = array($users);
+        $this->users = $ausers;
+
+        return $this;
     }
 
     /**
@@ -317,5 +331,51 @@ class Expense
     public function getGroup()
     {
         return $this->group;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Expense
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \Tk\UserBundle\Entity\Member $users
+     * @return Expense
+     */
+    public function addUser(\Tk\UserBundle\Entity\Member $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Tk\UserBundle\Entity\Member $users
+     */
+    public function removeUser(\Tk\UserBundle\Entity\Member $users)
+    {
+        $this->users->removeElement($users);
     }
 }

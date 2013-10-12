@@ -191,7 +191,7 @@ class User extends BaseUser
         $active_members = new \Doctrine\Common\Collections\ArrayCollection();
         if ($all_members) {
             foreach($all_members as $member){
-                if($member->getActive() == true){
+                if($member->getActive() == true and $member->getTGroup()->getActive() == true){
                     $active_members->add($member);
                 }
             }
@@ -199,6 +199,16 @@ class User extends BaseUser
         } else {
             return null;
         }
+    }
+
+    /**
+     * Get all members
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAllMembers()
+    {
+        return $this->members;
     }
 
     /**
