@@ -318,3 +318,29 @@ input, textarea, .uneditable-input {
 select {
   width:80%;
 }
+
+/*---Settle debt modal---*/
+#settleDebtsModal .flat-container .flat-header{
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	margin-bottom: 20px;
+}
+
+#settleDebtsModal .flat-container .flat-header h3{
+	margin: 0px;
+	font-size: 16px;
+}
+
+#settleDebtsModal .settle-debt-content{
+	margin-bottom: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#settleDebtsModal form{
+	margin-bottom: 0px;
+}
+
+#settleDebtsModal .flat-footer{
+	padding-top: 20px;
+}

@@ -1,20 +1,22 @@
 <div id="settleDebtsModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="flat-container">
 		<div class="flat-header">
-			<h3>SETTLE ALL DEBTS</h3>
+			<h3 style="margin:0px">SETTLE ALL DEBTS</h3>
 		</div>
 		<form action="{{ path('tk_payback_settle') }}" method="get">
-			<div>
+			<div class="settle-debt-content">
 				<p><b>Are you sure you want to settle all debts?</b><br></p>
-				<p>Settling all debts will record paybacks for all debts listed and optionaly remove all past expenses by selecting the tickbox below</p>
-				<input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="on" checked="checked"/>
-                <label  style="display:inline-block" for="remove_expenses">Remove past expenses</label><br>
-                <input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="off" />
-                <label  style="display:inline-block" for="remove_expenses">Keep past expenses</label>
+				<p>Settling all debts will remove all previous expenses and bring everyone's balances to 0</p>
+				<div style="text-align: left; margin-left: auto; margin-right: auto; display:none">
+					<input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="on" checked="checked"/>
+	                <label  style="display:inline-block" for="remove_expenses">Remove past expenses</label><br>
+	                <input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="off" />
+	                <label  style="display:inline-block" for="remove_expenses">Keep past expenses</label>
+                </div>
 			</div>
 			<div class="flat-footer" style="margin: 0px">
 		        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		    	<input class="btn btn-success" type="submit">Settle all debts</a>
+		    	<input class="btn btn-success" type="submit" value="Settle all Debts"></a>
 		    </div>
 		</form>
 	</div>
