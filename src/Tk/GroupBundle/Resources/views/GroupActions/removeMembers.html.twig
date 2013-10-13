@@ -6,12 +6,12 @@
 			<a href="#accordion-{{ member.id}}" data-toggle="collapse" data-parent="#accordion2">
 			{% if member.user %}
 				{% if member.user.facebookId %}
-				<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=120&height=120" class="img-circle" width="60px" 	alt="{{ member.name }}" style="position: relative">
+				<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" 	alt="{{ member.name }}" style="position: relative">
 				{% else %}
-				<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="60px" 	alt="{{ member.name }}" style="position: relative">
+				<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="30px" 	alt="{{ member.name }}" style="position: relative">
 				{% endif %}
 			{% else %}
-				<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="60px" 	alt="{{ member.name }}" style="position: relative">
+				<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="{{ member.name }}" style="position: relative">
 			{% endif %}
 			<p>{{ member.name }}</p>
 			</a>
@@ -39,6 +39,7 @@
 	{% endif %}
 	{% endfor %}
 </div>
-
-<a class="btn" data-toggle="collapse" href="#collapse-remove-member" style="position: absolute; bottom: 35px; right: 20px;">Hide</a>
+<div style="width:100%; text-align: center;">
+<a class="btn" data-toggle="collapse" href="#collapse-remove-member">Hide</a>
+</div>
 		

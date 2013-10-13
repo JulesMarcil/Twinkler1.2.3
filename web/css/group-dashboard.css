@@ -310,4 +310,11 @@ border-width: 10px;
 	margin-bottom:2em;
 }
 
+/*---form option----*/
+input, textarea, .uneditable-input {
+  width:80%;
+}
 
+select {
+  width:80%;
+}
