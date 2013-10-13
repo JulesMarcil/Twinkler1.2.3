@@ -12,9 +12,9 @@ var addScrollOnChart=function(){
 
 
 $('#group-dropdown-span').hover(function() {
-	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).slideDown();
+	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).show();
 }, function() {
-	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).slideUp()
+	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).hide()
 });
 
 /*--------CHARTS--------*/

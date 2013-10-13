@@ -88,21 +88,21 @@ u
 
 .btn-jules {
 	color:#FFFFFF;
-	background-color:rgba(52, 152, 219,1);
+	background-color:#FB786B;
 	border:none;
 	border-bottom-left-radius:3px;
 	border-bottom-right-radius:3px;
 	border-top-left-radius:3px;
 	border-top-right-radius:3px;
-	box-shadow:rgba(0, 0, 0, 0.4) 0 0 30px;
 	cursor:pointer;
 	font-family:ProximaNovaWeb, Helvetica, Arial, sans-serif;
 	font-size:16px;
 	height:36px;
 	padding:0 20px;
 	margin: 5px 0;
+	width: 40%;
 }
 
 .btn-jules:hover{
-	background-color:rgba(46, 204, 113,1);
+	background-color:#EC554A;
 }

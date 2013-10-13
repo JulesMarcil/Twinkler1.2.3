@@ -4,7 +4,7 @@
 <div class="row" align="center">
 	<div class="span3">
 		<div class="group-info flat-container">
-			<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto">	
+			<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto;">	
 				<span class="group-title">
 					<h2> {{ group.name|upper }}</h2>
 				</span>
@@ -108,15 +108,12 @@
 			</div>
 			{% endif %}
 		</div>
-		<div id="prefilledPaybackModal" class="modal hide fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-		<div>
-			<p>In order to settle debts you can click on a debt and validate the payback</p>
-			<p>Or you can also</p>
-			<div style="border-top: solid 1px">
-				<a id="new-payback" href=""><button id="new-payback" class="btn-jules">Record a single payback</button></a>
-				<button class="btn-jules" href="#settleDebtsModal" role="button" data-toggle="modal">Settle all debts</button>
-			</div>
+		<div id="prefilledPaybackModal" class="modal hide fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		</div>
+			<div class="payback-container">
+				<a id="new-payback" href=""><button id="new-payback" class="btn-jules">Record a Cash Payback</button></a>
+				<button class="btn-jules" href="#settleDebtsModal" role="button" data-toggle="modal">Settle Debts</button>
+			</div>
 		{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
 		<!--
 		<div id="settlement" class="flat-container">
