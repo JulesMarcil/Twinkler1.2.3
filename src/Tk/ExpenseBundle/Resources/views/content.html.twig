@@ -38,13 +38,7 @@
 				</div>
 				<div id="expense-summary">
 					Total paid {{ total_paid }}{{ currency }} -
-					You paid {{ total_paid_by_me }}{{ currency }} -
-					{% set balance = app.user.currentMember.balance %}
-					{% if balance >= 0 %}
-					You get {{ balance }}{{ currency }}	
-					{% else %}
-					You owe {{ -balance}}{{ currency }}	
-					{% endif %} 
+					You paid {{ total_paid_by_me }}{{ currency }}
 				</div>		
 			</div>
 
