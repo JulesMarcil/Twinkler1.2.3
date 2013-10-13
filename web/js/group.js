@@ -39,7 +39,6 @@ var getChart=function(){
             	$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div><div class="pos-bar"></div></div></td>');
             	$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+  balances[i]);
             	$('#'+i+' #balance-owner').addClass('pos');
-
             	$('#'+i+' .neg-bar').width(0+'px');
 		        $('#'+i+' .pos-bar').animate(
 		            { width: balances[i]/max*90+'%' }, {
@@ -271,6 +270,28 @@ var dashboardStart = function(){
 
     // Height set
     $('#page-body').height(Math.max($('#page-body').height(),$('#my-settlement').height()+$('#settlement').height()+$('header').height()+60));  
+
+    $('#remove-member').on('click', function(e){
+    	$('#remove-member-box').slideToggle();
+    	$('#edit-group-box').slideUp();
+    	$('#close-group-box').slideUp();
+    });
+    $('#edit-group').on('click', function(e){
+    	$('#remove-member-box').slideUp();
+    	$('#edit-group-box').slideToggle();
+    	$('#close-group-box').slideUp();
+    });
+    $('#close-group').on('click', function(e){
+    	$('#remove-member-box').slideUp();
+    	$('#edit-group-box').slideUp();
+    	$('#close-group-box').slideToggle();
+    });
+    $('.cancel-action').on('click', function(e){
+    	$('#remove-member-box').slideUp();
+    	$('#edit-group-box').slideUp();
+    	$('#close-group-box').slideUp();
+    });
+
 }
 
 

@@ -20,59 +20,50 @@
 					</a>
 				</li>
 				<li>
-					<a id="remove-member" class="edit-group-a accordion-toggle" data-toggle="collapse" href="#collapse-remove-member">						
+					<div id="remove-member">						
 						<div style="width:100%; height:100%; padding-top: 10px">
 							<i class="icon-minus-sign" style="float:right; margin-right: 15px"></i>   
-							REMOVE MEMBER
+							REMOVE A MEMBER
 						</div>		
-					</a>
-				</li>
+					</div>
+				</li>			
+				<div id="remove-member-box" class="action-box" style="display: none">	
+					<div class="well">
+						{% include 'TkGroupBundle:GroupActions:removeMembers.html.twig' %}
+					</div>
+				</div>
 				<li>
-					<a id="edit-group" class="edit-group-a" data-toggle="collapse" href="#collapse-edit-group">	
+					<a id="edit-group" >	
 						<div style="width:100%; height:100%; padding-top: 10px">
 							<i class="icon-edit" style="float:right; margin-right: 15px"></i>   
-							EDIT GROUP
+							EDIT GROUP INFO
 						</div>			
 					</a>
 				</li>
+				<div id="edit-group-box"  class="action-box" style="display: none">	
+					<div class="well">
+						{% render(controller('TkGroupBundle:Default:edit')) %}
+					</div>
+				</div>
 				<li>
-					<a  class="edit-group-a" data-toggle="collapse" href="#collapse-close-group">	
+					<a id="close-group">	
 						<div style="width:100%; height:100%; padding-top: 10px">
 							<i class="icon-signout" style="float:right; margin-right: 15px"></i>   
 							CLOSE GROUP
 						</div>			
 					</a>
 				</li>
-			</ul>
-		</div>
-		<div>
-			<div id="collapse-remove-member" class="accordion-body collapse">
-				<div class="accordion-inner">	
-					<div class="well">
-						{% include 'TkGroupBundle:GroupActions:removeMembers.html.twig' %}
-					</div>
-				</div>
-			</div>
-		</div>
-		<div >
-			<div id="collapse-edit-group" class="accordion-body collapse">
-				<div class="accordion-inner">	
-					<div class="well">
-						{% render(controller('TkGroupBundle:Default:edit')) %}
-					</div>
-				</div>
-			</div>
-		</div>	
-		<div >
-			<div id="collapse-close-group" class="accordion-body collapse">
-				<div class="accordion-inner">	
+				<div id="close-group-box" class="action-box" style="display: none">
 					<div class="well">
 						<p>Are you sure you want to close the group <b>{{ app.user.currentMember.tgroup.name }}</b> ?</p>
 						<small>You will not be able to access this group anymore</small>
-						<p><a href="{{ path('tk_group_close', { 'id' : app.user.currentMember.tgroup.id}) }}" class="btn btn-danger" style="margin: 20px;">Yes</a><a href="" class="btn">No</a></p>
+						<p><a href="{{ path('tk_group_close', { 'id' : app.user.currentMember.tgroup.id}) }}" class="btn btn-danger" style="margin: 20px;">Yes</a><a class="btn cancel-action">Cancel</a></p>
 					</div>
 				</div>
-			</div>
+			</ul>
+		</div>	
+		<div >
+			
 		</div>
 	</div>
 	<div class="span6">
@@ -112,7 +103,7 @@
 		</div>
 			<div class="payback-container">
 				<a id="new-payback" href=""><button id="new-payback" class="btn-jules">Record a Cash Payback</button></a>
-				<button class="btn-jules" href="#settleDebtsModal" role="button" data-toggle="modal">Settle Debts</button>
+				<button class="btn-jules" href="#settleDebtsModal" role="button" data-toggle="modal">Settle all Debts</button>
 			</div>
 		{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
 		<!--
