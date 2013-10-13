@@ -11,10 +11,11 @@
 	<header>
 		<div>
 			<a href="{{ path('tk_user_homepage') }}">
-				<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">
+				<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">				
 			</a>
 			<div class="pull-right" id="login-register">
 				<ul>
+					<li class="min-570"><div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block"></div></li>
 					{% block header_links %}
 					<li id="feature" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
 					<li id="getappstandapp" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
@@ -39,24 +40,24 @@
 				<div class="span10 offset1" id="catchphrase">
 					<h1>Group Expenses made easy</h1>
 					<p id="explaination">Use Twinkler to manage expenses between friends, for free</p>
-					<span style="position:relative;
-	box-sizing: border-box;
-	ms-box-sizing: border-box;
-	webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;">
-					<a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">Create a Group Now   
-					<div class="wrapper">
-						<span>Free</span>
-					</div></a>
+					<span id="create-group-big" class="min-570">
+						<a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">
+							Create a Group Now   
+							<div class="wrapper">
+								<span>Free</span>
+							</div>
+						</a>
 					</span>
-					<a href="#planning">
-					</a>
+					<div id="create-group-small" class="max-570">
+						<div><a href="{{ path('tk_welcome_create_group')}}" class="btn btn-warning">Create a Group Now</a></div>
+						<div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block; margin-top: 10px;"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section>
+	<section id="section2">
 		<div id="overview-flow">
 			<div class="container">
 				<div class="row">
@@ -242,7 +243,7 @@
 		</div>
 	</section>
 
-	<section style="text-align:center">
+	<section style="text-align:center" class="min-767">
 		<div id="mosaic">
 			<div id="login-mosaic">
 				<img src="{{ asset('img/logo/twinkler_logo_mosaic.png') }}" width="600px" alt="twinkler logo">
@@ -268,9 +269,9 @@
 				<img id="pic3-3" src="{{ asset('img/landing-page/mosaic/milk_shake_200.jpg') }}"  alt="twinkler logo">
 				<img id="pic3-4" src="{{ asset('img/landing-page/mosaic/tv_200.jpg') }}"  alt="twinkler logo">
 			</div>
-		</div>
-		<div id="made-with-love" class="row">
-			Made with love
+			<div id="made-with-love" class="row">
+				Made with love
+			</div>
 		</div>
 	</section>
 
@@ -279,7 +280,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="span4">
-						<div id="footer-left" class="footer-box">
+						<div id="footer-left" class="footer-box min-767">
 							<p>Get our Apps <br></p><br>
 							<a href="#subscribeModal" role="button" data-toggle="modal">
 								<img src="{{ asset('img/landing-page/google-play-large.png') }}" alt="Get our Android App!" width="120px">
@@ -292,11 +293,11 @@
 					</div>
 					<div class="span4">
 						<div class="footer-box">
-							<p>Want to be a beta-tester? <br> Subscribe to our Newsletter!</p><br>
-							{% render(controller('TkWelcomeBundle:Default:subscribe')) %}
+							<p>Want to get updates from twinkler?<br>Follow us on Facebook</p><br>
+							<div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="300px" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
 						</div>
 					</div>
-					<div class="span4">
+					<div class="span4 min-570">
 						<div id="footer-right" class="footer-box">
 							<p style="margin-bottom: 12px;">Your likes, shares and comments <br> make us happy!
 							</p>
