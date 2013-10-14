@@ -428,7 +428,7 @@
 	border-bottom: 1px solid #EAEDF2;
 }
 
-#expense-table tr:last-child{
+#expense-table tr:nth-last-child(2){
 	border-bottom: none;
 }
 
