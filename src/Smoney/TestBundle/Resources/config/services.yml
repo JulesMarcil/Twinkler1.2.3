@@ -1,0 +1,7 @@
+parameters:
+#    smoney_test.example.class: Smoney\TestBundle\Example
+
+services:
+#    smoney_test.example:
+#        class: %smoney_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

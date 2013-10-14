@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link rel="icon"  type="image/png" href="{{ asset('img/logo/favicon.png') }}">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+    	<div class="container">
+    		<div class="row">
+    			<div class="span6">
+    				<h3>Input for post</h3>
+    				<div>
+    					<h6>Get token</h6>
+    					<form action="{{ path('smoney_oauth_token') }}" method="post">
+    						<label for="smoney_get_token_grant_type">grant_type</label>
+							<input type="text" id="smoney_get_token_grant_type" name="smoney_get_token_grant_type" maxlength="255" value="password"/>
+							<label for="smoney_get_token_username">username</label>
+							<input type="text" id="smoney_get_token_username" name="smoney_get_token_username" maxlength="255" value="twinkler"/>
+							<label for="smoney_get_token_password">password</label>
+							<input type="text" id="smoney_get_token_password" name="smoney_get_token_password" maxlength="255" value="123450"/>
+							<label for="smoney_get_token_scope">scope</label>
+							<input type="text" id="smoney_get_token_scope" name="smoney_get_token_scope" maxlength="255" value="all"/><br>
+							<input type="submit" class="btn btn-success" value="POST"/>
+    					<h6>Refresh token</h6>
+    				</div>
+    			</div>
+    			<div class="span6">
+    				<h3>Answer</h3>
+    			</div>
+    		</div>
+    	</div>
+    </body>
+</html>

@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Tk\APIBundle\TkAPIBundle(),
             new Tk\ChatBundle\TkChatBundle(),
             new Tk\AdminBundle\TkAdminBundle(),
+            new Smoney\TestBundle\SmoneyTestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

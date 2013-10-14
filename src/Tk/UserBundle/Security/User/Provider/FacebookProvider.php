@@ -35,6 +35,11 @@ class FacebookProvider implements UserProviderInterface
     {
         return $this->userManager->findUserBy(array('facebookId' => $fbId));
     }
+
+    public function findUserByEmail($email)
+    {
+       return $this->userManager->findUserBy(array('email' => $email));
+    }
  
     public function loadUserByUsername($username)
     {
@@ -49,11 +54,19 @@ class FacebookProvider implements UserProviderInterface
  
         if (!empty($fbdata)) {
             if (empty($user)) {
-                $user = $this->userManager->createUser();
-                $user->setEnabled(true);
-                $user->setPassword('');
- 
+                 // there might be already a user with the same email adress
+                if (null === $user) {
+                    $user = $this->findUserByEmail($fbdata['email']);
+                }
+
+                if (null === $user) {
+                    $user = $this->userManager->createUser();
+                    $user->setEnabled(true);
+                    $user->setPassword('');
+                }
+                
                 $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
+                
             }
  
             if (count($this->validator->validate($user, 'Facebook'))) {

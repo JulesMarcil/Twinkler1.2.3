@@ -1,0 +1,7 @@
+smoney_test_homepage:
+    pattern:  /s-money
+    defaults: { _controller: SmoneyTestBundle:Default:index }
+
+smoney_oauth_token:
+    pattern:  /s-money/oauth/token
+    defaults: { _controller: SmoneyTestBundle:Default:token }

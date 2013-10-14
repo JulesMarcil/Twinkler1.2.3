@@ -17,3 +17,7 @@ tk_user_modal:
 tk_user_feedback:
     pattern:  /feedback
     defaults: { _controller: TkUserBundle:Profile:feedback }
+
+tk_user_connect_facebook:
+    pattern: /connect/facebook
+    defaults: { _controller: TkUserBundle:Profile:connectfacebook }

@@ -31,7 +31,16 @@ class ProfileController extends Controller
 
             return $this->render('TkWelcomeBundle:Default:index.html.twig');
         }else{
-            return $this->render('TkUserBundle:Profile:show.html.twig');
+
+            if(!$this->getUser()->hasRole('ROLE_FACEBOOK')){
+                $fbk = $this->get('fos_facebook.api');
+                $facebook_login = $fbk->getLoginUrl();
+            } else {
+                $facebook_login = 0;
+            }
+            return $this->render('TkUserBundle:Profile:show.html.twig', array(
+                'facebook_login' => $facebook_login
+                ));
         }
     }
 
@@ -153,5 +162,10 @@ class ProfileController extends Controller
         return $this->render('TkUserBundle:Profile:feedbackModal.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    public function connectfacebookAction()
+    {
+        return new JsonResponse('ok');
     }
 }

@@ -1,3 +1,7 @@
+smoney_test:
+    resource: "@SmoneyTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tk_admin:
     resource: "@TkAdminBundle/Resources/config/routing.yml"
     prefix:   /

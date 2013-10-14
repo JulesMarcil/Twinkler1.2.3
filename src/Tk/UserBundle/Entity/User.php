@@ -265,8 +265,6 @@ class User extends BaseUser
     public function setFacebookId($facebookId)
     {
         $this->facebookId = $facebookId;
-        $this->setUsername($facebookId);
-        $this->salt = '';
     }
  
     /**
@@ -287,13 +285,19 @@ class User extends BaseUser
             $this->addRole('ROLE_FACEBOOK');
         }
         if (isset($fbdata['first_name']) or isset($fbdata['last_name'])) {
-            $this->setUsername($fbdata['first_name'].' '.$fbdata['last_name']);
+            if(!$this->username){
+                $this->setUsername($fbdata['first_name'].' '.$fbdata['last_name']);
+            }
         }
         if (isset($fbdata['first_name'])) {
-            $this->setFirstname($fbdata['first_name']);
+            if(!$this->firstname){
+                $this->setFirstname($fbdata['first_name']);
+            }
         }
         if (isset($fbdata['last_name'])) {
-            $this->setLastname($fbdata['last_name']);
+            if(!$this->lastname){
+                $this->setLastname($fbdata['last_name']);
+            }
         }
         if (isset($fbdata['email'])) {
             $this->setEmail($fbdata['email']);
