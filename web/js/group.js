@@ -100,13 +100,6 @@ var expenseStart = function(){
 	};
 	var navbarHeight=$("#navbar-row").height();
 
-    // --> expense modal scroll
-    $(function(){
-    	$('#expense-slimscroll').slimScroll({
-    		height: Math.min('450',$(window).height()-120)+'px'
-    	});
-    });
-
     // ---> Expense filter
     $("#show-all-button").on("click", function(){
     	$(".expense-row").fadeIn();

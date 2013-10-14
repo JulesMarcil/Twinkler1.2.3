@@ -1037,11 +1037,17 @@ footer a:hover{
 	text-decoration: none;
 }
 
-.blog-container h3{
+.blog-container h3,{
+	color: #272727;
+}
+.blog-container h4,{
 	color: #272727;
 }
 
 .blog-container h3:hover{
+	color: #444444;
+}
+.blog-container h4:hover{
 	color: #444444;
 }
 
@@ -1064,7 +1070,7 @@ footer a:hover{
 /*----BLOG FRAME------*/
 
 .blog-post-list{
-	    color: #69AACA;
+	color: #69AACA;
     display: block;
     font-weight: bold;
     padding: 6px 10px 8px;

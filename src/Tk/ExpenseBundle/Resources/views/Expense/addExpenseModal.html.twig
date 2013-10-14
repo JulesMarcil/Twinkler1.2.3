@@ -1,12 +1,4 @@
 <div id="addExpenseModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="flat-container">
-		<div class="flat-header">
-			<h3>Add an Expense</h3>
-		</div>
-		<div id="expense-slimscroll">
-
-		{% render(controller("TkExpenseBundle:Expense:new")) %}
-
-		</div>
-	</div>
+	{% render(controller("TkExpenseBundle:Expense:new")) %}
 </div>
+
