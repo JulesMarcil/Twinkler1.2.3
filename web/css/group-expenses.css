@@ -584,3 +584,12 @@
 	width: 100%;
 	margin: 0px;
 }
+
+/*----edit expense------*/
+.hidden{
+	display:none;
+}
+
+#edit-expense div form > div{
+	margin: 10px 0px;
+}

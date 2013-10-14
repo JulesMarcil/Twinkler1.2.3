@@ -1,4 +1,5 @@
-<div id="edit-expense" class="expense-list flat-container">
+<td colspan="6">
+<div id="edit-expense" style="margin:0">
 	<div style="text-align: center">
 		<div class="expense-header flat-header">
 			<div id="expense-title">
@@ -9,7 +10,7 @@
 		    {{ form_errors(form) }}
 
 		    <div>
-			<span>Who paid ?</span>
+			<span>Who paid ?<br></span>
 			{{ form_errors(form.owner) }}
 			{{ form_widget(form.owner, 
 		        { 'attr': { 'style' : 'width : 155px;'}}) 
@@ -17,7 +18,7 @@
 		    </div>
 
 		    <div>
-		    	<span>What ?</span>
+		    	<span>What ?<br></span>
 			    {{ form_errors(form.name) }}
 			    {{ form_widget(form.name, 
 			        { 'attr': { 'placeholder' : 'What ?', 'style' : 'width : 170px;'}}) 
@@ -25,7 +26,7 @@
 		    </div>
 
 		    <div>
-		    	<span>How much ?</span>
+		    	<span>How much ?<br></span>
 			    {{ form_errors(form.amount) }}
 			    {{ form_widget(form.amount, 
 			        { 'attr': { 'placeholder' : 'How much ?', 'style' : 'width : 137px;'}}) 
@@ -33,7 +34,7 @@
 		    </div>
 
 		    <div>
-		    	<span>When was it paid ?</span>
+		    	<span>When was it paid ?<br></span>
 		    	{{ form_errors(form.date) }}
 		    	{{ form_widget(form.date) }}
 		    </div>
@@ -82,8 +83,10 @@ $(document).ready(function() {
 
 	$("#cancel-edit-expense").on("click", function(e){
 		e.preventDefault();
-		$('#edit-expense').fadeOut();
+    	var expenseId = $(this).data('id');
+    	console.log(expenseId);
+    	$('.edit-expense-container').slideToggle();
 	});
 });
 
-</script>
+</script></td>

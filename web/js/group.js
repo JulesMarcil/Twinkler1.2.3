@@ -117,17 +117,19 @@ var expenseStart = function(){
     	console.log('ok1');
     	var expenseId = $(this).data('id');
     	var editBox = $('#expense-edit-'+expenseId);
-    	if(editBox.hasClass('shown')){
-    		console.log('ok2');
-    		editBox.fadeOut();
-    		editBox.removeClass('shown');
-    	} else {
+
+
+    	if($('#edit-expense-'+expenseId).css("display") == "none"){
     		console.log('ok3: '+expenseId);
     		console.log('ok3: '+editBox);
+    		$('#edit-expense-'+expenseId).removeClass('hidden');
     		$.get('expenses/edit/'+expenseId, function(response){
-    			editBox.html(response).hide().fadeIn();
+    			$('#edit-expense-'+expenseId).html(response).hide().fadeIn();
     			editBox.addClass('shown');
     		});
+    	} else {
+    		console.log('ok2');
+    		$('#edit-expense-'+expenseId).slideToggle();
     	}
     })
 
