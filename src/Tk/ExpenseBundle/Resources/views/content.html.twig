@@ -76,7 +76,13 @@
 						<!-- PAYBACK -->
 						{% if expense[0].type == 'payback' %}
 						<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}" style=" background-color: rgba(153, 179, 53, 0.1)">
-							<td id="profile-pic-row" style="vertical-align: middle; padding-top:0px; padding-bottom:0px">
+							<td style="padding-top:6px">
+								<div id="date-column" style="margin: 0px 0px; margin-top:0px;">
+
+								<font style="color:#99B335; font-size:18px; font-family: 'Proxima-condensend-light'">
+									{{expense[0].date | date("d")}} <br> </font><font style="color:#99B335; font-size:16px; font-family: 'Proxima-condensend-light'">{{expense[0].date | date("M") | upper}}
+								</font>
+								</div>
 							</td>
 							<td id="profile-pic-row" style="vertical-align: middle; padding-top:0px; padding-bottom:0px">
 								<div style="">
@@ -155,7 +161,7 @@
 									{{ expense[1] }} {{ currency }}
 								</font>
 								{% elseif  expense[0].users[0].user == app.user %}
-								<font style="color:rgba(69,69,69,0.6);; font-size: 10px">
+								<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
 									YOU RECEIVED<br>
 								</font>
 								<font style="color:rgba(227,79,52,1); font-weight: bold">
@@ -229,14 +235,14 @@
 							<td id="balance-column">
 								{% if expense[1] != 0 %}
 								{% if expense[0].owner.user == app.user %}
-								<font style="color:rgba(69,69,69,0.6); font-size:10px">
+								<font style="color:rgba(69,69,69,0.6); font-size:12px">
 									YOU ARE OWED<br>
 								</font>
 								<font style="color:rgb(153,179,53); font-weight: bold">
 									{{ expense[1] }} {{ currency }}
 								</font>
 								{% else %}
-								<font style="color:rgba(69,69,69,0.6);; font-size: 10px">
+								<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
 									YOU OWE<br>
 								</font>
 								<font style="color:#fb786b; font-weight: bold">
