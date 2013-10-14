@@ -20,7 +20,12 @@
 			<img src="{{ asset('img/Frame/group-icon-pointer.png') }}" class="img-circle" width="50px" style="position:absolute; top: -5px; left:2px" alt="profile picture">
 		</div>
 		<div id="timeline-expense-container">
-			{% include "TkExpenseBundle:Expense:addExpenseModal.html.twig" %}
+			
+			<!-- Add expense modal  -->
+			<div id="addExpenseModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				{% render(controller("TkExpenseBundle:Expense:new")) %}
+			</div>
+
 			<div class="expense-list flat-container">
 				<div class="expense-header flat-header">
 					<div id="expense-title">

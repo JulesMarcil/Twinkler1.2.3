@@ -17,6 +17,12 @@ $('#group-dropdown-span').hover(function() {
 	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).hide()
 });
 
+var expenseSlimscroll = function(height){
+    $('#expense-slimscroll').slimScroll({
+        height: Math.min(height,$(window).height()-120)+'px'
+    });
+}
+
 /*--------CHARTS--------*/
 
 var getChart=function(){
@@ -132,6 +138,8 @@ var expenseStart = function(){
     		$('#edit-expense-'+expenseId).slideToggle();
     	}
     })
+
+    expenseSlimscroll(421);
 
 }
 
@@ -352,9 +360,6 @@ $(document).ready(function() {
 			window.history.pushState("", "", 'expenses');
 			// rappeler les fonctions de mise en forme
 			addScrollOnChart();
-			$('#expense-slimscroll').slimScroll({
-				height: Math.min('450',$(window).height()-120)+'px'
-			});
 			expenseStart();
 			getChart();
 		});

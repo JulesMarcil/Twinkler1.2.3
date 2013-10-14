@@ -18,14 +18,16 @@
 				<div>
 					{{ form_errors(form.name) }}
 					{{ form_widget(form.name, 
-						{ 'attr': { 'placeholder' : 'What ?'}}) 
+						{ 'attr': { 'placeholder' : 'What ?',
+									'style' : 'width : 210px;'}}) 
 					}}
 				</div>
 
 				<div>
 					{{ form_errors(form.amount) }}
 					{{ form_widget(form.amount, 
-						{ 'attr': { 'placeholder' : 'How much ?'}}) 
+						{ 'attr': { 'placeholder' : 'How much ?',
+									'style' : 'width : 180px;'}}) 
 					}}
 				</div>
 
@@ -76,14 +78,3 @@
 		</div>
 	</div>
 </div>
-
-<script language="javascript">
-$(document).ready(function() { 
-
-    $(function(){
-        $('#expense-slimscroll').slimScroll({
-            height: Math.min('300',$(window).height()-120)+'px'
-        });
-    });
-});
-</script>
