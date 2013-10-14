@@ -63,7 +63,7 @@ header li{
 }
 
 #login-register{
-	padding-top: 10px;
+	padding-top: 5px;
 	height:20px;
 	margin-right: 40px;
 }
@@ -912,7 +912,7 @@ footer a:hover{
 #user-layout-body{
 	padding-top: 100px;
 	height: 100%;
-	background-image: url(' ../img/landing-page/main-bck.jpg');
+	background-image: url(' ../img/landing-page/bck.png');
 	background-size: cover;
 }
 
