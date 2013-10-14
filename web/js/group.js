@@ -27,6 +27,9 @@ var expenseSlimscroll = function(height){
 
 var getChart=function(){
 	var max=Math.max.apply( Math, balances );
+	var min=Math.min.apply( Math, balances );
+	max=Math.max(max,-min);
+
 	for (var i=0;i<members.length;i++){
 
 
