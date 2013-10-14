@@ -24,32 +24,32 @@ var getChart=function(){
 	for (var i=0;i<members.length;i++){
 
 
-            var newRow = document.createElement("tr");
-		    newRow.setAttribute("id", i);
-            if (balances[i]<0){
-            $('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div><div class="neg-bar"></div></div></td><td class="positive-balance"><div></div></td>');
-            	$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+ balances[i]);
-            	$('#'+i+' #balance-owner').addClass('neg');
-            	$('#'+i+' .pos-bar').width(0+'px');
-		        $('#'+i+' .neg-bar').animate(
-		            { width: balances[i]/max*(-90)+'%' }, {
-		             duration: 800,
-		         }); 
-            }else{
-            	$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div><div class="pos-bar"></div></div></td>');
-            	$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+  balances[i]);
-            	$('#'+i+' #balance-owner').addClass('pos');
-            	$('#'+i+' .neg-bar').width(0+'px');
-		        $('#'+i+' .pos-bar').animate(
-		            { width: balances[i]/max*90+'%' }, {
-		             duration: 800,
-		         }); 
-            };
+		var newRow = document.createElement("tr");
+		newRow.setAttribute("id", i);
+		if (balances[i]<0){
+			$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div><div class="neg-bar"></div></div></td><td class="positive-balance"><div></div></td>');
+			$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+ balances[i]);
+			$('#'+i+' #balance-owner').addClass('neg');
+			$('#'+i+' .pos-bar').width(0+'px');
+			$('#'+i+' .neg-bar').animate(
+				{ width: balances[i]/max*(-90)+'%' }, {
+					duration: 800,
+				}); 
+		}else{
+			$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div><div class="pos-bar"></div></div></td>');
+			$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+  balances[i]);
+			$('#'+i+' #balance-owner').addClass('pos');
+			$('#'+i+' .neg-bar').width(0+'px');
+			$('#'+i+' .pos-bar').animate(
+				{ width: balances[i]/max*90+'%' }, {
+					duration: 800,
+				}); 
+		};
 
-            if((i % 2 ==0)){
-            	$('#'+i+' .positive-balance').css({"background-color":"rgb(250,250,250)"});
-		        $('#'+i+' .negative-balance').css({"background-color":"rgb(250,250,250)"});
-            }
+		if((i % 2 ==0)){
+			$('#'+i+' .positive-balance').css({"background-color":"rgb(250,250,250)"});
+			$('#'+i+' .negative-balance').css({"background-color":"rgb(250,250,250)"});
+		}
 
 		$('#balance-table').append(newRow);
 	};
@@ -222,26 +222,26 @@ var dashboardStart = function(){
 		function(){
 			$('.group-edit').removeClass('group-edit-hover');
 		}
-	);
+		);
 
 	// --> hover and click on payback table
 
 	$('#my-settlement .payback-table tr').hover(
 		function(){
-		$(this).css({"background-color":"rgb(250,250,250)"});
-        $(this).find('#payback-cta').animate(
-            { left: 0 }, {
-             duration: 100,
-         }); 
+			$(this).css({"background-color":"rgb(250,250,250)"});
+			$(this).find('#payback-cta').animate(
+				{ left: 0 }, {
+					duration: 100,
+				}); 
 		},
 		function(){
-		$(this).css({"background-color":"#fff"});
-        $(this).find('#payback-cta').animate(
-            { left: -300 }, {
-             duration: 100,
-         }); 
+			$(this).css({"background-color":"#fff"});
+			$(this).find('#payback-cta').animate(
+				{ left: -300 }, {
+					duration: 100,
+				}); 
 		}
-	);
+		);
 
 
 	/* --- Prefilled payback form in modal --- */
@@ -298,27 +298,30 @@ $(document).ready(function() {
 	jQuery(function($) {
 		function fixDiv() {
 
-			var oritop=55;
-			if($("#toggle-button").text() === 'hide members'){
-				oritop=55;	
-			}else{
-				oritop=0;
-			}
-			
-			var $cache = $('#navbar-row'); 
-			var $cacheItem = $('#navbar-expenses');
-			if ($(window).scrollTop() > oritop && ($(document).height()-100>$(window).height())) {
-				$("#navbar-"+activePage).css({'border-top-left-radius':'0px','border-top-right-radius':'0px'});
-				$cache.addClass("navbar-scroll");
-				$cache.css({'position': 'fixed', 'top': '40px','z-index':'1'}); 
-				$( "#toggle-button" ).hide();
-			}
-			else{
-				$cache.css({'position': 'relative', 'top': 'auto','z-index':'0'});
-				$cache.removeClass("navbar-scroll");
-				$("#navbar-"+activePage).css({'border-top-left-radius':'4px','border-top-right-radius':'4px'});
-				$( "#toggle-button" ).show();
-			}
+			if($(window).width()>992){
+				var oritop=55;
+				if($("#toggle-button").text() === 'hide members'){
+					oritop=55;	
+				}else{
+					oritop=0;
+				}
+				
+				var $cache = $('#navbar-row'); 
+				var $cacheItem = $('#navbar-expenses');
+				if ($(window).scrollTop() > oritop && ($(document).height()-100>$(window).height())) {
+					$("#navbar-"+activePage).css({'border-top-left-radius':'0px','border-top-right-radius':'0px'});
+					$cache.addClass("navbar-scroll");
+					$cache.css({'position': 'fixed', 'top': '40px','z-index':'1'}); 
+					$( "#toggle-button" ).hide();
+				}
+				else{
+					$cache.css({'position': 'relative', 'top': 'auto','z-index':'0'});
+					$cache.removeClass("navbar-scroll");
+					$("#navbar-"+activePage).css({'border-top-left-radius':'4px','border-top-right-radius':'4px'});
+					$( "#toggle-button" ).show();
+				}
+			};
+
 		}
 		$(window).scroll(fixDiv);
 		fixDiv();
