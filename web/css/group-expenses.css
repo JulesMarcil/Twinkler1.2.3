@@ -444,6 +444,12 @@
 	padding-top: 12px;
 }
 
+#date-column{
+	min-width: 20px;
+	padding: 4px;
+	text-align: center;
+}
+
 #profile-pic-row{
 	min-width: 30px;
 	padding: 8px;
