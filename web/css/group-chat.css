@@ -1,4 +1,8 @@
 /*----CHAT-----*/
+.group-title h2{
+	color: #fff;
+}
+
 .span6{
 	height: 100%;
 	position: relative;
