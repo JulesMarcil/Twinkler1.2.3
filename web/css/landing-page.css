@@ -672,39 +672,33 @@ color:white;
 	margin-right: 10px;
 }
 
-#mosaic{
-	height: 700px;
+/* --- Twinkler is for all the groups in your life--- */
+#tk-groups{
+	display: inline-block;
+}
+
+#tk-groups div{
+	display: inline-block;
+	margin: 20px 20px;
+	background-color: #EBEBE8;
+	width: 216px;
+	font-family: "Proxima-light";
+}
+
+#tk-groups div img{
+	margin-top: 5px;
+}
+
+#tk-groups> h4{
+	margin-bottom: 80px;
 	margin-top: 20px;
-	margin-bottom: 30px;
+	font-family: "Proxima-light";
 }
 
-#login-mosaic{
-	text-align: center;
-	padding-top: 50px;
-	display: none;
-	width: 100%;
-}
 
-#login-mosaic a{
-	margin-top: 40px;
-	width: 400px;
-}
 
-.mosa-row{
-	margin-top:10px;
-	display: inline-block;
-	padding-left: 8px;
-}
 
-.mosa-row img{
-	display: inline-block;
-	margin-left: 4px;
-	height:200px;
-}
-
-#row1, #row2, #row3{
-	height:200px;
-}
+/* --- Footer --- */
 
 #made-with-love{
 	margin-top: 10px;

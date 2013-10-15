@@ -1,52 +1,3 @@
-var showSlide=function(num){
-    if(num==-1){
-        $('#js-printer').css("display","none");
-        return;
-    }
-    if(num==-2){
-        $('#js-demo').css("position","absolute");
-        $('#js-demo').css("top",distanceBadge);
-        $('#js-button-plans').removeClass("translucent");
-        return;
-    }
-    $('#js-slider').css("left",-ipadScreenSize*num*zoomSize);
-    $('#js-demo').css("position","fixed");
-    $('#js-demo').css("top",0);
-    $('#js-previous').css("visibility","visible");
-    $('#js-keyboard').removeClass("animate");
-    $('#js-signature').removeClass("animate");
-    $('#js-printer').css("display","block");
-    $('#js-printer').removeClass("animate");
-    $('#js-badge-demo').removeClass("animate");
-    $('#js-ipad').removeClass("fade");
-
-    if(num==0){
-        $('#js-previous').css("visibility","hidden");
-        $('#js-printer').css("display","none");
-    }else if(num==1){
-        $('#js-keyboard').addClass("animate");
-    }else if(num==2){
-        $('#js-signature').addClass("animate");
-    }else if(num==3){$('#js-flash').fadeIn().fadeOut();
-}else if(num==4){
-    $('#js-printer').addClass("animate");
-    $('#js-badge-demo').addClass("animate");
-    $('#js-ipad').addClass("fade");
-}
-}
-var getCurSlide=function(){
-    var top=$(this).scrollTop();
-    var curSlide=Math.floor((top-(firstSlidePos-(slideHeight/2)))/slideHeight);
-
-    if(top<firstSlidePos-(slideHeight/2)){
-        curSlide=-1;
-    }
-    else if(top>lastSlidePos){curSlide=-2;
-    }
-    return curSlide;
-}
-
-
     //-------------------SIGN WITH ENVOY --------------//
     var slideScreen=function(num){
         $('.step-intro').stop().animate(
@@ -168,89 +119,6 @@ var getCurSlide=function(){
 
 
 
-
-    var h=10;
-
-    function ScaleMosaic(){
-     h=$(document).width()/($('#pic1-1').width()+$('#pic1-2').width()+$('#pic1-3').width()+$('#pic1-4').width()+100);
-
-     $('#row1').css('height',$('#row1').height()*h);
-
-     $('#pic1-1').css('width',$('#pic1-1').width()*h);
-     $('#pic1-1').css('height',$('#pic1-1').height()*h);
-     $('#pic1-2').css('width',$('#pic1-2').width()*h);
-     $('#pic1-2').css('height',$('#pic1-2').height()*h);
-     $('#pic1-3').css('width',$('#pic1-3').width()*h);
-     $('#pic1-3').css('height',$('#pic1-3').height()*h);
-     $('#pic1-4').css('width',$('#pic1-4').width()*h);
-     $('#pic1-4').css('height',$('#pic1-4').height()*h);
-
-     h=$(document).width()/($('#pic2-1').width()+$('#pic2-2').width()+$('#pic2-3').width()+$('#pic2-4').width()+$('#pic2-5').width()+110);
-
-     $('#row2').css('height',$('#row2').height()*h);
-
-     $('#pic2-1').css('width',$('#pic2-1').width()*h);
-     $('#pic2-1').css('height',$('#pic2-1').height()*h);
-     $('#pic2-2').css('width',$('#pic2-2').width()*h);
-     $('#pic2-2').css('height',$('#pic2-2').height()*h);
-     $('#pic2-3').css('width',$('#pic2-3').width()*h);
-     $('#pic2-3').css('height',$('#pic2-3').height()*h);
-     $('#pic2-4').css('width',$('#pic2-4').width()*h);
-     $('#pic2-4').css('height',$('#pic2-4').height()*h);
-     $('#pic2-5').css('width',$('#pic2-5').width()*h);
-     $('#pic2-5').css('height',$('#pic2-5').height()*h);
-
-     h=$(document).width()/($('#pic3-1').width()+$('#pic3-2').width()+$('#pic3-3').width()+$('#pic3-4').width()+100);
-
-     $('#row3').css('height',$('#row3').height()*h);
-
-     $('#pic3-1').css('width',$('#pic3-1').width()*h);
-     $('#pic3-1').css('height',$('#pic3-1').height()*h);
-     $('#pic3-2').css('width',$('#pic3-2').width()*h);
-     $('#pic3-2').css('height',$('#pic3-2').height()*h);
-     $('#pic3-3').css('width',$('#pic3-3').width()*h);
-     $('#pic3-3').css('height',$('#pic3-3').height()*h);
-     $('#pic3-4').css('width',$('#pic3-4').width()*h);
-     $('#pic3-4').css('height',$('#pic3-4').height()*h);
- }
-
- $(document).ready(function() {
-    $('.carousel').carousel({
-        interval: 2000
-    })
-});
-
- window.onload = function () {
-    ScaleMosaic();
-    $('#mosaic').height($('#row1').height()+$('#row2').height()+$('#row3').height()+40);
-
-
-}
-
-$(window).resize(function() {
-  ScaleMosaic();
-  $('#mosaic').height($('#row1').height()+$('#row2').height()+$('#row3').height()+40);
-});
-
-window.onresize = function() {
-    ScaleMosaic();
-}
-
-$(document).scroll(function() {
-
-    if( $(this).scrollTop() > jQuery('#mosaic').offset().top -100) {	
-        $('#login-mosaic').fadeIn(700);
-        $('#login-mosaic').css({display:'block',  position: 'fixed', left:0, top:50});
-    }else if( $(this).scrollTop() < jQuery('#mosaic').offset().top -80) {
-        $('#login-mosaic').fadeOut(400);
-    }
-    else{
-        $('#login-mosaic').css({display:'none',  position: 'fixed', left:0, top:50});
-    }
-
-});
-
-
 // When the Document Object Model is ready
 $(document).ready(function(){
     // 'catTopPosition' is the amount of pixels #cat
@@ -274,8 +142,6 @@ $(document).ready(function(){
         // Stop the link from acting like a normal anchor link
         return false;
     });
-
-    var catTopPosition3 = jQuery('#mosaic').offset().top;
     
     // When #scroll is clicked
     jQuery('#gimmemore').click(function(){

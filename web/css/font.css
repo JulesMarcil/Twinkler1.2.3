@@ -22,6 +22,11 @@
 }
 
 @font-face {
+    font-family: "Proxima-light";
+    src: url('font/ProximaNova-Light.otf') format("opentype");
+}
+
+@font-face {
     font-family: "Proxima-consensed-semibold";
     src: url('css/font/ProximaNovaCond-Semibold.otf') format("truetype");
 }
