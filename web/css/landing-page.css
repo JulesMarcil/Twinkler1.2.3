@@ -960,8 +960,7 @@ footer p{
 	display: inline-block;
 	vertical-align: top;
 	width: 45%;
-	border-left: 1px solid rgb(239, 244, 246); 
-	text-transform:uppercase;
+	border-left: 1px solid rgb(239, 244, 246);
 }
 
 #user-layout-body .flat-container #old-school-way input{
@@ -984,12 +983,6 @@ footer p{
 #login-box .flat-container{
 	width: 100%;
 }
-
-#login-form input{
-	text-transform:uppercase;
-}
-
-
 
 @media only screen and (max-width: 569px) {
 	#user-layout-body{
