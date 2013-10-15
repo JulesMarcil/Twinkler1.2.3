@@ -316,6 +316,7 @@
 }
 
 /* --- Expense Modal --- */
+
 #addExpenseModal > .flat-container{
 	width:100%;
 	text-align: center;
@@ -557,43 +558,6 @@
 	border-left: none;
 	width: 0px;
 	height: 32px;
-}
-
-
-/* --- Payback --- */
-
-#prefilledPaybackModal .flat-header{
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
-	text-align: center;
-}
-
-#prefilledPaybackModal h3{
-	margin: 0px;
-	font-size: 16px;
-}
-
-#prefilledPaybackModal .flat-container{
-	position: relative;
-	width: 100%
-}
-
-#prefilledPaybackModal .payback-date select{
-	width: 70px;
-	margin: 0px 10px;
-}
-
-#prefilledPaybackModal #expense-slimscroll div{
-	margin: 15px 10px;
-}
-
-
-#prefilledPaybackModal .flat-footer{
-	padding-top: 20px;
-	position: absolute;
-	bottom: 0px;
-	width: 100%;
-	margin: 0px;
 }
 
 /*----edit expense------*/

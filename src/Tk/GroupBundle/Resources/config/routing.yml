@@ -54,3 +54,10 @@ tk_group_close:
 tk_group_new_invitation:
     pattern: /invitation/{id}/{email}
     defaults: { _controller: TkGroupBundle:Default:emailForm }
+
+# --- Dashboard routes --- #
+
+tk_dashboard_summary_modal:
+    pattern: /summary/modal
+    defaults: { _controller: TkGroupBundle:Dashboard:summaryModal }
+
