@@ -20,7 +20,7 @@ strong{
 	font-weight: bold;
 }
 
-/* header */
+/* --- header --- */
 
 header{
 	position: fixed;
@@ -70,36 +70,6 @@ header li{
 
 #login-register span{
 	vertical-align: bottom;
-}
-
-@media only screen and (max-width: 900px) {
-	.header-collapse{
-		display: none;
-	}
-}
-
-@media only screen and (max-width: 767px) {
-	#login-register{
-		padding-top: 5px;
-		height:20px;
-		margin-right: 0px;
-		padding-left: 0;
-		font-size: 14px;
-	}
-	header {
-		padding-top: 5px;
-		padding-bottom: 5px;
-	}
-	header img{
-		margin-left: 3%;
-		width: 100px;
-	}
-	header ul{
-		margin-left: 1%;
-	}
-	header li{
-		paddin-right: 5px;
-	}
 }
 
 /* body */
@@ -210,70 +180,6 @@ color:white;
   -webkit-box-shadow:0px 0px 3px rgba(0,0,0,0.3);
   -moz-box-shadow:0px 0px 3px rgba(0,0,0,0.3);
   box-shadow:0px 0px 3px rgba(0,0,0,0.3)
-}
-
-@media only screen and (max-width: 1200px) {
-	#catchphrase{
-		margin-top: 50px;
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-}
-
-@media only screen and (max-width: 979px) {
-	#section1{
-		min-height: 400px;
-	}
-	#catchphrase{
-		margin-top: 50px;
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-}
-
-@media only screen and (max-width: 767px) {
-	#section1 {
-		min-height: 300px;
-	}
-	#catchphrase{
-		margin-top: 50px;
-	}
-	#catchphrase > h1{
-		color:#FEFEFE;
-		font-size:40px;
-		font-weight: bold;
-		line-height:1.2em;
-	}
-	#catchphrase > #explaination{
-		font-size: 20px;
-		line-height:1.4em;   
-	}
-}
-
-@media only screen and (max-width: 569px) {
-	#section1 {
-		min-height: none;
-	}
-	#catchphrase{
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-	#catchphrase > h1{
-		color:#FEFEFE;
-		font-size:36px;
-		font-weight: bold;
-		line-height:1.2em;
-	}
-	#catchphrase > #explaination{
-		font-size: 18px;
-		line-height:1.4em;   
-	}
-	#create-group-big{
-		display: none;
-	}
-	#section2{
-		margin-top: -20px;
-	}
 }
 
 #overview-flow{
@@ -849,31 +755,35 @@ footer a:hover{
 
 @media only screen and (max-width: 980px) {
 	#iphone-pic{
-		margin-left:-80px;
+		margin-left:-50px;
 	}
 }
 
 /* --- responsiveness --- */
 
-@media only screen and (max-width: 767px) {
-	.min-767,
-	.feature,
-	.learn-more-link,
-	#learn-more,
-	footer ul {
+@media only screen and (max-width: 1200px) {
+	#catchphrase{
+		margin-top: 50px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+@media only screen and (max-width: 979px) {
+	#section1{
+		min-height: 400px;
+	}
+}
+
+@media only screen and (max-width: 940px) {
+	.min-940{
 		display: none;
 	}
-	#gettheapp{
-		height: 300px;
-	}
-	.icon-rotate-90 {
-		display: block;
-	}
-	.icon-rotate-0 {
+}
+
+@media only screen and (max-width: 816px) {
+	.min-816{
 		display: none;
-	}
-	.footer-box{
-		margin-top: 10px;
 	}
 }
 
@@ -886,12 +796,74 @@ footer a:hover{
 	}
 }
 
-@media only screen and (max-width: 569px) {
-	.min-570 {
-		display: none
+@media only screen and (max-width: 767px) {
+	#section1 {
+		min-height: 300px;
 	}
-	#footer-left{
+	#catchphrase{
+		margin-top: 80px;
+	}
+	#catchphrase > h1{
+		color:#FEFEFE;
+		font-size:40px;
+		font-weight: bold;
+		line-height:1.2em;
+	}
+	#catchphrase > #explaination{
+		font-size: 20px;
+		line-height:1.4em;   
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.min-767,
+	.icon-rotate-0,
+	.feature,
+	.learn-more-link,
+	#learn-more,
+	footer ul {
+		display: none;
+	}
+	#gettheapp{
+		height: 300px;
+	}
+	.icon-rotate-90 {
 		display: block;
+	}
+	.footer-box{
+		margin-top: 10px;
+	}
+}
+@media only screen and (max-width: 699px) {
+	#login-register{
+		padding-top: 0px;
+		height:20px;
+		margin-right: 0px;
+		padding-left: 0;
+		font-size: 14px;
+	}
+	header {
+		padding-top: 5px;
+		padding-bottom: 10px;
+	}
+	header img{
+		margin-left: 3%;
+		width: 100px;
+	}
+	header ul{
+		margin-left: 1%;
+	}
+	header li{
+		paddin-right: 5px;
+	}
+	.min-700{
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	.max-700{
+		display: none;
 	}
 }
 
@@ -901,7 +873,41 @@ footer a:hover{
 	}
 }
 
-/* --- Login and register parts --- */
+@media only screen and (max-width: 569px) {
+	.min-570 {
+		display: none
+	}
+	#section1 {
+		min-height: none;
+	}
+	#catchphrase{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#catchphrase > h1{
+		color:#FEFEFE;
+		font-size:36px;
+		font-weight: bold;
+		line-height:1.2em;
+	}
+	#catchphrase > #explaination{
+		font-size: 18px;
+		line-height:1.4em;   
+	}
+	#create-group-big{
+		display: none;
+	}
+	#section2{
+		margin-top: -20px;
+	}
+	#footer-left{
+		display: block;
+	}
+}
+
+/* ---------------- LINK PAGES --------------------- */
+
+/* ---------------- Login and register parts --- */
 
 #user-layout-body{
 	padding-top: 100px;
