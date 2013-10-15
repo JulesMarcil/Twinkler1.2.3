@@ -237,7 +237,7 @@ class TGroup
      */
     public function getTotalPaid()
     {
-        $all_expenses = $this->expenses;
+        $all_expenses = $this->getExpenses();
 
         $sum = 0;
         foreach($all_expenses as $expense){

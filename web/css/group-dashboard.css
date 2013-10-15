@@ -345,14 +345,14 @@ select {
 }
 
 #modal #expense-slimscroll div{
-	margin: 15px 10px;
+	margin: 10px 0px;
 }
 
 #modal .flat-footer{
 	padding-top: 20px;
+	width: 100%;
 	position: absolute;
 	bottom: 0px;
-	width: 100%;
 	margin: 0px;
 }
 

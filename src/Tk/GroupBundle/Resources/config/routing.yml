@@ -61,3 +61,7 @@ tk_dashboard_summary_modal:
     pattern: /summary/modal
     defaults: { _controller: TkGroupBundle:Dashboard:summaryModal }
 
+tk_dashboard_summary_send:
+    pattern: /summary/send
+    defaults: { _controller: TkGroupBundle:Dashboard:summarySend }
+
