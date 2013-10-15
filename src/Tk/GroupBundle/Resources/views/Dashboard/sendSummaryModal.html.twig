@@ -1,17 +1,43 @@
+{% set group = app.user.currentMember.tgroup %}
+
 <div class="flat-container">
 	<div class="flat-header">
 		<h3 style="margin:0px">SEND A SUMMARY</h3>
 	</div>
-	<form action="{{ path('tk_payback_settle') }}" method="get">
+	<div id="expense-slimscroll">
 		<div class="settle-debt-content">
-			<p>Send a summary of <b>{{ app.user.currentMember.tgroup.name }}</b> to its members</p>
+			<p>Send a summary of <b>{{ group.name }}</b> to the members</p>
 		</div>
-		<form action="" method="post">
-
-		</form>
-		<div class="flat-footer" style="margin: 0px">
-	    	<input class="btn btn-success" type="submit" value="Settle all Debts"></a>
-	        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-	    </div>
+		<form action="{{ path('tk_dashboard_summary_send') }}" method="post">
+			<div>
+				<textarea rows="2" id="message-input" name="_message" placeholder="Leave a message (optional)" style="width:300px;"/>
+			</div>
+			{% for member in group.members %}
+			<div>
+				{% if member.user %}
+				<input type="checkbox" name="_send_email_{{member.id}}" value="on" checked="checked"/>
+				{% if member.user.facebookId %}
+				<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
+				{% else %}
+				<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
+				{% endif %}
+				<span>{{ member.name }}</span>
+				<span>{{ member.user.email }}</span>
+				{% else %}
+				<input type="checkbox" name="_send_email_{{member.id}}" value="on" checked="checked"/>
+				<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" width="30px" class="img-circle" alt="{{member.name}}">
+				<span>{{ member.name }}</span>
+				<input type="text" id="email-input" name="_email_{{member.id}}" maxlength="255" value="{{ member.email }}" style="width:300px;"/>
+				{% endif %}
+			</div>
+			{% endfor %}
+			<div class="flat-footer">
+		    	<input class="btn btn-success" type="submit" value="Send Summary"></a>
+		        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		    </div>
 	</form>
 </div>
+
+<script language="javascript">
+    expenseSlimscroll('350');
+</script>

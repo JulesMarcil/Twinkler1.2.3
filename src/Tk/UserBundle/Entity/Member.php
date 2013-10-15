@@ -306,6 +306,22 @@ class Member
     }
 
     /**
+     * Get total paid
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTotalPaid()
+    {
+        $all_expenses = $this->getMyExpenses();
+
+        $sum = 0;
+        foreach($all_expenses as $expense){
+            $sum += $expense->getAmount();
+        }
+        return $sum;
+    }    
+
+    /**
      * Get Balance
      *
      * @return integer
