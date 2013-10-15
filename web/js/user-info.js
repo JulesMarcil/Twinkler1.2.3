@@ -17,7 +17,11 @@ $(document).ready(function() {
 	});
 });
 
-
+$('#group-dropdown-span').hover(function() {
+	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).show();
+}, function() {
+	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).hide()
+});
 
 
 function feedbackActions(){
