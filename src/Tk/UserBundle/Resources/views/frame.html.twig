@@ -4,6 +4,7 @@
 {% block title %}   
 {% endblock %}
 {% block stylesheets %} 
+<link href="{{ asset('css/flat-ui.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/frame.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" type="text/css">
 {% endblock stylesheets %}
@@ -17,7 +18,7 @@
                 <span id="group-dropdown-span">
                     <div class="dropdown">
                         <a class="brand" href="{{ path('tk_user_homepage') }}">
-                            <div style="min-height:29px">Twinkler</div>
+                            <div>Twinkler</div>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                             <li class="dropdown-your-groups">
@@ -65,7 +66,7 @@
                                 {% if app.user.facebookId %}
                                 <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="20px" alt="profile picture">
                                 {% else %}
-                                <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="20px" alt="profile picture">
+                                <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="20px" alt="profile picture" style="margin-right: 8px">
                                 {% endif %}
                                 {{ app.user }}
                             </a>

@@ -723,16 +723,18 @@ h6 {
   border-right-width: 6px;
   border-left-width: 6px;
 }
+
+/*
 .navbar {
   font-size: 15.988px;
-  /* 16px */
+  /* 16px *//* 
 
-}
+} 
 .navbar .brand {
   border-radius: 6px 0 0 6px;
   color: #526476;
   font-size: 23.996px;
-  /* 24px */
+  /* 24px *//* 
 
   font-weight: 700;
   margin-left: 0;
@@ -799,7 +801,7 @@ h6 {
   font-weight: 700;
   font-size: 14.994px;
   /* 15px */
-
+/* 
   padding: 29px 20px 27px;
   text-shadow: none;
   -webkit-transition: background-color .25s, color .25s, border-bottom-color .25s;
@@ -914,6 +916,7 @@ h6 {
 .navbar .btn-navbar .icon-bar {
   display: none;
 }
+/*
 .navbar-inner {
   background: #eceef0;
   border: none;
@@ -927,10 +930,11 @@ h6 {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+*//* 
 .navbar-inverse {
   font-size: 16.996px;
   /* 17px */
-
+/* 
 }
 .navbar-inverse .navbar-inner {
   background: #34495e;
@@ -970,7 +974,7 @@ h6 {
 }
 .navbar-inverse .nav > li > a {
   font-size: 16.002px;
-  /* 16px */
+  /* 16px *//* 
 
   border-bottom: 2px solid #2c3e50;
   border-left: 2px solid #2c3e50;
@@ -1082,6 +1086,7 @@ h6 {
   padding: 0;
   height: 2px;
 }
+*/ 
 .select {
   display: inline-block;
   margin-bottom: 10px;
