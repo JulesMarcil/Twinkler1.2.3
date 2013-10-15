@@ -12,29 +12,80 @@
         {% endblock %}
     </head>
     <body>
+
     	<div class="container">
     		<div class="row">
     			<div class="span6">
-    				<h3>Input for post</h3>
+    				<h3>Input</h3>
     				<div>
-    					<h6>Get token</h6>
-    					<form action="{{ path('smoney_oauth_token') }}" method="post">
-    						<label for="smoney_get_token_grant_type">grant_type</label>
-							<input type="text" id="smoney_get_token_grant_type" name="smoney_get_token_grant_type" maxlength="255" value="password"/>
-							<label for="smoney_get_token_username">username</label>
-							<input type="text" id="smoney_get_token_username" name="smoney_get_token_username" maxlength="255" value="twinkler"/>
-							<label for="smoney_get_token_password">password</label>
-							<input type="text" id="smoney_get_token_password" name="smoney_get_token_password" maxlength="255" value="123450"/>
-							<label for="smoney_get_token_scope">scope</label>
-							<input type="text" id="smoney_get_token_scope" name="smoney_get_token_scope" maxlength="255" value="all"/><br>
-							<input type="submit" class="btn btn-success" value="POST"/>
-    					<h6>Refresh token</h6>
+    					<h4>Get token</h4>
+                        <a class="btn btn-success" id="get-token" href="#">Get token</a>
+                    </div>
+                    <div>
+                        <h4>Send Money</h4>
+    					<form action="{{ path('smoney_send') }}" method="post">
+    						<label for="beneficiary">Beneficiary*</label>
+							<input type="text" id="beneficiary" name="beneficiary" maxlength="255" value="jules.marcilhacy@gmail.com" required/>
+                            <label for="transmitter">Transmitter (optional)</label>
+                            <input type="text" id="transmitter" name="transmitter" maxlength="255" placeholder="Sub account identifier"/>
+                            <label for="amount">Amount (€)*</label>
+                            <input type="text" id="amount" name="amount" maxlength="255" value="0.01"required/>
+                            <label for="message">Message (optional)</label>
+                            <input type="text" id="message" name="message" maxlength="255" placeholder="ex: Lunch, beers, ..."/>
+                            <label for="access_token">Access Token*</label>
+                            <input type="text" id="access_token_1" name="access_token" maxlength="255"/>
+                            <br>
+                            <input id="send-money" type="submit" value="Send Money" class="btn btn-info"/>
+                        </form>
     				</div>
+                    <div>
+                        <h4>Get money sent</h4>
+                        <form action="{{ path('smoney_sent') }}" method="get">
+                            <label for="access_token">Access Token*</label>
+                            <input type="text" id="access_token_2" name="access_token" maxlength="255"/>
+                            <br>
+                            <input type="submit" value="List of payments passed" class="btn btn-warning"/>
+                        </form>
+                    </div>
+                    <div>
+                        <h4>Request Money</h4>
+                        <form action="{{ path('smoney_request') }}" method="post">
+                            <label for="receiver">Receiver*</label>
+                            <input type="text" id="receiver" name="receiver" maxlength="255" value="jules.marcilhacy@gmail.com" required/>
+                            <label for="requester">Requester (optional)</label>
+                            <input type="text" id="requester" name="requester" maxlength="255" placeholder="Sub account identifier"/>
+                            <label for="amount">Amount (€)*</label>
+                            <input type="text" id="amount" name="amount" maxlength="255" value="0.01"required/>
+                            <label for="message">Message (optional)</label>
+                            <input type="text" id="message" name="message" maxlength="255" placeholder="ex: Lunch, beers, ..."/>
+                            <label for="access_token">Access Token*</label>
+                            <input type="text" id="access_token_3" name="access_token" maxlength="255"/>
+                            <br>
+                            <input id="send-money" type="submit" value="Request Money" class="btn btn-info"/>
+                        </form>
+                    </div>
+                    <div>
+                        <h4>Get money requested</h4>
+                        <form action="{{ path('smoney_requested') }}" method="get">
+                            <label for="access_token">Access Token*</label>
+                            <input type="text" id="access_token_4" name="access_token" maxlength="255"/>
+                            <br>
+                            <input type="submit" value="List of money requested" class="btn btn-warning"/>
+                        </form>
+                    </div>
     			</div>
     			<div class="span6">
     				<h3>Answer</h3>
     			</div>
     		</div>
     	</div>
+
+        <div id="javascripts">
+            <script src="{{ asset('js/jquery-1.10.1.js')}}"></script>
+            <script src="{{ asset('js/jquery-ui-1.10.3.custom.min.js')}}"></script>
+            <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/s-money.js') }}"></script>
+        </div>
+
     </body>
 </html>

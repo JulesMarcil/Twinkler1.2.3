@@ -4,4 +4,20 @@ smoney_test_homepage:
 
 smoney_oauth_token:
     pattern:  /s-money/oauth/token
-    defaults: { _controller: SmoneyTestBundle:Default:token }
+    defaults: { _controller: SmoneyTestBundle:Default:getToken }
+
+smoney_send:
+    pattern:  /s-money/send
+    defaults: { _controller: SmoneyTestBundle:Default:send }
+
+smoney_sent:
+    pattern:  /s-money/sent
+    defaults: { _controller: SmoneyTestBundle:Default:sent }
+
+smoney_request:
+    pattern:  /s-money/request
+    defaults: { _controller: SmoneyTestBundle:Default:request }
+
+smoney_requested:
+    pattern:  /s-money/requested
+    defaults: { _controller: SmoneyTestBundle:Default:requested }
