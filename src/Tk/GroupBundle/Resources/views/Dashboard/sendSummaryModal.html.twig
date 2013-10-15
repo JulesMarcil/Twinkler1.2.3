@@ -1,0 +1,17 @@
+<div class="flat-container">
+	<div class="flat-header">
+		<h3 style="margin:0px">SEND A SUMMARY</h3>
+	</div>
+	<form action="{{ path('tk_payback_settle') }}" method="get">
+		<div class="settle-debt-content">
+			<p>Send a summary of <b>{{ app.user.currentMember.tgroup.name }}</b> to its members</p>
+		</div>
+		<form action="" method="post">
+
+		</form>
+		<div class="flat-footer" style="margin: 0px">
+	    	<input class="btn btn-success" type="submit" value="Settle all Debts"></a>
+	        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+	    </div>
+	</form>
+</div>

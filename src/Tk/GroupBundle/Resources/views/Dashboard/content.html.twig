@@ -99,44 +99,15 @@
 			</div>
 			{% endif %}
 		</div>
-		<div id="prefilledPaybackModal" class="modal hide fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		</div>
-			<div class="payback-container">
-				<a id="new-payback" href=""><button id="new-payback" class="btn-jules">Record a Cash Payback</button></a>
-				<button class="btn-jules" href="#settleDebtsModal" role="button" data-toggle="modal">Settle all Debts</button>
-			</div>
 		{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
-		<!--
-		<div id="settlement" class="flat-container">
-			<div class="expense-header flat-header" style="text-align:left;">
-				<div id="expense-title">
-					<h2>FULL GROUP PAYBACK</h2>
-				</div>
-				<a id="payback-btn" href="#addPaybackModal" role="button" data-toggle="modal">
-					<div id="add-expense-btn">
-						<i class="icon-plus-sign" style=""></i>ADD PAYBACK
-					</div>
-				</a>
-			</div>
-				{% if debts|length == 0 %}
-				<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
-				{% else %}
-
-				<div class="payback-table">
-					<table>
-						{% for debt in debts %}
-						<tr class="payback-table-tr" style="height: 30px;" data-payer="{{debt[0].id}}" data-amount="{{debt[1]}}" data-paid="{{debt[2].id}}">
-							<td style="text-align: left;"><div style="">{{ debt[0].name }}</div></td> 
-							<td class="payback-text">gives </td>
-							<td style="color:#99B335;">{{ currency }} {{ debt[1] }}</td>
-							<td class="payback-text"> to </td>
-							<td style="text-align: left;">{{ debt[2].name	 }}</td>
-						</tr>
-						{% endfor %}
-					</table>
-				</div>
-			{% endif %}
-		</div>-->
+		<div class="payback-container">
+			<button id="new-payback" class="btn-jules">Record a Cash Payback</button>
+			<button class="btn-jules" href="#settleDebtsModal" role="button" data-toggle="modal">Settle all Debts</button>
+			<button id="send-summary" class="btn-jules" href="#sendSummaryModal" role="button" data-toggle="modal">Send a summary</button>
+		</div>
+		<div id="modal" class="modal hide fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		</div>	
+		
 	</div>
 	<div class="span3">
 

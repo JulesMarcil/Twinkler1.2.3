@@ -4,7 +4,7 @@
     </div>
     <div id="expense-slimscroll">
         <div id="payback-slimscroll" style="margin: 0px">
-            <form id="add-expense-form" action="{{ path('tk_payback_new', {'id1' : id1, 'amount' : amount, 'id2' : id2 }) }}" method="post" {{ form_enctype(form) }}>
+            <form id="add-payback-form" action="{{ path('tk_payback_new', {'id1' : id1, 'amount' : amount, 'id2' : id2 }) }}" method="post" {{ form_enctype(form) }}>
                 {{ form_errors(form) }}
                 <div style="display: inline-block">
                     <span>Who paid?<br></span>
@@ -40,8 +40,8 @@
                 </div>
                 {{ form_widget(form._token) }}
                 <div class="flat-footer" style="margin: 0px">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
                     <input type="submit" class="btn btn-success" value="Record Payback"/>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
                 </div>
             </form>
         </div>
@@ -49,5 +49,5 @@
 </div>
 
 <script language="javascript">
-    expenseSlimscroll('300');
+    expenseSlimscroll('250');
 </script>

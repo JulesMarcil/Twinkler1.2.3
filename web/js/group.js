@@ -261,8 +261,7 @@ var dashboardStart = function(){
 					duration: 100,
 				}); 
 		}
-		);
-
+	);
 
 	/* --- Prefilled payback form in modal --- */
 	$(".payback-table tr").on("click", function(e){
@@ -271,7 +270,7 @@ var dashboardStart = function(){
 		var amount = $(this).data('amount');
 		var id2 = $(this).data('paid');
 		$.get('payback/new/'+id1+'/'+amount+'/'+id2, function(response){
-			$("#prefilledPaybackModal").html(response).modal('show');
+			$("#modal").html(response).modal('show');
 		});
 	});
 
@@ -279,7 +278,15 @@ var dashboardStart = function(){
 	$("#new-payback").on("click", function(e){
 		e.defaultPrevented;
 		$.get('payback/new/0/0/0', function(response){
-			$("#prefilledPaybackModal").html(response).modal('show');
+			$("#modal").html(response).modal('show');
+		});
+	});
+
+	/* --- Send summary modal --- */
+	$("#send-summary").on("click", function(e){
+		e.defaultPrevented;
+		$.get('summary/modal', function(response){
+			$("#modal").html(response).modal('show');
 		});
 	});
 
@@ -306,9 +313,7 @@ var dashboardStart = function(){
     	$('#edit-group-box').slideUp();
     	$('#close-group-box').slideUp();
     });
-
 }
-
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LOAD FUNCTION ON START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
