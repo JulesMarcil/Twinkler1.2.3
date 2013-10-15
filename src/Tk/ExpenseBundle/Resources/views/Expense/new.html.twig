@@ -42,6 +42,9 @@
 						<label class="required">How do we split this expense?</label>
 					</div>
 					<div id="tk_expensebundle_expensetype_users">
+						<div class="select-deselect">
+							<span id="select-all-button" style="margin: 0px 15px; cursor: pointer">Select All</span>|<span id="deselect-all-button" style="margin: 0px 15px; cursor: pointer">Deselect All</span>
+						</div>
 						{% for member in app.user.currentMember.tgroup.members %}
 						<div class="user-box">
 							<label for="tk_expensebundle_expensetype_users_{{member.id}}">
@@ -61,7 +64,7 @@
 								</div>
 							</label>
 							<div>			
-								<input id="tk_expensebundle_expensetype_users_{{member.id}}" type="checkbox" checked="checked" value="{{member.id}}" name="tk_expensebundle_expensetype[users][]">
+								<input id="tk_expensebundle_expensetype_users_{{member.id}}" class="user-checkbox" type="checkbox" checked="checked" value="{{member.id}}" name="tk_expensebundle_expensetype[users][]">
 							</div>	
 						</div>
 						{% endfor %}
@@ -70,7 +73,7 @@
 
 				{{ form_widget(form._token) }}
 
-				<div class="flat-footer">
+				<div class="flat-footer" style="padding-top:12px">
 					<input type="submit" class="btn btn-success" value="Add Expense"/>
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 				</div>

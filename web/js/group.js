@@ -82,7 +82,7 @@ $(document).ready(function() {
 
 	/* --- Group members show profile in modal --- */
 	$("a[data-target=memberProfileModal]").on("click", function(e){
-		e.preventDefault();
+		e.defaultPrevented;
 		$.get('modal/profile/'+$(this).data('id'), function(response){
 			$("#memberProfileModal").html(response).modal('show');
 		});
@@ -122,7 +122,7 @@ var expenseStart = function(){
     });
 
     $('.edit-button').on('click', function(e){
-    	e.preventDefault();
+    	e.defaultPrevented;
     	console.log('ok1');
     	var expenseId = $(this).data('id');
     	var editBox = $('#expense-edit-'+expenseId);
@@ -143,6 +143,15 @@ var expenseStart = function(){
     })
 
     expenseSlimscroll(421);
+
+        $("#select-all-button").click(function(){
+       		$(".user-checkbox").prop("checked", true);
+    	});
+
+
+        $("#deselect-all-button").click(function(){
+       		$(".user-checkbox").prop("checked", false);
+    	});
 
 }
 
@@ -197,7 +206,7 @@ var chatStart = function(){
 	});
 
 	$("#more-expenses").on('click', 'a', function(e){
-		e.preventDefault();
+		e.defaultPrevented;
 		$.get('ajax/expenses', function(response){
 			$('#content-container').html(response);
 			window.history.pushState("", "", 'expenses');
@@ -257,7 +266,7 @@ var dashboardStart = function(){
 
 	/* --- Prefilled payback form in modal --- */
 	$(".payback-table tr").on("click", function(e){
-		e.preventDefault();
+		e.defaultPrevented;
 		var id1 = $(this).data('payer');
 		var amount = $(this).data('amount');
 		var id2 = $(this).data('paid');
@@ -268,7 +277,7 @@ var dashboardStart = function(){
 
 	/* --- New payback form in modal --- */
 	$("#new-payback").on("click", function(e){
-		e.preventDefault();
+		e.defaultPrevented;
 		$.get('payback/new/0/0/0', function(response){
 			$("#prefilledPaybackModal").html(response).modal('show');
 		});
@@ -370,7 +379,7 @@ $(document).ready(function() {
 
 	// ---> ajax for going to chat 
 	$("#navbar-chat").on('click', function(e){
-		e.preventDefault();
+		e.defaultPrevented;
 		$('#content-container').fadeOut()
 		$.get('ajax/chat', function(response){
 			$('#content-container').html(response).fadeIn();
@@ -388,7 +397,7 @@ $(document).ready(function() {
 
 	// ---> ajax for going to dashboard
 	$("#navbar-dashboard").on('click', function(e){
-		e.preventDefault();
+		e.defaultPrevented;
 		$('#content-container').fadeOut()
 		$.get('ajax/dashboard', function(response){
 			$('#content-container').html(response).fadeIn();

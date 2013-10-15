@@ -345,7 +345,8 @@
 }
 
 #users-row > #users-label{
-	background-color: grey;
+	background-color: #F2F2F2;
+	color: #333333;
 }
 
 #users-row > div > .user-box{
@@ -361,6 +362,10 @@
 
 #addExpenseModal .flat-footer{
 	padding-top: 20px
+}
+
+.select-deselect{
+	color:rgba(69, 69, 69, 0.6);
 }
 
 /* --- edit accordion --- */
