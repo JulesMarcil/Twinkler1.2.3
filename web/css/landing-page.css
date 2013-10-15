@@ -1,5 +1,9 @@
 /* --- CSS of landing page only--- */
 
+a{
+	text-decoration:none;
+}
+
 /* General */
 
 body{
@@ -70,6 +74,10 @@ header li{
 
 #login-register span{
 	vertical-align: bottom;
+}
+
+#login-register button{
+	line-height:12px;
 }
 
 /* body */
@@ -156,9 +164,7 @@ header li{
 }
 
 .wrapper span{
-color:white;
-  -webkit-box-shadow:rgba(0, 0, 0, 0.298039) 0 0 3px;
-
+	color:white;
   transform:rotate(40deg);
   -ms-transform:rotate(40deg);
   -moz-transform:rotate(40deg);
@@ -167,7 +173,6 @@ color:white;
   background-color:#4FADE3;
   background-position:initial initial;
   background-repeat:initial initial;
-  box-shadow:rgba(0, 0, 0, 0.298039) 0 0 3px;
   font-size:11px;
   padding:4px 34px;
   position:absolute;
@@ -177,9 +182,6 @@ color:white;
   top:5px;
   margin-right: 5px;
   background:#4fade3;
-  -webkit-box-shadow:0px 0px 3px rgba(0,0,0,0.3);
-  -moz-box-shadow:0px 0px 3px rgba(0,0,0,0.3);
-  box-shadow:0px 0px 3px rgba(0,0,0,0.3)
 }
 
 #overview-flow{
@@ -506,7 +508,7 @@ color:white;
 	color: #000000;
 	text-align: right;
 	font-style: none;
-	font-size: 12px;
+	font-size: 14px;
 	color: #000000;
 	position: absolute;
 	bottom: 0;
@@ -515,6 +517,7 @@ color:white;
 
 .carousel-control {
 	position: absolute;
+	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 #control-left {
 	left: -100px;
@@ -586,7 +589,7 @@ color:white;
 #tk-groups div{
 	display: inline-block;
 	margin: 20px 20px;
-	background-color: #EBEBE8;
+	background-color: rgba(235,235,232,0.3);
 	width: 216px;
 	font-family: "Proxima-light";
 }
@@ -596,7 +599,7 @@ color:white;
 }
 
 #tk-groups> h4{
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	margin-top: 20px;
 	font-family: "Proxima-light";
 }
@@ -613,16 +616,16 @@ color:white;
 }
 
 .repeat-bck{
-	background-image: url(' ../img/landing-page/footer_bckgd_repeat.gif');
+	background-color:#EBEBE8;
 	background-repeat: repeat;
 }
 
 #pre-footer{
-	background-image: url(' ../img/landing-page/footer_bckgd_top.gif');
 	background-repeat: repeat-x;
 	text-align: center;
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 .footer-box{
@@ -645,7 +648,6 @@ color:white;
 	margin-top: 10px;
 	margin-right: 5px;
 	margin-left: 5px;
-	text-shadow:#FFFFFF 1px 0.5px 0px, rgba(0, 0, 0, 0.14902) 1.5px 2px 0;
 }
 
 #footer-left a:hover{
@@ -656,25 +658,28 @@ color:white;
 	-webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
 
-	color:#fb887d;
+	color:rgba(241, 196, 15,1.0);
 }
 
 #footer-right a:hover{
 	text-decoration: none;
-	color: #f34c3b;
+	color: rgba(243, 156, 18,1.0);
 }
 
 footer{
-	border-top: solid 1px #d2d2d2;
 	text-align: center;
 	color: #B7B7B7;
 	padding-top: 10px;
+	background-color: white;
 }
 
 footer li{
 	display: inline;
 	list-style-type: none;
 	padding-right: 30px;
+  text-transform:uppercase;
+  font-family:"Proxima-light";
+  font-size: 16px;
 }
 footer a{
 	-webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -685,6 +690,10 @@ footer a{
 footer a:hover{
 	text-decoration: none;
 	color:#767676;
+}
+
+footer p{
+	margin:20px 0px;
 }
 
 
@@ -1101,6 +1110,5 @@ footer a:hover{
 	background: none repeat scroll 0 0 #6d6d6d;
     color: #FFFFFF;
 }
-
 
 

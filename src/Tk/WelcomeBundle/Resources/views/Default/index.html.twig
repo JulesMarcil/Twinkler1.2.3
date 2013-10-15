@@ -3,6 +3,7 @@
 	{% block head %}
 	{% block title %}<title>Twinkler - Manage group expenses</title>{% endblock %}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="{{ asset('css/flat-ui.css') }}" rel="stylesheet" media="screen">
 	<link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
 	{% block css %}{% endblock %}
 	{% endblock %}
@@ -199,7 +200,7 @@
 								<img src="{{ asset('img/landing-page/feedbacks/feedback-jules.jpg') }}" alt="Twinkler feedback" class="img-circle">
 							</div>
 							<div class="comment-background">
-								<p>"Awesome, we don't have to argue who paid what and who owes who!"</p>
+								<p>"Awesome, we don't have to argue who paid what!"</p>
 								<p class="feedback-name"><STRONG>John,</STRONG> Newcastle</p>
 							</div>
 						</div>
@@ -208,7 +209,7 @@
 								<img src="{{ asset('img/landing-page/feedbacks/feedback-arnaud.jpg') }}" alt="Twinkler feedback" class="img-circle">
 							</div>
 							<div class="comment-background">
-								<p>"So easy to use! With Twinkler I don't have to chase my friends for money!</p>
+								<p>"So easy to use! With Twinkler I don't have to chase my friends for money!"</p>
 								<p class="feedback-name"><STRONG>Arnaud,</STRONG> Paris</p>
 							</div>
 						</div>
@@ -238,11 +239,6 @@
 		</div>
 	</section>
 
-	<section class="min-570">
-		<div id="section-transition" class="row">
-			<h5>Twinkler is available in your browser and very soon on mobile apps!</h5>
-		</div>
-	</section>
 
 	<section style="text-align:center">
 
@@ -277,7 +273,14 @@
 					Twinkler makes it easy to share expenses with the people in your life.
 				</h4>
 			</div>
+					<span class="min-570">
+						<a href="{{ path('tk_welcome_create_group')}}" class="btn btn-large btn-warning" style="margin-bottom: 80px; font-size: 20px; padding: 12px 40px">
+							Register for Free  
+						</a>
+					</span>
 		</div>
+
+
 	</div>
 </section>
 
@@ -319,12 +322,14 @@
 
 <footer>
 	<div>
-		<p>Copyright © 2013 Twinkler, Inc. All rights reserved.</p>
 		<ul>
 			<li><a href="{{ path('tk_welcome_about') }}">About</a></li>
+			<li>|</li>
 			<li><a href="{{ path('tk_welcome_press') }}">Press</a></li>
+			<li>|</li>
 			<li><a href="{{ path('tk_welcome_contact') }}">Contact</a></li>
 		</ul>
+		<p>Copyright © 2013 Twinkler, Inc. All rights reserved.</p>
 	</div>
 </footer>
 
