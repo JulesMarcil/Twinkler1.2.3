@@ -589,8 +589,14 @@ header li{
 #tk-groups div{
 	display: inline-block;
 	margin: 20px 20px;
-	background-color: rgba(235,235,232,0.3);
+	background-color: rgba(235,235,232,0.6);
 	width: 216px;
+	font-family: "Proxima-light";
+}
+
+#tk-groups div > h4{
+	margin-top: 10px;
+	margin-bottom: 10px;
 	font-family: "Proxima-light";
 }
 
@@ -955,6 +961,11 @@ footer p{
 	vertical-align: top;
 	width: 45%;
 	border-left: 1px solid rgb(239, 244, 246); 
+	text-transform:uppercase;
+}
+
+#user-layout-body .flat-container #old-school-way input{
+	text-transform:uppercase;
 }
 
 #user-layout-body .flat-container #old-school-way ul{
@@ -972,6 +983,10 @@ footer p{
 
 #login-box .flat-container{
 	width: 100%;
+}
+
+#login-form input{
+	text-transform:uppercase;
 }
 
 
