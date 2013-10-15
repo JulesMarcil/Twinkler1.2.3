@@ -15,6 +15,8 @@ header{
 	background-color:#FB786B;
 	margin-bottom: 0px;
 }
+
+
 .navbar-inner{
 	background-color:#FB786B;
 	background-image: none;
@@ -264,4 +266,23 @@ header{
 .navbar-item:hover{
 	background-color:#EC554A !important;
 	color:white;
+}
+
+#show-hide-members{
+	padding:5px 0px; 
+	margin-right: 20px;
+}
+
+/* -------------- RESPONSIVENESS ----------------- */
+
+@media only screen and (min-width: 970px) {
+	body{
+		padding-top: 40px;
+	}
+}
+
+@media only screen and (max-width: 770px) {
+	#show-hide-members{
+		display: none;
+	}
 }
