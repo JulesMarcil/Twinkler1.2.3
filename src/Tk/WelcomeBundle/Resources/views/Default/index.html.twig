@@ -17,15 +17,16 @@
 				<ul>
 					<li class="min-570"><div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block"></div></li>
 					{% block header_links %}
-					<li id="feature" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
-					<li id="getappstandapp" class="header-collapse"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
-					<li id="blog-button" class="header-collapse"><a href="{{ path('tk_welcome_blog') }}">BLOG</a></li>
+					<li id="feature" class="min-940"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
+					<li id="getappstandapp" class="min-816"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
+					<li id="blog-button" class="min-570"><a href="{{ path('tk_welcome_blog') }}">BLOG</a></li>
 					{% endblock %}
-					<li class="header-collapse"><a>|</a></li>
+					<li class="min-570"><a>|</a></li>
 					<li>
 						<a href="{{ path('fos_user_security_login')}}">LOGIN</a> 
 						<span style="vertical-align: middle; padding:0px 8px">OR</span>
-						<button class="btn btn-warning"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
+						<button class="btn btn-warning min-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
+						<button class="btn btn-warning btn-small max-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
 					</li>
 				</ul>	
 			</div>
@@ -237,13 +238,13 @@
 		</div>
 	</section>
 
-	<section class="max-570">
+	<section class="min-570">
 		<div id="section-transition" class="row">
 			<h5>Twinkler is available in your browser and very soon on mobile apps!</h5>
 		</div>
 	</section>
 
-	<section style="text-align:center" class="min-767">
+	<section style="text-align:center">
 
 		<div class="container">
 				<h3 align="center" style="margin-top:60px">Twinkler is for all the groups in your life.</h3>
