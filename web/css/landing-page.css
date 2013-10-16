@@ -152,8 +152,8 @@ header li{
 #group-creation-button{
 	margin-top: 30px;
 	font-size:24px;
-	padding:15px 24px;
-	padding-right: 44px;
+	padding:15px 64px;
+	padding-right: 74px;
 	overflow: hidden;
 }
 
@@ -657,11 +657,18 @@ header li{
 	font-family: "Proxima-light";
 }
 
+.cta-bottom{
+	margin-top: 50px;
+	margin-bottom: 140px; 
+	font-size:24px;
+	width: 250px;
+}
+
 .free-container{
 	position:absolute;
 	height: 80px;
 	width: 160px;
-	top: 40px;
+	top: 90px;
 	left: 390px;
 }
 

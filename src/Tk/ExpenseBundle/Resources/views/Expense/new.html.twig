@@ -4,39 +4,39 @@
 		<div class="modal-header">
 			<h3>Add an Expense</h3>
 		</div>
-		<div class="modal-body">
-			<div id="expense-slimscroll">
-				<div id="add-expense-slimscroll" style="margin: 0px">
-					<form id="add-expense-form" style="height:100%" action="{{ path('tk_expense_new') }}" method="post" {{ form_enctype(form) }}>
-					<div>
-						{{ form_errors(form) }}
-
+		<form id="add-expense-form" style="height:100%" action="{{ path('tk_expense_new') }}" method="post" {{ form_enctype(form) }}>
+			<div class="modal-body">
+				<div id="expense-slimscroll">
+					<div id="add-expense-slimscroll" style="margin: 0px">
 						<div>
-							<span>Who paid ?</span>
-							{{ form_errors(form.owner) }}
-							{{ form_widget(form.owner, 
-							{ 'attr': { 'style' : 'width : 150px;'}}) }}
-						</div>
+							{{ form_errors(form) }}
 
-						<div>
-							{{ form_errors(form.name) }}
-							{{ form_widget(form.name, 
-							{ 'attr': { 'placeholder' : 'What ?',
-							'style' : 'width : 210px;'}}) }}
-						</div>
+							<div>
+								<span>Who paid ?</span>
+								{{ form_errors(form.owner) }}
+								{{ form_widget(form.owner, 
+								{ 'attr': { 'style' : 'width : 150px;'}}) }}
+							</div>
 
-						<div>
-							{{ form_errors(form.amount) }}
-							{{ form_widget(form.amount, 
-							{ 'attr': { 'placeholder' : 'How much ?',
-							'style' : 'width : 180px;'}}) }}
-						</div>
+							<div>
+								{{ form_errors(form.name) }}
+								{{ form_widget(form.name, 
+								{ 'attr': { 'placeholder' : 'What ?',
+								'style' : 'width : 210px;'}}) }}
+							</div>
 
-						<div>
-							<span>When was it paid ?</span>
-							{{ form_errors(form.date) }}
-							{{ form_widget(form.date) }}
-						</div>
+							<div>
+								{{ form_errors(form.amount) }}
+								{{ form_widget(form.amount, 
+								{ 'attr': { 'placeholder' : 'How much ?',
+								'style' : 'width : 180px;'}}) }}
+							</div>
+
+							<div>
+								<span>When was it paid ?</span>
+								{{ form_errors(form.date) }}
+								{{ form_widget(form.date) }}
+							</div>
 						</div>
 
 						<div id="users-row">
@@ -75,16 +75,15 @@
 
 						{{ form_widget(form._token) }}
 
-					</form>
-
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="modal-footer">
-			<input type="submit" class="btn btn-success" value="Add Expense"/>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-success" value="Add Expense"/>
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+			</div>
 
 
+		</form>
 	</div>
 </div>
