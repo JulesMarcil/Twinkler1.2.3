@@ -610,7 +610,13 @@ header li{
 
 #tk-groups> h4{
 	margin-bottom: 60px;
-	margin-top: 20px;
+	margin-top: 60px;
+	font-family: "Proxima-light";
+}
+
+.tk-group-catchphrase> h4{
+	margin-bottom: 60px;
+	margin-top: 40px;
 	font-family: "Proxima-light";
 }
 
@@ -618,8 +624,8 @@ header li{
 	position:absolute;
 	height: 80px;
 	width: 160px;
-	top: 0px;
-	left: -30px;
+	top: 40px;
+	left: 390px;
 }
 
 
