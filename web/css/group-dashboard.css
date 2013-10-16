@@ -370,3 +370,33 @@ select {
 	padding-top: 20px;
 	margin: 0px;
 }
+
+.settle-debt-member{
+	display:inline-block; 
+	width: 80%;
+}
+
+.settle-debt-member table{
+	width: 100%;
+}
+
+.settle-debt-member tr{
+	height: 50px;
+  border-bottom-color:#CCCCCC;
+  border-bottom-style:dotted;
+  border-bottom-width:1px;
+}
+
+
+.settle-debt-member tr:last-child{
+	height: 50px;
+  border-bottom:none;
+}
+
+.settle-debt-member .td-checkbox{
+	width: 30px;
+}
+
+.settle-debt-member .td-profilepic{
+	margin: 0px 30px;
+}
