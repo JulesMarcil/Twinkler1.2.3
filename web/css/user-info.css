@@ -88,8 +88,21 @@ header {
 }
 
 .info-text{
-	border-bottom-right-radius:4px;
-	border-top-right-radius:4px;
+	text-align: center;
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-appearance:none;
+	-webkit-backface-visibility:hidden;
+	-webkit-box-shadow:none;
+	-webkit-transition:border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+	border:2px solid #BDC3C7;
+	border-bottom-radius:6px;
+	color:#34495E;
+	font-family:Lato, Helvetica, Arial, sans-serif;
+	font-size:15px;
+	background-color: rgb(245,246,246)
 }
 
 .profile-info{
@@ -108,6 +121,23 @@ header {
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 8px;
+
+	text-align: center;
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-appearance:none;
+	-webkit-backface-visibility:hidden;
+	-webkit-box-shadow:none;
+	-webkit-transition:border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+	border:2px solid #BDC3C7;
+	border-radius: 6px;
+	border-bottom-radius:6px;
+	color:#34495E;
+	font-family:Lato, Helvetica, Arial, sans-serif;
+	font-size:15px;
+	background-color: rgb(245,246,246);
 }
 
 .profile-info > .info-icon{
@@ -140,18 +170,30 @@ header {
 	max-width: 78px;
 }
 .profile-pic-user{
+	height:41px;
+	width: 68%;
+	margin-top: 15px;
+	padding:0px 12px;
 	display: inline-block;
 	text-align: center;
-	height: 36px;
-	border: 1px solid rgb(234,237,242);
-	color:#BEB5B2;
-	width: 68%;
-	border-radius:4px;
 	box-sizing: border-box;
 	ms-box-sizing: border-box;
 	webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	padding-top: 7px;
+	-webkit-appearance:none;
+	-webkit-backface-visibility:hidden;
+	-webkit-box-shadow:none;
+	-webkit-transition:border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+	border:2px solid #BDC3C7;
+	border-radius:6px;
+	color:#34495E;
+	font-family:Lato, Helvetica, Arial, sans-serif;
+	font-size:15px;
+	background-color: rgb(245,246,246)
+}
+
+.profile-pic-user p{
+	line-height: 15px;
 }
 
 .edit-info{
