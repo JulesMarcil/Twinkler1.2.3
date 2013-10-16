@@ -9,10 +9,9 @@ body{
 
 #page-body{
 	background-image: url(' ../img/Frame/bck.png');
-
 }
 
-a{
+a {
 	text-decoration: none;
 }
 
@@ -22,9 +21,4 @@ a{
 .frame .row{
 	margin-top: 20px;
 	margin-bottom: 20px;
-}
-
-#content{
-	margin-top:1px;
-}
-
+}Ò	

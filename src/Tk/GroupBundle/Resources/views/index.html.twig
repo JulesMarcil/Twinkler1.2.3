@@ -9,8 +9,8 @@
 {% block stylesheets %}
 {{ parent() }}
 <link href="{{ asset('css/group-dashboard.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/group-chat.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/group-expenses.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/group-chat.css') }}"      rel="stylesheet" type="text/css">
+<link href="{{ asset('css/group-expenses.css') }}"  rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block header %}
@@ -39,10 +39,8 @@
 				</a> 
 				{% else %}
 				<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
-					
 					<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
 					<p>{{ member.name }}</p>
-					
 				</a>
 				{% endif %}
 			</div>
