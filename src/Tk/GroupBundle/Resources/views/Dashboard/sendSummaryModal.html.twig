@@ -23,7 +23,9 @@
 							<tr>
 								{% if member.user %}
 								<td class="td-checkbox">
-									<input type="checkbox" name="_send_email_{{member.id}}" value="on" checked="checked"/>
+								<label class="checkbox" for="checkbox1">
+									<input type="checkbox" id="checkbox1"  name="_send_email_{{member.id}}" value="on" checked="checked" data-toggle="checkbox"/>
+									</label>
 								</td>
 								{% if member.user.facebookId %}
 								<td class="td-profilepic">
@@ -44,7 +46,9 @@
 								</td>
 								{% else %}
 								<td class="td-checkbox">
-									<input type="checkbox" name="_send_email_{{member.id}}" value="on" checked="checked"/>
+								<label class="checkbox" for="checkbox1">
+									<input id="checkbox1" type="checkbox" name="_send_email_{{member.id}}" value="on" checked="checked" data-toggle="checkbox"/>
+								</label>
 								</td>
 								<td class="td-profilepic">
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" width="30px" class="img-circle" alt="{{member.name}}">
@@ -74,6 +78,10 @@
 </div>
 
 <script language="javascript">
+$('[data-toggle="checkbox"]').each(function () {
+  $(this).checkbox();
+});
+
 if($('#expense-slimscroll').height()>180){
 	expenseSlimscroll('180');
 }

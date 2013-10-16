@@ -418,7 +418,11 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 }
 
 .settle-debt-member .td-checkbox{
-	width: 30px;
+	width: 50px;
+}
+
+.settle-debt-member .td-checkbox label{
+	margin-left: 10px;
 }
 
 .settle-debt-member .td-profilepic{
