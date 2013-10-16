@@ -25,11 +25,11 @@
                         <h4>Send Money</h4>
     					<form action="{{ path('smoney_send') }}" method="post">
     						<label for="beneficiary">Beneficiary*</label>
-							<input type="text" id="beneficiary" name="beneficiary" maxlength="255" value="jules.marcilhacy@gmail.com" required/>
+							<input type="text" id="beneficiary" name="beneficiary" maxlength="255" value="0698907851" required/>
                             <label for="transmitter">Transmitter (optional)</label>
                             <input type="text" id="transmitter" name="transmitter" maxlength="255" placeholder="Sub account identifier"/>
                             <label for="amount">Amount (€)*</label>
-                            <input type="text" id="amount" name="amount" maxlength="255" value="0.01"required/>
+                            <input type="text" id="amount" name="amount" maxlength="255" value="50"required/>
                             <label for="message">Message (optional)</label>
                             <input type="text" id="message" name="message" maxlength="255" placeholder="ex: Lunch, beers, ..."/>
                             <label for="access_token">Access Token*</label>
@@ -51,11 +51,11 @@
                         <h4>Request Money</h4>
                         <form action="{{ path('smoney_request') }}" method="post">
                             <label for="receiver">Receiver*</label>
-                            <input type="text" id="receiver" name="receiver" maxlength="255" value="jules.marcilhacy@gmail.com" required/>
+                            <input type="text" id="receiver" name="receiver" maxlength="255" value="0698907851" required/>
                             <label for="requester">Requester (optional)</label>
                             <input type="text" id="requester" name="requester" maxlength="255" placeholder="Sub account identifier"/>
                             <label for="amount">Amount (€)*</label>
-                            <input type="text" id="amount" name="amount" maxlength="255" value="0.01"required/>
+                            <input type="text" id="amount" name="amount" maxlength="255" value="10"required/>
                             <label for="message">Message (optional)</label>
                             <input type="text" id="message" name="message" maxlength="255" placeholder="ex: Lunch, beers, ..."/>
                             <label for="access_token">Access Token*</label>
