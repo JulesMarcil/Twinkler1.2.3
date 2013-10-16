@@ -25,6 +25,8 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     cache:            false
+    globals:
+        appId:        %api_facebook_id%
 
 # Assetic Configuration
 assetic:

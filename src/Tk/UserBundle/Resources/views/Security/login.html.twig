@@ -39,7 +39,8 @@
                 <div class="flat-header">
                     <h1 style="font-size:20px">LOG IN</h1>
                 </div>
-                <p style="margin: 15px 0px">{{ facebook_login_button({'autologoutlink': false, 'label': 'Connect with Facebook', 'size' : 'large'}) }}</p>
+                
+                {% render(controller('TkUserBundle:Facebook:loginButton')) %}
 
                 <div style="display: inline-block; width:100%">
                     <div style="display: inline-block; width:40%">
