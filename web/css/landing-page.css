@@ -1003,7 +1003,9 @@ footer p{
 }
 
 #user-layout-body .flat-header h1{
-	line-height: 24px;
+	line-height: 12px;
+  	font-family: "Lato", sans-serif;
+  	margin: 10px 0px;
 }
 
 #user-layout-body .flat-container #hip-way{
@@ -1038,6 +1040,21 @@ footer p{
 
 #login-box .flat-container{
 	width: 100%;
+}
+
+#login-box #facebook-login{
+	margin: 20px 0px;
+	padding: 10px 40px;
+}
+
+#login-form input{
+	min-height: 40px;
+	margin: 10px 0px;
+}
+
+#login-form .login-check-box{
+	margin: 10px 0px;
+	width: 20px;
 }
 
 @media only screen and (max-width: 569px) {
