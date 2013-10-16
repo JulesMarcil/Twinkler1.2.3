@@ -106,3 +106,24 @@ u
 .btn-jules:hover{
 	background-color:#EC554A;
 }
+
+
+/* --- MODAUX --- */
+.modal-header{
+	color:white;
+	background-color: #fb786b;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+}
+
+
+.modal-footer{
+	color:white;
+	background-color: rgb(242,242,242);
+	border-top-left-radius:0px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}

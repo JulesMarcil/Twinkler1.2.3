@@ -1,83 +1,90 @@
-<div class="flat-container">
-	<div class="flat-header">
-		<h3>Add an Expense</h3>
-	</div>
-	<div id="expense-slimscroll">
-		<div id="add-expense-slimscroll" style="margin: 0px">
-			<form id="add-expense-form" style="height:100%" action="{{ path('tk_expense_new') }}" method="post" {{ form_enctype(form) }}>
-				{{ form_errors(form) }}
 
-				<div>
-					<span>Who paid ?</span>
-					{{ form_errors(form.owner) }}
-					{{ form_widget(form.owner, 
-						{ 'attr': { 'style' : 'width : 150px;'}}) 
-					}}
-				</div>
-
-				<div>
-					{{ form_errors(form.name) }}
-					{{ form_widget(form.name, 
-						{ 'attr': { 'placeholder' : 'What ?',
-									'style' : 'width : 210px;'}}) 
-					}}
-				</div>
-
-				<div>
-					{{ form_errors(form.amount) }}
-					{{ form_widget(form.amount, 
-						{ 'attr': { 'placeholder' : 'How much ?',
-									'style' : 'width : 180px;'}}) 
-					}}
-				</div>
-
-				<div>
-					<span>When was it paid ?</span>
-					{{ form_errors(form.date) }}
-					{{ form_widget(form.date) }}
-				</div>
-
-				<div id="users-row">
-					<div id="users-label" style="margin:10px 0px">
-						<label class="required">How do we split this expense?</label>
-					</div>
-					<div id="tk_expensebundle_expensetype_users">
-						<div class="select-deselect">
-							<span id="select-all-button" style="margin: 0px 15px; cursor: pointer">Select All</span>|<span id="deselect-all-button" style="margin: 0px 15px; cursor: pointer">Deselect All</span>
-						</div>
-						{% for member in app.user.currentMember.tgroup.members %}
-						<div class="user-box">
-							<label for="tk_expensebundle_expensetype_users_{{member.id}}">
-								<div>
-									<div>
-										{% if member.user %}
-										{% if member.user.facebookId %}
-										<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" width="50px">
-										{% else %}
-										<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="50px">
-										{% endif %}
-										{% else %}
-										<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" width="50px">
-										{% endif %}
-									</div>
-									{{member.name}}
-								</div>
-							</label>
-							<div>			
-								<input id="tk_expensebundle_expensetype_users_{{member.id}}" class="user-checkbox" type="checkbox" checked="checked" value="{{member.id}}" name="tk_expensebundle_expensetype[users][]">
-							</div>	
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-
-				{{ form_widget(form._token) }}
-
-				<div class="flat-footer" style="padding-top:12px">
-					<input type="submit" class="btn btn-success" value="Add Expense"/>
-					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-				</div>
-			</form>
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h3>Add an Expense</h3>
 		</div>
+		<div class="modal-body">
+			<div id="expense-slimscroll">
+				<div id="add-expense-slimscroll" style="margin: 0px">
+					<form id="add-expense-form" style="height:100%" action="{{ path('tk_expense_new') }}" method="post" {{ form_enctype(form) }}>
+					<div>
+						{{ form_errors(form) }}
+
+						<div>
+							<span>Who paid ?</span>
+							{{ form_errors(form.owner) }}
+							{{ form_widget(form.owner, 
+							{ 'attr': { 'style' : 'width : 150px;'}}) }}
+						</div>
+
+						<div>
+							{{ form_errors(form.name) }}
+							{{ form_widget(form.name, 
+							{ 'attr': { 'placeholder' : 'What ?',
+							'style' : 'width : 210px;'}}) }}
+						</div>
+
+						<div>
+							{{ form_errors(form.amount) }}
+							{{ form_widget(form.amount, 
+							{ 'attr': { 'placeholder' : 'How much ?',
+							'style' : 'width : 180px;'}}) }}
+						</div>
+
+						<div>
+							<span>When was it paid ?</span>
+							{{ form_errors(form.date) }}
+							{{ form_widget(form.date) }}
+						</div>
+						</div>
+
+						<div id="users-row">
+							<div id="users-label">
+								<label class="required">How do we split this expense?</label>
+							</div>
+							<div id="tk_expensebundle_expensetype_users">
+								<div class="select-deselect">
+									<span id="select-all-button" style="margin: 0px 15px; cursor: pointer">Select All</span>|<span id="deselect-all-button" style="margin: 0px 15px; cursor: pointer">Deselect All</span>
+								</div>
+								{% for member in app.user.currentMember.tgroup.members %}
+								<div class="user-box">
+									<label for="tk_expensebundle_expensetype_users_{{member.id}}">
+										<div>
+											<div>
+												{% if member.user %}
+												{% if member.user.facebookId %}
+												<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" width="50px">
+												{% else %}
+												<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="50px">
+												{% endif %}
+												{% else %}
+												<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" width="50px">
+												{% endif %}
+											</div>
+											{{member.name}}
+										</div>
+									</label>
+									<div>			
+										<input id="tk_expensebundle_expensetype_users_{{member.id}}" class="user-checkbox" type="checkbox" checked="checked" value="{{member.id}}" name="tk_expensebundle_expensetype[users][]">
+									</div>	
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+
+						{{ form_widget(form._token) }}
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<input type="submit" class="btn btn-success" value="Add Expense"/>
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		</div>
+
+
 	</div>
 </div>
