@@ -409,6 +409,7 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
   border-bottom-color:#CCCCCC;
   border-bottom-style:dotted;
   border-bottom-width:1px;
+  width: 80%;
 }
 
 
