@@ -69,22 +69,28 @@
 <div id="navbar-row" class="selection-menu" style="padding-top:0">
 	<div class="container" style="height:100%;">
 		<div  class="row" style="height:100%;">
-			<div class="col-md-6 col-md-offset-3" style="height:100%; text-align: center;">
-				<a href="#">
-					<div id="navbar-expenses">
-						EXPENSES
+			<div class="col-md-6 col-md-offset-3">
+			<div style="display:inline-block">
+				<div class="btn-toolbar">
+					<div class="btn-group">
+						<a class="btn btn-inverse" href="#">
+							<div id="navbar-expenses">
+								EXPENSES
+							</div>
+						</a>
+						<a  class="btn btn-inverse second" href="#">
+							<div id="navbar-chat">
+								CHAT
+							</div>
+						</a>
+						<a  class="btn btn-inverse" href="#">
+							<div id="navbar-dashboard">
+								DASHBOARD
+							</div>
+						</a>
 					</div>
-				</a>
-				<a href="#">
-					<div id="navbar-chat">
-						CHAT
-					</div>
-				</a>
-				<a href="#">
-					<div id="navbar-dashboard">
-						DASHBOARD
-					</div>
-				</a>
+				</div>
+			</div>
 			</div>
 			<div class="pull-right" id="show-hide-members">
 				<a id="toggle-button" style="cursor: pointer">hide members</a>
@@ -93,9 +99,9 @@
 	</div>
 </div>
 <script>
-var balances = {{ app.user.currentMember.tgroup.arrayBalances|json_encode|raw }};
-var members = {{ app.user.currentMember.tgroup.arrayMembers|json_encode|raw }};
-var currency = {{ app.user.currentMember.tgroup.currency.symbol|json_encode|raw }};
+	var balances = {{ app.user.currentMember.tgroup.arrayBalances|json_encode|raw }};
+	var members = {{ app.user.currentMember.tgroup.arrayMembers|json_encode|raw }};
+	var currency = {{ app.user.currentMember.tgroup.currency.symbol|json_encode|raw }};
 </script>
 {% endblock %}
 

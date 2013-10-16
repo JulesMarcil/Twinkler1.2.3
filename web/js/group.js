@@ -1,10 +1,10 @@
 /*-----Function definition-------*/
 var activePage = document.URL.split("/").pop(); /*get page name*/
 var activePageHighlight=function(){  // add top and bottom border on the active page name
-	$("#navbar-"+activePage).addClass("navbar-item");
+	$("#navbar-"+activePage).parent().addClass("navbar-item");
 };
 var deactivePageHighlight=function(){  // add top and bottom border on the active page name
-	$("#navbar-"+activePage).removeClass("navbar-item");
+	$("#navbar-"+activePage).parent().removeClass("navbar-item");
 };
 var addScrollOnChart=function(){
 	$("#balance-slimscroll").niceScroll();

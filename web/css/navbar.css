@@ -241,11 +241,6 @@ header{
 	width: 100%;
 }
 
-.selection-menu a{
-	-webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
-	transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
-	color:#f97e76;
-}
 
 .selection-menu .user-name{
 	-webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -257,35 +252,31 @@ header{
 	text-align: center;
 }
 
-.selection-menu a:hover{
-	text-decoration: none;
-	color:#f6a79f;
+.selection-menu .col-md-6 {
+	text-align: center;
 }
 
+.selection-menu .btn-toolbar{
+	margin-bottom: 10px;
+}
+
+.selection-menu .second{
+	border-left: solid 1px rgb(65,91,118);
+	border-right: solid 1px rgb(65,91,118);
+}
+
+
 #navbar-expenses, #navbar-chat, #navbar-dashboard{
-	position: relative;
-	display: none;
-	border:solid 1px rgb(243,243,243);
-	border-bottom: none;
-	background-color: white;
-	font-family: 'Proxima-regular';height:100%; display: inline-block; width: 24%; text-align: center; padding-top: 5px; padding-bottom: 5px;
-	border-top-left-radius:4px;
-	border-top-right-radius:4px;
+	width: 100px;
 }
 
 #navbar-expenses:hover, #navbar-chat:hover, #navbar-dashboard:hover{
-	background-color: rgba(247,122,103,0.5);
-	color: white;
+
 }
 
 
 .navbar-item{
-	position: relative;
-	display: none;
-	background-color: rgba(247,122,103,0.5) !important;
-	border-top-left-radius:4px;
-	border-top-right-radius:4px;
-	color:white;
+	background-color: #2c3e50 !important;
 }
 
 .navbar-item a{
@@ -293,8 +284,6 @@ header{
 }
 
 .navbar-item:hover{
-	background-color:#EC554A !important;
-	color:white;
 }
 
 #show-hide-members{
