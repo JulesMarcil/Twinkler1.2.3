@@ -4,26 +4,12 @@
 {{ parent() }}
 <link href="{{ asset('css/creation-process.css') }}" rel="stylesheet" type="text/css">
 
-<script type="text/javascript">
-	var fb_param = {};
-	fb_param.pixel_id = '6010599976603';
-	fb_param.value = '0.00';
-	fb_param.currency = 'EUR';
-	(function(){
-	  var fpw = document.createElement('script');
-	  fpw.async = true;
-	  fpw.src = '//connect.facebook.net/en_US/fp.js';
-	  var ref = document.getElementsByTagName('script')[0];
-	  ref.parentNode.insertBefore(fpw, ref);
-	})();
-</script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6010599976603&amp;value=0&amp;currency=EUR" /></noscript>
 {% endblock %}
 
 {% block header %}
 <div style="margin-bottom:60px"></div>
 <div id="second-row-big" class="row" style="position: relative">
-	<div id="group" class="span8 offset2">
+	<div id="group" class="col-md-10 col-md-offset-1">
 		{% for member in app.user.currentMember.tgroup.members %}
 		{% if member.user %}
 		<div class="member">
@@ -42,17 +28,6 @@
 		{% endif %}
 		{% endfor %}
 	</div>	
-</div>
-{% endblock %}
-
-{% block selectionmenu %}
-<div id="navbar-row" class="selection-menu" style="padding-top:0">
-	<div class="container" style="height:100%;">
-		<div  class="row" style="height:100%;">
-			<div class="span4 offset4" style="height:100%; text-align: center;">
-			</div>
-		</div>
-	</div>
 </div>
 {% endblock %}
 
