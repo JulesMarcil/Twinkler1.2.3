@@ -1,17 +1,18 @@
 {% set group = app.user.currentMember.tgroup %}
 
 <div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header">
-			<h3 style="margin:0px">SEND A SUMMARY</h3>
-		</div>
 
-		<div class="modal-body">
-			<div id="expense-slimscroll">
-				<div class="settle-debt-content">
-					<p>Send a summary of <b>{{ group.name }}</b> to the members</p>
-				</div>
-				<form action="{{ path('tk_dashboard_summary_send') }}" method="post">
+	<form action="{{ path('tk_dashboard_summary_send') }}" method="post">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 style="margin:0px">SEND A SUMMARY</h3>
+			</div>
+
+			<div class="modal-body">
+				<div id="expense-slimscroll">
+					<div class="settle-debt-content">
+						<p>Send a summary of <b>{{ group.name }}</b> to the members</p>
+					</div>
 					<div>
 						<textarea rows="2" id="message-input" name="_message" placeholder="Leave a message (optional)" style="width:300px;"/>
 					</div>
@@ -29,7 +30,7 @@
 									<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
 								</td>
 								{% else %}
-								<td>
+								<td class="td-profilepic">
 									<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
 								</td>
 								{% endif %}
@@ -38,14 +39,14 @@
 								</td>
 								<td>
 									<strong>
-									<span>{{ member.user.email }}</span>
+										<span>{{ member.user.email }}</span>
 									</strong>
 								</td>
 								{% else %}
 								<td class="td-checkbox">
 									<input type="checkbox" name="_send_email_{{member.id}}" value="on" checked="checked"/>
 								</td>
-								<td>
+								<td class="td-profilepic">
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" width="30px" class="img-circle" alt="{{member.name}}">
 								</td>
 								<td>
@@ -61,16 +62,17 @@
 							{% endfor %}
 						</table>
 					</div>
-				</form>
 
 
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input class="btn btn-success" type="submit" value="Send Summary"></a>
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 			</div>
 		</div>
-		<div class="modal-footer">
-			<input class="btn btn-success" type="submit" value="Send Summary"></a>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		</div>
-	</div>
+		
+	</form>
 </div>
 
 <script language="javascript">
