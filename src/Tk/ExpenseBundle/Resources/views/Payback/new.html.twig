@@ -1,53 +1,55 @@
-<div class="flat-container">
-    <div class="flat-header">
-        <h3>RECORD A PAYBACK</h3>
-    </div>
-    <div id="expense-slimscroll">
-        <div id="payback-slimscroll" style="margin: 0px">
-            <form id="add-payback-form" action="{{ path('tk_payback_new', {'id1' : id1, 'amount' : amount, 'id2' : id2 }) }}" method="post" {{ form_enctype(form) }}>
-                {{ form_errors(form) }}
-                <div style="display: inline-block">
-                    <span>Who paid?<br></span>
-                    {{ form_errors(form.owner) }}
-                    {{ form_widget(form.owner, 
-                        { 'attr': { 'style' : 'width : 130px;'}}) 
-                    }}
-                </div>
-                <div style="display: inline-block">
-                    gives
-                </div>
-                <div style="display: inline-block">
-                    <span>How much?<br></span>
-                    {{ form_errors(form.amount) }}
-                    {{ form_widget(form.amount, 
-                        { 'attr': { 'style' : 'width : 80px;'}}) 
-                    }}
-                </div>
-                <div style="display: inline-block">
-                    to
-                </div>
-                <div style="display: inline-block">
-                    <span>To who?<br></span>
-                    {{ form_errors(form.users) }}
-                    {{ form_widget(form.users, 
-                        { 'attr': { 'style' : 'width : 130px;'}}) 
-                    }}
-                </div>
-                <div class="payback-date">
-                    <span>When was it paid?</span>
-                    {{ form_errors(form.date) }}
-                    {{ form_widget(form.date) }}
-                </div>
-                {{ form_widget(form._token) }}
-                <div class="flat-footer" style="margin: 0px">
-                    <input type="submit" class="btn btn-success" value="Record Payback"/>
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                </div>
-            </form>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>RECORD A PAYBACK</h3>
         </div>
+
+        <form id="add-payback-form" action="{{ path('tk_payback_new', {'id1' : id1, 'amount' : amount, 'id2' : id2 }) }}" method="post" {{ form_enctype(form) }}>
+            <div id="expense-slimscroll" class="modal-body">
+                <div id="payback-slimscroll" style="margin: 0px">
+                    {{ form_errors(form) }}
+                    <div style="display: inline-block">
+                        <span><strong>Who paid?</strong><br></span>
+                        {{ form_errors(form.owner) }}
+                        {{ form_widget(form.owner, 
+                        { 'attr': { 'style' : 'width : 130px;'}})  }}
+                    </div>
+                    <div style="display: inline-block; margin: 0px 10px">
+                        gives
+                    </div>
+                    <div style="display: inline-block">
+                        <span><strong>How much?</strong><br></span>
+                        {{ form_errors(form.amount) }}
+                        {{ form_widget(form.amount, 
+                        { 'attr': { 'style' : 'width : 80px;'}})  }}
+                    </div>
+                    <div style="display: inline-block; margin: 0px 10px">
+                        to
+                    </div>
+                    <div style="display: inline-block;">
+                        <span><strong>To who?</strong><br></span>
+                        {{ form_errors(form.users) }}
+                        {{ form_widget(form.users, 
+                        { 'attr': { 'style' : 'width : 130px;'}}) }}
+                    </div>
+                    <div class="payback-date">
+                        <span>When was it paid?</span>
+                        {{ form_errors(form.date) }}
+                        {{ form_widget(form.date) }}
+                    </div>
+                    {{ form_widget(form._token) }}
+                </div>
+            </div>
+
+            <div class="modal-footer" style="margin: 0px">
+                <input type="submit" class="btn btn-success" value="Record Payback"/>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            </div>
+        </form>
     </div>
 </div>
 
 <script language="javascript">
-    expenseSlimscroll('250');
+    expenseSlimscroll('180');
 </script>
