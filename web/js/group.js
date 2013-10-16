@@ -142,7 +142,7 @@ var expenseStart = function(){
     	}
     })
 
-    expenseSlimscroll(421);
+    expenseSlimscroll(435);
 
         $("#select-all-button").click(function(){
        		$(".user-checkbox").prop("checked", true);

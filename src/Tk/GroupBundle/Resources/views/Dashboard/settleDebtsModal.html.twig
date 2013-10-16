@@ -1,23 +1,30 @@
-<div id="settleDebtsModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="flat-container" style="width:100%">
-		<div class="flat-header">
-			<h3 style="margin:0px">SETTLE ALL DEBTS</h3>
-		</div>
-		<form action="{{ path('tk_payback_settle') }}" method="get">
-			<div class="settle-debt-content">
-				<p>It will remove all previous expenses and bring everyone's balances to 0</p>
-				<p><b>Are you sure?</b></p>
-				<div style="text-align: left; margin-left: auto; margin-right: auto; display:none">
-					<input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="on" checked="checked"/>
-	                <label  style="display:inline-block" for="remove_expenses">Remove past expenses</label><br>
-	                <input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="off" />
-	                <label  style="display:inline-block" for="remove_expenses">Keep past expenses</label>
-                </div>
+<div id="settleDebtsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h3 style="margin:0px">SETTLE ALL DEBTS</h3>
 			</div>
-			<div class="flat-footer" style="margin: 0px">
-				<input class="btn btn-success" type="submit" value="Yes - Settle all Debts"></a>
-		        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		    </div>
-		</form>
+
+			<form action="{{ path('tk_payback_settle') }}" method="get">
+				<div class="modal-body">
+					<div class="settle-debt-content">
+						<p>It will remove all previous expenses and bring everyone's balances to 0</p>
+						<p><b>Are you sure?</b></p>
+						<div style="text-align: left; margin-left: auto; margin-right: auto; display:none">
+							<input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="on" checked="checked"/>
+							<label  style="display:inline-block" for="remove_expenses">Remove past expenses</label><br>
+							<input style="display:inline-block; vertical-align: top " type="radio" name="_remove_expenses" value="off" />
+							<label  style="display:inline-block" for="remove_expenses">Keep past expenses</label>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="margin: 0px">
+					<input class="btn btn-success" type="submit" value="Yes - Settle all Debts"></a>
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+				</div>
+			</form>
+		</div>
 	</div>
-</div>
+	
+	</div>
