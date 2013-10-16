@@ -1,7 +1,7 @@
 {% set group = app.user.currentMember.tgroup %}
 
 <div class="row" align="center">
-	<div class="span6 offset3">
+	<div class="col-md-6 col-md-offset-3">
 		<div id="chat-container" class="group-info flat-container">
 			<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto">	
 				<span class="group-title">
@@ -20,7 +20,7 @@
 				{% else %}
 				<img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="{{ app.user }}" width="40px" style="position: relative">
 				{% endif %}
-				<input id="message-input" type="text" placeholder="Type your message here and press enter to post" style="height:24px;"></input>
+				<input id="message-input" type="text" placeholder="Type your message here and press enter to post" style="height:40px; margin-left: 20px"></input>
 			</div>
 		</div>
 	</div>
