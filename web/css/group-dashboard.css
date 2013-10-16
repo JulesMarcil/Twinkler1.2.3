@@ -376,8 +376,14 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 }
 
 .settle-debt-member{
+	margin-top: 30px;
 	display:inline-block; 
 	width: 80%;
+}
+
+.settle-debt-member #expense-slimscroll{
+	border: solid 2px rgb(189,195,199);
+	border-radius:6px;
 }
 
 .settle-debt-member table{
