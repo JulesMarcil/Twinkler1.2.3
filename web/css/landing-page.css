@@ -614,6 +614,15 @@ header li{
 	font-family: "Proxima-light";
 }
 
+.free-container{
+	position:absolute;
+	height: 80px;
+	width: 160px;
+	top: 0px;
+	left: -30px;
+}
+
+
 
 
 
