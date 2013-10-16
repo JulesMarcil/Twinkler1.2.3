@@ -2,7 +2,7 @@
 {% set currency = app.user.currentMember.tgroup.currency.symbol %}
 
 <div class="row" align="center">
-	<div class="span3">
+	<div class="col-md-3">
 		<div class="group-info flat-container">
 			<div class="group-header flat-header" style="height: 30px; margin: 5px; width: auto;">	
 				<span class="group-title">
@@ -66,7 +66,7 @@
 			
 		</div>
 	</div>
-	<div class="span6">
+	<div class="col-md-6">
 		{% set balance = app.user.currentMember.balance %}
 		<div id="my-settlement" class="flat-container">
 			<div class="expense-header flat-header" style="text-align:left;">
@@ -109,7 +109,7 @@
 		</div>	
 		
 	</div>
-	<div class="span3">
+	<div class="col-md-3">
 
 		<div id="chart-balance" class="flat-container">
 			<div class="expense-header flat-header">

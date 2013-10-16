@@ -1,7 +1,7 @@
 {% set currency = app.user.currentMember.tgroup.currency.symbol %}
 
 <div class="row">
-	<div class="span4">
+	<div class="col-md-4">
 		<div id="balance" class="flat-container">
 			<div class="expense-header flat-header">
 				<div id="expense-title">
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	</div>		
-	<div class="span8" >
+	<div class="col-md-8" >
 		<div id="timeline" style="position: relative; height:120px;z-index: -1;">
 			<img src="{{ asset('img/Frame/group-icon-pointer.png') }}" class="img-circle" width="50px" style="position:absolute; top: -5px; left:2px" alt="profile picture">
 		</div>
