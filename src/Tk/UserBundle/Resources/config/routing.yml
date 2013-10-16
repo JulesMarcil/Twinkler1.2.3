@@ -21,12 +21,3 @@ tk_user_feedback:
 tk_user_connect_facebook:
     pattern: /connect/facebook
     defaults: { _controller: TkUserBundle:Profile:connectfacebook }
-
-# Facebook button
-
-tk_user_facebook_button:
-    pattern: /facebook/button
-    defaults: { _controller: TkUserBundle:Facebook:loginButton }
-tk_user_facebook_login_url:
-    pattern: /facebook/url
-    defaults: { _controller: TkUserBundle:Facebook:loginUrl }
