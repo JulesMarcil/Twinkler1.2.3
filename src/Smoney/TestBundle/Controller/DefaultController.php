@@ -17,6 +17,8 @@ class DefaultController extends Controller
         return $this->render('SmoneyTestBundle:Default:index.html.twig');
     }
 
+    // --- GET AN ACCESS TOKEN --- //
+
     public function getTokenAction()
     {
     	$params = array ('grant_type' => 'password', 
@@ -24,7 +26,7 @@ class DefaultController extends Controller
 						 'password'   => hash('sha256', '123450'),
 						 'scope'      => 'all',
 						 );
-
+		
 		// Build Http query using params
 		$query = http_build_query ($params);
 		 
@@ -50,49 +52,48 @@ class DefaultController extends Controller
 		return new Response($result);
     }
 
+    // --- SEND MONEY --- //
+
     public function sendAction(Request $request)
     {
     	$data = $request->request->all();
 
+    	if ($data['access_token']) {
 
-    	$params = array ('beneficiary' => array( 'identifier' => $data['beneficiary'] ), 
+    		$params = array ('beneficiary' => array( 'identifier' => $data['beneficiary'] ), 
 						 'amount'      => floatval($data['amount']), 
 						 );
 
-    	if($data['transmitter']){
-    		$params['transmitter'] = array( 'identifier' => $data['transmitter'] );
-    	}
-    	if($data['message']){
-    		$params['message'] = $data['transmitter'];
-    	}
+	    	if($data['transmitter']){
+	    		$params['transmitter'] = array( 'identifier' => $data['transmitter'] );
+	    	}
+	    	if($data['message']){
+	    		$params['message'] = $data['message'];
+	    	}
 
-    	if ($data['access_token']) {
-			// Build Http query using params
-			$query = http_build_query ($params);
-			 
-			// Create Http context details
-			$contextData = array ( 
-							'protocol_version'=> '1.1',
-			                'method'          => 'POST',
-			                'header'          => "Connection: close\r\n".
-			                			         "Content-Type: application/json\r\n".
-			                                     "Content-Length: ".strlen($query)."\r\n".
-			                                     "Authorization: Bearer ".$data['access_token'],
-			                'content'         => $query );
-			 
-			// Create context resource for our request
-			$context = stream_context_create (array ( 'http' => $contextData ));
-			 
-			// Read page rendered as result of your POST request
-			$result =  file_get_contents (
-			                  'https://rest2.s-money.net/api/payments',  // page url
-			                  false,
-			                  $context);
+	    	$json = json_encode($params);
 
-			return new Response($result);
-		}
+	    	$curl = curl_init('https://rest2.s-money.net/api/payments');
+	    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    	curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
+	    	curl_setopt($curl, CURLOPT_POST, true);
+	    	curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+	    	curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+			    'Content-Type: application/json',                                                                                
+			    'Content-Length: ' . strlen($json),
+			    'Authorization: Bearer '.$data['access_token'])                                                                       
+			);
+
+	    	$result = curl_exec($curl);
+	    	curl_close($curl);
+
+	    	return new Response($result);	
+    	}
+    	
 		return new JsonResponse(array('error' => 'no access token provided'));
     }
+
+    // --- SEE HISTORY OF PAYMENTS MADE --- //
 
     public function sentAction(Request $request)
     {
@@ -100,33 +101,23 @@ class DefaultController extends Controller
 
     	if ($data['access_token']) {
 
-    		// Build Http query using no params
-    		$params = array();
-			$query = http_build_query ($params);
-			 
-			// Create Http context details
-			$contextData = array ( 
-							'protocol_version'=> '1.1',
-			                'method'          => 'GET',
-			                'header'          => "Connection: close\r\n".
-			                			         "Content-Type: application/json\r\n".
-			                                     "Content-Length: ".strlen($query)."\r\n".
-			                                     "Authorization: Bearer ".$data['access_token'],
-			                'content'         => $query );
-			 
-			// Create context resource for our request
-			$context = stream_context_create (array ( 'http' => $contextData ));
-			 
-			// Read page rendered as result of your POST request
-			$result =  file_get_contents (
-			                  'https://rest2.s-money.net/api/payments',  // page url
-			                  false,
-			                  $context);
+    		$curl = curl_init('https://rest2.s-money.net/api/payments');
+	    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    	curl_setopt($curl, CURLOPT_COOKIESESSION, true);
+	    	curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+			    'Content-Type: application/json',
+			    'Authorization: Bearer '.$data['access_token'])                                                                       
+			);
+
+	    	$result = curl_exec($curl);
+	    	curl_close($curl);
 
 			return new Response($result);
     	} 
     	return new Jsonresponse(array('error' => 'no access token provided'));
     }
+
+    // --- SEND A REQUEST FOR MONEY --- //
 
     public function requestAction(Request $request)
     {
@@ -140,37 +131,33 @@ class DefaultController extends Controller
     		$params['requester'] = array( 'identifier' => $data['requester'] );
     	}
     	if($data['message']){
-    		$params['message'] = $data['transmitter'];
+    		$params['message'] = $data['message'];
     	}
+
+    	$json = json_encode($params);
 
     	if ($data['access_token']) {
 
-			// Build Http query using params
-			$query = http_build_query ($params);
-			 
-			// Create Http context details
-			$contextData = array ( 
-							'protocol_version'=> '1.1',
-			                'method'          => 'POST',
-			                'header'          => "Connection: close\r\n".
-			                			         "Content-Type: application/json\r\n".
-			                                     "Content-Length: ".strlen($query)."\r\n".
-			                                     "Authorization: Bearer ".$data['access_token'],
-			                'content'         => $query );
-			 
-			// Create context resource for our request
-			$context = stream_context_create (array ( 'http' => $contextData ));
-			 
-			// Read page rendered as result of your POST request
-			$result =  file_get_contents (
-			                  'https://rest2.s-money.net/api/paymentrequests',  // page url
-			                  false,
-			                  $context);
+			$curl = curl_init('https://rest2.s-money.net/api/paymentrequests');
+	    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    	curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
+	    	curl_setopt($curl, CURLOPT_POST, true);
+	    	curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+	    	curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+			    'Content-Type: application/json',                                                                                
+			    'Content-Length: ' . strlen($json),
+			    'Authorization: Bearer '.$data['access_token'])                                                                       
+			);
+
+	    	$result = curl_exec($curl);
+	    	curl_close($curl);
 
 			return new Response($result);
 		}
 		return new JsonResponse(array('error' => 'no access token provided'));
     }
+
+    // --- SEE HISTORY OF REQUESTS RECEIVED --- //
 
     public function requestedAction(Request $request)
     {
@@ -178,28 +165,16 @@ class DefaultController extends Controller
 
     	if ($data['access_token']) {
 
-    		// Build Http query using no params
-    		$params = array();
-			$query = http_build_query ($params);
-			 
-			// Create Http context details
-			$contextData = array ( 
-							'protocol_version'=> '1.1',
-			                'method'          => 'GET',
-			                'header'          => "Connection: close\r\n".
-			                			         "Content-Type: application/json\r\n".
-			                                     "Content-Length: ".strlen($query)."\r\n".
-			                                     "Authorization: Bearer ".$data['access_token'],
-			                'content'         => $query );
-			 
-			// Create context resource for our request
-			$context = stream_context_create (array ( 'http' => $contextData ));
-			 
-			// Read page rendered as result of your POST request
-			$result =  file_get_contents (
-			                  'https://rest2.s-money.net/api/paymentrequests',  // page url
-			                  false,
-			                  $context);
+    		$curl = curl_init('https://rest2.s-money.net/api/paymentrequests');
+	    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    	curl_setopt($curl, CURLOPT_COOKIESESSION, true);
+	    	curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+			    'Content-Type: application/json',
+			    'Authorization: Bearer '.$data['access_token'])                                                                       
+			);
+
+	    	$result = curl_exec($curl);
+	    	curl_close($curl);
 
 			return new Response($result);
     	} 
