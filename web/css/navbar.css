@@ -7,11 +7,6 @@
 a{text-decoration: none;}
 
 /* --- Top nav bar ---  */
-header{
-	background-color:rgba(255, 255, 255, 1);
-	border-top-color:rgba(250, 250, 250, 0.6);
-	box-shadow:rgba(0, 0, 0, 0.14902) 0 1px 2px;
-}
 
 .navbar{
 	background-color:#FB786B;
@@ -22,6 +17,11 @@ header{
 	color: white;
 	border: none;
 	box-shadow:rgba(0, 0, 0, 0.14902) 0 1px 2px, rgba(0, 0, 0, 0.0470588) 0 0 8px inset;
+}
+
+#navbar-container{
+	min-height: 50px;
+	line-height: 24px;
 }
 
 .navbar-nav > li > a{
@@ -39,6 +39,8 @@ header{
 .navbar .nav > li > a {
 	color:#fff;
 	float:none;
+	font-size: 18px;
+	line-height: 30px;
 	padding:10px 15px;
 	text-decoration:none;
 	text-shadow:none;
@@ -51,15 +53,13 @@ header{
 .navbar .navbar-brand{
 	color: #fff;
 	text-shadow:none;
-	font-size: 24px;
 	font-weight: bold;
-	padding-top: 9px;
+	font-size: 24px;
+	line-height: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	padding-left: 20px;
 	padding-right: 5px;
-}
-
-.nav  > .divider-vertical{
-	height: 60px;
 }
 
 .dropdown-menu{
@@ -167,7 +167,7 @@ header{
 .navbar .divider-vertical {
 	border-left:1px solid rgba(255,255,255, 0.3);
 	border-right:1px solid rgba(255,255,255, 0);
-	height:40px;
+	height: 52px;
 	margin:0 9px;
 }
 
@@ -183,7 +183,19 @@ header{
 	border-top-right-radius:0px;
 	background-color: black;
 }
+
+.navbar .img-circle {
+	margin-right: 10px;
+	width: 30px;
+}
+
 /* --- Group (bottom) --- */
+
+header{
+	background-color:rgba(255, 255, 255, 1);
+	border-top-color:rgba(250, 250, 250, 0.6);
+	box-shadow:rgba(0, 0, 0, 0.14902) 0 1px 2px;
+}
 
 
 #group{
@@ -292,13 +304,13 @@ header{
 
 /* -------------- RESPONSIVENESS ----------------- */
 
-@media only screen and (min-width: 970px) {
+@media only screen and (min-width: 770px) {
 	body{
-		padding-top: 40px;
+		padding-top: 52px;
 	}
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 769px) {
 	#show-hide-members{
 		display: none;
 	}

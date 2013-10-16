@@ -5,15 +5,15 @@
 {% endblock %}
 {% block stylesheets %} 
 <link href="{{ asset('css/flat-ui.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/frame.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('css/navbar.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/frame.css') }}"   rel="stylesheet" type="text/css">
+<link href="{{ asset('css/navbar.css') }}"  rel="stylesheet" type="text/css">
 {% endblock stylesheets %}
 {% endblock %}
 
 {% block body %}
 <header>
-    <div class="navbar navbar-fixed-top">
-            <div id="navbar-container" class="container" style="line-height: 24px;">
+    <div class="navbar navbar-default navbar-fixed-top">
+            <div id="navbar-container" class="container">
                 <span id="group-dropdown-span">
                     <div class="dropdown">
                         <a class="navbar-brand" href="{{ path('tk_user_homepage') }}">
@@ -63,9 +63,9 @@
                         <li>
                             <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
                                 {% if app.user.facebookId %}
-                                <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="20px" alt="profile picture">
+                                <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="profile picture">
                                 {% else %}
-                                <img src="{{ asset(app.user.picture.path) }}" class="img-circle" width="20px" alt="profile picture" style="margin-right: 8px">
+                                <img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="profile picture">
                                 {% endif %}
                                 {{ app.user }}
                             </a>
