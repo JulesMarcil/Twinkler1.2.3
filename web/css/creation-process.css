@@ -1,33 +1,16 @@
+.flat-container {
+	width: 100%;
+}
+
 .new-group .flat-container .flat-header{
-	min-height: 30px
+	min-height: 30px;
+	padding: 10px 0px;
 }
 
 .flat-container .flat-header h3{
-	color:#FCD5D2;
 	font-size:16px;
 	margin:0 15px;
 }
-
-@media only screen and (min-width: 1200px) {
-	#add-friend-block{
-	margin-left: 15px;
-	}
-	#add-member-block{
-	padding-right: 14px;
-	border-right: solid 1px #C8C8C8;
-	}
-}
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-	#add-friend-block{
-	margin-left: 10px;
-	}
-	#add-member-block{
-	padding-right: 9px;
-	border-right: solid 1px #C8C8C8;
-	}
-}
-
-
 
 .subheader{
 	color: #4371BF;
@@ -43,25 +26,57 @@
 	font-size: 16px;
 }
 
-.add-members{
-	text-align: center;
+/* --- Add member --- */
+
+#add-member-block form > div{
+	margin-bottom: 10px;
 }
-.add-members table{
-	width: 90%; margin: auto;
-}
-.add-members tr{
+
+#add-member-block input{
 	height: 40px;
-	border-bottom: solid 1px #C8C8C8;
 }
-.add-members tr:last-child{
-	border-bottom: none;
+
+#add-member-block #add-button{
+	width: 98px;
 }
-.add-members .add-button{
-	width: 20%; text-align: right;
+
+#add-member-block textarea{
+	width: 300px;
 }
 
 /* --- facebook table --- */
 
-#facebook-table tr{
-	display: none;
+#add-friend-block{
+	text-align: center;
 }
+#add-friend-block table{
+	width: 90%; margin: auto;
+}
+.#add-friend-block tr{
+	height: 40px;
+	border-bottom: solid 1px #C8C8C8;
+}
+#add-friend-block tr:last-child{
+	border-bottom: none;
+}
+
+#add-friend-block tr td button{
+	height: 24px;
+	line-height: 14px;
+	font-size: 14px;
+	padding: 5px 10px;
+}
+
+/* -- footer -- */
+
+.flat-footer {
+	margin-top: 20px;
+}
+
+.flat-footer > a > div {
+	padding: 10px 20px;
+	margin: 10px 0px;
+}
+
+
+
