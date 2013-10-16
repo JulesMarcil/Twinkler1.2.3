@@ -13,11 +13,10 @@
 {% block body %}
 <header>
     <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
             <div id="navbar-container" class="container" style="line-height: 24px;">
                 <span id="group-dropdown-span">
                     <div class="dropdown">
-                        <a class="brand" href="{{ path('tk_user_homepage') }}">
+                        <a class="navbar-brand" href="{{ path('tk_user_homepage') }}">
                             <div>Twinkler</div>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
@@ -45,7 +44,7 @@
 
                     {% if app.user.currentMember %}
                     <div id="link-container">
-                        <ul class="nav">
+                        <ul class="nav navbar-nav nav-group-name-container">
                             <li class="divider-vertical">
                             </li>
                             <li>
@@ -60,7 +59,7 @@
                 </span>
                 <div>
                         {% endif %}
-                    <ul class="nav pull-right">
+                    <ul class="nav navbar-nav pull-right">
                         <li>
                             <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
                                 {% if app.user.facebookId %}
@@ -78,7 +77,7 @@
                         </li>
                     </ul>
                 </div>
-        </div> 
+ 
     </div>
 </div>  
 <div class="container">
