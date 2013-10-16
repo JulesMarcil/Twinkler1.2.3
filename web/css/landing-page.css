@@ -1022,7 +1022,9 @@ footer p{
 }
 
 #user-layout-body .flat-container #old-school-way input{
-	text-transform:uppercase;
+	min-height: 40px;
+	margin: 10px 0px;
+}
 }
 
 #user-layout-body .flat-container #old-school-way ul{
@@ -1042,7 +1044,7 @@ footer p{
 	width: 100%;
 }
 
-#login-box #facebook-login{
+#facebook-login{
 	margin: 20px 0px;
 	padding: 10px 40px;
 }
