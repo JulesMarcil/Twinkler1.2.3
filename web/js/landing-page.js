@@ -47,10 +47,10 @@
                 var plantop=jQuery('#planning').offset().top;
                 var paytop=jQuery('#payback').offset().top;
                 var $cache = $('#iphone-pic');
-                if (($(window).scrollTop() > plantop+110-80) && ($(window).scrollTop() < paytop-30)) {
+                if (($(window).scrollTop() > plantop+110-80-30) && ($(window).scrollTop() < paytop-30)) {
                     $cache.css({'position': 'fixed', 'top': '80px','z-index':'1'}); 
                 }else if ($(window).scrollTop() > paytop-30) {
-                    $cache.css({'position': 'absolute', 'top': paytop+50+'px','z-index':'1'});
+                    $cache.css({'position': 'absolute', 'top': paytop-515+'px','z-index':'1'});
                 }else{
                     $cache.css({'position': 'relative', 'top': '80px','z-index':'1'});
                 }
