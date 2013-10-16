@@ -193,34 +193,38 @@ class DefaultController extends Controller
             throw new AccessDeniedException('You are not allowed to do this');
         }else{
             $this->removeMemberAction($member, $em);
-            return $this->redirect($this->generateUrl('tk_group_homepage'));
+            return $this->redirect($this->generateUrl('tk_group_dashboard'));
         }
     }
 
     private function removeMemberAction($member, $em)
     {
-
         $u = $member->getUser();
+        $group = $member->getTGroup();
         $user = $this->getUser();
-
-        if($u and ($u->getCurrentMember() == $member)) {    
-            $u->setCurrentMember(null);
-        }
 
         $member->setActive(false);
         $em->flush();
 
-        if ($u and ($u != $user)) {
+        if($u){
+            if ($u->getCurrentMember() == $member){
+                $u->setCurrentMember(null);
+            }
+            if ($u != $user){
 
-            $message = \Swift_Message::newInstance();
-            $message->setSubject($user.' removed you from a group')
-                    ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
-                    ->setTo($u->getEmail())
-                    ->setContentType('text/html')
-                    ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $user, 
-                                                                                             'member' => $member)))
-            ;
-            $mailer->send($message);
+                $mailer = $this->get('mailer');
+
+                $message = \Swift_Message::newInstance();
+                $message->setSubject($user.' removed you from a group')
+                        ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
+                        ->setTo($u->getEmail())
+                        ->setContentType('text/html')
+                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $user, 
+                                                                                                 'member' => $member,
+                                                                                                 'group'  => $group)))
+                ;
+                $mailer->send($message);
+            }
         }
     }
 
