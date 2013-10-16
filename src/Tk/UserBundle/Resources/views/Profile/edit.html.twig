@@ -2,7 +2,7 @@
 
 {% block profile %}
 
-	<form action="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}" method="post" {{ form_enctype(form) }}>
+	<form id="edit-user-info" action="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}" method="post" {{ form_enctype(form) }}>
 	    {{ form_errors(form) }}
 
 	    {{ form_row(form.username) }}
