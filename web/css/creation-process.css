@@ -2,9 +2,16 @@
 	width: 100%;
 }
 
+/* --- New group --- */
+
 .new-group .flat-container .flat-header{
 	min-height: 30px;
 	padding: 10px 0px;
+}
+
+.new-group .flat-footer > a > div {
+	padding: 10px 20px;
+	margin: 10px 0px;
 }
 
 .flat-container .flat-header h3{

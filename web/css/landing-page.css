@@ -81,7 +81,14 @@ header li{
 }
 
 #login-register button{
+	line-height:14px;
+	font-size: 14px;
+}
+
+#login-register button + .max-700 {
 	line-height:12px;
+	font-size: 14px;
+	padding:8px 8px;
 }
 
 /* body */
@@ -559,7 +566,6 @@ header li{
 	width:40px;
 }
 
-
 #control-left {
 	left: -100px;
 }
@@ -631,8 +637,15 @@ header li{
 	display: inline-block;
 	margin: 20px 20px;
 	background-color: rgba(235,235,232,0.6);
-	width: 216px;
+	width: 215px;
 	font-family: "Proxima-light";
+}
+
+@media only screen and (min-width: 569px) {
+	#tk-groups-break{
+		display: inline-block;
+		height: 20px;
+	}
 }
 
 #tk-groups div > h4{
@@ -642,10 +655,10 @@ header li{
 }
 
 #tk-groups div img{
-	margin-top: 5px;
+	margin-top: 15px;
 }
 
-#tk-groups> h4{
+#tk-groups > h4{
 	margin-bottom: 60px;
 	margin-top: 60px;
 	font-family: "Proxima-light";
@@ -671,8 +684,6 @@ header li{
 	top: 90px;
 	left: 390px;
 }
-
-
 
 
 
@@ -846,20 +857,31 @@ footer p{
 		padding-right: 10px;
 	}
 }
-
-@media only screen and (max-width: 979px) {
-	#section1{
-		min-height: 400px;
+@media only screen and (min-width: 991px) {
+	#overview-flow .row{
+		margin-left: -10%;
 	}
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 991px) {
+	#section1{
+		min-height: 400px;
+	}
+	.icon-rotate-0{
+		display: none;
+	}
+	.icon-rotate-90 {
+		display: block;
+	}
+}
+
+@media only screen and (max-width: 941px) {
 	.min-940{
 		display: none;
 	}
 }
 
-@media only screen and (max-width: 816px) {
+@media only screen and (max-width: 820px) {
 	.min-816{
 		display: none;
 	}
@@ -868,9 +890,6 @@ footer p{
 @media only screen and (min-width: 768px) {
 	.max-767{
 		display: none;
-	}
-	#overview-flow .row{
-		margin-left: -7%;
 	}
 }
 
@@ -891,11 +910,7 @@ footer p{
 		font-size: 20px;
 		line-height:1.4em;   
 	}
-}
-
-@media only screen and (max-width: 767px) {
 	.min-767,
-	.icon-rotate-0,
 	.feature,
 	.learn-more-link,
 	#learn-more,
@@ -905,14 +920,11 @@ footer p{
 	#gettheapp{
 		height: 300px;
 	}
-	.icon-rotate-90 {
-		display: block;
-	}
 	.footer-box{
 		margin-top: 10px;
 	}
 }
-@media only screen and (max-width: 699px) {
+@media only screen and (max-width: 700px) {
 	#login-register{
 		padding-top: 0px;
 		height:20px;
@@ -939,19 +951,19 @@ footer p{
 	}
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 701px) {
 	.max-700{
 		display: none;
 	}
 }
 
-@media only screen and (min-width: 570px) {
+@media only screen and (min-width: 580px) {
 	.max-570 {
 		display: none
 	}
 }
 
-@media only screen and (max-width: 569px) {
+@media only screen and (max-width: 579px) {
 	.min-570 {
 		display: none
 	}
