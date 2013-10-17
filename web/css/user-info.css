@@ -344,52 +344,47 @@ header {
 }
 
 /*-------GROUP CREATION-----*/
-.new-group h1{
-	font-size: 26px;
+.new-group h3{
+	font-size: 18px;
 	margin: 0px 30px;
+	padding: 15px 0px;
 }
 
 .new-group-content{
 	padding: 20px 0px;
 }
 
+.new-group input{
+	height: 40px;
+	width: 300px;
+}
+
 .new-group .currency{
 	margin: 15px 0px;
 }
 
-.new-group .currency > label,select{
+.new-group .currency > span,select{
 	display: inline-block;
 	margin: 0px 5px;
+	font-size: 16px;
 }
 
 #tk_groupbundle_tgrouptype_currency{
 	width: 80px;
+	height: 30px;
+	font-size: 16px;
 }
 
 .new-group .flat-footer{
-	padding: 20px 0px;
+	padding: 10px 0px;
+	height: 60px;
 }
 
 .new-group .flat-footer input{
 	width: 200px;
 	height: 40px;
-	margin: 10px 30px;
 	font-size: 16px;
-
 }
-
-.new-group .flat-container .flat-header{
-	min-height: 30px
-}
-
-.new-group .flat-container .flat-header h3{
-	color:#FCD5D2;
-	font-size:16px;
-	margin:0px 70px;
-	text-align: left;
-}
-
-
 
 /* --- Feedback --- */
 .feedback-title{
