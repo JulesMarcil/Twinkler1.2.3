@@ -13,79 +13,78 @@
 {% block body %}
 <header>
     <div class="navbar navbar-default navbar-fixed-top">
-            <div id="navbar-container" class="container">
-                <span id="group-dropdown-span">
-                    <div class="dropdown">
-                        <a class="navbar-brand" href="{{ path('tk_user_homepage') }}">
-                            <div>Twinkler</div>
-                        </a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                            <li class="dropdown-your-groups">
-                                <div>
-                                    YOUR GROUPS:
-                                </div>
-                            </li>
-                            {% for member in app.user.members %}
-                            <li>
-                                <a tabindex="-1" href="{{ path('tk_group_switch_member', { 'id' : member.id, 'route' : app.request.attributes.get('_route') }) }}">
-                                    <div>{{member.tgroup.name|capitalize}}</div>
-                                </a>
-                            </li>
-                            {% endfor %}
-                            <li class="dropdown-start-group">
-                                <a tabindex="-1" href="{{ path('tk_group_new') }}">
-                                    <div>
-                                        <i class="icon-plus-sign"></i> Start a new Group</font>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {% if app.user.currentMember %}
-                    <div id="link-container">
-                        <ul class="nav navbar-nav nav-group-name-container">
-                            <li class="divider-vertical">
-                            </li>
-                            <li>
-                                <a href="{{ path('tk_group_homepage') }}">
-                                    <div id="nav-group-name">
-                                        {{ app.user.currentMember.tgroup.name }}
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </span>
-                <div>
-                        {% endif %}
-                    <ul class="nav navbar-nav pull-right">
-                        <li>
-                            <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
-                                {% if app.user.facebookId %}
-                                <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="profile picture">
-                                {% else %}
-                                <img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="profile picture">
-                                {% endif %}
-                                {{ app.user }}
-                            </a>
+        <div id="navbar-container" class="container">
+                <div class="dropdown">
+                    <a class="navbar-brand"  data-target="#" href="{{ path('tk_user_homepage') }}">
+                        <div>Twinkler</div>
+                    </a>
+                </div>
+                {% if app.user.currentMember %}
+                <div id="link-container">
+                    <ul class="nav navbar-nav nav-group-name-container">
+                        <li class="divider-vertical">
                         </li>
-                        <li> 
-                            <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">
-                                Logout
+                        <li>
+                            <a href="{{ path('tk_group_homepage') }}">
+                            <button class="btn dropdown-toggle clearfix btn-gp" href="{{ path('tk_group_homepage') }}">
+                                <span class="filter-option pull-left">
+                                    {{ app.user.currentMember.tgroup.name }}
+                                    <span class="caret"/>
+                                </span>
+                            </button>
                             </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="overflow-y: auto; min-height: 111px; max-height: 663px;">
+                                <li style="padding: 10px">
+                                    
+                                        YOUR GROUPS:
+                                    
+                                </li>
+                                <li class="divider"/>
+                                {% for member in app.user.members %}
+                                <li>
+                                    <a tabindex="-1" href="{{ path('tk_group_switch_member', { 'id' : member.id, 'route' : app.request.attributes.get('_route') }) }}">
+                                        <div>{{member.tgroup.name|capitalize}}</div>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                                <li class="selected">
+                                    <a tabindex="-1" href="{{ path('tk_group_new') }}">
+                                        <i class="icon-plus-sign"></i> Start a new Group
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
- 
+            <div>
+                {% endif %}
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
+                            {% if app.user.facebookId %}
+                            <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="profile picture">
+                            {% else %}
+                            <img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="profile picture">
+                            {% endif %}
+                            {{ app.user }}
+                        </a>
+                    </li>
+                    <li> 
+                        <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>  
+    <div class="container">
+        {% block header %}
+        {% endblock %}
     </div>
-</div>  
-<div class="container">
-    {% block header %}
-    {% endblock %}
-</div>
-{% block selectionmenu %}
-{% endblock %}     
+    {% block selectionmenu %}
+    {% endblock %}     
 </header>
 
 <section id="content" class="frame">

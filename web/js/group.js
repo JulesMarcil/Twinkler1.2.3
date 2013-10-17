@@ -9,13 +9,13 @@ var deactivePageHighlight=function(){  // add top and bottom border on the activ
 var addScrollOnChart=function(){
 	$("#balance-slimscroll").niceScroll();
 };
-
-
+/*
 $('#group-dropdown-span').hover(function() {
-	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).show();
+	$(this).find('.dropdown-menu').first().stop(true, true).delay(0).show();
 }, function() {
-	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).hide()
+	$(this).find('.dropdown-menu').first().stop(true, true).delay(0).hide();
 });
+*/
 
 var expenseSlimscroll = function(height){
     $('#expense-slimscroll').slimScroll({
