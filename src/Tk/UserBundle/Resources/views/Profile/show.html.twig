@@ -55,25 +55,11 @@
 					{% include 'TkUserBundle:Profile:uploadPictureModal.html.twig' %}
 
 					<div class="profile-pic-user">
+						<small style="line-height: 0px">Your Username</small>
 						<p> {{ app.user | upper }}</p>
 					</div>
 				</div>
 
-				<div id="profile-stats">
-					<div class="info-icon">
-						<i class="icon-thumbs-up-alt icon-large"></i>
-					</div>
-					<div class="info-text">
-						{{ app.user.members|length }} Groups
-					</div>
-					<div class="info-icon">
-						<i class="icon-smile icon-large"></i>
-					</div>
-					<div class="info-text">
-						{{ app.user.friends|length }} Friends
-					</div>
-				</div>
-				
 				<div style="padding-top:0px; border-top: solid 1px #eaedf2; margin-bottom: 20px;">	
 					{% block profile %}
 					{% if app.user.firstname != null or app.user.lastname != null %}
@@ -87,19 +73,15 @@
 					</div>
 					{% else %}
 					<div class="profile-info">
-						<div class="info-icon">
-							<i class="icon-user icon-large"></i>
-						</div>
 						<div class="info-text">
+							<small style="line-height: 0px">Your Name</small>
 							<p> Edit your Name </p>
 						</div>
 					</div>
 					{% endif %}
 					<div class="profile-info">
-						<div class="info-icon">
-							<i class="icon-envelope icon-large"></i>
-						</div>
 						<div class="info-text">
+							<small style="line-height: 0px">Your Email Address</small>
 							<p> {{ app.user.email }}</p>
 						</div>
 					</div>
@@ -107,17 +89,19 @@
 				
 				{% if not is_granted('ROLE_FACEBOOK') %}
 				<div id="setting-buttons" style="text-align: center;">
-					<a id="change-password" data-toggle="collapse" data-target="#collapsePassword" style="color:#BEB5B2; font-size:12px;">
-						<i class="icon-lock icon-large"></i>
-						Change password
+					<a id="change-password" data-toggle="collapse" data-target="#collapsePassword">
+						<small style="color:#34495E">
+							<i class="icon-lock icon-large"></i>
+							Change password
+						</small>
 					</a>		
 				</div>	
 				{% endif %}
-				<div class="edit-info flat-btn flat-pk flat-large">	
-					<a class="edit-info-a" href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">	
+				<div style="margin-bottom:20px">	
+					<button class="btn btn-large btn-inverse" href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">	
 						<div>
 							<i class="icon-edit icon-large"></i>
-							<font style="font-size:12px">EDIT INFORMATION</font>
+							<font style="font-size:14px">EDIT INFORMATION</font>
 						</div>		
 					</a>				
 				</div>
@@ -131,8 +115,10 @@
 			<div id="feedback-link" >
 				<a data-target="feedbackModal">Any feedbacks?</a>
 			</div>
-			<div id="feedbackModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<!-- Loaded with ajax -->
+			<div id="feedbackModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+						<!-- Loaded with ajax -->
+						
 			</div>
 		</div>
 	</div>	

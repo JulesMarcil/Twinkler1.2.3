@@ -1,32 +1,57 @@
-<div class="feedback-title" class="flat-header">We would love to hear from you!</div>
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
-<form id="feedback-form" action="{{ path('tk_user_feedback') }}" method="post" {{ form_enctype(form) }}>
 
-    {{ form_errors(form) }}
+<div class="modal-dialog">
+    <div class="modal-content">
 
-    <div style="display: inline-block; width: 60%">
-        <textarea id="form_text" name="form[text]" required="required" placeholder="What is the problem?" style="width: 80%; height: 100px;"></textarea>
-    </div>
-    <div style="display: inline-block; width: 30%;">
-        <div id="form_type" class="form-inline" align="left">
-            <div>
-            <input type="radio" id="form_type_0" name="form[type]" required="required" value="bug_site" checked/>
-            <label for="form_type_0" class="required">Bug</label>
-            </div>
-            <div>
-            <input type="radio" id="form_type_1" name="form[type]" required="required" value="suggestion_site" />
-            <label for="form_type_1" class="required">Suggestion</label>
-            </div>
-            <div>
-            <input type="radio" id="form_type_2" name="form[type]" required="required" value="question_site" />
-            <label for="form_type_2" class="required">Question</label>
+        <div class="feedback-title" class="modal-header">
+            We would love to hear from you!
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
         </div>
-        </div>
-    </div>
+        <form id="feedback-form" action="{{ path('tk_user_feedback') }}" method="post" {{ form_enctype(form) }}>
+        <div class="modal-body">
+                {{ form_errors(form) }}
 
-    {{ form_widget(form._token) }}
+                <div style="display: inline-block; width: 70%;">
+                    <div id="form_type" class="form-inline" style="width:100%;">
+                        <div style="display: inline-block; width: 30%;">
+                            <label class="radio"  for="form_type_0" class="required">
+                                <div>
+                                <input type="radio" id="form_type_0" name="form[type]" required="required" value="bug_site" checked  data-toggle="radio"/>
+                                </div>
+                                <div  style="margin-left: 30px">Bug</div>
+                            </label>
+                        </div>
+                        <div style="display: inline-block; width: 30%;">
+                            <label class="radio"  for="form_type_1" class="required">
+                                <div><input type="radio" id="form_type_1" name="form[type]" required="required" value="suggestion_site"  data-toggle="radio"/></div>
+                                <div  style="margin-left: 30px">Suggestion</div>
+                            </label>
+                        </div>
+                        <div style="display: inline-block; width: 30%;">
+                            <label class="radio"  for="form_type_2" class="required">
+                                <div><input type="radio" id="form_type_2" name="form[type]" required="required" value="question_site"  data-toggle="radio"/></div>
+                                <div  style="margin-left: 30px">Question</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:20px;  width: 100%">
+                    <textarea id="form_text" name="form[text]" required="required" placeholder="Tell us what's on your mind :)" style="width: 80%; height: 100px;"></textarea>
+                </div>
+                <div>
+                    {{ form_widget(form._token) }}
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align:center">
+                <input type="submit" class="btn btn-success" value="Thank you"/>   
+            </div>
+        </form>
 
-    <div>
-    <input type="submit" class="btn btn-success" value="Thank you"/>   
+
     </div>
-</form>
+</div>
+
+<script language="javascript">
+    $('[data-toggle="radio"]').each(function () {
+      $(this).radio();
+  });
+</script>
