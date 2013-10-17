@@ -195,14 +195,11 @@ a{text-decoration: none;}
 	border-radius: 4px;
 }
 
-.btn-gp:hover{
+.btn-gp:hover, .btn-gp:focus{
 	color: rgba(255,255,255,0.8);
 	background-color: rgba(232,88,68,0.4);
-}
-
-.btn-gp:focus{
-	color: rgba(255,255,255,0.8);
-	background-color: rgba(232,88,68,0.4);
+	border-bottom-color:white !important;
+	border-top-color:white !important;
 }
 
 .btn-gp .caret{
@@ -212,6 +209,13 @@ a{text-decoration: none;}
 	margin-left: 10px;
 	margin-right: 5px;
 }
+
+.btn-gp:hover .caret,.btn-gp:focus .caret,a:focus .caret,a:hover .caret{
+	color:white;
+	border-bottom-color:rgba(255,255,255,0.8) !important;
+	border-top-color:rgba(255,255,255,0.8) !important;
+}
+
 
 #nav-group-name{
 	background-color: #ec554a;
