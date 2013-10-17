@@ -258,11 +258,10 @@ header{
 .selection-menu .user-name{
 	-webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
-	font-weight: bold;	
-	color:#f97e76;
-	font-family: 'Proxima-regular';
-	font-size: 16px;
-	text-align: center;
+	color:#34495E;
+	font-family:Lato, Helvetica, Arial, sans-serif;
+  	font-size:18px;
+  	text-align:center;
 }
 
 .selection-menu .col-md-6 {
