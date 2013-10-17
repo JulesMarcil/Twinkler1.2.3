@@ -33,8 +33,8 @@
                                 </span>
                             </button>
                             </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="overflow-y: auto; min-height: 111px; max-height: 663px;">
-                                <li style="padding: 10px">
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="margin-left: 15px;overflow-y: auto; min-height: 111px; max-height: 663px;">
+                                <li style="padding: 10px; padding-left: 16px">
                                     
                                         YOUR GROUPS:
                                     
@@ -47,9 +47,10 @@
                                     </a>
                                 </li>
                                 {% endfor %}
-                                <li class="selected">
+                                <li class="divider"/>
+                                <li>
                                     <a tabindex="-1" href="{{ path('tk_group_new') }}">
-                                        <i class="icon-plus-sign"></i> Start a new Group
+                                        <i class="icon-plus-sign"></i> START GROUP
                                     </a>
                                 </li>
                             </ul>

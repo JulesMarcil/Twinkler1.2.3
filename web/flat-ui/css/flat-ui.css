@@ -885,7 +885,6 @@ address {
 .navbar .nav ul li.active > a,
 .navbar .nav ul li.active > a:hover,
 .navbar .nav ul li.active > a:focus {
-  background-color: #1abc9c;
   color: #ffffff;
   padding-left: 9px;
   padding-right: 9px;
