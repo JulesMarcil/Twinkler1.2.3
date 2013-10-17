@@ -29,9 +29,9 @@ $(document).ready(function() {
 			success: function(response){				
 				$('#group').append(response).fadeIn();
 				if(email === ''){
-					$("#flash-message-block").html('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p></div>');
+					$("#flash-message-block").html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p></div>');
 				}else{
-					$("#flash-message-block").html('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
+					$("#flash-message-block").html('<div class="alert "><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
 				}
 				form.trigger('reset').find('#form_name').focus();
 			}
@@ -46,7 +46,7 @@ $(document).ready(function() {
 			$('#group').append(response).fadeIn();
 			var name = $('#group').find('p').last().data('name');
 			var email = $('#group').find('p').last().data('email');
-			$("#flash-message-block").html('<div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
+			$("#flash-message-block").html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
 		});
 	});
 

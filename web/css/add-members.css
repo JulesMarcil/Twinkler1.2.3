@@ -1,17 +1,12 @@
+/* --- Add memberS --- */
+
 .flat-container {
 	width: 100%;
 }
 
-/* --- New group --- */
-
 .new-group .flat-container .flat-header{
 	min-height: 30px;
 	padding: 10px 0px;
-}
-
-.new-group .flat-footer > a > div {
-	padding: 10px 20px;
-	margin: 10px 0px;
 }
 
 .flat-container .flat-header h3{
@@ -47,8 +42,13 @@
 	width: 98px;
 }
 
+#add-member-block small{
+	line-height: 10px;
+}
+
 #add-member-block textarea{
 	width: 300px;
+	font-size: 14px;
 }
 
 /* --- facebook table --- */
@@ -78,12 +78,12 @@
 
 .flat-footer {
 	margin-top: 20px;
+	height: 60px;
 }
 
-.flat-footer > a > div {
+.new-group .flat-footer > a > div {
 	padding: 10px 20px;
 	margin: 10px 0px;
 }
-
 
 
