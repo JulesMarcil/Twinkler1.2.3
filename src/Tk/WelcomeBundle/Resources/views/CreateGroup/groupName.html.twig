@@ -4,7 +4,7 @@
 
 {% block head %}
     {{ parent() }}
-    <title>Create your group</title>
+    <title>Twinkler - First Group</title>
 {% endblock %}
 
 {% block signuplogin %}
@@ -22,11 +22,12 @@
             <form action="{{ path('tk_welcome_create_group') }}" method="post" {{ form_enctype(form) }}>
                 <div class="new-group-content">
                         {{ form_errors(form) }}
-                        
+
                         {{ form_errors(form.name) }}
-                        {{ form_widget(form.name) }}
+                        {{ form_widget(form.name, 
+                        { attr : { 'placeholder' : 'Ex: The Jets, Wicked Flat, ...'} }) }}
                     <div class="currency">
-                        <span>Select Currency</span>
+                        <span>Select your Currency</span>
                         {{ form_errors(form.currency) }}
                         {{ form_widget(form.currency) }}
                     </div>
@@ -34,7 +35,7 @@
                 </div>
 
                 <div class="flat-footer">
-                    <input type="submit" value="Create Group" class="btn-large flat-btn flat-pk" style="border:none;"/>
+                    <input type="submit" value="Create Group" class="btn btn-large btn-warning" style="border:none;"/>
                 </div>
             </form>
             

@@ -1033,6 +1033,21 @@ footer p{
 	width: 45%;
 	padding: 0px 10px;
 }
+
+#user-layout-body .flat-container #hip-way #p1{
+	display: inline-block;
+	width:80%; color:rgb(245,103,99); 
+	margin-bottom: 20px; 
+	font-size: 18px
+}
+
+#user-layout-body .flat-container #hip-way #p2{
+	color: #999999; 
+	font-size: 12px;
+	margin-bottom: 0px; 
+	margin-top: 60px
+}
+
 #user-layout-body .flat-container #old-school-way{
 	display: inline-block;
 	vertical-align: top;
@@ -1093,6 +1108,9 @@ footer p{
 		width: 100%;
 		padding: 0px 10px;
 	}
+	#user-layout-body .flat-container #hip-way #p2{
+		margin-top: 0;
+	}
 	#user-layout-body .flat-container #old-school-way{
 		display: block;
 		width: 100%;
@@ -1140,9 +1158,14 @@ footer p{
 }
 .new-group .currency{
 	margin: 20px 0px;
+	font-size: 16px;
+}
+.new-group .currency span{
+	margin-right: 10px;
 }
 .new-group .currency select{
 	width: 60px;
+	height: 40px;
 }
 .new-group .flat-footer{
 	margin-top: 20px;
@@ -1150,6 +1173,7 @@ footer p{
 	padding: 10px;
 }
 .new-group .flat-footer input{
+	width: 200px;
 	padding: 5px 0px;
 }
 
