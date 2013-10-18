@@ -32,18 +32,13 @@
 
 {% block content %}
 <div class="row">
-	<div id="flash-message-block" class="col-md-10 col-md-offset-1" style="text-align: center">
-		{% if app.user.currentMember.tgroup.members|length == 1 %}
-		<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You are alone in this group.<br>Add members with the forms below and validate when you are done</p></div>
-		{% else %}
-		<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>Use the forms below to add new members to the group and validate when you are done</p></div>
-		{% endif %}
+	<div id="flash-message-block" class="col-md-6 col-md-offset-2" style="text-align: center">
 	</div>
 </div>
 <div class="new-group row" style="text-align: center">
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-6 col-md-offset-2">
 
-			<div class="section-header">
+		<div class="section-header">
 			<div class="navbar navbar-inverse">
 				<div class="navbar-header">
 					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
@@ -57,27 +52,26 @@
 				</div><!--/.nav -->
 			</div>
 
-		<div class="flat-container">
-			<div class="row" style="margin-top: 5px">
-				<div class="col-md-6" id="add-member-block">
-					{% render(controller('TkGroupBundle:Default:addMember')) %}
-					<div id="middle-border">
+			<div class="flat-container">
+				<div class="row" style="margin-top: 5px">
+					<div class="col-md-12" id="add-member-block">
+						{% render(controller('TkGroupBundle:Default:addMember')) %}
 					</div>
 				</div>
-				<div class="col-md-6" id="add-friend-block">
-					{% render controller('TkUserBundle:Friends:inviteFriends') %}
+				<div class="flat-footer">
+					<a id="add-validate" href="{{ path('tk_group_add_validate') }}">
+						<div class="btn btn-success">Validate and Continue</div>
+					</a>
 				</div>
-			</div>
-			<div class="flat-footer">
-				<a id="add-validate" href="{{ path('tk_group_add_validate') }}">
-					<div class="btn btn-success">Validate and Continue</div>
-				</a>
-			</div>
-		</div>	
+			</div>	
+		</div>
 	</div>
-</div>
-{% endblock %}
+			<div class="col-md-3 quick-add" id="add-friend-block">
+				{% render controller('TkUserBundle:Friends:inviteFriends') %}
+			</div>
 
-{% block javascripts %}
+	{% endblock %}
+
+	{% block javascripts %}
 	<script type="text/javascript" src="{{ asset('js/add-members.js')}}"></script>
-{% endblock %}
+	{% endblock %}

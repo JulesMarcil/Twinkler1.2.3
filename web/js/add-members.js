@@ -14,8 +14,10 @@ $(document).ready(function() {
 	});
 	// Scroll in friend table
 	$("#friend-table").slimScroll({
-	    height: '180px'
+	    height: '236px'
 	});
+
+	$(".quick-add").height($("#friend-table").height()+70+'px');
 
 	// ajax add member
 	$(".add-members").find('form').on('submit', function(e){
@@ -29,9 +31,9 @@ $(document).ready(function() {
 			success: function(response){				
 				$('#group').append(response).fadeIn();
 				if(email === ''){
-					$("#flash-message-block").html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p></div>');
+					$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p></div>');
 				}else{
-					$("#flash-message-block").html('<div class="alert "><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
+					$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
 				}
 				form.trigger('reset').find('#form_name').focus();
 			}
@@ -46,7 +48,7 @@ $(document).ready(function() {
 			$('#group').append(response).fadeIn();
 			var name = $('#group').find('p').last().data('name');
 			var email = $('#group').find('p').last().data('email');
-			$("#flash-message-block").html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
+			$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
 		});
 	});
 
@@ -56,7 +58,7 @@ $(document).ready(function() {
 		var user_id = $(this).data('user');
 		var name = $(this).closest('.member').find('p').text();
 		$(this).closest('.member').remove();
-		$("#flash-message-block").hide().html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You removed <b>'+ name +'</b> from the group<p></div>').show();;
+		$("#flash-message-block").hide().html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You removed <b>'+ name +'</b> from the group<p></div>').show();;
 		$('#tr-user-'+user_id).fadeIn();
 		$.get('add/remove/member/'+id+'', function(response){
 		});
