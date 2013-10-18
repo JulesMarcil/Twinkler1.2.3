@@ -78,21 +78,6 @@
 	max-width: 100%;
 }
 
-@media only screen and (min-width: 768px) {
-	#balance:after{ /*arrow added to rightarrowdiv DIV*/
-		content:'';
-		display:block;
-		position:absolute;
-		top:10px;
-		left:100%; /*should be set to 100% */
-		width:0;
-		height:0;
-		border-color: transparent transparent transparent white; /*border color should be same as div div background color*/
-		border-style: solid;
-		border-width: 10px;	
-	}
-}
-
 
 /*-------- Timeline ---------*/
 
@@ -220,24 +205,19 @@
 	border-top-right-radius:4px;
 }
 
-.expense-list:after{ /*arrow added to leftarrowdiv DIV*/
-	content:'';
-	display:block;
-	position:absolute;
-	top:10px;
-	left:-20px; /*should be set to -border-width x 2 */
-	width:0;
-	height:0;
-	border-color: transparent white transparent transparent; /*border color should be same as div div background color*/
-	border-style: solid;
-	border-width: 10px;
-}
 
 .pinpoint-tmln{
 	display: inline-block;
 	float: left;
-	margin-left: -10%;
-	margin-top: 22px;
+	margin-left: -19%;
+	margin-top: 4px;
+	background-color: #fff;
+	color: #FB786B;
+	border-radius: 50%;
+	width: 39px;
+	height:39px;
+	text-align: center;
+	border: solid 2px rgb(189,195,199);
 }
 
 .expense-list-detailed{
@@ -424,7 +404,7 @@
 	border-spacing: 0; /* "Simulation" de border-collapse */
 	background-color:white;
 	font-size: 16px;
-	border: solid 2px rgb(189,195,199);
+	box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 2px;
 }
 
 
@@ -432,13 +412,18 @@
 	background-color:#34495E;
 	height: 30px;
 	color:#fff;
+
 }
+
 
 #expense-table-header tr:first-child td:first-child { border-top-left-radius: 8px; }
 #expense-table-header tr:first-child td:last-child { border-top-right-radius: 8px; }
 #expense-table-body tr:last-child td:first-child { border-bottom-left-radius: 6px; }
-#expense-table-body tr:last-child td:last-child { border-bottom-right-radius: 6px; }
-#expense-table-header tr td{border-bottom: none;}
+#expense-table-body tr:last-child td:last-child { border-bottom-right-radius: 6px;}
+#expense-table-header tr td{border-bottom: none;
+	border-top: solid 2px #34495E
+}
+
 .expense-row{
 	padding: 10px 0px;
 }
@@ -462,7 +447,8 @@
 
 .expense-row td{
 	vertical-align: top;
-	padding-top: 12px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 #date-column{
@@ -474,6 +460,7 @@
 #profile-pic-row{
 	min-width: 30px;
 	padding: 8px;
+	padding-top: 15px;
 	text-align: center;
 }
 
@@ -486,6 +473,21 @@
 	text-align: center;
 }
 
+.expense-date{
+	margin-top:-29px; text-align:center
+}
+
+.expense-date small{
+	background-color: white; 
+	padding: 0px 10px;
+	color:rgb(140,140,140)
+}
+
+#expense-table-body tr:first-child .expense-date{
+	display:none;
+}
+
+
 #balance-column{
 	min-width: 80px;
 	text-align: center;
@@ -494,6 +496,7 @@
 #edit-column{
 	text-align: center;
 	color: #595959;
+	padding-right:5px;
 }
 
 #edit-column .btn{

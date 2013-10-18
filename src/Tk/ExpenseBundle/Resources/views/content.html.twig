@@ -25,9 +25,6 @@
 		</div>
 	</div>		
 	<div class="col-md-8" >
-		<div id="timeline" style="position: relative; height:120px;z-index: -1;">
-			<img src="{{ asset('img/Frame/group-icon-pointer.png') }}" class="img-circle" width="50px" style="position:absolute; top: -5px; left:2px" alt="profile picture">
-		</div>
 		<div id="timeline-expense-container">
 			
 			<!-- Add expense modal  -->
@@ -68,9 +65,6 @@
 
 
 			<!-- -------------------------------------- -->
-			<div class="pinpoint-tmln" style="margin-left: -7.55%; z-index:9999999999999999">
-				<img class="pinpoint-button" src="{{ asset('img/Frame/tmln-btn.png') }}" class="img-circle" width="20px">
-			</div>
 
 			{% if all_expenses|length == 0 %}
 			<div class="expense-list flat-container" style="text-align: center; margin-top:15px;">
@@ -98,21 +92,21 @@
 
 						<!-- PAYBACK -->
 						{% if expense[0].type == 'payback' %}
-						<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}" style=" background-color: rgba(153, 179, 53, 0.1)">
-							<td id="profile-pic-row" style="vertical-align: middle; padding-top:0px; padding-bottom:0px">
+						<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}">
+							<td id="profile-pic-row" style="vertical-align: middle;">
 								<div style="">
 									<font style="color:#99B335;">
 										PAYBACK
 									</font>
 								</div>
 							</td>
-							<td id="amount-column" style="vertical-align: middle; padding-top:0px">
+							<td id="amount-column" style="vertical-align: middle;">
 								<font style="color:#99B335;">
 									{{ expense[0].amount }} {{ currency }}
 								</font> 
 							</td>
-							<td style="padding-top: 4px; padding-bottom: 8px; text-align: center;vertical-align: middle; padding-top:0px"> 
-								<div style="display: inline-block; text-align: center; margin-left: auto; margin-right:auto; width: 100%; height:100%">
+							<td style=" text-align: center;vertical-align: middle"> 
+								<div style="display: inline-block; text-align: center; margin-left: auto; margin-right:auto; width: 100%; height:100%; padding-top: -2px">
 									<div style="display: inline-block; margin: 0px 20px">
 										<font style="color:#fb786b;">
 											<div>
@@ -189,7 +183,7 @@
 								</font>
 								{% endif %}
 							</td>
-							<td id="edit-column" style="vertical-align: middle; padding-top:0px">
+							<td id="edit-column" style="vertical-align: middle;">
 								<div class="btn-group">
 									<i class="dropdown-arrow dropdown-arrow-inverse"></i>
 									<button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -236,6 +230,11 @@
 								</font> 
 							</td>
 							<td> 
+								<div class="expense-date">
+									<small>
+										{{expense[0].date | date("M, d")}}
+									</small>
+								</div>
 								<div>
 									<font style="color:#fb786b;">
 										{{ expense[0].name }}
@@ -270,11 +269,11 @@
 							</td>
 							<td id="edit-column">
 								<div class="btn-group">
-									<i class="dropdown-arrow dropdown-arrow"></i>
+									<i class="dropdown-arrow dropdown-arrow-inverse"></i>
 									<button class="btn dropdown-toggle" data-toggle="dropdown">
 										<span class="caret"></span>
 									</button>
-									<ul class="dropdown-menu dropdown">
+									<ul class="dropdown-menu dropdown-inverse">
 										<li><a data-id="{{expense[0].id }}"><i class="icon-edit icon-large"></i> Edit Expense</a></li>
 										<li><a href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash icon-large"></i> Remove Expense</a></li>
 									</ul>
