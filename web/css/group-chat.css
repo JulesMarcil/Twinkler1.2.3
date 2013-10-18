@@ -3,9 +3,35 @@
 	color: #fff;
 }
 
-.span6{
-	height: 100%;
-	position: relative;
+#chat-table tr{
+	border-bottom: dotted 1px #CCCCCC;
+}
+
+#chat-table tr td{
+	padding: 10px 0px;
+}
+
+#chat-table .message-date p{
+	vertical-align: top;
+	font-size: 14px;
+}
+
+#chat-table .message-date{
+	vertical-align: top;
+	padding-top: 10px 0px;
+}
+
+#chat-table .message-pic{
+	vertical-align: bottom;
+}
+
+#chat-table tr:last-child{
+	border-bottom: none;
+}
+
+#chat-table p{
+	font-size: 16px;
+	line-height: 0.6
 }
 
 .chat-footer{
