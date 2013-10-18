@@ -1292,3 +1292,13 @@ footer p{
 }
 
 
+/* ---  Alert --- */
+.alert-danger{
+	border: solid 2px #B94A48;
+	font-size:16px;
+}
+
+.alert-danger button{
+	color: #B94A48;
+	opacity: 1;
+}
