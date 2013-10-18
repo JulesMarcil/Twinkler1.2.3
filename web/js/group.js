@@ -110,12 +110,19 @@ var expenseStart = function(){
 	var navbarHeight=$("#navbar-row").height();
 
     // ---> Expense filter
-    $("#show-all-button").on("click", function(){
+    $('#unread-2').hide();
+    $("#show-all-button").on("click", function(e){
+    	e.preventDefault();
+    	$('.navbar-unread').hide();
+    	$('#unread-1').show();
     	$(".expense-row").fadeIn();
     	$("#only-mine-button").removeClass("active");
     	$(this).addClass("active");
     });
-    $("#only-mine-button").on("click", function(){
+    $("#only-mine-button").on("click", function(e){
+    	e.preventDefault();
+    	$('.navbar-unread').hide();
+    	$('#unread-2').show();
     	$(".expense-row").filter(".nottagged").fadeOut();
     	$("#show-all-button").removeClass("active");
     	$(this).addClass("active");
