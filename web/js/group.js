@@ -154,18 +154,22 @@ var expenseStart = function(){
     	}
     })
 
-    expenseSlimscroll(435);
+    expenseSlimscroll(445);
 
-    $("#select-all-button").click(function(){
-    	$(".user-checkbox").prop("checked", true);
+   
+    $('[data-toggle="checkbox"]').each(function () {
+    	$(this).checkbox();
+    });
+
+     $("#select-all-button").click(function(){
+
+    	$(".user-checkbox").prop("checked", "checked");
     });
 
 
     $("#deselect-all-button").click(function(){
     	$(".user-checkbox").prop("checked", false);
     });
-
-    $("select").selectpicker({style: 'btn btn-wide', menuStyle: 'dropdowN'});
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHAT START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
