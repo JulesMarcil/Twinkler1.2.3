@@ -67,6 +67,10 @@ header .selection-menu{
 	width: 80%;
 	overflow: hidden;
 }
+.profile-info > .info-text p{
+	height: 100%;
+	line-height: 40px;
+}
 
 .profile-pic-container{
 	text-align: center; 
