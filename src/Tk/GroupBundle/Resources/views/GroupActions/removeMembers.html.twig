@@ -1,7 +1,7 @@
 <p>Click on a member to remove him from the group
 <br>
 <font color="#FB786B" style="font-weight:bold;">"{{ app.user.currentMember.tgroup.name }}"</font></p>
-<div style="padding-bottom: 10px">
+<div>
 	{% for member in app.user.currentMember.tgroup.members %}
 	<div style="display: inline-block">
 		<div style="margin: 5px;">	
@@ -41,5 +41,4 @@
 	{% endif %}
 	{% endfor %}
 </div>
-<div class="btn cancel-action">Done</div>
 		
