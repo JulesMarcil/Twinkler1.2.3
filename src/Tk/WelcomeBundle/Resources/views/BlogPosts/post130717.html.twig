@@ -8,11 +8,12 @@
 <meta property="og:image"           content="http://www.twinkler.co/img/links/blog/jokari.jpg" />
 {% endblock %}
 
+{% block facebook_like %}
+<div class="fb-like" data-href="http://www.twinkler.co/blog/post/130717" data-send="true" data-width="200" data-font="arial"></div>
+{% endblock %}
+
 {% block blog_post %}
 	<div style="text-align: center; font-family: 'Proxima-bold';">
-		<div style="position: absolute; top:10px; right:0;">
-			<div class="fb-like" data-href="http://www.twinkler.co/blog/post/130717" data-send="true" data-width="200" data-font="arial"></div>
-		</div>
 		<h3>Work hard, play hard!</h3>
 		<img src="{{ asset('img/links/blog/jokari.jpg') }}" width="500px" alt="Jokari">
 	</div>

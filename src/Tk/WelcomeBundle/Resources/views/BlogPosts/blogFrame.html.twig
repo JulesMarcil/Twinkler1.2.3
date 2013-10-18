@@ -8,9 +8,28 @@
 {% endblock %}
 
 {% block body %}
+
+<div class="container">
+	<div class="row" style="padding-top: 10px">
+
+		<div class="col-md-3" align="center">
+			<a href="{{ path('tk_welcome_blog') }}">
+				<p><i class="icon-chevron-left"></i> Back to our Blog</p>
+			</a>
+		</div>
+
+		<div class="col-md-3 col-md-offset-6" align="center">
+		{% block facebook_like %}
+		{% endblock %}
+		</div>
+
+	</div>
+</div>
+
 <div class="container">
 	<div class="row">
-		<div class="span3" style="padding-top: 80px; text-align: center">
+	<!--
+		<div class="col-md-3" style="padding-top: 80px; text-align: center">
 			<a href="{{ path('tk_user_homepage') }}">
 				<img id="tk-logo-hp" src="{{ asset('img/logo/tk-star.png') }}" width="80px" alt="twinkler logo" style="margin-bottom: 40px;margin:0 0 10px 25px;">
 			</a>
@@ -32,12 +51,15 @@
 			<a href="{{ path('tk_welcome_blog') }}" style="color:#D3D3D3; font-weight: normal">Back to Twinkler</a>
 		</div>
 
-		<div class="blog-post span6 offset1" style="margin-top: 40px; margin-bottom: 60px;text-align: center;">
+		-->
+
+		<div class="blog-post col-md-6 col-md-offset-3" style="margin-top: 40px; margin-bottom: 60px;text-align: center;">
 
 		{% block blog_post %}
 		{% endblock %}
 
 		</div>
+	</div>
 </div>
 	
 {% endblock %}

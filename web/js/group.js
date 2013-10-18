@@ -110,6 +110,11 @@ var expenseStart = function(){
 	var navbarHeight=$("#navbar-row").height();
 
     // ---> Expense filter
+    $('#filter-button-group').on('click', '#filter-button', function(e){
+    	e.preventDefault();
+    	$(this).find('ul').hide();
+    })
+
     $('#unread-2').hide();
     $("#show-all-button").on("click", function(e){
     	e.preventDefault();
