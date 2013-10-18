@@ -84,19 +84,17 @@ header {
 }
 
 .profile-pic-info{
-	text-align: left;
-	display: inline-block;
-	width: 30%;
+	width: 100%;
+	margin-top:20px;
 }
 .profile-pic-info img{
 	width: 80%;
 	max-width: 78px;
-	margin-top: -20px;
 }
 
 .profile-pic-user{
 	height:41px;
-	width: 68%;
+	width: 80%;
 	margin-top: 20px;
 	padding:0px 12px;
 	display: inline-block;
@@ -109,12 +107,12 @@ header {
 	-webkit-backface-visibility:hidden;
 	-webkit-box-shadow:none;
 	-webkit-transition:border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
-	border:2px solid #BDC3C7;
 	border-radius:6px;
 	color:#34495E;
 	font-family:Lato, Helvetica, Arial, sans-serif;
 	font-size:15px;
-	background-color: rgb(245,246,246)
+	background-color: rgb(245,246,246);
+	margin-bottom: 20px;
 }
 
 .profile-pic-user p{
@@ -132,13 +130,8 @@ header {
 
 .profile-pic-container{
 	text-align: center; 
-	border-bottom: solid 1px #eaedf2; 
-	height:100px;
-	text-align: left;
-	padding-left: 30px;
-	padding-right: 15px;
-	padding-bottom: 10px;
-	padding-top: 10px;
+	border-bottom: solid 1px #eaedf2;
+	text-align: center;
 }
 
 
@@ -157,7 +150,6 @@ header {
 	-webkit-backface-visibility:hidden;
 	-webkit-box-shadow:none;
 	-webkit-transition:border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
-	border:2px solid #BDC3C7;
 	border-radius:6px;
 	color:#34495E;
 	font-family:Lato, Helvetica, Arial, sans-serif;
