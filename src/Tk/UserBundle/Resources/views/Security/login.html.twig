@@ -40,7 +40,11 @@
                     <h1>LOG IN</h1>
                 </div>
                 
-                <a class="btn btn-info" id="facebook-login" onclick="fbLogin()">Connect with Facebook</a>
+                <div style="position:relative">
+                <a class="btn btn-info" id="facebook-login" onclick="fbLogin()">
+                            <img src="{{ asset('img/landing-page/facebook-icon.png') }}" alt="Connect with Facebook" width="18px">Connect with Facebook
+                </a>
+                </div>
 
                 <div style="display: inline-block; width:100%">
                     <div style="display: inline-block; width:40%">
@@ -67,11 +71,11 @@
                         <input type="password" id="password" placeholder="Password" name="_password" required="required" />
                     </div>
                     <div>
-                        <input class="login-check-box" type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                        <label  style="display:inline-block" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        <label class="checkbox" for="remember_me" style="display:inline-block" ><input class="login-check-box" type="checkbox" id="remember_me" name="_remember_me" value="on"  data-toggle="checkbox"/>
+                        {{ 'security.login.remember_me'|trans }}</label>
                     </div>
                     
-                    <input type="submit" class="btn btn-success" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" style="width:130px; margin-top: 20px;" />
+                    <input type="submit" class="btn btn-success" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" style="width:160px; margin-top: 10px;" />
                     <br>
                     <a href="#forgotPasswordModal" data-toggle="modal" style="font-size:11px">Forgot your password ?</a>
                 </form>
