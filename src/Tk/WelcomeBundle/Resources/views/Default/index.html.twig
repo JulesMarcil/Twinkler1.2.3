@@ -1,271 +1,269 @@
-	{% extends '::base.html.twig' %}
+{% extends '::base.html.twig' %}
 
-	{% block head %}
-	{% block title %}<title>Twinkler - Manage group expenses</title>{% endblock %}
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="{{ asset('css/flat-ui.css') }}" rel="stylesheet" media="screen">
-	<link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
-	{% block css %}{% endblock %}
-	{% endblock %}
+{% block head %}
+<meta name="apple-itunes-app" content="app-id=702569884">
+{% block title %}<title>Twinkler - Manage group expenses</title>{% endblock %}
+<link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
+{% block css %}{% endblock %}
+{% endblock %}
 
-	{% block body %}
-	<header>
-			<a href="{{ path('tk_user_homepage') }}">
-				<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">				
-			</a>
-			<div class="pull-right" id="login-register">
-				<ul>
-					<li class="min-700"><div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block"></div></li>
-					{% block header_links %}
-					<li id="feature" class="min-940"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
-					<li id="getappstandapp" class="min-816"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
-					<li id="blog-button" class="min-700"><a href="{{ path('tk_welcome_blog') }}">BLOG</a></li>
-					{% endblock %}
-				</ul>
-				<ul>
-					<li>
-						<button class="btn btn-warning min-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
-						<button class="btn btn-warning btn-small max-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
-						<a href="{{ path('fos_user_security_login')}}">LOGIN</a> 
-					</li>
-				</ul>	
-			</div>
-	</header>
-
-	{% block content %}
-
-	<section id="section1">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1" id="catchphrase">
-					<h1>Manage money between friends</h1>
-					<p id="explaination">Perfect for friends and flatmates, groups and trips</p>
-					<span id="create-group-big" class="min-570">
-						<a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">
-							Start now  
-							<div class="wrapper">
-								<span>Free</span>
-							</div>
-						</a>
-					</span>
-					
-					<div><a href="{{ path('tk_welcome_create_group')}}" class="btn btn-warning max-570">Start now</a></div>
-					<div id="create-group-small" class="max-700">
-						<div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block; margin-top: 10px;"></div>
-					</div>
-				</div>
-			</div>
+{% block body %}
+<header>
+		<a href="{{ path('tk_user_homepage') }}">
+			<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo">				
+		</a>
+		<div class="pull-right" id="login-register">
+			<ul>
+				<li class="min-700"><div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block"></div></li>
+				{% block header_links %}
+				<li id="feature" class="min-940"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
+				<li id="getappstandapp" class="min-816"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
+				<li id="blog-button" class="min-700"><a href="{{ path('tk_welcome_blog') }}">BLOG</a></li>
+				{% endblock %}
+			</ul>
+			<ul>
+				<li>
+					<button class="btn btn-warning min-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
+					<button class="btn btn-warning btn-small max-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
+					<a href="{{ path('fos_user_security_login')}}">LOGIN</a> 
+				</li>
+			</ul>	
 		</div>
-	</section>
+</header>
 
-	<section id="section2">
-		<div id="overview-flow">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-md-offset-1" id="learn-more-planning">
-						<a href="#planning">CONNECT WITH FRIENDS</a>
-					</div>
-					<div class="col-md-1">
-						<i class="overview-arrow icon-chevron-right icon-rotate-0"></i>
-						<i class="overview-arrow icon-chevron-right icon-rotate-90"></i>
-					</div>
-					<div class="col-md-3" id='learn-more-expense'>
-						<a href="#expense">TRACK EXPENSES</a>
-					</div>
-					<div class="col-md-1">
-						<i class="overview-arrow icon-chevron-right icon-rotate-0"></i>
-						<i class="overview-arrow icon-chevron-right icon-rotate-90"></i>
-					</div>
-					<div class="col-md-3" id='learn-more-payback'>
-						<a href="#payback">PAY BACK YOUR FRIENDS</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+{% block content %}
 
-
-	<!-- ------------------------------------------------------------------------------  -->
-
-	<section id="feature-section" class="feature">
-		<div class="container" id="features">
-			<div id="planning" class="row">
-				<div class="col-md-5 feature-container">
-					<div id="iphone-pic">
-						<div class="screen" id="js-screen" style="margin-top: 52px; margin-left: 50.6px; width: 194px; height: 344px;">
-							<div id="screenContainer" style="position: relative;">
-								<ul id="js-slider" class="slider" style="width: 582px; height: 344px; left: 0px;">
-									<li class="step-intro" id="js-step-intro">
-									</li>
-									<li class="step-data" id="js-step-data">
-									</li>
-									<li class="step-nda" id="js-step-nda">
-									</li>
-								</ul>
-							</div>
+<section id="section1">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1" id="catchphrase">
+				<h1>Manage money between friends</h1>
+				<p id="explaination">Perfect for friends and flatmates, groups and trips</p>
+				<span id="create-group-big" class="min-570">
+					<a href="{{ path('tk_welcome_create_group')}}" id="group-creation-button" class="btn btn-large btn-warning">
+						Start now  
+						<div class="wrapper">
+							<span>Free</span>
 						</div>
-					</div>
-				</div>
-				<div class="col-md-5 feature-description feature-group">
-					<div>
-						<h1>Connect with Friends</h1>
-						<p>Invite your friends from Facebook or your Contact List.</p>
-						<p>Chat privately to friends and groups - make plans for dinner or check who paid for what.</p>
-					</div>
-					<div id="blue-arrow-container" class="transition-arrows-container"><div id="blue-arrow" class="transition-arrows"></div></div>
-					<img src="{{ asset('img/landing-page/section-separator.png') }}">
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="feature">
-		<div class="container">
-			<div id="expense" class="row">
-				<div class="col-md-5 feature-container">
-
-				</div>
-				<div class="col-md-5 feature-description">
-					<div>
-						<h1>Track Expenses</h1>
-						<p>Paid for dinner? Tell Twinkler who you were with and how much you paid - Twinkler will work out what everyone owes you.</p>
-						<p>Twinkler can keep track of the money you've paid and the money you're owed.</p>
-					</div>
-					<div id="blue-arrow-container-left" class="transition-arrows-container"><div id="blue-arrow-left" class="transition-arrows-left"></div></div>
-					<img src="{{ asset('img/landing-page/section-separator.png') }}">
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="feature  feature-payback">
-		<div class="container">
-			<div id="payback" class="row">
-				<div class="col-md-5 feature-container">
-
-				</div>				    		
-				<div class="col-md-5 feature-description">
-					<div>
-						<h1>Pay Back your Friends</h1>						
-						<p>With Twinkler, you and your friends can pay money to each other quickly and securely - for free.</p>
-						<p>Buy tickets, dinner or drinks for each other and don't worry about being paid back.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-	<!-- ------------------------------------------------------------------------------  -->
-	<section id="platform-section">
-		<div class="container">
-			<div class="row">
-				<div class="platform">
-					<div class="col-md-6 col-md-offset-1 platform-catchphrase">
-						<h3 align="center">Use Twinkler on your laptop and your iPhone</h3>
-						<a href="https://itunes.apple.com/app/twinkler/id702569884"><img src="{{ asset('img/landing-page/badge_ios.png') }}" alt="app store download"></a>
-					</div>
-					<div class="col-md-4 col-md-offset-1 platform-thumbnails" align="center">
-						<div><img id="flat-laptop" img src="{{ asset('img/landing-page/flat-mac.png') }}" alt="Twinkler Mac"></div>
-						<div><img id="flat-iphone" src="{{ asset('img/landing-page/flat-iphone.png') }}" alt="Twinkler iPhone" width="50"></div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-	</section>
-
-
-	<section id="feedback-section">
-		<div class="container">
-			<h3 align="center">Why do people love Twinkler?</h3>
-			<div id="user-feedbacks" class="row">
-				<div id="feedback-carousel" class="col-md-8 col-md-offset-2 carousel slide" data-interval="1200">
-					<!-- Carousel items -->
-					<div class="carousel-inner">
-						<div class="active item">
-							<div class="feedback-img">
-								<img src="{{ asset('img/landing-page/feedbacks/feedback-mary.jpg') }}" alt="Twinkler feedback" class="img-circle">
-							</div>
-							<div class="comment-background">
-								<p>"Twinkler saves so much time in our flatshare!"</p>
-								<p class="feedback-name"><STRONG>Emily,</STRONG> London</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-img">
-								<img src="{{ asset('img/landing-page/feedbacks/feedback-jules.jpg') }}" alt="Twinkler feedback" class="img-circle">
-							</div>
-							<div class="comment-background">
-								<p>"Awesome, we don't have to argue who paid what!"</p>
-								<p class="feedback-name"><STRONG>John,</STRONG> Newcastle</p>
-							</div>
-						</div>
-						<div class="item">
-							<div class="feedback-img">
-								<img src="{{ asset('img/landing-page/feedbacks/feedback-arnaud.jpg') }}" alt="Twinkler feedback" class="img-circle">
-							</div>
-							<div class="comment-background">
-								<p>"So easy to use! With Twinkler I don't have to chase my friends for money!"</p>
-								<p class="feedback-name"><STRONG>Arnaud,</STRONG> Paris</p>
-							</div>
-						</div>
-					</div>
-					<!-- Carousel nav -->
-					<a id="control-left" class="carousel-control left" href="#feedback-carousel" data-slide="prev">&lsaquo;</a>
-					<a id="control-right" class="carousel-control right" href="#feedback-carousel" data-slide="next">&rsaquo;</a>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<section class="min-570" id="gettheapp">
-		<div class="container">
-			<div class="row">
-				<a href="https://itunes.apple.com/app/twinkler/id702569884"><img src="{{ asset('img/landing-page/badge_ios.png') }}" alt="app store download"></a>
-				<a href="#subscribeModal" role="button" data-toggle="modal"><img src="{{ asset('img/landing-page/google-play-large.png') }}" alt="Get our Android App!" width="160px;"></a>
-			</div>
-		</div>
-	</section>
-
-	<section style="text-align:center">
-
-		<div class="container">
-				<h3 align="center" style="margin-top:60px; margin-bottom: 20px">Twinkler makes it easy to manage money with the people in your life.</h3>
-			<div id="tk-groups" class="row">
-				<div class="col-md-3">
-					<img alt="Friends managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-friends.jpg') }}" />
-					<h4>
-						Friends
-					</h4>
-				</div>
-				<div class="col-md-3">
-					<img alt="Flatmates managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-flatmates.jpg') }}" />
-					<h4>
-						Flatmates
-					</h4>
-				</div>			
-				<div class="col-md-3">
-					<img alt="holidays managed with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-holidays.jpg') }}" />
-					<h4>
-						Holidays
-					</h4>
-				</div>
-				<div class="col-md-3">
-					<img alt="Clubs managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-sport.jpg') }}" />
-					<h4>
-						Clubs
-					</h4>
-				</div>
-			</div>
-			<div style="position:relative">
-				<div>
-					<a href="{{ path('tk_welcome_create_group')}}" class="btn btn-large btn-warning cta-bottom" style="font-size: 24px">
-						Start now
 					</a>
-					<div class="free-container min-940">
-						<img alt="" height="80" width="160" src="{{ asset('img/landing-page/free-caption.png') }}" />
+				</span>
+				
+				<div><a href="{{ path('tk_welcome_create_group')}}" class="btn btn-warning max-570">Start now</a></div>
+				<div id="create-group-small" class="max-700">
+					<div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block; margin-top: 10px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="section2">
+	<div id="overview-flow">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-md-offset-1" id="learn-more-planning">
+					<a href="#planning">CONNECT WITH FRIENDS</a>
+				</div>
+				<div class="col-md-1">
+					<i class="overview-arrow icon-chevron-right icon-rotate-0"></i>
+					<i class="overview-arrow icon-chevron-right icon-rotate-90"></i>
+				</div>
+				<div class="col-md-3" id='learn-more-expense'>
+					<a href="#expense">TRACK EXPENSES</a>
+				</div>
+				<div class="col-md-1">
+					<i class="overview-arrow icon-chevron-right icon-rotate-0"></i>
+					<i class="overview-arrow icon-chevron-right icon-rotate-90"></i>
+				</div>
+				<div class="col-md-3" id='learn-more-payback'>
+					<a href="#payback">PAY BACK YOUR FRIENDS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- ------------------------------------------------------------------------------  -->
+
+<section id="feature-section" class="feature">
+	<div class="container" id="features">
+		<div id="planning" class="row">
+			<div class="col-md-5 feature-container">
+				<div id="iphone-pic">
+					<div class="screen" id="js-screen" style="margin-top: 52px; margin-left: 50.6px; width: 194px; height: 344px;">
+						<div id="screenContainer" style="position: relative;">
+							<ul id="js-slider" class="slider" style="width: 582px; height: 344px; left: 0px;">
+								<li class="step-intro" id="js-step-intro">
+								</li>
+								<li class="step-data" id="js-step-data">
+								</li>
+								<li class="step-nda" id="js-step-nda">
+								</li>
+							</ul>
+						</div>
 					</div>
+				</div>
+			</div>
+			<div class="col-md-5 feature-description feature-group">
+				<div>
+					<h1>Connect with Friends</h1>
+					<p>Invite your friends from Facebook or your Contact List.</p>
+					<p>Chat privately to friends and groups - make plans for dinner or check who paid for what.</p>
+				</div>
+				<div id="blue-arrow-container" class="transition-arrows-container"><div id="blue-arrow" class="transition-arrows"></div></div>
+				<img src="{{ asset('img/landing-page/section-separator.png') }}">
+			</div>
+		</div>
+	</div>
+</section>
+<section class="feature">
+	<div class="container">
+		<div id="expense" class="row">
+			<div class="col-md-5 feature-container">
+
+			</div>
+			<div class="col-md-5 feature-description">
+				<div>
+					<h1>Track Expenses</h1>
+					<p>Paid for dinner? Tell Twinkler who you were with and how much you paid - Twinkler will work out what everyone owes you.</p>
+					<p>Twinkler can keep track of the money you've paid and the money you're owed.</p>
+				</div>
+				<div id="blue-arrow-container-left" class="transition-arrows-container"><div id="blue-arrow-left" class="transition-arrows-left"></div></div>
+				<img src="{{ asset('img/landing-page/section-separator.png') }}">
+			</div>
+		</div>
+	</div>
+</section>
+<section class="feature  feature-payback">
+	<div class="container">
+		<div id="payback" class="row">
+			<div class="col-md-5 feature-container">
+
+			</div>				    		
+			<div class="col-md-5 feature-description">
+				<div>
+					<h1>Pay Back your Friends</h1>						
+					<p>With Twinkler, you and your friends can pay money to each other quickly and securely - for free.</p>
+					<p>Buy tickets, dinner or drinks for each other and don't worry about being paid back.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- ------------------------------------------------------------------------------  -->
+<section id="platform-section">
+	<div class="container">
+		<div class="row">
+			<div class="platform">
+				<div class="col-md-6 col-md-offset-1 platform-catchphrase">
+					<h3 align="center">Use Twinkler on your laptop and your iPhone</h3>
+					<a href="https://itunes.apple.com/app/twinkler/id702569884"><img src="{{ asset('img/landing-page/badge_ios.png') }}" alt="app store download"></a>
+				</div>
+				<div class="col-md-4 col-md-offset-1 platform-thumbnails" align="center">
+					<div><img id="flat-laptop" img src="{{ asset('img/landing-page/flat-mac.png') }}" alt="Twinkler Mac"></div>
+					<div><img id="flat-iphone" src="{{ asset('img/landing-page/flat-iphone.png') }}" alt="Twinkler iPhone" width="50"></div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</section>
+
+
+<section id="feedback-section">
+	<div class="container">
+		<h3 align="center">Why do people love Twinkler?</h3>
+		<div id="user-feedbacks" class="row">
+			<div id="feedback-carousel" class="col-md-8 col-md-offset-2 carousel slide" data-interval="1200">
+				<!-- Carousel items -->
+				<div class="carousel-inner">
+					<div class="active item">
+						<div class="feedback-img">
+							<img src="{{ asset('img/landing-page/feedbacks/feedback-mary.jpg') }}" alt="Twinkler feedback" class="img-circle">
+						</div>
+						<div class="comment-background">
+							<p>"Twinkler saves so much time in our flatshare!"</p>
+							<p class="feedback-name"><STRONG>Emily,</STRONG> London</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="feedback-img">
+							<img src="{{ asset('img/landing-page/feedbacks/feedback-jules.jpg') }}" alt="Twinkler feedback" class="img-circle">
+						</div>
+						<div class="comment-background">
+							<p>"Awesome, we don't have to argue who paid what!"</p>
+							<p class="feedback-name"><STRONG>John,</STRONG> Newcastle</p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="feedback-img">
+							<img src="{{ asset('img/landing-page/feedbacks/feedback-arnaud.jpg') }}" alt="Twinkler feedback" class="img-circle">
+						</div>
+						<div class="comment-background">
+							<p>"So easy to use! With Twinkler I don't have to chase my friends for money!"</p>
+							<p class="feedback-name"><STRONG>Arnaud,</STRONG> Paris</p>
+						</div>
+					</div>
+				</div>
+				<!-- Carousel nav -->
+				<a id="control-left" class="carousel-control left" href="#feedback-carousel" data-slide="prev">&lsaquo;</a>
+				<a id="control-right" class="carousel-control right" href="#feedback-carousel" data-slide="next">&rsaquo;</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="min-570" id="gettheapp">
+	<div class="container">
+		<div class="row">
+			<a href="https://itunes.apple.com/app/twinkler/id702569884"><img src="{{ asset('img/landing-page/badge_ios.png') }}" alt="app store download"></a>
+			<a href="#subscribeModal" role="button" data-toggle="modal"><img src="{{ asset('img/landing-page/google-play-large.png') }}" alt="Get our Android App!" width="160px;"></a>
+		</div>
+	</div>
+</section>
+
+<section style="text-align:center">
+
+	<div class="container">
+			<h3 align="center" style="margin-top:60px; margin-bottom: 20px">Twinkler makes it easy to manage money with the people in your life.</h3>
+		<div id="tk-groups" class="row">
+			<div class="col-md-3">
+				<img alt="Friends managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-friends.jpg') }}" />
+				<h4>
+					Friends
+				</h4>
+			</div>
+			<div class="col-md-3">
+				<img alt="Flatmates managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-flatmates.jpg') }}" />
+				<h4>
+					Flatmates
+				</h4>
+			</div>			
+			<div class="col-md-3">
+				<img alt="holidays managed with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-holidays.jpg') }}" />
+				<h4>
+					Holidays
+				</h4>
+			</div>
+			<div class="col-md-3">
+				<img alt="Clubs managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-sport.jpg') }}" />
+				<h4>
+					Clubs
+				</h4>
+			</div>
+		</div>
+		<div style="position:relative">
+			<div>
+				<a href="{{ path('tk_welcome_create_group')}}" class="btn btn-large btn-warning cta-bottom" style="font-size: 24px">
+					Start now
+				</a>
+				<div class="free-container min-940">
+					<img alt="" height="80" width="160" src="{{ asset('img/landing-page/free-caption.png') }}" />
 				</div>
 			</div>
 		</div>
