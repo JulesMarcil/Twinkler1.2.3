@@ -18,9 +18,9 @@ $('#group-dropdown-span').hover(function() {
 */
 
 var expenseSlimscroll = function(height){
-    $('#expense-slimscroll').slimScroll({
-        height: Math.min(height,$(window).height()-120)+'px'
-    });
+	$('#expense-slimscroll').slimScroll({
+		height: Math.min(height,$(window).height()-120)+'px'
+	});
 }
 
 /*--------CHARTS--------*/
@@ -144,15 +144,17 @@ var expenseStart = function(){
 
     expenseSlimscroll(435);
 
-        $("#select-all-button").click(function(){
-       		$(".user-checkbox").prop("checked", true);
-    	});
+    $("#select-all-button").click(function(){
+    	$(".user-checkbox").prop("checked", true);
+    });
 
 
-        $("#deselect-all-button").click(function(){
-       		$(".user-checkbox").prop("checked", false);
-    	});
+    $("#deselect-all-button").click(function(){
+    	$(".user-checkbox").prop("checked", false);
+    });
 
+    $("select").selectpicker({style: 'btn btn-wide', menuStyle: 'dropdowN'});
+    $('#dp').datepicker();
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHAT START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -261,7 +263,7 @@ var dashboardStart = function(){
 					duration: 100,
 				}); 
 		}
-	);
+		);
 
 	/* --- Prefilled payback form in modal --- */
 	$(".payback-table tr").on("click", function(e){

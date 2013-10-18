@@ -67,10 +67,9 @@
 			<!-- -------------------------------------- -->
 
 			{% if all_expenses|length == 0 %}
-			<div class="expense-list flat-container" style="text-align: center; margin-top:15px;">
+			<div class="expense-list no-expense-list" style="text-align: center; margin-top:15px;">
 				<div class="no-expense">
 					<p>There is no expense here yet</p></div>
-					<a href="#addExpenseModal" role="button" data-toggle="modal" class="flat-btn flat-pk flat-large" style="background-color: rgb(67,113,191); color:rgb(229,240,255) ; height:25px; padding-top: 5px">Add an expense</a>
 				</div>
 			</div>
 
@@ -106,6 +105,11 @@
 								</font> 
 							</td>
 							<td style=" text-align: center;vertical-align: middle"> 
+								<div class="expense-date">
+									<small>
+										{{expense[0].date | date("M, d")}}
+									</small>
+								</div>
 								<div style="display: inline-block; text-align: center; margin-left: auto; margin-right:auto; width: 100%; height:100%; padding-top: -2px">
 									<div style="display: inline-block; margin: 0px 20px">
 										<font style="color:#fb786b;">

@@ -8,7 +8,7 @@
 			<div class="modal-body">
 				<div id="expense-slimscroll">
 					<div id="add-expense-slimscroll" style="margin: 0px">
-						<div>
+						<div class="expense-features">
 							{{ form_errors(form) }}
 
 							<div>
@@ -32,10 +32,9 @@
 								'style' : 'width : 180px;'}}) }}
 							</div>
 
-							<div>
+							<div class="date">
 								<span>When was it paid ?</span>
-								{{ form_errors(form.date) }}
-								{{ form_widget(form.date) }}
+								<input type="text" class="span2" value="02-16-2012" id="dp" >
 							</div>
 						</div>
 

@@ -98,7 +98,7 @@
 
 #timeline-expense-container{
 	display: inline-block;
-	width: 85%;
+	width: 100%;
 }
 
 #expense-timeline{
@@ -191,10 +191,29 @@
 	margin-left: 10px;
 }
 
+.no-expense-list{
+	box-sizing: border-box;
+	ms-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	min-height: 80px;
+	margin: 0px auto;
+	margin-top: 5px;
+	padding: 0px 10px;
+	padding-top: 24px;
+	font-size: 12px;
+	background-color: white;
+	color: rgb(140,140,140);
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+}
 .no-expense{
 	width: 60%;
 	margin: 0px auto;
-	margin-top: 5px;
+	margin-top: 30qpx;
 	padding: 0px 10px;
 	font-size: 12px;
 	background-color: rgb(242,242,242);
@@ -347,6 +366,18 @@
 	width: 60px;
 }
 
+#add-expense-form{
+	padding-top:0px;
+}
+
+#add-expense-slimscroll .expense-features > div{
+	margin: 15px 0px;
+}
+
+#add-expense-slimscroll .expense-features .date .bootstrap-select > .btn {
+  width:100px;
+}
+
 #users-row > div > input,label{
 	display: inline-block;
 	vertical-align: middle;
@@ -426,6 +457,7 @@
 
 .expense-row{
 	padding: 10px 0px;
+	line-height: 1.6
 }
 
 #expense-table td{
@@ -436,13 +468,6 @@
 
 #expense-table tr:nth-last-child(2) td{
 	border-bottom: none;
-}
-
-.expense-row{
-	box-sizing: border-box;
-	ms-box-sizing: border-box;
-	webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 }
 
 .expense-row td{
@@ -474,17 +499,20 @@
 }
 
 .expense-date{
-	margin-top:-29px; text-align:center
+	margin-top:-28px; 
+	margin-left: -50px;
+	text-align:center;
+	border-radius: 2px;
 }
 
 .expense-date small{
 	background-color: white; 
 	padding: 0px 10px;
-	color:rgb(140,140,140)
+	color:rgb(140,140,140);
+	border-radius: 6px;
 }
 
 #expense-table-body tr:first-child .expense-date{
-	display:none;
 }
 
 
@@ -500,7 +528,10 @@
 }
 
 #edit-column .btn{
-	width: 45px;
+	width: 35px;
+	padding-top: 4px;
+	padding-bottom: 6px;
+	margin-top:9px;
 }
 
 
@@ -513,6 +544,10 @@
 	text-align: left;
 }
 
+#edit-column .caret{
+	border-bottom-color: white;
+	border-top-color: white;
+}
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /* --- CSS Chart --- */

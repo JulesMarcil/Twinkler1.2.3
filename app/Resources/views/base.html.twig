@@ -21,9 +21,11 @@
 
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
         <link href="{{ asset('flat-ui/css/flat-ui.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('bootstrap/css/bootstrap-select.min.css') }}" rel="stylesheet">
         <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/font.css') }}" rel="stylesheet">
         <link href="{{ asset('css/flat-design.css') }}" rel="stylesheet">
+        <link href="{{ asset('datepicker/css/datepicker.css') }}" rel="stylesheet">
         <link rel="icon"  type="image/png" href="{{ asset('img/logo/favicon.png') }}">
         {% block head %}
         {% endblock %}
@@ -42,7 +44,8 @@
             <script src="{{ asset('js/jquery.nicescroll.js') }}"></script>
             <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
             <script src="{{ asset('flat-ui/js/flatui-checkbox.js') }}"></script>
-            <script src="{{ asset('flat-ui/js/flatui-radio.js') }}"></script>
+            <script src="{{ asset('bootstrap/js/bootstrap-select.js') }}"></script>
+            <script src="{{ asset('datepicker/js/bootstrap-datepicker.js') }}"></script>
             {% block javascripts %}
             {% endblock %}
         </div>
