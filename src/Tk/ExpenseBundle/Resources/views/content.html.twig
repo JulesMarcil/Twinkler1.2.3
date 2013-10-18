@@ -46,7 +46,7 @@
 								<h2>Expenses Timeline</h2>
 							</li>
 							<li style="float:right; border-bottom: none">
-								<a href="" style="border-bottom: none">
+								<a style="border-bottom: none">
 									<i class="icon-reorder icon-large"></i>
 								</a>
 								<ul class="section-header-dropdown">
@@ -84,16 +84,16 @@
 
 			<div id="expense-table-container" style="">
 				<table id="expense-table">
-					<thead id="expense-table-header" style="overflow-hidden">
+					<thead id="expense-table-header">
 						<tr>
-							<td style="text-align: center;">Who</td>
+							<td style="text-align: center">Who</td>
 							<td style="text-align: center;">How Much</td>
 							<td>What</td>
 							<td style="text-align: center;">Your Share</td>
 							<td></td>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="expense-table-body">
 						{% for expense in all_expenses %}
 
 						<!-- PAYBACK -->
@@ -191,11 +191,11 @@
 							</td>
 							<td id="edit-column" style="vertical-align: middle; padding-top:0px">
 								<div class="btn-group">
-									<i class="dropdown-arrow dropdown-arrow"></i>
+									<i class="dropdown-arrow dropdown-arrow-inverse"></i>
 									<button class="btn dropdown-toggle" data-toggle="dropdown">
 										<span class="caret"></span>
 									</button>
-									<ul class="dropdown-menu dropdown">
+									<ul class="dropdown-menu dropdown-inverse">
 										<li><a data-id="{{expense[0].id }}"><i class="icon-edit icon-large"></i> Edit Expense</a></li>
 										<li><a href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash icon-large"></i> Remove Expense</a></li>
 									</ul>
