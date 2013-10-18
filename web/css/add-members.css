@@ -1,5 +1,9 @@
 /* --- Add memberS --- */
 
+.alert{
+	margin-bottom: 0;
+}
+
 .flat-container {
 	width: 100%;
 }

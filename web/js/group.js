@@ -369,10 +369,12 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 	// ---> ajax for going to expenses 
-	$("#navbar-expenses").on('click', function(e){
+	$("#navbar-expenses-link").on('click', function(e){
 		e.preventDefault();
-		$('#content-container').fadeOut()
+		$('#content-container').fadeOut();
+		$('#spinner').fadeIn();
 		$.get('ajax/expenses', function(response){
+			$('#spinner').fadeOut();
 			$('#content-container').html(response).fadeIn();
 			window.history.pushState("", "", 'expenses');
 			// rappeler les fonctions de mise en forme
@@ -383,10 +385,12 @@ $(document).ready(function() {
 	});
 
 	// ---> ajax for going to chat 
-	$("#navbar-chat").on('click', function(e){
+	$("#navbar-chat-link").on('click', function(e){
 		e.defaultPrevented;
-		$('#content-container').fadeOut()
+		$('#content-container').fadeOut();
+		$('#spinner').fadeIn();
 		$.get('ajax/chat', function(response){
+			$('#spinner').fadeOut();
 			$('#content-container').html(response).fadeIn();
 			window.history.pushState("", "", 'chat');
 			// rappeler les fonctions de mise en forme
@@ -401,10 +405,12 @@ $(document).ready(function() {
 	});
 
 	// ---> ajax for going to dashboard
-	$("#navbar-dashboard").on('click', function(e){
+	$("#navbar-dashboard-link").on('click', function(e){
 		e.defaultPrevented;
-		$('#content-container').fadeOut()
+		$('#content-container').fadeOut();
+		$('#spinner').fadeIn();
 		$.get('ajax/dashboard', function(response){
+			$('#spinner').fadeOut();
 			$('#content-container').html(response).fadeIn();
 			window.history.pushState("", "", 'dashboard');
 			// rappeler les fonctions de mise en forme

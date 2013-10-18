@@ -348,8 +348,12 @@ header .selection-menu{
 	width: 100%;
 }
 
+<<<<<<< HEAD
 
 header .selection-menu .user-name{
+=======
+.selection-menu .user-name{
+>>>>>>> c8bad76148f4498fa835cc4fac7fe7ad389bd547
 	-webkit-transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
 	transition:color 175ms cubic-bezier(0.645, 0.045, 0.355, 1);
 	color:#34495E;
