@@ -2,7 +2,7 @@
 <div id="user-layout" class="row">
     <div align="center">
         {% if app.session.get('invitation_id') != null %}
-        <h5>Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
+        <h5 class="invitation-message">Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
         {% endif %}
 
         {% for type, messages in app.session.flashbag.all() %}
@@ -13,21 +13,21 @@
             {% endfor %}
         {% endfor %}
 
-        <div>
+        <div id="register-content">
             <div class="flat-container">
             	<div class="flat-header">
-            		<h1 style="font-size:20px">SIGN UP</h1>	
+            		<h1>REGISTER</h1>	
             	</div>
                 <div>
                     <div id="hip-way">
-                        <p id="p1">Do it the hip way</p>
+                        <h3>Do it the hip way</h3>
                         <p id="p2">Connect in a single click via Facebook.</p>
                         <a class="btn btn-info" id="facebook-login" onclick="fbLogin()">Connect with Facebook</a>
                         <p style="color: #999999; font-size: 12px;">Find your friends instantly on Twinkler and we'll never post anything on your behalf.</p>
                     </div>
 
                     <div id="old-school-way">
-                        <p style="display: inline-block;width:80%; color:rgb(245,103,99); font-size: 18px">Or the old school way</p>
+                        <h3>Or the old school way</h3>
                         <div id="register-form">
                         	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" style="margin-top: 20px;">
                                 {{ form_errors(form) }}
