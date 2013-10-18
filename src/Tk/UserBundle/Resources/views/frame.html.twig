@@ -18,7 +18,9 @@
                 <a href="{{ path('tk_user_homepage') }}">Home</a>
             </div>
             <div id="group-name">
-                <a href="{{ path('tk_user_homepage') }}">{{ app.user.currentMember.tgroup.name|capitalize }}</a>
+                {% block navbar_title %}
+                {{ app.user|capitalize }}
+                {% endblock %}
             </div>
             <div id="cog">
                 <a href="{{ path('tk_user_homepage') }}"><i class="icon-gear icon-large"></i></a>
