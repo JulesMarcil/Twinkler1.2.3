@@ -47,6 +47,9 @@ class DefaultController extends Controller
     	$this->changeCurrentMemberAction($id);
 
         $route = $this->get('request')->get('route');
+        if ($route == 'tk_user_homepage' or $route == 'tk_welcome_homepage'){
+            $route = 'tk_expense_homepage';
+        }
         return $this->redirect($this->generateUrl($route));
     }
 
