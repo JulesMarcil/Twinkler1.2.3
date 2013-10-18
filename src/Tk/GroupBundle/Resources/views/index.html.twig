@@ -13,6 +13,10 @@
 <link href="{{ asset('css/group-expenses.css') }}"  rel="stylesheet" type="text/css">
 {% endblock %}
 
+{% block navbar_title %}
+{{ group.name|capitalize }}
+{% endblock %}
+
 {% block header %}
 <div id="second-row-big" class="row min-770" style="position: relative">
 	<div id="group">

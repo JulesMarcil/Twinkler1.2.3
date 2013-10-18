@@ -439,11 +439,10 @@ header #show-hide-members{
 		text-align: right;
 	}
 	header #back-button a,
-	header #group-name a,
 	header #cog a{
 		color: white;
 	}
-	header #group-name a{
-		font-size: 24px;
+	header #group-name{
+		font-size: 22px;
 	}
 }
