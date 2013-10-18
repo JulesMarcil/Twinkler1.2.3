@@ -21,17 +21,17 @@
 			{% if user.currentMember == null or user.currentMember.tgroup != app.user.currentMember.tgroup %}
 
 			<tr id="tr-user-{{user.id}}">
-				<td style="width: 40px;">
+				<td style="width: 20%;">
 					{% if user.facebookId %}
-					<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" alt="{{ user }}" style="position: relative;" width="30px">
+					<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="{{ user }}" style="position: relative;" width="30px">
 					{% else %}
-					<img src="{{ asset(user.picture.path) }}" alt="{{ user }}" style="position: relative;" width="30px">
+					<img src="{{ asset(user.picture.path) }}" class="img-circle" alt="{{ user }}" style="position: relative;" width="30px">
 					{% endif %}
 				</td>
-				<td class="name">
+				<td class="name" style="width: 60%; color:#F97E76; text-align:left">
 					{{ user }}
 				</td>
-				<td class="add-button"><button data-id="{{user.id}}" class="btn btn-small">Add</button></td>
+				<td class="add-button" style="width: 20%"><button data-id="{{user.id}}" class="btn btn-success btn-small">Add</button></td>
 			</tr>
 
 			{% endif %}

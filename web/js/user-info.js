@@ -20,6 +20,3 @@ $('#group-dropdown-span').hover(function() {
 }, function() {
 	$('.navbar .dropdown').find('.dropdown-menu').first().stop(true, true).delay(0).hide()
 });
-
-
-$("select").selectpicker({style: 'btn', menuStyle: 'dropdowN'});

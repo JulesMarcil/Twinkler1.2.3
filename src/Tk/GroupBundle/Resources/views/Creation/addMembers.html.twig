@@ -42,10 +42,22 @@
 </div>
 <div class="new-group row" style="text-align: center">
 	<div class="col-md-10 col-md-offset-1">
-		<div class="flat-container">
-			<div class="flat-header">
-				<h3>Add members to the group <b>{{ app.user.currentMember.tgroup.name|upper }}</b></h3>
+
+			<div class="section-header">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-header">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+				</div>            
+				<div class="navbar-collapse collapse" id="nav-collapse-01">
+					<ul class="nav">
+						<li>
+							<h2>Add members to the group <b>{{ app.user.currentMember.tgroup.name|upper }}</h2>
+						</li>
+					</ul>
+				</div><!--/.nav -->
 			</div>
+
+		<div class="flat-container">
 			<div class="row" style="margin-top: 5px">
 				<div class="col-md-6" id="add-member-block">
 					{% render(controller('TkGroupBundle:Default:addMember')) %}
@@ -58,7 +70,7 @@
 			</div>
 			<div class="flat-footer">
 				<a id="add-validate" href="{{ path('tk_group_add_validate') }}">
-					<div class="flat-btn flat-pk">Validate and Continue</div>
+					<div class="btn btn-success">Validate and Continue</div>
 				</a>
 			</div>
 		</div>	

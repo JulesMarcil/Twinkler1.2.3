@@ -14,7 +14,7 @@ $(document).ready(function() {
 	});
 	// Scroll in friend table
 	$("#friend-table").slimScroll({
-	    height: '160px'
+	    height: '180px'
 	});
 
 	// ajax add member

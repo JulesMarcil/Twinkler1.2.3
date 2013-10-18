@@ -19,12 +19,13 @@
 }
 
 .subheader{
-	color: #4371BF;
+	color: #34495E;
 	width: 100%;
 	height: 30px;
-	background-color: #E5F0FF;
+	background-color: #EFF0F2;
 	margin-bottom: 20px;
 	text-align: center;
+	font-weight: normal;
 }
 
 .subheader h3{
@@ -36,6 +37,7 @@
 
 #add-member-block form > div{
 	margin-bottom: 10px;
+	display: inline-block;
 }
 
 #add-member-block input{
@@ -53,6 +55,7 @@
 #add-member-block textarea{
 	width: 300px;
 	font-size: 14px;
+	background-color: rgb(250,250,250);
 }
 
 /* --- facebook table --- */
@@ -76,6 +79,32 @@
 	line-height: 14px;
 	font-size: 14px;
 	padding: 5px 10px;
+}
+
+#table-block{
+	padding: 0px 20px;
+}
+
+#friend-table{
+  border:2px solid #BDC3C7;
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:6px;
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
+  width: 80%;
+}
+
+#friend-table table{
+	width: 100%;
+	margin: 0px;
+}
+
+#friend-table tr {
+  border-bottom-color:#CCCCCC;
+  border-bottom-style:dotted;
+  border-bottom-width:1px;
+  height:50px;
+  width:80%;
 }
 
 /* -- footer -- */

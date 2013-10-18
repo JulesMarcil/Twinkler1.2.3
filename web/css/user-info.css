@@ -300,6 +300,7 @@ header .selection-menu{
 
 .new-group-content{
 	padding: 20px 0px;
+	padding-top: 40px
 }
 
 .new-group input{
@@ -311,14 +312,19 @@ header .selection-menu{
 	margin: 15px 0px;
 }
 
-.new-group .currency div{
+.bootstrap-select{
 	display: inline-block;
+	width: 30px
 }
 
 .new-group .currency > span,select{
 	display: inline-block;
 	margin: 0px 5px;
 	font-size: 16px;
+}
+
+.bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]) {
+  width:150px;
 }
 
 #tk_groupbundle_tgrouptype_currency{

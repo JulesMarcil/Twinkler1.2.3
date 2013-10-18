@@ -11,7 +11,7 @@
 				<div class="navbar-collapse collapse" id="nav-collapse-01">
 					<ul class="nav">
 						<li>
-							<h2>Choose a Name for your Group</h2>
+							<h2>Choose a Name for your New Group</h2>
 						</li>
 					</ul>
 				</div><!--/.nav -->
@@ -28,15 +28,14 @@
 					    }) }}
 					<div class="currency">
 					    <span>Select Currency:</span>
-					    <div>
 					    {{ form_errors(form.currency) }}
-					    {{ form_widget(form.currency) }}</div>
+					    {{ form_widget(form.currency) }}
 					</div>
 					    {{ form_rest(form) }}
 				</div>
 
 			    <div class="flat-footer">
-			    	<input type="submit" value="Create Group" class="btn btn-inverse" style="border:none;"/>
+			    	<input type="submit" value="Create Group" class="btn btn-success" style="border:none;"/>
 			    </div>
 			</form>
 			
