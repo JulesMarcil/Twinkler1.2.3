@@ -10,6 +10,22 @@ use Tk\GroupBundle\Form\TGroupType;
 
 class DefaultController extends Controller
 {
+    public function indexAction(){
+
+        $securityContext = $this->container->get('security.context');
+        if( !$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+
+            $request = $this->getRequest();
+            $language = $request->getPreferredLanguage();
+            $request->setLocale($language);
+
+            return $this->render('TkWelcomeBundle:Default:index.html.twig');
+        }else{
+            return $this->render('TkUserBundle:Profile:show.html.twig');
+        }
+
+    }
+
     public function subscribeAction(){
 
         $subscribe = new Subscribe();

@@ -1,5 +1,5 @@
 tk_user_homepage:
-    pattern:  /
+    pattern:  /profile
     defaults: { _controller: TkUserBundle:Profile:index }
 
 tk_user_profile_edit:

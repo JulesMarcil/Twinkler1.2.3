@@ -19,29 +19,9 @@ use Tk\UserBundle\Entity\User,
 
 class ProfileController extends Controller
 {
-    public function showAction(){ return $this->indexAction();}
     public function indexAction()
     {
-        $securityContext = $this->container->get('security.context');
-        if( !$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
-
-            $request = $this->getRequest();
-            $language = $request->getPreferredLanguage();
-            $request->setLocale($language);
-
-            return $this->render('TkWelcomeBundle:Default:index.html.twig');
-        }else{
-
-            if(!$this->getUser()->hasRole('ROLE_FACEBOOK')){
-                $fbk = $this->get('fos_facebook.api');
-                $facebook_login = $fbk->getLoginUrl();
-            } else {
-                $facebook_login = 0;
-            }
-            return $this->render('TkUserBundle:Profile:show.html.twig', array(
-                'facebook_login' => $facebook_login
-                ));
-        }
+        return $this->render('TkUserBundle:Profile:show.html.twig');
     }
 
     public function editAction($id)

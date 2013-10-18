@@ -1,18 +1,6 @@
-tk_welcome_summary:
-    pattern: /summary/{id}/{token}
-    defaults: { _controller: TkWelcomeBundle:Summary:summary }
-
-tk_welcome_choose_member:
-    pattern: /invitation/{id}/{token}
-    defaults: { _controller: TkWelcomeBundle:Invitation:chooseMember }
-
-tk_welcome_chosen_member:
-    pattern: /invitation/chosen/{id}/{type}/{token}
-    defaults: { _controller: TkWelcomeBundle:Invitation:chosenMember }
-
-tk_welcome_invitation_login:
-    pattern:  /login/{id}/{token}
-    defaults: { _controller: TkWelcomeBundle:Invitation:invitationLogin }
+tk_welcome_homepage:
+    pattern: /
+    defaults: { _controller: TkWelcomeBundle:Default:index }
 
 tk_welcome_subscribe:
     pattern: /subscribe
@@ -40,3 +28,19 @@ tk_welcome_contact:
 tk_welcome_create_group:
     pattern: /new
     defaults: { _controller: TkWelcomeBundle:Default:newGroup }
+
+tk_welcome_choose_member:
+    pattern: /invitation/{id}/{token}
+    defaults: { _controller: TkWelcomeBundle:Invitation:chooseMember }
+
+tk_welcome_chosen_member:
+    pattern: /invitation/chosen/{id}/{type}/{token}
+    defaults: { _controller: TkWelcomeBundle:Invitation:chosenMember }
+
+tk_welcome_invitation_login:
+    pattern:  /login/{id}/{token}
+    defaults: { _controller: TkWelcomeBundle:Invitation:invitationLogin }
+
+tk_welcome_summary:
+    pattern: /summary/{id}/{token}
+    defaults: { _controller: TkWelcomeBundle:Summary:summary }
