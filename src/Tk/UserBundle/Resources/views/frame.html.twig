@@ -109,6 +109,16 @@
     </div>
 </section>
 
+<!-- FEEBACK MODAL -->
+<div id="feedbackModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- Loaded with ajax -->
+</div>
+
+<!-- REFRESH SPINNER -->
 <img id="spinner" src="{{ asset('img/Frame/spinner.GIF') }}" style="display: none; position: absolute; top: 50%; left: 50%" alt="spinner">
 
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/frame.js') }}"></script>
 {% endblock %}

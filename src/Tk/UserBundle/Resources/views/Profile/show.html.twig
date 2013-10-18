@@ -121,13 +121,6 @@
 				{% endblock profile %}
 			</div>
 
-				<!-- FEEBACK MODAL -->
-
-			<div id="feedbackModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-				<!-- Loaded with ajax -->
-
-			</div>
 		</div>
 	</div>	
 
@@ -195,5 +188,6 @@
 {% endblock %}
 
 {% block javascripts %}
+{{ parent() }}
 <script type='text/javascript' src="{{ asset('js/user-info.js') }}"></script>
 {% endblock %}
