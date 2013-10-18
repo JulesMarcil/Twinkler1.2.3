@@ -8,6 +8,9 @@ header {
 	padding: 10px 0px;
 }
 
+header .selection-menu{
+	margin-top: 0px
+}
 
 /* --- User information --- */
 #user-info{
@@ -306,6 +309,10 @@ header {
 
 .new-group .currency{
 	margin: 15px 0px;
+}
+
+.new-group .currency div{
+	display: inline-block;
 }
 
 .new-group .currency > span,select{
