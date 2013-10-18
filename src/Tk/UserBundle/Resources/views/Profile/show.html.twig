@@ -140,11 +140,11 @@
 		</p>You do not have any group yet</p>
 		{% else %}
 		{% for member in app.user.members %}
-		<a  href="{{ path('tk_group_goto_member', { 'id' : member.id }) }}">
+		<a class="group-link" data-id="{{member.id}}" href="{{ path('tk_group_goto_member', { 'id' : member.id }) }}">
 			<div class="flat-container accordion-group group-box">
 				<div class="accordion-heading" style="display:inline-block; position:relative; width:100%;">
 					<div class="accordion-heading-middle">
-						<font>{{ member.tgroup.name|capitalize }}</font>
+						<font>{{ member.tgroup.name|capitalize }}</font><img class="group-spinner" id="spinner-{{member.id}}" src="{{ asset('img/Frame/spinner.GIF')}}" width="20px" style="display: none; margin-left: 5px;" alt="spinner"/>
 						<p> <font style="color:#8C8C8C;font-size:16px; color:#BEB5B2">opened on {{ member.tgroup.date| date('d/m/y') }}</font></p>
 					</div>
 					<div class="accordion-heading-right">
