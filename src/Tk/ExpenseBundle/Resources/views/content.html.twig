@@ -2,12 +2,21 @@
 
 <div class="row">
 	<div class="col-md-4">
-		<div id="balance" class="flat-container">
-			<div class="expense-header flat-header">
-				<div id="expense-title">
-					<h2>BALANCE</h2>
-				</div>
+		<div class="section-header">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-header">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+				</div>            
+				<div class="navbar-collapse collapse" id="nav-collapse-01">
+					<ul class="nav">
+						<li>
+							<h2>Balances</h2>
+						</li>
+					</ul>
+				</div><!--/.nav -->
 			</div>
+		</div>
+		<div id="balance" class="flat-container">
 			<div id="blce-tbl" class="balance-table-container">
 				<table id="balance-table">
 
@@ -26,26 +35,36 @@
 				{% render(controller("TkExpenseBundle:Expense:new")) %}
 			</div>
 
-			<div class="expense-list flat-container">
-				<div class="expense-header flat-header">
-					<div id="expense-title">
-						<h2>EXPENSE TIMELINE</h2>
-					</div>
-					<a href="#addExpenseModal" role="button" data-toggle="modal">
-						<div id="add-expense-btn">
-							<i class="icon-plus-sign" style=""></i>ADD EXPENSE
-						</div>
-					</a>
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>Expenses Timeline</h2>
+							</li>
+							<li style="float:right; border-bottom: none">
+								<a href="" style="border-bottom: none">
+									<i class="icon-reorder icon-large"></i>
+								</a>
+								<ul class="section-header-dropdown">
+									<li><a id="show-all-button" class="active" href="">Show all Expenses</a> <span class="navbar-unread">1</span></li>
+									<li><a id="only-mine-button" href="">Show only my Expenses</a></li>
+								</ul> <!-- /Sub menu -->
+							</li>
+							<li style="float:right; border-bottom: none">
+								<a href="#addExpenseModal" role="button" data-toggle="modal"  style="border-bottom: none">
+									<i class="icon-plus icon-large"></i>
+								</a>
+							</li>
+						</ul>
+					</div><!--/.nav -->
 				</div>
-				<div id="filter-buttons">
-					<a id="show-all-button" class="active">show all</a>
-					<a id="only-mine-button">only mine</a>
-				</div>
-				<div id="expense-summary">
-					Total paid {{ total_paid }}{{ currency }} -
-					You paid {{ total_paid_by_me }}{{ currency }}
-				</div>		
 			</div>
+
+			<!--/.nav -->
 
 
 			<!-- -------------------------------------- -->
@@ -63,11 +82,10 @@
 
 			{% else %}
 
-			<div id="expense-table-container" class="flat-container">
+			<div id="expense-table-container" style="">
 				<table id="expense-table">
-					<thead id="expense-table-header">
+					<thead id="expense-table-header" style="overflow-hidden">
 						<tr>
-							<td style="text-align: center;">When</td>
 							<td style="text-align: center;">Who</td>
 							<td style="text-align: center;">How Much</td>
 							<td>What</td>
@@ -81,14 +99,6 @@
 						<!-- PAYBACK -->
 						{% if expense[0].type == 'payback' %}
 						<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}" style=" background-color: rgba(153, 179, 53, 0.1)">
-							<td style="padding-top:6px">
-								<div id="date-column" style="margin: 0px 0px; margin-top:0px;">
-
-								<font style="color:#99B335; font-size:18px; font-family: 'Proxima-condensend-light'">
-									{{expense[0].date | date("d")}} <br> </font><font style="color:#99B335; font-size:16px; font-family: 'Proxima-condensend-light'">{{expense[0].date | date("M") | upper}}
-								</font>
-								</div>
-							</td>
 							<td id="profile-pic-row" style="vertical-align: middle; padding-top:0px; padding-bottom:0px">
 								<div style="">
 									<font style="color:#99B335;">
@@ -103,57 +113,57 @@
 							</td>
 							<td style="padding-top: 4px; padding-bottom: 8px; text-align: center;vertical-align: middle; padding-top:0px"> 
 								<div style="display: inline-block; text-align: center; margin-left: auto; margin-right:auto; width: 100%; height:100%">
-								<div style="display: inline-block; margin: 0px 20px">
-									<font style="color:#fb786b;">
-										<div>
-											<font style="color:#fb786b">
-												{% if expense[0].owner.user == app.user %}
-												You
+									<div style="display: inline-block; margin: 0px 20px">
+										<font style="color:#fb786b;">
+											<div>
+												<font style="color:#fb786b">
+													{% if expense[0].owner.user == app.user %}
+													You
+													{% else %}
+													{{ expense[0].owner.name }} 
+													{% endif %}
+												</font>
+											</div>
+											<div>
+												{% if expense[0].owner.user %}
+												{% if expense[0].owner.user.facebookId %}
+												<img src="http://graph.facebook.com/{{expense[0].owner.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 												{% else %}
-												{{ expense[0].owner.name }} 
+												<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 												{% endif %}
-											</font>
-										</div>
-										<div>
-											{% if expense[0].owner.user %}
-											{% if expense[0].owner.user.facebookId %}
-											<img src="http://graph.facebook.com/{{expense[0].owner.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-											{% else %}
-											<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-											{% endif %}
-											{% else %}
-											<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-											{% endif %}
-										</div>
-									</font>
-								</div>
-								<div style="display: inline-block; color:rgba(69, 69, 69, 0.6); margin-top: -2px">
-									<i class="icon-arrow-right icon-large"></i>
-								</div>	
-								<div style="display: inline-block;  margin: 0px 20px">
-									<font style="color:#fb786b;">
-										<div>
-											<font style="color:#fb786b">
-												{% if expense[0].users[0].user == app.user %}
-												You
 												{% else %}
-												{{ expense[0].users[0].name }} 
+												<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 												{% endif %}
-											</font>
-										</div>
-										<div>
-											{% if expense[0].users[0].user %}
-											{% if expense[0].users[0].user.facebookId %}
-											<img src="http://graph.facebook.com/{{expense[0].users[0].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-											{% else %}
-											<img src="{{ asset(expense[0].users[0].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-											{% endif %}
-											{% else %}
-											<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-											{% endif %}
-										</div>
-									</font>
-								</div>
+											</div>
+										</font>
+									</div>
+									<div style="display: inline-block; color:rgba(69, 69, 69, 0.6); margin-top: -2px">
+										<i class="icon-arrow-right icon-large"></i>
+									</div>	
+									<div style="display: inline-block;  margin: 0px 20px">
+										<font style="color:#fb786b;">
+											<div>
+												<font style="color:#fb786b">
+													{% if expense[0].users[0].user == app.user %}
+													You
+													{% else %}
+													{{ expense[0].users[0].name }} 
+													{% endif %}
+												</font>
+											</div>
+											<div>
+												{% if expense[0].users[0].user %}
+												{% if expense[0].users[0].user.facebookId %}
+												<img src="http://graph.facebook.com/{{expense[0].users[0].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+												{% else %}
+												<img src="{{ asset(expense[0].users[0].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+												{% endif %}
+												{% else %}
+												<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+												{% endif %}
+											</div>
+										</font>
+									</div>
 								</div>
 							</td>
 							<td id="balance-column" style="vertical-align: middle; padding-top:0px">
@@ -174,15 +184,21 @@
 								</font>
 								{% endif %}
 								{% else %}
-									<font style="color:#C8C8C8; font-weight: bold">
-										_
-									</font>
+								<font style="color:#C8C8C8; font-weight: bold">
+									_
+								</font>
 								{% endif %}
 							</td>
 							<td id="edit-column" style="vertical-align: middle; padding-top:0px">
-								<div>
-									<a class="edit-button" data-id="{{expense[0].id }}"><i class="icon-edit"></i></a>
-									<a class="remove-button" href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash"></i></a>
+								<div class="btn-group">
+									<i class="dropdown-arrow dropdown-arrow"></i>
+									<button class="btn dropdown-toggle" data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu dropdown">
+										<li><a data-id="{{expense[0].id }}"><i class="icon-edit icon-large"></i> Edit Expense</a></li>
+										<li><a href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash icon-large"></i> Remove Expense</a></li>
+									</ul>
 								</div>
 							</td>
 						</tr>
@@ -192,24 +208,7 @@
 						{% else %}
 
 						<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}">
-							<td>
-								<div id="date-column" style="margin: 0px 4px; margin-top:0px;">
-
-								<font style="color:rgba(69,69,69,0.6); font-size:18px; font-family: 'Proxima-condensend-light'">
-									{{expense[0].date | date("d")}} <br> </font><font style="color:rgba(69,69,69,0.6); font-size:16px; font-family: 'Proxima-condensend-light'">{{expense[0].date | date("M") | upper}}
-								</font>
-								</div>
-							</td>
 							<td id="profile-pic-row">
-								<div style="margin-top:4px">
-									<font style="color:#fb786b">
-										{% if expense[0].owner.user == app.user %}
-										You
-										{% else %}
-										{{ expense[0].owner.name }} 
-										{% endif %}
-									</font>
-								</div>
 								<div>
 									{% if expense[0].owner.user %}
 									{% if expense[0].owner.user.facebookId %}
@@ -220,6 +219,15 @@
 									{% else %}
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 									{% endif %}
+								</div>
+								<div style="margin-top:4px">
+									<font style="color:#fb786b">
+										{% if expense[0].owner.user == app.user %}
+										You
+										{% else %}
+										{{ expense[0].owner.name }} 
+										{% endif %}
+									</font>
 								</div>
 							</td>
 							<td id="amount-column">
@@ -234,36 +242,42 @@
 									</font>
 								</div>
 								<div>
-									<p style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For who: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</p>
+									<small style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For who: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</small>
 								</div> 
 							</td>
 							<td id="balance-column">
 								{% if expense[1] != 0 %}
 								{% if expense[0].owner.user == app.user %}
 								<font style="color:rgba(69,69,69,0.6); font-size:12px">
-									YOU ARE OWED<br>
+									You are owed<br>
 								</font>
 								<font style="color:rgb(153,179,53); font-weight: bold">
 									{{ expense[1] }} {{ currency }}
 								</font>
 								{% else %}
 								<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
-									YOU OWE<br>
+									You owe<br>
 								</font>
 								<font style="color:#fb786b; font-weight: bold">
 									{{ -expense[1] }} {{ currency }}
 								</font>
 								{% endif %}
 								{% else %}
-									<font style="color:#C8C8C8; font-weight: bold">
-										_
-									</font>
+								<font style="color:#C8C8C8; font-weight: bold">
+									_
+								</font>
 								{% endif %}
 							</td>
 							<td id="edit-column">
-								<div>
-									<a class="edit-button" data-id="{{expense[0].id }}"><i class="icon-edit"></i></a>
-									<a class="remove-button" href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash"></i></a>
+								<div class="btn-group">
+									<i class="dropdown-arrow dropdown-arrow"></i>
+									<button class="btn dropdown-toggle" data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu dropdown">
+										<li><a data-id="{{expense[0].id }}"><i class="icon-edit icon-large"></i> Edit Expense</a></li>
+										<li><a href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash icon-large"></i> Remove Expense</a></li>
+									</ul>
 								</div>
 							</td>
 						</tr>
@@ -275,6 +289,13 @@
 				</table>
 			</div>
 			{% endif %}
+
+
+			<a href="#addExpenseModal" role="button" data-toggle="modal">
+				<div id="new-group-button">
+				<i class="icon-plus-sign" style="margin-right: 6px"></i> Add an Expense
+				</div>
+			</a>
 		</div>
 	</div>	
 </div>

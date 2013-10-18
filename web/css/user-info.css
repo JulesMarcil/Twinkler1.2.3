@@ -8,74 +8,11 @@ header {
 	padding: 10px 0px;
 }
 
-/* --- Section Header --- */
-
-.section-header .nav{
-	width: 100%;
-}
-
-.section-header .navbar-inverse .nav > li > h2{
-  color:#FFFFFF;
-  font-size:16px;
-  line-height:20px;
-  padding:16px 20px 15px;
-}
-
-.section-header .btn [class^="icon-"].icon-large, .nav [class^="icon-"].icon-large, .btn [class*=" icon-"].icon-large, .nav [class*=" icon-"].icon-large {
-  line-height:24px;
-}
-
-.section-header .nav > li:last-child{
-	float:right;
-	border-bottom:none;
-}
-
-.section-header .nav > li:first-child{
-	float:none;
-}
-
-.section-header .navbar-inverse .nav > li:last-child > a {
-	border-bottom:none;
-}
-
-.section-header .navbar-inverse .nav > li:hover > a {
-	color:#FB786B
-}
-
-.section-header .navbar .nav ul a:hover {
-	background-color: #FB786B;
-}
-
 
 /* --- User information --- */
 #user-info{
 	position: relative;
 	text-align: center;
-}
-
-.navbar .nav .profile-settings{
-	width:180px;
-	left:-120px;
-}
-
-.navbar .nav > li >  .profile-settings:before{
-	position:absolute;
-	left: 138px;
-	top: 2px;
-	border-right:12px solid transparent;
-	border-bottom:12px solid #34495E;
-	border-left:12px solid transparent;
-	content:""
-}
-
-.navbar .nav > li >  .profile-settings:after{
-	position:absolute;
-	left: 140px;
-	top: 5px;
-	border-right:10px solid transparent;
-	border-bottom:10px solid #34495E;
-	border-left:10px solid transparent;
-	content:""
 }
 
 .info-icon{

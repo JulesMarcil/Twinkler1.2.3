@@ -52,7 +52,7 @@
 	margin-bottom: 0px;
 	padding: 0;
 	color:#FCD5D2;
-  	font-size:18px;
+	font-size:18px;
 }
 
 .group-title{
@@ -62,9 +62,9 @@
 	padding-top: 2px; 
 	padding-left: 10px; 
 	padding-right: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .group-edit:after{ /*arrow added to uparrowdiv DIV*/
@@ -170,26 +170,26 @@
 
 /*-----mainbox-----*/
 .left-arrow:after{ /*arrow added to leftarrowdiv DIV*/
-content:'';
-display:block;
-position:absolute;
-top:10px;
-left:-20px; /*should be set to -border-width x 2 */
-width:0;
-height:0;
-border-color: transparent white transparent transparent; /*border color should be same as div div background color*/
-border-style: solid;
-border-width: 10px;
+	content:'';
+	display:block;
+	position:absolute;
+	top:10px;
+	left:-20px; /*should be set to -border-width x 2 */
+	width:0;
+	height:0;
+	border-color: transparent white transparent transparent; /*border color should be same as div div background color*/
+	border-style: solid;
+	border-width: 10px;
 }
 
 .group-info-header{
 	height: 30px;
 	border-bottom: 1px solid #EFF4F6;
 	margin-bottom: 20px;
- 	color:#BEB5B2;
- 	text-align: left;
- 	padding-left: 10px;
- 	padding-top: 10px;
+	color:#BEB5B2;
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 10px;
 }
 
 
@@ -302,10 +302,10 @@ border-width: 10px;
 #payback-cta{
 	padding-top: 0px;
 	min-height: 0px;
-    color:#C8C8C8;
-    font-size:12px;
-    position: absolute;
-    left:-300px;
+	color:#C8C8C8;
+	font-size:12px;
+	position: absolute;
+	left:-300px;
 }
 
 
@@ -325,11 +325,11 @@ border-width: 10px;
 
 /*---form option----*/
 input, textarea, .uneditable-input {
-  width:80%;
+	width:80%;
 }
 
 select {
-  width:80%;
+	width:80%;
 }
 
 /* --- Modals --- */
@@ -406,16 +406,16 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 
 .settle-debt-member tr{
 	height: 50px;
-  border-bottom-color:#CCCCCC;
-  border-bottom-style:dotted;
-  border-bottom-width:1px;
-  width: 80%;
+	border-bottom-color:#CCCCCC;
+	border-bottom-style:dotted;
+	border-bottom-width:1px;
+	width: 80%;
 }
 
 
 .settle-debt-member tr:last-child{
 	height: 50px;
-  border-bottom:none;
+	border-bottom:none;
 }
 
 .settle-debt-member .td-checkbox{

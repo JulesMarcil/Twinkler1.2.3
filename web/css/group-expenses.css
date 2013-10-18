@@ -413,45 +413,40 @@
 /*--expense table----*/
 #expense-table-container{
 	margin-top: 15px;
-	margin-left: 10px;
 	width: 100%;
-	padding: 5px;
-	margin-bottom: 50px;
-}
-
-#expense-table-container:after{ /*arrow added to leftarrowdiv DIV*/
-	content:'';
-	display:block;
-	position:absolute;
-	top:10px;
-	left:-20px; /*should be set to -border-width x 2 */
-	width:0;
-	height:0;
-	border-color: transparent white transparent transparent; /*border color should be same as div div background color*/
-	border-style: solid;
-	border-width: 10px;
+	margin-bottom: 20px;
 }
 
 #expense-table{
 	width: 100%;
+	border: solid 2px rgb(189,195,199);
+	border-radius:6px;
+	border-collapse: separate;
+    border-spacing: 0; /* "Simulation" de border-collapse */
+    background-color:white;
+    font-size: 16px;
 }
 
+
 #expense-table-header tr{
-	color: white;
-	background-color:#C8C8C8;
+	background-color:rgb(189,195,199);
 	border-top-left-radius:4px;
 	border-top-right-radius:4px;
+	height: 30px;
+  color:#595959;
 }
 
 .expense-row{
 	padding: 10px 0px;
 }
 
-#expense-table tr{
-	border-bottom: 1px solid #EAEDF2;
+#expense-table td{
+  border-bottom-color:#CCCCCC;
+  border-bottom-style:dotted;
+  border-bottom-width:1px;
 }
 
-#expense-table tr:nth-last-child(2){
+#expense-table tr:nth-last-child(2) td{
 	border-bottom: none;
 }
 
@@ -495,11 +490,21 @@
 
 #edit-column{
 	text-align: center;
+	color: #595959;
 }
+
+#edit-column .btn{
+	width: 45px;
+}
+
 
 #edit-column a:hover{
 	text-decoration: none;
 	cursor: pointer;
+}
+
+#edit-column ul li{
+	text-align: left;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -514,6 +519,7 @@
 	width: 95%;
 	margin-left:auto;
 	margin-right:auto;
+	margin-top: 10px;
 }
 
 .odd-row{background: rgb(250,250,250)}
@@ -584,4 +590,23 @@
 
 #edit-expense div form > div{
 	margin: 10px 0px;
+}
+
+
+/*---- NEW GROUP BUTTON ----*/
+#new-group-button{
+	border:dashed 2px #b7b7b7;
+	border-radius:5px;
+	color:#b7b7b7;
+	line-height: 68px; 
+	width: 99.5%; 
+	height: 68px; 
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px;
+	margin-bottom: 50px;
+}
+
+#new-group-button:hover{
+	background-color: rgba(255,255,255,0.5)
 }
