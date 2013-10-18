@@ -169,7 +169,7 @@ class TGroup
         $key = '';
         $keys = array_merge(range(0, 9), range('a', 'z'));
 
-        for ($i = 0; $i < 40; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $key .= $keys[array_rand($keys)];
         }
 
