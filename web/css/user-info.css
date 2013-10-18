@@ -8,6 +8,44 @@ header {
 	padding: 10px 0px;
 }
 
+/* --- Section Header --- */
+
+.section-header .nav{
+	width: 100%;
+}
+
+.section-header .navbar-inverse .nav > li > h2{
+  color:#FFFFFF;
+  font-size:16px;
+  line-height:20px;
+  padding:16px 20px 15px;
+}
+
+.section-header .btn [class^="icon-"].icon-large, .nav [class^="icon-"].icon-large, .btn [class*=" icon-"].icon-large, .nav [class*=" icon-"].icon-large {
+  line-height:24px;
+}
+
+.section-header .nav > li:last-child{
+	float:right;
+	border-bottom:none;
+}
+
+.section-header .nav > li:first-child{
+	float:none;
+}
+
+.section-header .navbar-inverse .nav > li:last-child > a {
+	border-bottom:none;
+}
+
+.section-header .navbar-inverse .nav > li:hover > a {
+	color:#FB786B
+}
+
+.section-header .navbar .nav ul a:hover {
+	background-color: #FB786B;
+}
+
 
 /* --- User information --- */
 #user-info{
@@ -15,42 +53,29 @@ header {
 	text-align: center;
 }
 
-#user-info .flat-header{
-	text-align: left;
-	height:34px;
-	min-height:34px;
+.navbar .nav .profile-settings{
+	width:180px;
+	left:-120px;
 }
 
-#user-info  .flat-header > h3{
-	margin: 0px 15px;
-	color:#FCD5D2;
-	font-size:16px;
+.navbar .nav > li >  .profile-settings:before{
+	position:absolute;
+	left: 138px;
+	top: 2px;
+	border-right:12px solid transparent;
+	border-bottom:12px solid #34495E;
+	border-left:12px solid transparent;
+	content:""
 }
 
-#info-header{
-	box-sizing: border-box;
-	ms-box-sizing: border-box;
-	webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	width: 100%;
-	padding: 5px;
-	margin-bottom: 18px
-}
-#info-header > .flat-header{
-	margin:0;
-	height:34px;
-	min-height:34px;
-	border-bottom-left-radius:4px;
-	border-bottom-right-radius:4px;
-	box-sizing: border-box;
-	ms-box-sizing: border-box;
-	webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
-
-#info-header > .flat-header h3{
-	line-height: 0px;
-	padding-top: 17px;
+.navbar .nav > li >  .profile-settings:after{
+	position:absolute;
+	left: 140px;
+	top: 5px;
+	border-right:10px solid transparent;
+	border-bottom:10px solid #34495E;
+	border-left:10px solid transparent;
+	content:""
 }
 
 .info-icon{
@@ -59,23 +84,17 @@ header {
 }
 
 .profile-pic-info{
-	text-align: left;
-	display: inline-block;
-	width: 30%;
+	width: 100%;
+	margin-top:20px;
 }
 .profile-pic-info img{
 	width: 80%;
 	max-width: 78px;
-	margin-top: -20px;
-}
-
-.profile-pic-info img:hover{
-	opacity: 0.6
 }
 
 .profile-pic-user{
 	height:41px;
-	width: 68%;
+	width: 80%;
 	margin-top: 20px;
 	padding:0px 12px;
 	display: inline-block;
@@ -88,12 +107,12 @@ header {
 	-webkit-backface-visibility:hidden;
 	-webkit-box-shadow:none;
 	-webkit-transition:border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
-	border:2px solid #BDC3C7;
 	border-radius:6px;
 	color:#34495E;
 	font-family:Lato, Helvetica, Arial, sans-serif;
 	font-size:15px;
-	background-color: rgb(245,246,246)
+	background-color: rgb(245,246,246);
+	margin-bottom: 20px;
 }
 
 .profile-pic-user p{
@@ -111,13 +130,8 @@ header {
 
 .profile-pic-container{
 	text-align: center; 
-	border-bottom: solid 1px #eaedf2; 
-	height:100px;
-	text-align: left;
-	padding-left: 30px;
-	padding-right: 15px;
-	padding-bottom: 10px;
-	padding-top: 10px;
+	border-bottom: solid 1px #eaedf2;
+	text-align: center;
 }
 
 
@@ -136,7 +150,6 @@ header {
 	-webkit-backface-visibility:hidden;
 	-webkit-box-shadow:none;
 	-webkit-transition:border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
-	border:2px solid #BDC3C7;
 	border-radius:6px;
 	color:#34495E;
 	font-family:Lato, Helvetica, Arial, sans-serif;
@@ -192,16 +205,6 @@ header {
 #change-password:hover{
 	text-decoration: none;
 	cursor: pointer;
-}
-
-#feedback-link{
-	margin: 15px auto;
-}
-
-#feedback-link a{
-	cursor: pointer;
-	margin: 15px auto;
-	color:#34495E;
 }
 
 
@@ -270,7 +273,6 @@ header {
 	color: #5e6d82;
 	text-align: left;
 	border:none;
-	border-bottom: 1px solid rgb(200,200,200);
 	background-color:#ffffff;
 }
 
@@ -289,13 +291,18 @@ header {
 
 .accordion-heading-middle{
 	width: 80%;
-	color:#FCD5D2;
-	font-size: 14px;
+	color:#FB786B;	
+    font-size:18px;
+    font-weight: normal;
 }
 .accordion-heading-right{
 	position: absolute;
 	right: 0;
 	text-align: right;
+}
+
+.accordion-heading-right p{
+	line-height:1.231;
 }
 
 .accordion-heading-right > a,
@@ -337,6 +344,7 @@ header {
 	height: 68px; 
 	text-align: center;
 	cursor: pointer;
+	font-size: 18px;
 }
 
 #new-group-button:hover{

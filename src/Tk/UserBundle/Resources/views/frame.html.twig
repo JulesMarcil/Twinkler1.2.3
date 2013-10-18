@@ -14,49 +14,49 @@
 <header>
     <div class="navbar navbar-default navbar-fixed-top">
         <div id="navbar-container" class="container">
-                <div class="dropdown">
-                    <a class="navbar-brand"  data-target="#" href="{{ path('tk_user_homepage') }}">
-                        <div>Twinkler</div>
-                    </a>
-                </div>
-                {% if app.user.currentMember %}
-                <div id="link-container">
-                    <ul class="nav navbar-nav nav-group-name-container">
-                        <li class="divider-vertical">
-                        </li>
-                        <li>
-                            <a href="{{ path('tk_group_homepage') }}">
+            <div class="dropdown">
+                <a class="navbar-brand"  data-target="#" href="{{ path('tk_user_homepage') }}">
+                    <div>Twinkler</div>
+                </a>
+            </div>
+            {% if app.user.currentMember %}
+            <div id="link-container">
+                <ul class="nav navbar-nav nav-group-name-container">
+                    <li class="divider-vertical">
+                    </li>
+                    <li>
+                        <a href="{{ path('tk_group_homepage') }}">
                             <button class="btn dropdown-toggle clearfix btn-gp" href="{{ path('tk_group_homepage') }}">
                                 <span class="filter-option pull-left">
                                     {{ app.user.currentMember.tgroup.name }}
                                     <span class="caret"/>
                                 </span>
                             </button>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="margin-left: 15px;overflow-y: auto; min-height: 111px; max-height: 663px;">
-                                <li style="padding: 10px; padding-left: 16px">
-                                    
-                                        YOUR GROUPS:
-                                    
-                                </li>
-                                <li class="divider"/>
-                                {% for member in app.user.members %}
-                                <li>
-                                    <a tabindex="-1" href="{{ path('tk_group_switch_member', { 'id' : member.id, 'route' : app.request.attributes.get('_route') }) }}">
-                                        <div>{{member.tgroup.name|capitalize}}</div>
-                                    </a>
-                                </li>
-                                {% endfor %}
-                                <li class="divider"/>
-                                <li>
-                                    <a tabindex="-1" href="{{ path('tk_group_new') }}">
-                                        <i class="icon-plus-sign"></i> START GROUP
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="margin-left: 15px;overflow-y: auto; min-height: 111px; max-height: 663px;">
+                            <li style="padding: 10px; padding-left: 16px">
+
+                                YOUR GROUPS:
+
+                            </li>
+                            <li class="divider"/>
+                            {% for member in app.user.members %}
+                            <li>
+                                <a tabindex="-1" href="{{ path('tk_group_switch_member', { 'id' : member.id, 'route' : app.request.attributes.get('_route') }) }}">
+                                    <div>{{member.tgroup.name|capitalize}}</div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                            <li class="divider"/>
+                            <li>
+                                <a tabindex="-1" href="{{ path('tk_group_new') }}">
+                                    <i class="icon-plus-sign"></i> START GROUP
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
             <div>
                 {% endif %}
                 <ul class="nav navbar-nav pull-right">
@@ -70,10 +70,22 @@
                             {{ app.user }}
                         </a>
                     </li>
-                    <li> 
-                        <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">
-                            Logout
+                    <li>
+                        <a href="">
+                            <i class="icon-gear icon-large"></i>
                         </a>
+                        <ul class="settings-dropdown">
+                            <li> 
+                                <a class="navbar-link" data-target="feedbackModal" href="">
+                                    Feedback
+                                </a>
+                            </li>
+                            <li> 
+                                <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul> <!-- /Sub menu -->
                     </li>
                 </ul>
             </div>
