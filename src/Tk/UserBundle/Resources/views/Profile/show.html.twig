@@ -50,8 +50,10 @@
 								</a>
 								<ul class="section-header-dropdown">
 									<li><a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">Edit Information</a></li>
-									<li><a href="#uploadPictureModal" role="button"	 data-toggle="modal">Change Profile Picture</a></li>
-									<li><a href=" id="change-password" data-toggle="collapse" data-target="#collapsePassword"">Change Password</a></li>
+									<li><a href="#uploadPictureModal" role="button"	data-toggle="modal">Change Profile Picture</a></li>
+									{% if app.user.password %}
+									<li><a href="#changePasswordModal" role="button" data-toggle="modal">Change Password</a></li>
+									{% endif %}
 								</ul> <!-- /Sub menu -->
 							</li>
 						</ul>
@@ -69,7 +71,6 @@
 						<img class="img-circle" src="{{ asset(app.user.picture.path) }}" width="70px" alt="profile picture"/>
 						{% endif %}
 					</div>
-					{% include 'TkUserBundle:Profile:uploadPictureModal.html.twig' %}
 
 					<div class="profile-pic-user">
 						<small style="line-height: 0px">Your Username</small>
@@ -100,26 +101,12 @@
 							<p> {{ app.user.email }}</p>
 						</div>
 					</div>
+					{% endblock profile %}
 				</div>
-				
-				{% if not is_granted('ROLE_FACEBOOK') %}
-				<div id="setting-buttons" style="text-align: center;">
-					<a id="change-password" data-toggle="collapse" data-target="#collapsePassword">
-						<small style="color:#34495E">
-							<i class="icon-lock icon-large"></i>
-							Change password
-						</small>
-					</a>		
-				</div>	
-				{% endif %}
 
-				<div id="collapsePassword" class="collapse out">
-					<div class="accordion-inner well" style="width: 80%; margin-left: auto; margin-right: auto">
-						{% render(controller('FOSUserBundle:ChangePassword:changePassword')) %}
-					</div>
-				</div>
-				{% endblock profile %}
 			</div>
+			{% include 'TkUserBundle:Profile:uploadPictureModal.html.twig' %}
+			{% render(controller('FOSUserBundle:ChangePassword:changePassword')) %}
 
 		</div>
 	</div>	

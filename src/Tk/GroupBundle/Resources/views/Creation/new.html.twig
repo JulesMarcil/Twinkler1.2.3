@@ -12,7 +12,9 @@
 					    {{ form_errors(form) }}
 
 					    {{ form_errors(form.name) }}
-					    {{ form_widget(form.name) }}
+					    {{ form_widget(form.name, {
+					    'attr' : { 'placeholder' : 'Ex: The Jets, Wicked Flat, ...'}
+					    }) }}
 					<div class="currency">
 					    <span>Select Currency</span>
 					    {{ form_errors(form.currency) }}

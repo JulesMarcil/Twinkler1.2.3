@@ -1,22 +1,19 @@
 <div id="uploadPictureModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">   
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Upload a new profile picture</h3>
+            </div>
 
-  <div class="modal-dialog">
-    <div class="modal-content">   
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Upload a new profile picture</h3>
-        </div>
-        
-        <div class="modal-body">
+            <div class="modal-body">
+                {% render(controller("TkUserBundle:Profile:editProfilePicture")) %}
+            </div>
 
-            {% render(controller("TkUserBundle:Profile:editProfilePicture")) %}
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
 
         </div>
-        
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        </div>
-        
     </div>
-</div>
 </div>
