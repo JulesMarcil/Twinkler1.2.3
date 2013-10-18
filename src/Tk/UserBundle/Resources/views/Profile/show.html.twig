@@ -34,9 +34,28 @@
 <div class="row">
 	<div class="col-md-4 col-md-offset-1">
 		<div id="user-info" style="width: 100%">
-			<div id="info-header" class="flat-container">
-				<div class="flat-header">
-					<h3> <font  style="color:#fff">YOUR INFORMATION</font></h3>
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>Your Profile</h2>
+							</li>
+							<li>
+								<a href="">
+									<i class="icon-gear icon-large"></i>
+								</a>
+								<ul class="profile-settings">
+									<li><a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">Edit Information</a></li>
+									<li><a href="#uploadPictureModal" role="button"	 data-toggle="modal">Change Profile Picture</a></li>
+									<li><a href=" id="change-password" data-toggle="collapse" data-target="#collapsePassword"">Change Password</a></li>
+								</ul> <!-- /Sub menu -->
+							</li>
+						</ul>
+					</div><!--/.nav -->
 				</div>
 			</div>
 
@@ -47,9 +66,7 @@
 						{% if app.user.facebookId %}
 						<img class="img-circle" src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=200&height=200" width="70px" alt="profile picture"/>
 						{% else %}
-						<a href="#uploadPictureModal" role="button"	 data-toggle="modal">
-							<img class="img-circle" src="{{ asset(app.user.picture.path) }}" width="70px" alt="profile picture"/>
-						</a>
+						<img class="img-circle" src="{{ asset(app.user.picture.path) }}" width="70px" alt="profile picture"/>
 						{% endif %}
 					</div>
 					{% include 'TkUserBundle:Profile:uploadPictureModal.html.twig' %}
@@ -95,14 +112,7 @@
 					</a>		
 				</div>	
 				{% endif %}
-				<div style="margin-bottom:20px">	
-					<button class="btn btn-large btn-inverse" href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">	
-						<div>
-							<i class="icon-edit icon-large"></i>
-							<font style="font-size:14px">EDIT INFORMATION</font>
-						</div>		
-					</a>				
-				</div>
+
 				<div id="collapsePassword" class="collapse out">
 					<div class="accordion-inner well" style="width: 80%; margin-left: auto; margin-right: auto">
 						{% render(controller('FOSUserBundle:ChangePassword:changePassword')) %}
@@ -110,13 +120,13 @@
 				</div>
 				{% endblock profile %}
 			</div>
-			<div id="feedback-link" >
-				<a data-target="feedbackModal">Any feedbacks?</a>
-			</div>
+
+				<!-- FEEBACK MODAL -->
+
 			<div id="feedbackModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-						<!-- Loaded with ajax -->
-						
+				<!-- Loaded with ajax -->
+
 			</div>
 		</div>
 	</div>	
@@ -124,11 +134,26 @@
 
 	<div class="col-md-6">
 		<div id="group-summary" >
-			<div id="groups-header" class="flat-container">
-				<div class="flat-header">
-					<h3> <font  style="color:#fff">YOUR GROUPS ({{app.user.members|length}})</font></h3>
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>Your Groups ({{app.user.members|length}})</h2>
+							</li>
+							<li>
+								<a href="{{ path('tk_group_new') }}">
+									<i class="icon-plus icon-large"></i>
+								</a>
+							</li>
+						</ul>
+					</div><!--/.nav -->
 				</div>
 			</div>
+
 
 			{% if app.user.members|length == 0 %}
 
@@ -139,16 +164,16 @@
 			<div class="flat-container accordion-group group-box">
 				<div class="accordion-heading" style="display:inline-block; position:relative; width:100%;">
 					<div class="accordion-heading-middle">
-						<font style="color:#000;font-size: 14px;"> <strong>{{ member.tgroup.name|upper }}</strong></font>
-						<p> <font style="color:#8C8C8C;font-size:14px;"><small>opened on {{ member.tgroup.date| date('d/m/y') }}</small></font></p>
+						<font>{{ member.tgroup.name|capitalize }}</font>
+						<p> <font style="color:#8C8C8C;font-size:16px; color:#BEB5B2">opened on {{ member.tgroup.date| date('d/m/y') }}</font></p>
 					</div>
 					<div class="accordion-heading-right">
 						<p>
 							{% if member.balance >= 0 %}
-							<font style="font-size: 12px; color:#BEB5B2">YOU ARE OWED:</font><br>
+							<font style="font-size: 14px; color:#BEB5B2">YOU ARE OWED:</font><br>
 							<span style="color: #a8bd44; font-family:'Asap-regular'; display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
 							{% else %}
-							<font style="font-size: 12px; color:#BEB5B2">YOU OWE:</font><br>
+							<font style="font-size: 14px; color:#BEB5B2">YOU OWE:</font><br>
 							<span style="color: #f97e76; font-family:'Asap-regular';display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
 							{% endif %}
 						</p>
@@ -162,7 +187,7 @@
 	</div>
 	<a href="{{ path('tk_group_new') }}">
 		<div id="new-group-button">
-			<i class="icon-plus-sign" style="margin-right: 6px"></i> START A NEW GROUP
+			<i class="icon-plus-sign" style="margin-right: 6px"></i> Start a New Group
 		</div>
 	</a>
 </div>
