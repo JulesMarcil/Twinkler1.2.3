@@ -154,7 +154,6 @@ var expenseStart = function(){
     });
 
     $("select").selectpicker({style: 'btn btn-wide', menuStyle: 'dropdowN'});
-    $('#dp').datepicker();
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHAT START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/

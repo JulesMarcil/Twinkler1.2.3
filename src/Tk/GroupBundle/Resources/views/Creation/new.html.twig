@@ -3,10 +3,21 @@
 {% block content %}
 <div class="new-group row">
 	<div class="col-md-6 col-md-offset-3" style="text-align: center">
-		<div class="flat-container" style="width: 100%">
-			<div class="flat-header">
-				<h3 style="text-align: center">Create a New Group</h3>
+			<div class="section-header">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-header">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+				</div>            
+				<div class="navbar-collapse collapse" id="nav-collapse-01">
+					<ul class="nav">
+						<li>
+							<h2>Choose a Name for your Group</h2>
+						</li>
+					</ul>
+				</div><!--/.nav -->
 			</div>
+		</div>
+		<div class="flat-container" style="width: 100%">
 			<form action="{{ path('tk_group_new') }}" method="post" {{ form_enctype(form) }} style="margin:0">
 				<div class="new-group-content">
 					    {{ form_errors(form) }}
@@ -16,15 +27,16 @@
 					    'attr' : { 'placeholder' : 'Ex: The Jets, Wicked Flat, ...'}
 					    }) }}
 					<div class="currency">
-					    <span>Select Currency</span>
+					    <span>Select Currency:</span>
+					    <div>
 					    {{ form_errors(form.currency) }}
-					    {{ form_widget(form.currency) }}
+					    {{ form_widget(form.currency) }}</div>
 					</div>
 					    {{ form_rest(form) }}
 				</div>
 
 			    <div class="flat-footer">
-			    	<input type="submit" value="Create Group" class="flat-btn flat-pk" style="border:none;"/>
+			    	<input type="submit" value="Create Group" class="btn btn-inverse" style="border:none;"/>
 			    </div>
 			</form>
 			
