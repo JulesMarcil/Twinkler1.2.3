@@ -606,47 +606,42 @@ header li{
 }
 
 /* --- Twinkler is for all the groups in your life--- */
+
+#groups-section *{
+	text-align:center;
+	font-family: "Proxima-light";
+}
+#groups-section h3{
+	margin-top:60px; 
+	margin-bottom: 20px;
+	font-size: 30px;
+}
 #tk-groups{
 	display: inline-block;
 }
-
 #tk-groups div{
 	display: inline-block;
 	margin: 20px 20px;
 	background-color: rgba(235,235,232,0.6);
 	width: 215px;
-	font-family: "Proxima-light";
 }
-
 #tk-groups div > h4{
 	margin-top: 10px;
 	margin-bottom: 10px;
-	font-family: "Proxima-light";
 }
-
 #tk-groups div img{
 	margin-top: 15px;
 }
-
 #tk-groups > h4{
 	margin-bottom: 60px;
 	margin-top: 60px;
-	font-family: "Proxima-light";
 }
-
-.tk-group-catchphrase> h4{
-	margin-bottom: 60px;
-	margin-top: 40px;
-	font-family: "Proxima-light";
-}
-
 .cta-bottom{
 	margin-top: 50px;
 	margin-bottom: 140px; 
 	font-size:24px;
 	width: 250px;
 }
-
 .free-container{
 	position:absolute;
 	height: 80px;
@@ -654,7 +649,6 @@ header li{
 	top: 90px;
 	left: 390px;
 }
-
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
 	#tk-groups > div:last-child {
 		display: none;
@@ -914,7 +908,7 @@ footer p{
 		margin-right: 0px;
 		padding-left: 0;
 		font-size: 14px;
-		width: 180px;
+		width: 190px;
 	}
 	header {
 		padding-top: 5px;
@@ -957,6 +951,7 @@ footer p{
 		min-height: none;
 	}
 	#catchphrase{
+		margin-top: 50px;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
