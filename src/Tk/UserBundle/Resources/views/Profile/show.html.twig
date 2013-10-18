@@ -42,7 +42,7 @@
 					<div class="navbar-collapse collapse" id="nav-collapse-01">
 						<ul class="nav">
 							<li>
-								<h2>Your Profile</h2>
+								<h2>{% block title_profile %}Your Profile{% endblock %}</h2>
 							</li>
 							<li>
 								<a href="">
@@ -62,8 +62,9 @@
 			</div>
 
 			<div class="flat-container" style="width:100%">
-
+				{% block profile %}
 				<div class="profile-pic-container" >
+					<a href="#uploadPictureModal" role="button"	data-toggle="modal">
 					<div class="profile-pic-info">
 						{% if app.user.facebookId %}
 						<img class="img-circle" src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=200&height=200" width="70px" alt="profile picture"/>
@@ -71,35 +72,40 @@
 						<img class="img-circle" src="{{ asset(app.user.picture.path) }}" width="70px" alt="profile picture"/>
 						{% endif %}
 					</div>
+					</a>
 
 					<div class="profile-pic-user">
+						<a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">
 						<small style="line-height: 0px">Your Username</small>
-						<p> {{ app.user | upper }}</p>
+						<p> {{ app.user | upper }}</p></a>
 					</div>
 				</div>
 
 				<div style="padding-top:0px; border-top: solid 1px #eaedf2; margin-bottom: 20px;">	
-					{% block profile %}
+					
 					{% if app.user.firstname != null or app.user.lastname != null %}
 					<div class="profile-info">
 						<div class="info-text">
-							<p>{{ app.user.firstname }} {{ app.user.lastname }} </p>
+							<a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">
+							<p>{{ app.user.firstname }} {{ app.user.lastname }}</p></a>
 						</div>
 					</div>
 					{% else %}
 					<div class="profile-info">
 						<div class="info-text">
-							<a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}"><p style="color: #C8C8C8">Please edit your name</p></a>
+							<a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">
+							<p style="color: #C8C8C8">Click to edit your name</p></a>
 						</div>
 					</div>
 					{% endif %}
 					<div class="profile-info">
 						<div class="info-text">
-							<p>{{ app.user.email }}</p>
+							<a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">
+							<p>{{ app.user.email }}</p></a>
 						</div>
-					</div>
-					{% endblock profile %}
+					</div>					
 				</div>
+				{% endblock profile %}
 
 			</div>
 			{% include 'TkUserBundle:Profile:uploadPictureModal.html.twig' %}

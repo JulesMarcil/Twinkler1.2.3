@@ -1,5 +1,7 @@
 {% extends 'TkUserBundle:Profile:show.html.twig' %}
 
+{% block title_profile %}Edit your Profile{% endblock %}
+
 {% block profile %}
 
 	<form id="edit-user-info" action="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}" method="post" {{ form_enctype(form) }}>
