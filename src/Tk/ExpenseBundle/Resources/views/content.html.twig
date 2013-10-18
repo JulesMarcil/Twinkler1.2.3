@@ -87,7 +87,8 @@
 						</tr>
 					</thead>
 					<tbody id="expense-table-body">
-						{% for expense in all_expenses %}
+
+						{% for expense in all_expenses %}			
 
 						<!-- PAYBACK -->
 						{% if expense[0].type == 'payback' %}
@@ -104,10 +105,10 @@
 									{{ expense[0].amount }} {{ currency }}
 								</font> 
 							</td>
-							<td style=" text-align: center;vertical-align: middle"> 
+							<td style=" text-align: center;vertical-align: middle">
 								<div class="expense-date">
 									<small>
-										{{expense[0].date | date("M, d")}}
+										{{ expense[0].date | date("M, d")}}
 									</small>
 								</div>
 								<div style="display: inline-block; text-align: center; margin-left: auto; margin-right:auto; width: 100%; height:100%; padding-top: -2px">
@@ -241,11 +242,15 @@
 								</div>
 								<div>
 									<font style="color:#fb786b;">
-										{{ expense[0].name }}
+										{{ expense[0].name|capitalize }}
 									</font>
 								</div>
 								<div>
+									{% if expense[0].users|length == expense[0].group.members|length %}
+									<small style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For all</font></small>
+									{% else %}
 									<small style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For who: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</small>
+									{% endif %}									
 								</div> 
 							</td>
 							<td id="balance-column">
