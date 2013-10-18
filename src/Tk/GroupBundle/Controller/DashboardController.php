@@ -27,7 +27,8 @@ class DashboardController extends Controller
         $m = $data['_message'];
 
         foreach($group->getMembers() as $member){
-            if ($data['_send_email_'.$member->getId()]) {
+            
+            if (isset($data['_send_email_'.$member->getId()])) {
 
                 $u = $member->getUser();
                 if($u){
