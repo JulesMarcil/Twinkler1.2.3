@@ -25,7 +25,8 @@
 				<li>
 					<button class="btn btn-warning min-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
 					<button class="btn btn-warning btn-small max-700"><a href="{{ path('fos_user_registration_register')}}"  style="color:white">REGISTER</a></button>
-					<a href="{{ path('fos_user_security_login')}}">LOGIN</a> 
+					<button class="btn min-700"><a href="{{ path('fos_user_security_login')}}"  style="color:white">LOGIN</a></button>
+					<button class="btn btn-small max-700"><a href="{{ path('fos_user_security_login')}}"  style="color:white">LOGIN</a></button>
 				</li>
 			</ul>	
 		</div>
@@ -117,6 +118,7 @@
 		</div>
 	</div>
 </section>
+
 <section class="feature">
 	<div class="container">
 		<div id="expense" class="row">
@@ -227,10 +229,10 @@
 	</div>
 </section>
 
-<section style="text-align:center">
+<section id="groups-section">
 
 	<div class="container">
-			<h3 align="center" style="margin-top:60px; margin-bottom: 20px">Twinkler makes it easy to manage money with the people in your life.</h3>
+		<h3>Twinkler makes it easy to manage money with the people in your life.</h3>
 		<div id="tk-groups" class="row">
 			<div class="col-md-3">
 				<img alt="Friends managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-friends.jpg') }}" />
