@@ -12,7 +12,20 @@
 
 {% block body %}
 <header>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top max-770">
+        <div id="navbar-container" class="container">
+            <div id="back-button">
+                <a href="{{ path('tk_user_homepage') }}">Home</a>
+            </div>
+            <div id="group-name">
+                <a href="{{ path('tk_user_homepage') }}">{{ app.user.currentMember.tgroup.name|capitalize }}</a>
+            </div>
+            <div id="cog">
+                <a href="{{ path('tk_user_homepage') }}"><i class="icon-gear icon-large"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-default navbar-fixed-top min-770">
         <div id="navbar-container" class="container">
             <div class="dropdown">
                 <a class="navbar-brand"  data-target="#" href="{{ path('tk_user_homepage') }}">
@@ -58,37 +71,35 @@
                 </ul>
             </div>
             {% endif %}
-            <div>
-                <ul class="nav navbar-nav pull-right">
-                    <li>
-                        <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
-                            {% if app.user.facebookId %}
-                            <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="profile picture">
-                            {% else %}
-                            <img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="profile picture">
-                            {% endif %}
-                            {{ app.user }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="icon-gear icon-large"></i>
-                        </a>
-                        <ul class="settings-dropdown">
-                            <li> 
-                                <a class="navbar-link" data-target="feedbackModal" href="">
-                                    Feedback
-                                </a>
-                            </li>
-                            <li> 
-                                <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">
-                                    Logout
-                                </a>
-                            </li>
-                        </ul> <!-- /Sub menu -->
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav pull-right">
+                <li>
+                    <a class="navbar-link" href="{{ path('tk_user_homepage') }}">
+                        {% if app.user.facebookId %}
+                        <img src="http://graph.facebook.com/{{app.user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="profile picture">
+                        {% else %}
+                        <img src="{{ asset(app.user.picture.path) }}" class="img-circle" alt="profile picture">
+                        {% endif %}
+                        {{ app.user }}
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="icon-gear icon-large"></i>
+                    </a>
+                    <ul class="settings-dropdown">
+                        <li> 
+                            <a class="navbar-link" data-target="feedbackModal" href="">
+                                Feedback
+                            </a>
+                        </li>
+                        <li> 
+                            <a class="navbar-link" href="{{ path('fos_user_security_logout') }}">
+                                Logout
+                            </a>
+                        </li>
+                    </ul> <!-- /Sub menu -->
+                </li>
+            </ul>
 
         </div>
     </div>  
