@@ -3,13 +3,13 @@
 {% block layoutcontent %}
 
 <div id="user-layout" class="row">
-	<div class="span6 offset3"> 
-		<div class="flat-container">
+	<div class="col-md-6 col-md-offset-3"> 
+		<div class="flat-container" style="width: 100%">
 			<div class="flat-header">
 			<h4>You have been invited to join the group: <b>{{ group.name| capitalize }}</b></h4>
 			</div>
 			<div>
-				<p>Click on your name in the list below</p>
+				<p style="font-size: 14px">Click on your name in the list below</p>
 				{% for member in group.members %}
 					{% if member.user != null %}
 					{% else %}
@@ -19,7 +19,7 @@
 					{% endif %}
 				{% endfor %}
 				<div class="flat-footer">
-					<p>Your name does not appear ? <a href="{{ path('tk_welcome_chosen_member', { 'id' : group.id, 'type' : 'group', 'token' : group.invitationToken }) }}">Click here to join this group</a></p>
+					<p style="font-size: 14px">Your name does not appear ? <a href="{{ path('tk_welcome_chosen_member', { 'id' : group.id, 'type' : 'group', 'token' : group.invitationToken }) }}">Click here to join this group</a></p>
 				</div>
 			</div>
 		</div>

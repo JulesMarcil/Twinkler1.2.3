@@ -289,7 +289,7 @@ header li{
 
 .feature-payback{
 	border-bottom: solid 1px rgb(235,235,232);
-	padding-bottom: 200px;
+	padding-bottom: 240px;
 	background-image: none;
 }
 
@@ -982,10 +982,15 @@ footer p{
 }
 
 #login-signup{
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-right: 20px;
 	height:20px;
 	margin-right: 40px;
+}
+
+.invitation-message{
+	color: white; 
+	font-size: 18px;
 }
 
 #user-layout-body .flat-container{
@@ -998,6 +1003,7 @@ footer p{
 
 #user-layout-body .flat-header h1{
 	line-height: 12px;
+	font-size: 20px;
   	font-family: "Lato", sans-serif;
   	margin: 10px 0px;
 }
@@ -1009,11 +1015,13 @@ footer p{
 	padding: 0px 10px;
 }
 
-#user-layout-body .flat-container #hip-way #p1{
+#user-layout-body .flat-container h3{
 	display: inline-block;
-	width:80%; color:rgb(245,103,99); 
+	width:80%;  
 	margin-bottom: 20px; 
-	font-size: 18px
+	font-size: 18px;
+	color:rgb(245,103,99);
+	font-weight: normal;
 }
 
 #user-layout-body .flat-container #hip-way #p2{
@@ -1065,6 +1073,12 @@ footer p{
 #login-form .login-check-box{
 	margin: 10px 0px;
 	width: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+	#login-signup{
+		padding-top: 10px;
+	}
 }
 
 @media only screen and (max-width: 569px) {

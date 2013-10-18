@@ -4,11 +4,11 @@
 
 {% block head %}
     {{ parent() }}
-    <title>Log in to Twinkler</title>
+    <title>Twinkler - Login</title>
 {% endblock %}
 
 {% block signuplogin %}
-    <a href="{{ path('fos_user_registration_register') }}">SIGN UP</a>
+    <a href="{{ path('fos_user_registration_register') }}">REGISTER</a>
 {% endblock %}
 
 {% block fos_user_content %}
@@ -16,7 +16,7 @@
 <div id="user-layout">
     <div align="center">
         {% if app.session.get('invitation_id') != null %}
-        <h5>Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
+        <h5 class="invitation-message">Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
         {% endif %}
 
         {% for type, messages in app.session.flashbag.all() %}
@@ -37,7 +37,7 @@
 
             <div class="flat-container">
                 <div class="flat-header">
-                    <h1 style="font-size:20px">LOG IN</h1>
+                    <h1>LOG IN</h1>
                 </div>
                 
                 <a class="btn btn-info" id="facebook-login" onclick="fbLogin()">Connect with Facebook</a>
