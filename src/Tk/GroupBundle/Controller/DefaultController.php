@@ -47,10 +47,13 @@ class DefaultController extends Controller
     	$this->changeCurrentMemberAction($id);
 
         $route = $this->get('request')->get('route');
-        if ($route == 'tk_user_homepage' or $route == 'tk_welcome_homepage'){
-            $route = 'tk_expense_homepage';
+        if ($route == 'tk_chat_homepage' or $route == 'tk_group_dashboard'){
+            return $this->redirect($this->generateUrl($route));
+        } else if ($route == 'tk_group_add'){
+            return $this->redirect($this->generateUrl('tk_group_dashboard'));
+        }else{
+            return $this->redirect($this->generateUrl('tk_expense_homepage'));
         }
-        return $this->redirect($this->generateUrl($route));
     }
 
     public function goToAction($id)
