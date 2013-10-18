@@ -170,16 +170,11 @@ header li{
 
 .wrapper span{
 	color:white;
-	transform:rotate(40deg);
-	-ms-transform:rotate(40deg);
-	-moz-transform:rotate(40deg);
-	-webkit-transform:rotate(40deg);
-	-o-transform:rotate(40deg);
 	background-color:#4FADE3;
 	background-position:initial initial;
 	background-repeat:initial initial;
 	font-size:11px;
-	padding:4px 34px;
+	padding:2px 32px;
 	position:absolute;
 	right:-32px;
 	text-align:center;
@@ -187,6 +182,11 @@ header li{
 	top:5px;
 	margin-right: 5px;
 	background:#4fade3;
+	transform:rotate(40deg);
+	-ms-transform:rotate(40deg);
+	-moz-transform:rotate(40deg);
+	-webkit-transform:rotate(40deg);
+	-o-transform:rotate(40deg);
 }
 
 #overview-flow{
@@ -289,7 +289,7 @@ header li{
 
 .feature-payback{
 	border-bottom: solid 1px rgb(235,235,232);
-	padding-bottom: 240px;
+	padding-bottom: 300px;
 	background-image: none;
 }
 
@@ -389,11 +389,12 @@ header li{
 	overflow: hidden;
 	background-color: rgb(235,235,232);
 	background-repeat:no-repeat;
-	padding: 30px 0px;
+	padding: 60px 0px;
 }
 
 .platform-catchphrase{
 	padding: 20px 0px;
+	padding-bottom: 10px;
 	color:#242728;
 	font-family:"Proxima-light", 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size:1.25rem;
@@ -479,12 +480,11 @@ header li{
 	line-height: 24px;
 	font-style: italic;
 	width: 75%;
-	min-height: 60px;
 	padding-top: 10px;
 	padding-bottom: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
-	min-height: 92px;
+	min-height: 102px;
 }
 
 .comment-background:before{
@@ -614,7 +614,7 @@ header li{
 #groups-section h3{
 	margin-top:60px; 
 	margin-bottom: 20px;
-	font-size: 30px;
+	font-size: 26px;
 }
 #tk-groups{
 	display: inline-block;
@@ -628,6 +628,8 @@ header li{
 #tk-groups div > h4{
 	margin-top: 10px;
 	margin-bottom: 10px;
+	color:#222526;
+	font-size: 22px;
 }
 #tk-groups div img{
 	margin-top: 15px;
@@ -1011,7 +1013,7 @@ footer p{
 #user-layout-body .flat-container #hip-way{
 	display: inline-block;
 	vertical-align: top;
-	width: 45%;
+	width: 48%;
 	padding: 0px 10px;
 }
 
@@ -1028,19 +1030,22 @@ footer p{
 	color: #999999; 
 	font-size: 12px;
 	margin-bottom: 0px; 
-	margin-top: 60px
+	margin-top: 40px
+}
+
+#user-layout-body .flat-container #hip-way #facebook-login{
 }
 
 #user-layout-body .flat-container #old-school-way{
 	display: inline-block;
 	vertical-align: top;
-	width: 45%;
+	width: 48%;
 	border-left: 1px solid rgb(239, 244, 246);
 }
 
 #user-layout-body .flat-container #old-school-way input{
 	min-height: 40px;
-	margin: 10px 0px;
+	margin: 3px 0px;
 }
 
 #user-layout-body .flat-container #old-school-way ul{
@@ -1050,6 +1055,7 @@ footer p{
 #user-layout-body .flat-footer p{
 	margin-top: 10px;
 	padding-top: 15px;
+	font-size: 16px;
 }
 
 #login-box{
@@ -1062,12 +1068,29 @@ footer p{
 
 #facebook-login{
 	margin: 20px 0px;
-	padding: 10px 40px;
+	padding: 15px 40px;
+	padding-left: 60px;
+	font-size: 18px;
+	background-color: #5d78af;
+}
+
+#facebook-login:hover{
+	margin: 20px 0px;
+	padding: 15px 40px;
+	padding-left: 60px;
+	background-color: #304a88;
+}
+
+#facebook-login img{
+	position: absolute;
+	margin-left: -40px;
+	margin-top: -6px
 }
 
 #login-form input{
 	min-height: 40px;
-	margin: 10px 0px;
+	margin: 4px 0px;
+	width: 260px
 }
 
 #login-form .login-check-box{

@@ -229,5 +229,7 @@ $('.carousel').carousel({
   interval: 5000 // in milliseconds  
 })
 
-
+$('[data-toggle="checkbox"]').each(function () {
+  $(this).checkbox();
+});
 
