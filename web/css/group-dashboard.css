@@ -12,6 +12,9 @@
 	height:100%;
 }
 /*---------GROUP SETTINGS-----------*/
+.group-action .section-header .navbar{
+	margin-bottom: 0;
+}
 
 .group-info{
 	margin: 0px auto;
@@ -204,6 +207,7 @@
 /* --- PAYBACK (left) --- */
 .payback-table > table{
 	width: 95%;
+	font-size: 16px;
 }
 
 .payback-table tr{
@@ -227,7 +231,16 @@
 	border-top: 1px solid #ded8d6;
 	padding-top: 20px;
 	margin-top: 10px;
+	display: inline-block;
+	width: 100%
 }
+.payback-container .btn-group{
+	width: 100%;
+}
+.payback-container a{
+	width: 33%;
+}
+
 
 /* --- BALANCE (left) --- */
 
