@@ -23,36 +23,41 @@ a {
 
 
 /*-----memberProfileModal-----*/
-#memberPrfofileModal .modal-header h3{
+#memberProfileModal .modal-header h3{
 	line-height: 18px;
 }
 
-#memberPrfofileModal .modal-header small{
+#memberProfileModal .modal-header small{
 	color:#fff;
 }
 
-#memberPrfofileModal .modal-header{
+#memberProfileModal .modal-header{
 	padding-bottom: 12px;
 }
 
-#memberPrfofileModal input{
+#memberProfileModal input{
 	height: 40px;
 	width: 60%;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
-#memberPrfofileModal button{
+#memberProfileModal button{
 	height: 40px;
 	width: 30%;
 }
 
-#memberPrfofileModal .alert-warning{
+#memberProfileModal .alert-warning{
 	border: solid 2px rgb(192,152,83);
 	padding: 5px;
 }
 
-#memberPrfofileModal .alert-warning button{
+#memberProfileModal .alert-warning button{
 	color: rgb(192,152,83);
 	opacity: 1;
+}
+
+/*-----userProfileModal-----*/
+#userProfileModal p{
+	line-height: 5px
 }

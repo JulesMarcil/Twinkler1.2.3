@@ -1,68 +1,51 @@
  <link href="{{ asset('css/user-info.css') }}" rel="stylesheet" type="text/css">
 
-<div style="text-align: center;">
-	<div style="display: block">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
-	</div>
-	<div class="member">
-		{% if user.facebookId %}
-		<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ user }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
-		{% else %}
-		<img src="{{ asset(user.picture.path) }}" class="img-circle" alt="{{ user }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
-		{% endif %}
-	</div>
-	<div>
-		<div class="flat-header" style="border-radius: 0">
-			<h3>{{ user|capitalize }}</h3>
-		</div>
+ <div id="userProfileModal" style="text-align: center;">
+ 	<div style="display: block">
+ 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
+ 	</div>
+ 	<div class="member">
+ 		{% if user.facebookId %}
+ 		<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=100&height=100" class="img-circle" width="120px" alt="{{ user }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
+ 		{% else %}
+ 		<img src="{{ asset(user.picture.path) }}" class="img-circle" alt="{{ user }}" width="120px" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
+ 		{% endif %}
+ 	</div>
 
-		<div id="profile-stats">
-				<div class="info-icon">
-					<i class="icon-thumbs-up-alt icon-large"></i>
-				</div>
-				<div class="info-text" style="margin-right: 2%;">
-					{{ user.members|length }} Groups
-				</div>
-				<div class="info-icon">
-					<i class="icon-smile icon-large"></i>
-				</div>
-				<div class="info-text">
-					{{ user.friends|length }} Friends
-				</div>
+ 	<div class="modal-dialog">
+ 		<div class="modal-content">
+ 			<div class="modal-header">
+ 				<h3>{{ user|capitalize }}</h3>
+ 			</div>
+ 			<div class="modal-body">
+ 				<div style="padding-top:0px">	
+ 					<div class="profile-info">
+ 						<div class="info-text">
+ 							<small>Username</small>
+ 							<p> {{ user }}</p>
+ 						</div>
+ 					</div>
+ 					<div class="profile-info">
+ 						<div class="info-text">
+ 							<small>Full Name</small>
+ 							{% if user.firstname != null or user.lastname != null %}
+ 							<p>{{ user.firstname }} {{ user.lastname }} </p>
+ 							{% else %}
+ 							<p> Not specified </p>
+ 							{% endif %}
+ 						</div>
+ 					</div>
+ 					<div class="profile-info">
+ 						<div class="info-text">
+ 							<small>Email Address</small>
+ 							<p> {{ user.email }}</p>
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<div class="modal-footer">
+			<button class="btn btn-success" data-dismiss="modal">Dismiss</button>
 			</div>
-
-		<div style="padding-top:0px; border-top: solid 1px #eaedf2; margin-bottom: 20px;">	
-			<div class="profile-info">
-			 	<div class="info-icon">
-			 		<i class="icon-bookmark icon-large"></i>
-			 		Username
-			 	</div>
-			 	<div class="info-text">
-			 		<p> {{ user }}</p>
-			 	</div>
-			 </div>
-			 <div class="profile-info">
-			 	<div class="info-icon">
-			 		<i class="icon-user icon-large"></i>
-			 		Full name
-			 	</div>
-			 	<div class="info-text">
-					{% if user.firstname != null or user.lastname != null %}
-			 		<p>{{ user.firstname }} {{ user.lastname }} </p>
-			 		{% else %}
-			 		<p> Not specified </p>
-			 		{% endif %}
-			 	</div>
-			 </div>
-			<div class="profile-info">
-			 	<div class="info-icon">
-			 		<i class="icon-envelope icon-large"></i>
-			 		Email
-			 	</div>
-			 	<div class="info-text">
-			 		<p> {{ user.email }}</p>
-			 	</div>
-			 </div>
-		</div>
-	</div>
-</div>
+ 		</div>
+ 	</div>
+ </div>
