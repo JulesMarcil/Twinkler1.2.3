@@ -191,3 +191,7 @@ u
 	border-left:10px solid transparent;
 	content:""
 }
+
+.navbar-collapse {
+	display: inline !important;
+	)

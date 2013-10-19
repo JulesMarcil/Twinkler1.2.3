@@ -448,3 +448,23 @@ header #show-hide-members{
 		font-size: 22px;
 	}
 }
+
+
+/* --- Small Screen Navbar --- */
+
+header #cog#dropdown{
+  width: 20%;
+  background-color: red;
+}
+
+header .small-screen-dropdown.dropdown-toggle i{
+  color:#fff;
+}
+
+header .small-screen-dropdown.dropdown-inverse {
+  background-color:#34495E;
+  color:#CCCCCC;
+  padding:4px 0 6px;
+  width: 100%;
+  top:100%;
+}
