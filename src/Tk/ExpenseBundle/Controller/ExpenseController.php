@@ -71,10 +71,8 @@ class ExpenseController extends Controller
         		$em->flush();
 
                 foreach($expense->getUsers() as $member){
-                    if ($member->getUser() == $this->getUser()){
+                    if ($member->getUser()){
                         $email = null;
-                    } else if($member->getUser()){
-                        $email = $member->getUser()->getEmail();
                     }else if($member->getEmail()){
                         $email = $member->getEmail();
                     }else{

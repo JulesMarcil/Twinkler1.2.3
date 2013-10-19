@@ -11,7 +11,20 @@
 .row{
 	height:100%;
 }
-/*---------GROUP SETTINGS-----------*/
+
+/* ---------GROUP ACTIONS ----------- */
+
+.well {
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+/* --- Remove Member --- */
+
+#remove-member-box > .well p {
+	font-size: 14px;
+}
+
 .group-action .section-header .navbar{
 	margin-bottom: 0;
 }
