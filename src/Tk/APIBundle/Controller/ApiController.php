@@ -291,7 +291,7 @@ class ApiController extends Controller
         foreach($friends as $friend) {
             $friends_array[] = array('id' => $friend->getId(),
                                      'name' => $friend->getUsername(),
-                                     'picturePath' => $friend->getMembers()->first()->getPicturePath()
+                                     'picturePath' => $friend->getPicturePath()
                                      );
         }
 
