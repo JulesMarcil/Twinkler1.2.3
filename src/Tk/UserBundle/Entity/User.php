@@ -328,6 +328,22 @@ class User extends BaseUser
     }
 
     /**
+     * Get picture path
+     *
+     * @return string
+     */
+    public function getPicturePath()
+    {
+        $facebook_id = $this->getFacebookId();
+        if($facebook_id) {
+            $picture_path = $facebook_id;
+        }else{
+            $picture_path = $this->getPicture()->getPath();
+        }
+        return $picture_path; 
+    }
+
+    /**
      * Set date
      *
      * @param \DateTime $date
