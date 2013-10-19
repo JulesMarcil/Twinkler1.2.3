@@ -546,6 +546,7 @@ input:focus{
 	cursor: pointer;
 }
 
+
 #edit-column ul li{
 	text-align: left;
 }
@@ -553,6 +554,15 @@ input:focus{
 #edit-column .caret{
 	border-bottom-color: white;
 	border-top-color: white;
+}
+
+#edit-column ul{
+	position: absolute;
+	left:-115px;
+}
+
+#edit-column .dropdown-arrow {
+  right: 8px;
 }
 /*-------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
