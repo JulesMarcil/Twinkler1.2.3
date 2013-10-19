@@ -340,10 +340,12 @@ header #group .member p{
 header #toggle-button{
 	position: relative;
 	color: rgb(200,200,200);
-	cursor: pointer
+	cursor: pointer;
+	opacity:0.4;
 }
 header #toggle-button:hover{
-	text-decoration: none
+	text-decoration: none;
+	opacity: 1;
 }
 /* --- Selection menu --- */
 
@@ -366,7 +368,7 @@ header .selection-menu .col-md-6 {
 }
 
 header .selection-menu .btn-toolbar{
-	margin-bottom: 10px;
+	margin-bottom: 6px;
 }
 
 header .selection-menu .second{

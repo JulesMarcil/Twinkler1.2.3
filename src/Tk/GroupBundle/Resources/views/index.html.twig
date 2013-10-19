@@ -62,7 +62,7 @@
 </div>
 
 <!-- modal for seing the profile of member -->
-<div id="memberProfileModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="memberProfileModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<!-- content of the modal loaded via ajax -->
 </div>
 
@@ -96,8 +96,9 @@
 				</div>
 			</div>
 			</div>
-			<div class="pull-right min-770" id="show-hide-members">
-				<a id="toggle-button">hide members</a>
+			<div class="pull-right min-770" id="show-hide-members"  style="margin-top: 0px; padding-right: 10px;">
+				<p id="hide-tooltip" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Hide or Show your Group's Members">
+				<a><i class="icon-collapse-top icon-large" id="toggle-button"></i></a></p>
 			</div>
 		</div>
 	</div>

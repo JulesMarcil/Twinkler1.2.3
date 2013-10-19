@@ -72,11 +72,15 @@ $(document).ready(function() {
 
 	/* --- Group members picture toggle --- */
 	$("#toggle-button").click(function(){
+
+		$('.tooltip').hide();
 		$("#second-row-big").slideToggle();
-		if($(this).text() === 'hide members'){
-			$(this).text('show members');	
+		if($(this).hasClass("icon-collapse-top")){
+			$(this).removeClass("icon-collapse-top");
+			$(this).addClass("icon-collapse");	
 		}else{
-			$(this).text('hide members');
+			$(this).addClass("icon-collapse-top");
+			$(this).removeClass("icon-collapse");	
 		}
 	});
 
@@ -336,9 +340,6 @@ var dashboardStart = function(){
 
 /* actually call the function when page is loaded for the first time */
 $(document).ready(function() { 
-
-
-
 	if (activePage==="expenses"){
 		expenseStart();
 		getChart();
@@ -347,7 +348,9 @@ $(document).ready(function() {
 	}else if(activePage==="dashboard"){
 		dashboardStart();
 		getChart();
-	}
+	};
+
+	$('#hide-tooltip').tooltip('');
 });
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
