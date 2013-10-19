@@ -1,4 +1,8 @@
 /*----CHAT-----*/
+input:focus{
+	outline: none;
+}
+
 .group-title h2{
 	color: #fff;
 }

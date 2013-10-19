@@ -6,7 +6,7 @@
 	</div>
 
 	{% if app.user.friends|length + facebook_friends|length == 0 %}
-	<p>Yo do not have any friend on Twinkler yet, invite them !</p>
+	<p class="no-friends">Yo do not have any friend on Twinkler yet, invite them !</p>
 	{% else %}
 
 	{% if app.user.friends|length + facebook_friends|length > 5 %}
