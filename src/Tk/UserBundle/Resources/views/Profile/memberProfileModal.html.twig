@@ -1,27 +1,36 @@
-<div style="text-align: center">
+<div id="memberPrfofileModal" style="text-align: center">
 	<div style="display: block">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: absolute; top: 0; right: 5px;">×</button>
 	</div>
 	<div class="member">
-		<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
+		<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="120px" alt="{{ member.name }}" style="position: relative; margin-top: 25px; margin-bottom: 25px;">
 	</div>
-	<div>
-		<div class="flat-header" style="border-radius: 0">
-			<h3>{{ member.name|capitalize }} <small>(virtual member)</small></h3>
+	<div class="modal-dialog">
+      <div class="modal-content">
+		<div class="modal-header">
+			<h3>{{ member.name|capitalize }} <br><small>(virtual member)</small></h3>
 		</div>
-		<div>
+		<div class="modal-body">
 			{% if member.email %}
-			<p>An invitation email was sent to <b>{{ member.email }}</b><br>but your friend did not respond to it yet</p>
+			<div class="alert alert-warning"><p>An invitation email was sent to <b>{{ member.email }}</b><br>but your friend did not respond to it yet</p></div>
+			<p>Send him a new invite!</p>
 			{% else %}
-			<p>Enter the email of {{ member.name }} to invite her/him to register on Twinkler</p>
+			<p>You haven't linked this member to any of your friend :(</p>
+			<p>Enter the email of <strong>{{ member.name }}</strong> to invite her/him to register on Twinkler</p>
 			{% endif %}
-			<input id="email-input" placeholder="Enter an email"></input>
+			<div>
+			<input type="text"  id="email-input" placeholder="Enter his/her email address"></input>
 			<button id="send-email-button" class="btn btn-success" type="submit">Send invitation</button>
+			</div>
 			<div id="member-modal-flash-messages"></div>
-			<p style="margin-top: 20px"><b>or</b><br><br>share directly this link with {{ member.name }}</p>
-			<input style="width: 60%; margin: auto; margin-bottom: 20px;" value="http://www.twinkler.co/invitation/{{member.tgroup.id}}/{{member.tgroup.invitationToken}}"/>
+			<p><b>or</b><br>share directly this link with <strong>{{ member.name }}</strong></p>
+			<input type="text" style="width: 90%; margin: auto;" value="http://www.twinkler.co/invitation/{{member.tgroup.id}}/{{member.tgroup.invitationToken}}"/>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-success" data-dismiss="modal">Dismiss</button>
 		</div>
 	</div>
+</div>
 </div>
 
 <script language="javascript">

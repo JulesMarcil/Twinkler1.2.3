@@ -19,4 +19,40 @@ a {
 .frame .row{
 	margin-top: 20px;
 	margin-bottom: 20px;
-}Ò	
+}
+
+
+/*-----memberProfileModal-----*/
+#memberPrfofileModal .modal-header h3{
+	line-height: 18px;
+}
+
+#memberPrfofileModal .modal-header small{
+	color:#fff;
+}
+
+#memberPrfofileModal .modal-header{
+	padding-bottom: 12px;
+}
+
+#memberPrfofileModal input{
+	height: 40px;
+	width: 60%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#memberPrfofileModal button{
+	height: 40px;
+	width: 30%;
+}
+
+#memberPrfofileModal .alert-warning{
+	border: solid 2px rgb(192,152,83);
+	padding: 5px;
+}
+
+#memberPrfofileModal .alert-warning button{
+	color: rgb(192,152,83);
+	opacity: 1;
+}
