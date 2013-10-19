@@ -167,6 +167,10 @@ input:focus{
 	border-radius: 14px;
 }
 
+.navbar-unread, .navbar-new #filter-buttons span{
+	background-color: #FB786B;
+}
+
 #expense-summary{
 	float: right;
 	text-align: right;
