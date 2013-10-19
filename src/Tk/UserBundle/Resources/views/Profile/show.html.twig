@@ -139,8 +139,9 @@
 
 
 			{% if app.user.members|length == 0 %}
-
-		</p>You do not have any group yet</p>
+			<div class="flat-container accordion-group group-box empty">
+		<p>Create your first group and invite your friends. <br> Well, we can't do this for you ;)</p>
+		</div>
 		{% else %}
 		{% for member in app.user.members %}
 		<a class="group-link" data-id="{{member.id}}" href="{{ path('tk_group_goto_member', { 'id' : member.id }) }}">
