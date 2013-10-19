@@ -11,7 +11,9 @@
 .row{
 	height:100%;
 }
-
+input:focus{
+	outline: none;
+}
 /* ---------GROUP ACTIONS ----------- */
 
 .well {
@@ -129,6 +131,7 @@
 #group-edit-list ul li:hover{
 	color: white;
 	background-color: #FB786B;
+	cursor: pointer;
 }
 
 #group-edit-list ul li:first-child{

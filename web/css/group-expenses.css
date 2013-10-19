@@ -23,7 +23,9 @@
 	color: #c1cfd9;
 	text-decoration: none;
 }
-
+input:focus{
+	outline: none;
+}
 
 #expense-title{
 	display: inline-block;

@@ -4,6 +4,27 @@
 	margin-bottom: 0;
 }
 
+.alert-success{
+	border: solid 2px rgb(70,136,71);
+}
+
+.alert-success button{
+	color: rgb(70,136,71);
+	opacity: 1;
+	margin-top: 5px;
+}
+
+.alert-warning{
+	border: solid 2px rgb(192,152,83);
+}
+
+.alert-warning button{
+	color: rgb(192,152,83);
+	opacity: 1;
+	margin-top: 5px;
+}
+
+
 .flat-container {
 	width: 100%;
 }
@@ -53,31 +74,37 @@
 }
 
 #add-member-block textarea{
-	width: 300px;
+	margin-top: 10px;
+	width: 90%;
 	font-size: 14px;
 	background-color: rgb(250,250,250);
 }
+
+#add-member-block textarea:focus{
+	outline: none;
+}
+
 
 /* --- facebook table --- */
 
 #add-friend-block{
 	text-align: center;
-	margin-left: 20px;
+	margin-left: 0px;
 }
 
 
-	#add-friend-block:after{ /*arrow added to rightarrowdiv DIV*/
-		content:'';
-		display:block;
-		position:absolute;
-		top:15px;
-		right:100%; /*should be set to 100% */
-		width:0;
-		height:0;
-		border-color: transparent white transparent transparent; /*border color should be same as div div background color*/
-		border-style: solid;
-		border-width: 10px;	
-	}
+#add-friend-block:after{ /*arrow added to rightarrowdiv DIV*/
+	content:'';
+	display:block;
+	position:absolute;
+	top:15px;
+	right:100%; /*should be set to 100% */
+	width:0;
+	height:0;
+	border-color: transparent white transparent transparent; /*border color should be same as div div background color*/
+	border-style: solid;
+	border-width: 10px;	
+}
 
 #add-friend-block .subheader{
 	border-radius: 10px;
@@ -88,9 +115,15 @@
 	margin-bottom:10px;
 }
 
+#add-friend-block .no-friends{
+	font-size: 14px;
+	font-weight: normal;
+}
+
 #add-friend-block table{
 	width: 90%; margin: auto;
 }
+
 .#add-friend-block tr{
 	height: 40px;
 	border-bottom: solid 1px #C8C8C8;
@@ -112,12 +145,12 @@
 }
 
 #friend-table{
-  border:2px solid #BDC3C7;
-  border-bottom-left-radius:6px;
-  border-bottom-right-radius:6px;
-  border-top-left-radius:6px;
-  border-top-right-radius:6px;
-  width: 80%;
+	border:2px solid #BDC3C7;
+	border-bottom-left-radius:6px;
+	border-bottom-right-radius:6px;
+	border-top-left-radius:6px;
+	border-top-right-radius:6px;
+	width: 80%;
 }
 
 #friend-table table{
@@ -126,22 +159,23 @@
 }
 
 #friend-table tr {
-  border-bottom-color:#CCCCCC;
-  border-bottom-style:dotted;
-  border-bottom-width:1px;
-  height:50px;
-  width:80%;
+	border-bottom-color:#CCCCCC;
+	border-bottom-style:dotted;
+	border-bottom-width:1px;
+	height:50px;
+	width:80%;
 }
 
 /* --- Quick add --- */
 .quick-add{
 	background-color: white;
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius:4px;
-  border-top-left-radius:4px;
-  border-top-right-radius:4px;
-  box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 2px;
-  margin-top: 75px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+	box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 2px;
+	margin-top: 75px;
+	min-height: 110px;
 }
 
 /* -- footer -- */

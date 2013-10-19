@@ -1,4 +1,8 @@
 /* --- --- USER INFO CSS --- --- */
+input:focus{
+	outline: none;
+}
+
 
 a:hover{
 	text-decoration: none;
