@@ -350,7 +350,7 @@ $(document).ready(function() {
 		getChart();
 	};
 
-	$('#hide-tooltip').tooltip('');
+	$('#hide-tooltip').tooltip();
 });
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
