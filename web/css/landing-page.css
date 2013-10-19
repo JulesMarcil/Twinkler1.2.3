@@ -1009,8 +1009,8 @@ footer p{
 #user-layout-body .flat-header h1{
 	line-height: 12px;
 	font-size: 20px;
-  	font-family: "Lato", sans-serif;
-  	margin: 10px 0px;
+	font-family: "Lato", sans-serif;
+	margin: 10px 0px;
 }
 
 #user-layout-body .flat-container #hip-way{
@@ -1195,4 +1195,30 @@ footer p{
 .alert-danger button{
 	color: #B94A48;
 	opacity: 1;
+}
+
+
+/* ---  forgotPasswordModal --- */
+#forgotPasswordModal .modal-dialog {
+	-webkit-transform:translate(0px, 40%);
+}
+
+#forgotPasswordModal h3 {
+	color: #fff;
+}
+
+#forgotPasswordModal .modal-body label {
+	font-size: 16px
+}
+
+#forgotPasswordModal .modal-body input {
+	height:40px;
+	width: 60%;
+	margin-top: 20px;
+}
+
+
+
+#forgotPasswordModal .modal-footer{
+	text-align:  center;
 }
