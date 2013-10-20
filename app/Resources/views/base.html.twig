@@ -25,7 +25,6 @@
         <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/font.css') }}" rel="stylesheet">
         <link href="{{ asset('css/flat-design.css') }}" rel="stylesheet">
-        <link href="{{ asset('datepicker/css/datepicker.css') }}" rel="stylesheet">
         <link rel="icon"  type="image/png" href="{{ asset('img/logo/favicon.png') }}">
         {% block head %}
         {% endblock %}
@@ -45,77 +44,24 @@
             <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
             <script src="{{ asset('flat-ui/js/flatui-checkbox.js') }}"></script>
             <script src="{{ asset('bootstrap/js/bootstrap-select.js') }}"></script>
-            <script src="{{ asset('datepicker/js/bootstrap-datepicker.js') }}"></script>
             {% block javascripts %}
             {% endblock %}
         </div>
         
         {% include ':external:googleAnalytics.html.twig' %}
-
-        <!-- Mouseflow -->
-        <script type="text/javascript">
-            var _mfq = _mfq || [];
-            (function() {
-            var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
-            mf.src = "//cdn.mouseflow.com/projects/bec3d3ee-9be3-4839-b47a-081a5f174422.js";
-            document.getElementsByTagName("head")[0].appendChild(mf);
-            })();
-        </script>
     </body>
 
-    <!-- Facebook connect  -->
-    <script>
-    function fbLogin() {
-        FB.getLoginStatus(function(response) {
-            console.log(response.status);
-            if (response.status === 'connected') {
-                // the user is logged in and has authenticated your
-                // app, and response.authResponse supplies
-                // the user's ID, a valid access token, a signed
-                // request, and the time the access token 
-                // and signed request each expire
-                var uid = response.authResponse.userID;
-                var accessToken = response.authResponse.accessToken;
-                top.location.href  = '{{ path('_security_check' ) }}';
-            } else if (response.status === 'not_authorized') {
-                // the user is logged in to Facebook, 
-                // but has not authenticated your app
-                FB.login(function(response) {
-                  if (response.status === 'connected') {
-                    //user is logged in, reload page
-                    top.location.href  = '{{ path('_security_check' ) }}';
-                  } else {
-                    // user is not logged in
-                    console.log('not logged in');
-                  }
-                }, {scope: 'email'});
-            } else {
-                // the user isn't logged in to Facebook.
-                FB.login(function(response) {
-                  if (response.status === 'connected') {
-                    //user is logged in, reload page
-                    top.location.href  = '{{ path('_security_check' ) }}';
-                  } else {
-                    // user is not logged in
-                    console.log('not logged in');
-                  }
-                }, {scope: "email"});
-            }
-        });
-    }
-    </script>
-
-    <script type="text/javascript" > // Script for FOSFacebookBundle
+    <script type="text/javascript" >
     $( document ).ready(function() { 
         if ($('body').height()<$(window).height()){
             $('body').height($(window).height());
-    }
-    })
+        }
+    });
 
-     window.onresize =function() {
+    window.onresize =function() {
         if ($('body').height()<$(window).height()){
             $('body').height($(window).height());
-    }
+        }
     };
     </script>
 </html>
