@@ -116,8 +116,7 @@ var expenseStart = function(){
     // ---> Expense filter
     $('#filter-button-group').on('click', '#filter-button', function(e){
     	e.preventDefault();
-    	$(this).find('ul').hide();
-    })
+    });
 
     $('#unread-2').hide();
     $("#show-all-button").on("click", function(e){
@@ -137,6 +136,7 @@ var expenseStart = function(){
     	$(this).addClass("active");
     });
 
+    // ---> Edit/Remove button
     $('.edit-button').on('click', function(e){
     	e.defaultPrevented;
     	console.log('ok1');

@@ -19,23 +19,24 @@
 							</div>
 
 							<div style="display:inline-block">
-								{{ form_errors(form.name) }}
-								{{ form_widget(form.name, 
-								{ 'attr': { 'placeholder' : 'What ?',
-								'style' : 'width : 210px;'}}) }}
-							</div>
-
-							<div style="display:inline-block">
 								{{ form_errors(form.amount) }}
 								{{ form_widget(form.amount, 
 								{ 'attr': { 'placeholder' : 'How much ?',
 								'style' : 'width : 180px;'}}) }}
 							</div>
 
-							<div class="date">
-								<span>When was it paid ?</span>
-								<input type="text" class="span2" value="02-16-2012" id="dp" >
+							<div style="display:inline-block">
+								{{ form_errors(form.name) }}
+								{{ form_widget(form.name, 
+								{ 'attr': { 'placeholder' : 'What ?',
+								'style' : 'width : 210px;'}}) }}
 							</div>
+
+							<div>
+						    	<span>When was it paid ?</span>
+						    	{{ form_errors(form.date) }}
+						    	{{ form_widget(form.date) }}
+						    </div>
 						</div>
 
 						<div id="users-row">

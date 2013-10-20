@@ -39,7 +39,7 @@
 								<td>
 									<span>{{ member.name }}</span>
 								</td>
-								<td>
+								<td style="overflow: hidden">
 									<strong>
 										<span>{{ member.user.email }}</span>
 									</strong>
@@ -57,7 +57,7 @@
 									<span>{{ member.name }}</span>
 								</td>
 								<td>
-									<input type="text" id="email-input" name="_email_{{member.id}}" maxlength="255" value="{{ member.email }}" style="width:300px;"/>
+									<input type="text" id="email-input" name="_email_{{member.id}}" maxlength="255" value="{{ member.email }}"/>
 								</td>
 
 
