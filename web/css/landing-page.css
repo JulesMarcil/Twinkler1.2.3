@@ -62,6 +62,11 @@ header li{
 }
 
 #login-register{
+
+	box-sizing: border-box; 
+	ms-box-sizing: border-box; 
+	webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;
 	height:100%;
 	margin-right: 40px;
 	padding-top: 10px;
@@ -72,6 +77,21 @@ header li{
 	padding-left: 0;
 }
 
+#login-register li div{
+	box-sizing: border-box; 
+	ms-box-sizing: border-box; 
+	webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;
+	display: inline-block;
+	padding-top: 0px;
+
+}
+
+#login-register li div a{
+	line-height: 20px
+
+}
+
 #login-register span{
 	vertical-align: bottom;
 }
@@ -80,6 +100,8 @@ header li{
 	line-height:14px;
 	font-size: 14px;
 	margin-right: 5px;
+	vertical-align: middle;
+  padding:10px 12px 8px;
 }
 
 #login-register button + .max-700 {
