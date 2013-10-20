@@ -16,9 +16,9 @@
 			<ul>
 				<li class="min-700"><div class="fb-like" data-href="https://www.facebook.com/TwinklerCommunity" data-width="100%" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false" style="display: inline-block"></div></li>
 				{% block header_links %}
-				<li id="feature" class="min-940"><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></li>
-				<li id="getappstandapp" class="min-816"><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></li>
-				<li id="blog-button" class="min-700"><a href="{{ path('tk_welcome_blog') }}">BLOG</a></li>
+				<li id="feature" class="min-940"><div><a href="{{ path('tk_user_homepage') }}#features">LEARN MORE</a></div></li>
+				<li id="getappstandapp" class="min-816"><div><a href="{{ path('tk_user_homepage') }}#gettheapp">GET THE APP</a></div></li>
+				<li id="blog-button" class="min-700"><div><a href="{{ path('tk_welcome_blog') }}">BLOG</a></div></li>
 				{% endblock %}
 				<li>
 					<a href="{{ path('fos_user_registration_register')}}"  style="color:white"><button class="btn btn-warning min-700">REGISTER</button></a>
