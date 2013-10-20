@@ -82,3 +82,14 @@ input:focus{
 .msg-right{
 	text-align: right;
 }
+
+@media only screen and (min-width: 770px) {
+	.max-770{
+		display: none;
+	}
+}
+@media only screen and (max-width: 769px) {
+	.min-770{
+		display: none;
+	}
+}
