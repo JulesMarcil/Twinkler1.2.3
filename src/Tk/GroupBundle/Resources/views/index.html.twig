@@ -21,40 +21,72 @@
 <div id="second-row-big" class="row min-770" style="position: relative">
 	<div id="group">
 		<div id="pictures">
-			{% for member in group.members %}
-			<div class="member">
-				{% if member.user == app.user %}
-				<a href="{{ path('tk_user_homepage') }}">
-					{% if member.user.facebookId %}
-					<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
-					{% else %}
-					<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
-					{% endif %}
-					<p>{{ member.name }}</p>
-				</a>
-				{% elseif member.user %}
-				<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
-					{% if member.user.facebookId %}
-					<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
-					{% else %}
-					<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
-					{% endif %}
-					<p>{{ member.name }}</p>
-				</a> 
-				{% else %}
-				<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
-					<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
-					<p>{{ member.name }}</p>
-				</a>
-				{% endif %}
-			</div>
-			{% endfor %}
-			<div class="member" style="vertical-align:top">
-				<a href="{{ path('tk_group_add_members') }}">
-					<img src="{{ asset('img/Frame/add-member.png') }}" class="img-circle" alt="Add Member" style="position: relative; ">
-					<p style="color:#BEB5B2">Add Member</p>
-				</a>
-			</div>
+			<table>
+				<tr>
+					{% for member in group.members %}
+					<td>
+						<div class="member">
+							{% if member.user == app.user %}
+							<a href="{{ path('tk_user_homepage') }}">
+								{% if member.user.facebookId %}
+								<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+								{% else %}
+								<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+								{% endif %}
+							</a>
+							{% elseif member.user %}
+							<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
+								{% if member.user.facebookId %}
+								<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+								{% else %}
+								<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+								{% endif %}
+							</a> 
+							{% else %}
+							<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
+								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+							</a>
+							{% endif %}
+						</div>
+						{% endfor %}
+					</td>
+					<td>
+						<div class="member" style="vertical-align:top">
+							<a href="{{ path('tk_group_add_members') }}">
+								<img src="{{ asset('img/Frame/add-member.png') }}" class="img-circle" alt="Add Member" style="position: relative; ">
+							</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					{% for member in group.members %}
+					<td class="member-name-row">
+						<div class="member">
+							{% if member.user == app.user %}
+							<a href="{{ path('tk_user_homepage') }}">
+								<p>{{ member.name }}</p>
+							</a>
+							{% elseif member.user %}
+							<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
+								<p>{{ member.name }}</p>
+							</a> 
+							{% else %}
+							<a data-target="memberProfileModal" data-id="{{member.id}}" style="cursor: pointer">
+								<p>{{ member.name }}</p>
+							</a>
+							{% endif %}
+						</div>
+						{% endfor %}
+					</td>
+					<td class="member-name-row">
+						<div class="member" style="vertical-align:top">
+							<a href="{{ path('tk_group_add_members') }}">
+								<p style="color:#BEB5B2">Add Member</p>
+							</a>
+						</div>
+					</td>
+				</tr>
+			</table>
 			<div id="group-flash-messages">
 			</div>
 		</div>
@@ -74,43 +106,43 @@
 	<div class="container" style="height:100%;">
 		<div  class="row" style="height:100%;">
 			<div class="col-md-6 col-md-offset-3">
-			<div style="display:inline-block">
-				<div class="btn-toolbar">
-					<div class="btn-group">
-						<a id="navbar-expenses-link" class="btn">
-							<div id="navbar-expenses">
-								EXPENSES
-							</div>
-						</a>
-						<a id="navbar-chat-link" class="btn second">
-							<div id="navbar-chat">
-								CHAT
-							</div>
-						</a>
-						<a id="navbar-dashboard-link" class="btn">
-							<div id="navbar-dashboard">
-								DASHBOARD
-							</div>
-						</a>
+				<div style="display:inline-block">
+					<div class="btn-toolbar">
+						<div class="btn-group">
+							<a id="navbar-expenses-link" class="btn">
+								<div id="navbar-expenses">
+									EXPENSES
+								</div>
+							</a>
+							<a id="navbar-chat-link" class="btn second">
+								<div id="navbar-chat">
+									CHAT
+								</div>
+							</a>
+							<a id="navbar-dashboard-link" class="btn">
+								<div id="navbar-dashboard">
+									DASHBOARD
+								</div>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
-			</div>
 			<div class="pull-right min-770" id="show-hide-members"  style="margin-top: 0px; padding-right: 10px;">
 				<p id="hide-tooltip" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Hide or Show your Group's Members">
-				<a><i class="icon-collapse-top icon-large" id="toggle-button"></i></a></p>
+					<a><i class="icon-collapse-top icon-large" id="toggle-button"></i></a></p>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<script>
-	var balances = {{ app.user.currentMember.tgroup.arrayBalances|json_encode|raw }};
-	var members = {{ app.user.currentMember.tgroup.arrayMembers|json_encode|raw }};
-	var currency = {{ app.user.currentMember.tgroup.currency.symbol|json_encode|raw }};
-</script>
-{% endblock %}
+	<script>
+		var balances = {{ app.user.currentMember.tgroup.arrayBalances|json_encode|raw }};
+		var members = {{ app.user.currentMember.tgroup.arrayMembers|json_encode|raw }};
+		var currency = {{ app.user.currentMember.tgroup.currency.symbol|json_encode|raw }};
+	</script>
+	{% endblock %}
 
-{% block javascripts %}
-{{ parent() }}
-<script type='text/javascript' src="{{ asset('js/group.js') }}"></script>
-{% endblock %}
+	{% block javascripts %}
+	{{ parent() }}
+	<script type='text/javascript' src="{{ asset('js/group.js') }}"></script>
+	{% endblock %}
