@@ -435,17 +435,11 @@ header #show-hide-members{
 	body{
 		padding-top: 50px;
 	}
-	header .max-770{
-		display: none;
-	}
 }
 
 @media only screen and (max-width: 769px) {
 	body{
 		padding-top: 50px;
-	}
-	header .min-770{
-		display: none;
 	}
 	header #back-button,
 	header #group-name,
