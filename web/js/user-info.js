@@ -12,6 +12,12 @@ $(document).ready(function() {
 		$('.group-spinner').fadeOut();
 		$('#spinner-'+id).fadeIn();
 	})
+
+	//User actions
+	$('#profile-actions').on('click', '#profile-gear', function(e){
+    	e.preventDefault();
+    });
+
 });
 
 $('#group-dropdown-span').hover(function() {

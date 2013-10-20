@@ -1,7 +1,7 @@
 /* --- CSS applyable for all website when user is connected--- */
 
 body{
-	height: 100%;
+	height: auto;
 	margin: 0;
 	padding: 0;
 }
