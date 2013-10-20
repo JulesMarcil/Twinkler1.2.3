@@ -158,7 +158,7 @@ var expenseStart = function(){
     	}
     })
 
-    expenseSlimscroll(445);
+    expenseSlimscroll(400);
 
    
     $('[data-toggle="checkbox"]').each(function () {

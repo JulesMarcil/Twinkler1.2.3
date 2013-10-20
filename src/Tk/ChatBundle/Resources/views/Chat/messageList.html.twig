@@ -1,6 +1,8 @@
 
 <table id="chat-table" width="90%">
 
+	<!-- In case there is no message at all -->
+
 	{% if last_messages|length == 0 %}
 
 	<tr style= "border:none">
@@ -14,7 +16,9 @@
 
 	{% else %}
 
+	<!-- Case with messages -->
 	{% set previous = null %}
+	{% set previous_message = null %}
 	{% for message in last_messages %}
 	{% set member = message.author %}
 
@@ -86,12 +90,14 @@
 
 		{% endif %}
 
+	{% endif %}
+
 	{% set previous = member %}
 	{% set previous_message = message %}
 	
-	{% endif %}
-
 	{% endfor %}
+
+	<!-- Close last message -->
 
 	{% if previous.user == app.user %}
 
@@ -105,7 +111,7 @@
 		<td>
 	</tr>
 
-		{% else %}
+	{% else %}
 
 		</td>
 		<td class="message-date">
@@ -120,7 +126,7 @@
 		</td>
 	</tr>
 
-		{% endif %}
+	{% endif %}
 
 
 	{% endif %}
