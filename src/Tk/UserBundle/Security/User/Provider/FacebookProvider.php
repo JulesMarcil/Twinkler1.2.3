@@ -64,10 +64,9 @@ class FacebookProvider implements UserProviderInterface
                     $user->setEnabled(true);
                     $user->setPassword('');
                 }
-                
-                $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
-                
             }
+
+            $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
  
             if (count($this->validator->validate($user, 'Facebook'))) {
                 throw new UsernameNotFoundException('The facebook user could not be stored');
