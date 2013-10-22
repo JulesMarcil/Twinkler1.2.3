@@ -109,11 +109,37 @@
 				<table>
 					{% for debt in debts %}
 					<tr style="height: 30px;" data-payer="{{debt[0].id}}" data-amount="{{debt[1]}}" data-paid="{{debt[2].id}}">
-						<td style="text-align: left; overflow: hidden;"><div id="my-payback-owner">{{ debt[0].name }}<div id="payback-cta">CLICK TO PAYBACK</div></div></td> 
+						<td style="text-align: left; overflow: hidden;">
+							<div id="my-payback-owner">
+								{% if debt[0].user %}
+								{% if debt[0].user.facebookId %}
+								<img src="http://graph.facebook.com/{{debt[0].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% else %}
+								<img src="{{ asset(debt[0].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% endif %}
+								{% else %}
+								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+								{% endif %}
+								{{ debt[0].name }}
+								<div id="payback-cta">
+									Click to record a payback
+								</div>
+							</div>
+						</td> 
 						<td class="payback-text">gives </td>
 						<td style="color:#99B335;">{{ currency }} {{ debt[1] }}</td>
 						<td class="payback-text"> to </td>
-						<td style="text-align: left;">{{ debt[2].name }}</td>
+						<td style="text-align: left;">
+								{% if debt[2].user %}
+								{% if debt[2].user.facebookId %}
+								<img src="http://graph.facebook.com/{{debt[0].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% else %}
+								<img src="{{ asset(debt[2].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% endif %}
+								{% else %}
+								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+								{% endif %}
+						{{ debt[2].name }}</td>
 					</tr>
 					{% endfor %}
 				</table>
@@ -123,11 +149,11 @@
 		{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
 
 		<div class="payback-container">
-                <div class="btn-group">
-                  <a  id="new-payback"  class="btn" role="button"  data-toggle="modal">Record a Payback</a>
-                  <a class="btn" href="#settleDebtsModal" role="button"  data-toggle="modal" style="border-left: solid 2px #95a5a6;border-right: solid 2px #95a5a6">Settle all Debts</a>
-                  <a id="send-summary" class="btn" href="#sendSummaryModal" role="button"  data-toggle="modal">Send a Summary</a>
-                </div>
+			<div class="btn-group">
+				<a  id="new-payback"  class="btn" role="button"  data-toggle="modal">Record a Payback</a>
+				<a class="btn" href="#settleDebtsModal" role="button"  data-toggle="modal" style="border-left: solid 2px #95a5a6;border-right: solid 2px #95a5a6">Settle all Debts</a>
+				<a id="send-summary" class="btn" href="#sendSummaryModal" role="button"  data-toggle="modal">Send a Summary</a>
+			</div>
 		</div>
 		<div id="modal" class="modal fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		</div>	
@@ -143,7 +169,7 @@
 					<ul class="nav">
 						<li>
 							<h2>
-							Balance
+								Balance
 							</h2>
 						</li>
 					</ul>

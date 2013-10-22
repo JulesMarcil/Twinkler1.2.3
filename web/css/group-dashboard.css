@@ -234,13 +234,20 @@ input:focus{
 	border-bottom: none;
 }
 
-
 .payback-table td{
 	padding-left: 5px;
+	min-height: 150px;
 }
 
+.payback-table #my-payback-owner{
+	min-height: 60px;
+}
+
+
 .payback-table .payback-text{
-	color:#C8C8C8; font-size: 12px;
+	color:#C8C8C8; 
+	font-size: 12px;
+	padding: 0px 10px;
 }
 
 .payback-container{
@@ -258,7 +265,9 @@ input:focus{
 	width: 33%;
 }
 
-
+.payback-table img{
+	margin-right: 10px;
+}
 /* --- BALANCE (left) --- */
 
 #balance{
@@ -304,7 +313,7 @@ input:focus{
 	webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	min-height: 50px;
-	padding-top: 14px
+	padding-top: 16px
 }
 
 @media only screen and (min-width: 768px) {
