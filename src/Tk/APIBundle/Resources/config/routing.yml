@@ -15,6 +15,9 @@ tk_api_groups_post:
 tk_api_group_facebook:
     pattern: /api/group/facebook
     defaults: { _controller: TkAPIBundle:Group:addFriends }
+tk_api_group_manual:
+    pattern: /api/group/manual
+    defaults: { _controller: TkAPIBundle:Group:addManual }
 tk_api_group_remove:
     pattern: /api/group/remove
     defaults: { _controller: TkAPIBundle:Group:removeFriends }

@@ -300,14 +300,15 @@ class DefaultController extends Controller
 
         foreach($group->getMembers() as $member){
             if(!$member->getUser() and $member->getEmail()){
-                $message = \Swift_Message::newInstance();
-                $message->setSubject($user.' sent you an invitation on Twinkler')
-                        ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
-                        ->setTo($member->getEmail())
-                        ->setContentType('text/html')
-                        ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('invited' => $member, 'member' => $user->getCurrentMember())))
-                ;
-                $mailer->send($message);
+                    $message = \Swift_Message::newInstance();
+                    $message->setSubject($user.' sent you an invitation on Twinkler')
+                            ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+                            ->setTo($member->getEmail())
+                            ->setContentType('text/html')
+                            ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('invited' => $member, 
+                                                                                                    'user'    => $user)))
+                    ;
+                    $mailer->send($message);
             }else{
             }
         }

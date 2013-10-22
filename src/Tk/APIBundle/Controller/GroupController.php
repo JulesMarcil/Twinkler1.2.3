@@ -108,6 +108,57 @@ class GroupController extends Controller
         }
     }
 
+    public function addManualAction(Request $request)
+    {
+        $data = $request->request->all();
+        $em   = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $group_id = $data['group'];
+        $friends  = $data['friends'];
+
+        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
+
+        if($group){           
+
+            $em = $this->getDoctrine()->getmanager();
+            $repo = $this->getDoctrine()->getRepository('TkUserBundle:User');
+
+            $mailer = $this->get('mailer');
+
+            foreach($friends as $friend){
+
+                $member = new Member();
+                $member->setName($friend['name']);
+                $member->setEmail($friend['email']);
+                $member->setInvitationToken($member->generateInvitationToken());
+                $member->setTGroup($this->getUser()->getCurrentMember()->getTGroup());
+                $group->addMember($member);
+                $em->persist($member);
+
+                if($member->getEmail()){
+                    $message = \Swift_Message::newInstance();
+                    $message->setSubject($user.' sent you an invitation on Twinkler')
+                            ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+                            ->setTo($member->getEmail())
+                            ->setContentType('text/html')
+                            ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('member' => $member, 
+                                                                                                    'user'    => $user)))
+                    ;
+                    $mailer->send($message);
+                }
+            }
+
+            $em->flush();
+
+            $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group->getId());
+            return new JsonResponse($this->returnGroupAction($group2, null));
+
+        } else {
+            return new JsonResponse(array('error' => 'group not found'));
+        }
+    }
+
     public function removeFriendsAction(Request $request)
     {
         $data = $request->request->all();
