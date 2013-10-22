@@ -27,7 +27,11 @@ class OAuthController extends Controller
     	$fbk->setAccessToken($facebook_access_token);
 		$fbdata = $fbk->api('/me');
 
-		$user = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneBy(array('facebookId' => $fbdata['id']));
+		$user = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneByFacebookId($fbdata['id']);
+
+		if ($user){
+			$user->setEmail($fbdata['email']);
+		}
 
 		if (!$user) {
 			if (!empty($fbdata)) {
@@ -38,11 +42,12 @@ class OAuthController extends Controller
                 $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
                 //$this->createDefaultGroup($user);
             }
-
-           	$em = $this->getDoctrine()->getManager();
-           	$em->persist($user);
-           	$em->flush();
 		}
+
+		$em = $this->getDoctrine()->getManager();
+		$em->persist($user);
+        $em->flush();
+
 		return $this->getTokenAction($user);
 	}
 
