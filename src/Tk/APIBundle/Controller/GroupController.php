@@ -90,8 +90,7 @@ class GroupController extends Controller
                 $member->setUser($user);
                 $member->setName($user->getUsername());
                 $member->setTGroup($group);
-
-                $group->addMember($member);
+                
                 $user->setCurrentMember($member);
 
                 $em->persist($member);
@@ -100,7 +99,7 @@ class GroupController extends Controller
                 $user = null;
             }
 
-            $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group->getId());
+            $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
             return new JsonResponse($this->returnGroupAction($group2, null));
 
         } else {
@@ -132,8 +131,7 @@ class GroupController extends Controller
                 $member->setName($friend['name']);
                 $member->setEmail($friend['email']);
                 $member->setInvitationToken($member->generateInvitationToken());
-                $member->setTGroup($this->getUser()->getCurrentMember()->getTGroup());
-                $group->addMember($member);
+                $member->setTGroup($group);
                 $em->persist($member);
 
                 if($member->getEmail()){
@@ -148,10 +146,9 @@ class GroupController extends Controller
                     $mailer->send($message);
                 }
             }
-
             $em->flush();
 
-            $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group->getId());
+            $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
             return new JsonResponse($this->returnGroupAction($group2, null));
 
         } else {
