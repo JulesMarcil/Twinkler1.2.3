@@ -51,28 +51,6 @@ class GroupController extends Controller
         return new JsonResponse($this->returnGroupAction($group2, $member));
     }
 
-    private function returnGroupAction($group, $member)
-    {
-        $group_members = array();
-        foreach($group->getMembers() as $m){
-            $group_members[] = array('id'          => $m->getId(), 
-                                     'name'        => $m->getName(), 
-                                     'picturePath' => $m->getPicturePath(), 
-                                     'balance'     => $m->getBalance());
-        }
-        return array('id'           => $group->getId(), 
-                     'name'         => $group->getName(), 
-                     'currency'     => array('id'     => $group->getCurrency()->getId(),
-                                             'name'   => $group->getCurrency()->getName(),
-                                             'symbol' => $group->getCurrency()->getSymbol()),
-                     'members'      => $group_members, 
-                     'activeMember' => array('id'          => $member->getId(), 
-                                             'name'        => $member->getName(), 
-                                             'picturePath' => $member->getPicturePath()),
-                     'link'         => $group->getInvitationToken()
-                    );
-    }
-
     public function addFriendsAction(Request $request)
     {
         $data = $request->request->all();
@@ -91,7 +69,7 @@ class GroupController extends Controller
 
             foreach($friends as $friend){
 
-                $user = $repo->findByFacebookId($friend['id']);
+                $user = $repo->findOneByFacebookId($friend['id']);
 
                 if(!$user){
                     
@@ -123,11 +101,78 @@ class GroupController extends Controller
             }
 
             $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group->getId());
-            return new JsonResponse($this->returnGroupAction($group2, $u->getCurrentMember()));
+            return new JsonResponse($this->returnGroupAction($group2, null));
 
         } else {
             return new JsonResponse(array('error' => 'group not found'));
         }
+    }
 
+    public function removeFriendsAction(Request $request)
+    {
+        $data = $request->request->all();
+        $friends = $data['friends'];
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('TkUserBundle:Member');
+
+        foreach ($friends as $id){
+
+            $member = $repo->find($id);
+            $user = $member->getUser();
+
+            if($user and ($user->getCurrentMember() == $member)) {    
+                $user->setCurrentMember(null);
+            }
+            $member->setActive(false);
+
+            /*
+            if ($user and ($user != $u)) {
+
+                $message = \Swift_Message::newInstance();
+                $message->setSubject($u.' removed you from a group')
+                        ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
+                        ->setTo($user->getEmail())
+                        ->setContentType('text/html')
+                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $u, 
+                                                                                                 'member' => $member)))
+                ;
+                $mailer->send($message);
+            }*/
+
+            $em->flush();
+        }
+
+        $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($data['group']);
+        return new JsonResponse($this->returnGroupAction($group, null));
+    }
+
+    private function returnGroupAction($group, $member)
+    {
+        $group_members = array();
+
+        foreach($group->getMembers() as $m){
+            $group_members[] = array('id'          => $m->getId(), 
+                                     'name'        => $m->getName(), 
+                                     'picturePath' => $m->getPicturePath(), 
+                                     'balance'     => $m->getBalance());
+        }
+
+        if ($member) {
+            $activeMember = array('id'          => $member->getId(), 
+                                  'name'        => $member->getName(), 
+                                  'picturePath' => $member->getPicturePath());
+        } else {
+            $activeMember = null;
+        }
+
+        return array('id'           => $group->getId(), 
+                     'name'         => $group->getName(), 
+                     'currency'     => array('id'     => $group->getCurrency()->getId(),
+                                             'name'   => $group->getCurrency()->getName(),
+                                             'symbol' => $group->getCurrency()->getSymbol()),
+                     'members'      => $group_members, 
+                     'activeMember' => $activeMember,
+                     'link'         => $group->getInvitationToken()
+                    );
     }
 }

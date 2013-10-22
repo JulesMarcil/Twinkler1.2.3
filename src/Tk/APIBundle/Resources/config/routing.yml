@@ -12,12 +12,15 @@ tk_api_groups:
 tk_api_groups_post:
     pattern: /api/post/group
     defaults: { _controller: TkAPIBundle:Group:postGroup }
-tk_api_close_group:
-    pattern: /api/group/close
-    defaults: { _controller: TkAPIBundle:Api:closeGroup }
 tk_api_group_facebook:
     pattern: /api/group/facebook
     defaults: { _controller: TkAPIBundle:Group:addFriends }
+tk_api_group_remove:
+    pattern: /api/group/remove
+    defaults: { _controller: TkAPIBundle:Group:removeFriends }
+tk_api_close_group:
+    pattern: /api/group/close
+    defaults: { _controller: TkAPIBundle:Api:closeGroup }
 
 tk_api_friends:
     pattern: /api/friends
