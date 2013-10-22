@@ -13,6 +13,11 @@ class APPChatController extends Controller
     	$user = $this->container->get('security.context')->getToken()->getUser();
         if($user) {
 
+            $user->setLastAppLogin(new \Datetime('now'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
         	$data = $this->getRequest()->query->all();
         	$member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);
             $group = $member->getTGroup();
@@ -31,32 +36,6 @@ class APPChatController extends Controller
 	        							   );
 	        		$messages_array[] = $message_array;
 	        	}
-	        	
-                /*
-	        	$expenses = $group->getExpenses();
-	        	foreach($expenses as $expense){
-
-                    if ($expense->getOwner() == $member) {
-                        $name = 'You';
-                    } else {
-                        $name = $expense->getOwner()->getName();
-                    }
-
-	        		$message_array = array('type'        => 'expense',
-                                     'author'      => $expense->getAuthor()->getName(),
-	        							             'time'        => $expense->getAddedDate()->getTimestamp(),
-                                     'owner'       => $name,
-                                     'amount'      => $expense->getAmount(),
-                                     'name'        => $expense->getName(),
-                                     'share'       => $this->container->get('tk_expense.expenses')->youGet($member, $expense),
-                                     'picturePath' => $expense->getOwner()->getPicturePath()
-	        							   );
-	        		$messages_array[] = $message_array;
-	        	}
-
-	        	usort($messages_array, array('Tk\ChatBundle\Controller\APPChatController', 'cmp'));
-                */
-
 				return new JsonResponse($messages_array);
 			}
 			return new JsonResponse(array('message' => 'Current group not found'));	
@@ -75,6 +54,11 @@ class APPChatController extends Controller
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
         if($user) {
+
+            $user->setLastAppLogin(new \Datetime('now'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             $data = $this->getRequest()->query->all();
             $member = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);

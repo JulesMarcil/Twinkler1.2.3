@@ -34,6 +34,11 @@ class ApiController extends Controller
         $user = $this->getUser();
         if($user) {
 
+            $user->setLastAppLogin(new \Datetime('now'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
             if ( $user->getPicture() == null ) {
                 $em = $this->getDoctrine()->getManager();
                 $picture = $em->getRepository('TkUserBundle:ProfilePicture')->find(1);

@@ -74,6 +74,12 @@ class User extends BaseUser
     protected $date;
 
     /**
+     * @var \DateTime
+     * @ORM\Column(name="lastAppLogin", type="datetime")
+     */
+    protected $lastAppLogin;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -364,5 +370,28 @@ class User extends BaseUser
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Gets the last login time.
+     *
+     * @return \DateTime
+     */
+    public function getLastAppLogin()
+    {
+        return $this->lastAppLogin;
+    }
+
+    /**
+     * Set lastAppLogin
+     *
+     * @param \DateTime $lastAppLogin
+     * @return User
+     */
+    public function setLastAppLogin(\DateTime $time = null)
+    {
+        $this->lastAppLogin = $time;
+
+        return $this;
     }
 }
