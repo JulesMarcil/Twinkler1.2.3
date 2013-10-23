@@ -114,7 +114,7 @@ class GroupController extends Controller
         $user = $this->getUser();
 
         $group_id = $data['group'];
-        $friends  = $data['friends'];
+        $friend   = $data['member'];
 
         $group = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
 
@@ -123,30 +123,25 @@ class GroupController extends Controller
             $em = $this->getDoctrine()->getmanager();
             $repo = $this->getDoctrine()->getRepository('TkUserBundle:User');
 
+            $member = new Member();
+            $member->setName($friend['name']);
+            $member->setEmail($friend['email']);
+            $member->setInvitationToken($member->generateInvitationToken());
+            $member->setTGroup($group);
+            $em->persist($member);
+            $em->flush();
+
             $mailer = $this->get('mailer');
 
-            foreach($friends as $friend){
-
-                $member = new Member();
-                $member->setName($friend['name']);
-                $member->setEmail($friend['email']);
-                $member->setInvitationToken($member->generateInvitationToken());
-                $member->setTGroup($group);
-                $em->persist($member);
-
-                if($member->getEmail()){
-                    $message = \Swift_Message::newInstance();
-                    $message->setSubject($user.' sent you an invitation on Twinkler')
-                            ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
-                            ->setTo($member->getEmail())
-                            ->setContentType('text/html')
-                            ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('member' => $member, 
-                                                                                                    'user'    => $user)))
-                    ;
-                    $mailer->send($message);
-                }
-            }
-            $em->flush();
+            $message = \Swift_Message::newInstance();
+            $message->setSubject($user.' sent you an invitation on Twinkler')
+                    ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+                    ->setTo($member->getEmail())
+                    ->setContentType('text/html')
+                    ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('member' => $member, 
+                                                                                            'user'    => $user)))
+            ;
+            $mailer->send($message);
 
             $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
             return new JsonResponse($this->returnGroupAction($group2, null));
