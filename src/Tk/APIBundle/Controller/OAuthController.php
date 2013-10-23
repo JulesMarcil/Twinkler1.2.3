@@ -29,10 +29,6 @@ class OAuthController extends Controller
 
 		$user = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneByFacebookId($fbdata['id']);
 
-		if ($user){
-			$user->setEmail($fbdata['email']);
-		}
-
 		if (!$user) {
 			if (!empty($fbdata)) {
                 $user = new User();
