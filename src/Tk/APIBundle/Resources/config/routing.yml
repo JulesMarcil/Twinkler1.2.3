@@ -46,6 +46,9 @@ tk_api_dashboard:
 tk_api_facebook_token:
     pattern: /app/get/token
     defaults: { _controller: TkAPIBundle:OAuth:facebookToken }
+tk_api_facebook_merge:
+    pattern: /api/facebook/merge
+    defaults: { _controller: TkAPIBundle:OAuth:mergeFacebookAccount }
 
 tk_api_register:
     pattern: /app/register
