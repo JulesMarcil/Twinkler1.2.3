@@ -156,4 +156,37 @@ class OAuthController extends Controller
 		}
 		return rtrim(strtr(base64_encode(hash('sha256', $randomData)), '+/', '-_'), '=');
 	}
+
+	public function connectFacebookAccountAction(Request $request)
+	{
+		$user = $this->container->get('security.context')->getToken()->getUser();
+		$facebook_access_token = $request->query->get('facebook_access_token');
+
+    	$fbk = $this->get('fos_facebook.api');
+    	$fbk->setAccessToken($facebook_access_token);
+		$fbdata = $fbk->api('/me');
+
+		$u = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneByFacebookId($fbdata['id']);
+		$em = $this->getDoctrine()->getManager();
+
+		if ($u) {
+
+			$u->setFacebookId(null);
+			$em->persist($user);
+        	$em->flush();
+
+			foreach ($u->getMembers as $member){
+				$member->setUser($user);
+				$member->setName($user->getUsername);
+				$em->persist($member);
+			}
+		}
+
+		$user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
+
+		$em->persist($user);
+        $em->flush();
+
+        return JsonResponse(array('message' => 'user succesfully linked'));
+	}
 }

@@ -12,6 +12,26 @@ use Tk\UserBundle\Entity\User,
 
 class GroupController extends Controller
 {
+    public function getGroupsAction()
+    {
+        $user = $this->getUser();
+
+        if ($user) {
+            $members = $user->getMembers();
+            $groups = array();
+
+            foreach($members as $member){
+                $group = $member->getTGroup();
+                $groups[] = $this->returnGroupAction($group, $member);
+            }
+            return new JsonResponse($groups);
+        }
+
+        return new JsonResponse(array(
+            'message' => 'User is not identified'
+        ));
+    }
+
     public function postGroupAction(Request $request)
     {
         $data = $request->request->all();
@@ -217,5 +237,31 @@ class GroupController extends Controller
                      'activeMember' => $activeMember,
                      'link'         => $group->getInvitationToken()
                     );
+    }
+
+    public function closeGroupAction()
+    {
+        $data = $this->getRequest()->query->all();
+        $em = $this->getDoctrine()->getManager();
+        
+        $member = $em->getRepository('TkUserBundle:Member')->find($data['currentMemberId']);
+        $group = $member->getTGroup();
+
+        if ($group) {
+            foreach($group->getMembers() as $member){
+                if ($user = $member->getUser()){
+                    if ($user->getCurrentMember() == $member){
+                        $user->setCurrentMember(null);
+                        $em->persist($user);
+                    }
+                }
+                $member->setActive(0);
+                $em->persist($member);
+            }  
+            $em->flush();             
+            return new JsonResponse(array('message' => 'group '.$group->getName().' closed successfully'));
+        } else {
+            return new JsonResponse(array('message' => 'group not found'));   
+        }
     }
 }

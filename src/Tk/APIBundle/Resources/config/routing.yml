@@ -8,7 +8,7 @@ tk_api_profile:
 
 tk_api_groups:
     pattern: /api/groups
-    defaults: { _controller: TkAPIBundle:Api:getGroups }
+    defaults: { _controller: TkAPIBundle:Group:getGroups }
 tk_api_groups_post:
     pattern: /api/post/group
     defaults: { _controller: TkAPIBundle:Group:postGroup }
@@ -23,7 +23,7 @@ tk_api_group_remove:
     defaults: { _controller: TkAPIBundle:Group:removeFriends }
 tk_api_close_group:
     pattern: /api/group/close
-    defaults: { _controller: TkAPIBundle:Api:closeGroup }
+    defaults: { _controller: TkAPIBundle:Group:closeGroup }
 
 tk_api_friends:
     pattern: /api/friends

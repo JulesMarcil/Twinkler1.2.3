@@ -54,7 +54,7 @@ class TGroup
 
     /**
      * @ORM\OneToMany(targetEntity="Tk\ExpenseBundle\Entity\Expense", mappedBy="group", cascade={"persist"})
-     * @ORM\OrderBy({"id" = "DESC", "date" = "DESC"})
+     * @ORM\OrderBy({"date" = "DESC", "id" = "DESC"})
      */
     protected $expenses;
 
