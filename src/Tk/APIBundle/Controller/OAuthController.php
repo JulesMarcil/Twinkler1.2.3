@@ -28,21 +28,39 @@ class OAuthController extends Controller
 		$fbdata = $fbk->api('/me');
 
 		$user = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneByFacebookId($fbdata['id']);
+		$mail = false;
 
-		if (!$user) {
-			if (!empty($fbdata)) {
+		if (!empty($fbdata)) {
+			if (!$user) {
+			
                 $user = new User();
                 $user->setEnabled(true);
                 $user->setPassword('');
- 
-                $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
-                //$this->createDefaultGroup($user);
+                $mail = true;
+
             }
+ 
+            $user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
 		}
 
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($user);
         $em->flush();
+
+        if($mail){
+
+        	$mailer = $this->get('mailer');
+
+		    $message = \Swift_Message::newInstance();
+	        $message->setSubject('Thank you for joining')
+	                ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+	                ->setTo($user->getEmail())
+	                ->setContentType('text/html')
+	                ->setBody($this->renderView(':emails:joinedApp.email.twig', array('user' => $user)))
+	        ;
+	        $mailer->send($message);
+
+        }
 
 		return $this->getTokenAction($user);
 	}
@@ -137,73 +155,5 @@ class OAuthController extends Controller
 		  $randomData = mt_rand().mt_rand().mt_rand().uniqid(mt_rand(), true).microtime(true).uniqid(mt_rand(), true);
 		}
 		return rtrim(strtr(base64_encode(hash('sha256', $randomData)), '+/', '-_'), '=');
-	}
-
-	private function createDefaultGroup($user)
-	{
-		$em = $this->getDoctrine()->getManager();
-	    $currency = $em->getRepository('TkGroupBundle:Currency')->find(1);	
-
-        $group = new TGroup();
-        $group->setName('Twinkler team (example)');
-        $group->setCurrency($currency);
-        $group->setInvitationToken($group->generateInvitationToken());
-
-        $jules  = $em->getRepository('TkUserBundle:User')->find(1);
-        $arnaud = $em->getRepository('TkUserBundle:User')->find(2);
-
-        $member = new Member();
-        $member->setUser($user);
-        $member->setName($user->getUsername());
-        $member->setTGroup($group);
-
-        $jules_member = new Member();
-        $jules_member->setUser($jules);
-        $jules_member->setName($jules->getUsername());
-        $jules_member->setTGroup($group);
-
-        $arnaud_member = new Member();
-        $arnaud_member->setUser($arnaud);
-        $arnaud_member->setName($arnaud);
-        $arnaud_member->setTGroup($group);
-
-        $message1 = New Message();
-		$date = new \DateTime('now');
-		$message1->setTimestamp($date->getTimestamp());
-		$message1->setBody('As you can see I just added an expense for the Breakfast I paid to Jules yesterday, feel free to add yours or create a new group with your friends');
-		$message1->setAuthor($arnaud_member);
-		$message1->setGroup($group);
-
-        $expense = new Expense();
-        $expense->setAmount(20);
-        $expense->setName('Breakfast at Tiffany\'s');
-        $expense->setAddedDate(new \DateTime('now'));
-        $expense->setDate(new \Datetime('yesterday'));
-        $expense->setActive(true);
-        $expense->setAuthor($arnaud_member);
-        $expense->setOwner($arnaud_member);
-        $expense->setGroup($group);
-        $expense->addUser($jules_member);
-        $expense->addUser($arnaud_member);
-
-        $message2 = New Message();
-        $date = new \DateTime('now');
-		$message2->setTimestamp($date->getTimestamp());
-		$message2->setBody('Hello '.$user->getUsername().' and welcome to Twinkler! You can use this chat to let us know what you think about Twinkler');
-		$message2->setAuthor($jules_member);
-		$message2->setGroup($group);
-
-        $picture = $em ->getRepository('TkUserBundle:ProfilePicture')->find(1);	        
-        $user->setPicture($picture);
-
-        $em->persist($user);
-        $em->persist($group);
-        $em->persist($member);
-        $em->persist($jules_member);
-        $em->persist($arnaud_member);
-        $em->persist($message1);
-        $em->persist($expense);
-        $em->persist($message2);
-        $em->flush();
 	}
 }

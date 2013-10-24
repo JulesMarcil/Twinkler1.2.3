@@ -75,7 +75,7 @@ class User extends BaseUser
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="lastAppLogin", type="datetime")
+     * @ORM\Column(name="lastAppLogin", type="datetime", nullable=true)
      */
     protected $lastAppLogin;
 
