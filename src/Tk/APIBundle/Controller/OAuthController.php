@@ -160,38 +160,30 @@ class OAuthController extends Controller
 	public function mergeFacebookAccountAction(Request $request)
 	{
 		$user = $this->container->get('security.context')->getToken()->getUser();
-		$facebook_access_token = $request->request->get('facebook_access_token');
 
-    	$fbk = $this->get('fos_facebook.api');
-    	$fbk->setAccessToken($facebook_access_token);
-		$fbdata = $fbk->api('/me');
+		if($user->getFacebookId()){
+			return new JsonResponse(array('error' => 'yes', 'message' => 'the user already have a facebook id, please logout and login again with facebook'));
+		} else {
 
-		$u = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneByFacebookId($fbdata['id']);
-		$em = $this->getDoctrine()->getManager();
+			$facebook_access_token = $request->request->get('facebook_access_token');
+	    	$fbk = $this->get('fos_facebook.api');
+	    	$fbk->setAccessToken($facebook_access_token);
+			$fbdata = $fbk->api('/me');
 
-		//return new JsonResponse(array('user' => $user->getUsername(), 'u' => $u->getUsername()));
+			$u = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneByFacebookId($fbdata['id']);
 
-		if ($u) {
+			if ($u) {
+				return new JsonResponse(array('error' => 'yes', 'message' => 'This facebook account is already linked to another user'));
+			} else {
+				$user->setPassword('facebook');
+				$user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
 
-			$u->setFacebookId(null);
-			$u->setUsername($u->getUsername().' (facebook now)');
-			$u->setEmail($u->getEmail().'.facebook');
-			$em->persist($u);
-        	$em->flush();
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($user);
+		        $em->flush();
 
-			foreach ($u->getMembers() as $member){
-				$member->setUser($user);
-				$member->setName($user->getUsername());
-				$em->persist($member);
+		        return new JsonResponse(array('error' => 'no', 'message' => 'user succesfully linked'));
 			}
 		}
-
-		$user->setPassword('facebook');
-		$user->setFBData($fbdata); // Ici on passe les données Facebook à notre classe User afin de la mettre à jour
-
-		$em->persist($user);
-        $em->flush();
-
-        return new JsonResponse(array('message' => 'user succesfully linked'));
 	}
 }
