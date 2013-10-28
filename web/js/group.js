@@ -162,9 +162,9 @@ var expenseStart = function(){
     	}
     })
 
+    // scroll in modal
     expenseSlimscroll(400);
 
-   
     $('[data-toggle="checkbox"]').each(function () {
     	$(this).checkbox();
     });
@@ -178,6 +178,21 @@ var expenseStart = function(){
     $("#deselect-all-button").click(function(){
     	$(".user-checkbox").prop("checked", false);
     });
+
+    // Submit new expense
+    var form = $('#add-expense-form');
+    var amount = $('#tk_expensebundle_expensetype_amount');
+    $('#submit-expense').click(function(e){
+    	console.log('submit clicked');
+    	if(isNaN(amount.val())) {
+		    e.preventDefault();
+		    console.log('submit stopped '+amount.val());
+			form.find('.amount-error').html('Please enter a valid amount');
+		} else {
+			console.log('nothing happen because '+amount.val());
+		}
+        
+	});
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHAT START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
