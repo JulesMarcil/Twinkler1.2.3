@@ -107,6 +107,8 @@ var expenseStart = function(){
 	addScrollOnChart();
 	getChart();
 
+
+
 	$('.datepicker').datepicker();
 
 	/*--------CHARTS & TIMLINE SIZE--------*/
