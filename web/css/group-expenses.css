@@ -447,7 +447,7 @@ input:focus{
 
 #expense-table-header tr{
 	background-color:#34495E;
-	height: 30px;
+	height: 40px;
 	color:#fff;
 
 }
@@ -662,8 +662,69 @@ input:focus{
 	cursor: pointer;
 	font-size: 18px;
 	margin-bottom: 50px;
+	margin-top: 20px;
 }
 
 #new-group-button:hover{
 	background-color: rgba(255,255,255,0.5)
+}
+
+
+/*---- CALENDAR ----*/
+.ui-widget-header .ui-state-default {
+	background: transparent ;
+	border: none  ;
+}
+
+
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background: transparent ;
+	border-radius: none  ;
+	border: none  ;
+}
+.ui-state-default:hover {
+	background: transparent ;
+	border: none  ;
+	color:#2ECC71;
+}
+.ui-widget-header {
+    background: transparent;
+    background-color: #34495E;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.ui-widget-header a {
+    color: #fff;
+}
+
+.ui-widget-header a span{
+    color: #fff;
+}
+
+.ui-datepicker-next-hover{
+	background:transparent;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {  
+    display: inline-block;  
+    width: 30px;  
+    height: 30px;  
+    text-align: center;  
+    cursor: pointer;  
+    background-image: url('../img/Frame/arrow.png');  
+    background-repeat: no-repeat;  
+    line-height: 600%;  
+    overflow: hidden;  
+}  
+
+.ui-state-hover.ui-datepicker-next-hover,.ui-state-hover.ui-datepicker-prev-hover{
+	background: url("images/ui-icons_222222_256x240.png") !important;
+	border: none;
+}
+.ui-state-hover .ui-icon{
+	background-image: url("images/ui-icons_222222_256x240.png");
 }

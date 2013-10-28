@@ -107,6 +107,8 @@ var expenseStart = function(){
 	addScrollOnChart();
 	getChart();
 
+	$('.datepicker').datepicker();
+
 	/*--------CHARTS & TIMLINE SIZE--------*/
 	if (activePage!=="lists"){
 		var members_nb= balances.length;

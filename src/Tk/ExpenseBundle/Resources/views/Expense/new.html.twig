@@ -18,11 +18,11 @@
 								{ 'attr': { 'style' : 'width : 150px;'}}) }}
 							</div>
 
-							<div style="display:inline-block">
+							<div style="display:inline-block;">
 								{{ form_errors(form.amount) }}
 								{{ form_widget(form.amount, 
 								{ 'attr': { 'placeholder' : 'How much ?',
-								'style' : 'width : 180px;'}}) }}
+								'style' : 'width : 100px;'}}) }}
 							</div>
 
 							<div style="display:inline-block">
@@ -33,10 +33,16 @@
 							</div>
 
 							<div>
-						    	<span>When was it paid ?</span>
-						    	{{ form_errors(form.date) }}
-						    	{{ form_widget(form.date) }}
-						    </div>
+								<span>When was it paid ?</span>
+								{{ form_errors(form.date) }}
+								{{ form_widget(form.date) }}
+
+
+								<div class="form-group"  style="width:140px; margin-top:30px; margin-left:auto; margin-right: auto" >
+									<input type="text" class="form-control datepicker" placeholder="When?"/>
+									<span class="input-icon glyphicon glyphicon-calendar"></span>
+								</div>
+							</div>
 						</div>
 
 						<div id="users-row">
