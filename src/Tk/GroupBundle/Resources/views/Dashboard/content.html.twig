@@ -132,7 +132,7 @@
 						<td style="text-align: left;">
 								{% if debt[2].user %}
 								{% if debt[2].user.facebookId %}
-								<img src="http://graph.facebook.com/{{debt[0].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								<img src="http://graph.facebook.com/{{debt[2].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 								{% else %}
 								<img src="{{ asset(debt[2].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 								{% endif %}
