@@ -53,22 +53,23 @@
 			</div>
 
 			<div class="flat-container">
-				<div class="row" style="margin-top: 5px">
-					<div class="col-md-12" id="add-member-block">
-						{% render(controller('TkGroupBundle:Default:addMember')) %}
-					</div>
+
+				<input placeholder="filter by name ..." id="friend-input">
+
+				<div id="friend-table">
+					<table style="border: none">
+						<tbody style="border-color: red">
+						</tbody>
+					</table>
 				</div>
 				<div class="flat-footer">
 					<a id="add-validate" href="{{ path('tk_group_add_validate') }}">
-						<div class="btn btn-success">Continue and Send Invitations</div>
+						<div class="btn btn-success">Validate and Continue</div>
 					</a>
 				</div>
 			</div>	
 		</div>
 	</div>
-			<div class="col-md-3 quick-add" id="add-friend-block">
-				{% render controller('TkUserBundle:Friends:inviteFriends') %}
-			</div>
 
 	{% endblock %}
 

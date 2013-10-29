@@ -5,6 +5,9 @@ namespace Tk\GroupBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Request;
 
+use Tk\GroupBundle\Entity\TGroup,
+    Tk\GroupBundle\Form\TGroupType;
+
 class DashboardController extends Controller
 {
     public function summaryModalAction()
@@ -60,6 +63,82 @@ class DashboardController extends Controller
         }
         $em->flush();
         return $this->redirect($this->generateUrl('tk_group_dashboard'));
+    }
+
+    private function removeMemberAction($member, $em)
+    {
+        $u = $member->getUser();
+        $group = $member->getTGroup();
+        $user = $this->getUser();
+
+        $member->setActive(false);
+        $em->flush();
+
+        if($u){
+            if ($u->getCurrentMember() == $member){
+                $u->setCurrentMember(null);
+            }
+            if ($u != $user){
+
+                $mailer = $this->get('mailer');
+
+                $message = \Swift_Message::newInstance();
+                $message->setSubject($user.' removed you from a group')
+                        ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
+                        ->setTo($u->getEmail())
+                        ->setContentType('text/html')
+                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $user, 
+                                                                                                 'member' => $member,
+                                                                                                 'group'  => $group)))
+                ;
+                $mailer->send($message);
+            }
+        }
+    }
+
+
+    public function editAction()
+    {
+        $group = $this->getUser()->getCurrentMember()->getTGroup();
+
+        $form = $this->createForm(new TGroupType(), $group);
+
+        $request = $this->get('request');
+
+        if ($request->isMethod('POST')) {
+
+            $form->bind($request);
+
+            if ($form->isValid()) {
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($group);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('tk_chat_homepage'));
+            }
+        }
+
+        return $this->render('TkGroupBundle:GroupActions:edit.html.twig', array(
+            'form' => $form->createView(),
+            ));        
+    }
+
+    public function closeGroupAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $group = $em->getRepository('TkGroupBundle:TGroup')->find($id);
+        $user = $this->getUser();
+
+        if ($this->getUser()->getCurrentMember()->getTGroup() != $group){
+            throw new AccessDeniedException('You are not allowed to do this');
+        }
+        else{   
+            $user->setCurrentMember(null);
+            $group->setActive(0);
+            $em->flush();               
+        }
+        return $this->redirect($this->generateUrl('tk_user_homepage')); 
     }
 }
 

@@ -394,4 +394,15 @@ class User extends BaseUser
 
         return $this;
     }
+
+    public function isInGroup($group)
+    {
+        $members = $this->getMembers();
+        foreach ($members as $member){
+            if ($member->getTGroup() == $group){
+                return true;
+            }
+        }
+        return false;
+    }
 }

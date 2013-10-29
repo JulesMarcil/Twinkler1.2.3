@@ -1,7 +1,5 @@
 <div id="fb-root"></div>
 
-{{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();', 'status' : true, 'frictionlessRequests' : 'true'} ) }}
-
 <script>
 
 window.fbAsyncInit = function() {
@@ -25,6 +23,16 @@ window.fbAsyncInit = function() {
       // The response object is returned with a status field that lets the app know the current
       // login status of the person. In this case, we're handling the situation where they 
       // have logged in to the app.
+      var activePage = document.URL.split("/").pop();
+      console.log(activePage);
+      if(activePage == 'add'){
+        FB.api('/me/friends', {fields: 'username,name,id'}, function(response) {
+          //...
+          window.friends = response.data;
+          console.log('friends retrieved');
+          jQuery('#fb-root').trigger('facebook:friends');
+        });
+      }
     } else if (response.status === 'not_authorized') {
       console.log('not_authorized');
       // In this case, the person is logged into Facebook, but not into the app, so we call
@@ -66,43 +74,43 @@ function testAPI() {
 
 // Login function
 function fbLogin() {
-        FB.getLoginStatus(function(response) {
-            console.log(response.status);
+  FB.getLoginStatus(function(response) {
+      console.log(response.status);
+      if (response.status === 'connected') {
+          // the user is logged in and has authenticated your
+          // app, and response.authResponse supplies
+          // the user's ID, a valid access token, a signed
+          // request, and the time the access token 
+          // and signed request each expire
+          var uid = response.authResponse.userID;
+          var accessToken = response.authResponse.accessToken;
+          top.location.href  = '{{ path('_security_check' ) }}';
+      } else if (response.status === 'not_authorized') {
+          // the user is logged in to Facebook, 
+          // but has not authenticated your app
+          FB.login(function(response) {
             if (response.status === 'connected') {
-                // the user is logged in and has authenticated your
-                // app, and response.authResponse supplies
-                // the user's ID, a valid access token, a signed
-                // request, and the time the access token 
-                // and signed request each expire
-                var uid = response.authResponse.userID;
-                var accessToken = response.authResponse.accessToken;
-                top.location.href  = '{{ path('_security_check' ) }}';
-            } else if (response.status === 'not_authorized') {
-                // the user is logged in to Facebook, 
-                // but has not authenticated your app
-                FB.login(function(response) {
-                  if (response.status === 'connected') {
-                    //user is logged in, reload page
-                    top.location.href  = '{{ path('_security_check' ) }}';
-                  } else {
-                    // user is not logged in
-                    console.log('not logged in');
-                  }
-                }, {scope: 'email'});
+              //user is logged in, reload page
+              top.location.href  = '{{ path('_security_check' ) }}';
             } else {
-                // the user isn't logged in to Facebook.
-                FB.login(function(response) {
-                  if (response.status === 'connected') {
-                    //user is logged in, reload page
-                    top.location.href  = '{{ path('_security_check' ) }}';
-                  } else {
-                    // user is not logged in
-                    console.log('not logged in');
-                  }
-                }, {scope: "email"});
+              // user is not logged in
+              console.log('not logged in');
             }
-        });
-    }
+          }, {scope: 'email'});
+      } else {
+          // the user isn't logged in to Facebook.
+          FB.login(function(response) {
+            if (response.status === 'connected') {
+              //user is logged in, reload page
+              top.location.href  = '{{ path('_security_check' ) }}';
+            } else {
+              // user is not logged in
+              console.log('not logged in');
+            }
+          }, {scope: "email"});
+      }
+  });
+}
 
 </script>
 

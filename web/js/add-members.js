@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+	$("#fb-root").bind("facebook:friends", function() {
+		var friends = window.friends;
+		for (var i=0; i<friends.length; i++){
+			var friend = friends[i];
+			$('#friend-table').find('tbody').append('<tr><td><img src="http://graph.facebook.com/'+friend['id']+'/picture?width=10&height=10" alt="friend" width="30px"></td><td class="name">'+friend['name']+'</td><td class="add-button"><button data-id="'+friend['id']+'" data-name="'+friend['name']+'" data-username="'+friend['username']+'" class="btn btn-small">Add</button></td></tr>');
+		}
+	});
+
 	// overwrite contains function
 	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
     	return function( elem ) {
@@ -17,39 +25,28 @@ $(document).ready(function() {
 	    height: '236px'
 	});
 
-	$(".quick-add").height($("#friend-table").height()+70+'px');
-
-	// ajax add member
-	$(".add-members").find('form').on('submit', function(e){
-		e.preventDefault();
-		var form = $(this);
-		var name = form.find('#form_name').val();
-		var email = form.find('#form_email').val();
-		$.ajax(form.attr('action'),{
-			type: form.attr('method'),
-			data: form.serialize(),
-			success: function(response){				
-				$('#group').append(response).fadeIn();
-				if(email === ''){
-					$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p></div>');
-				}else{
-					$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
-				}
-				form.trigger('reset').find('#form_name').focus();
-			}
-		});
-	});
-
 	// ajax add friend
-	$("#friend-table").find('button').on('click', function(){
+	$("#friend-table").on('click', 'button', function(){
+		console.log('add friend');
 		$(this).closest('tr').fadeOut();
-		var id = $(this).data('id');
-		$.get('add/friend/'+id+'', function(response){
-			$('#group').append(response).fadeIn();
-			var name = $('#group').find('p').last().data('name');
-			var email = $('#group').find('p').last().data('email');
-			$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ name +'</b> to the group<p><p>We will send him an invitation email to <b>'+ email +'</b> when you validate</p></div>');
-		});
+		var id   = $(this).data('id');
+		var name   = $(this).data('name');
+		var username   = $(this).data('username');
+		$. ajax ({
+             type: "GET",
+             url: "add/friend",
+             dataType: 'json',
+             data: {'id': id, 'name': name, 'username': username },
+             success: function (response) {
+                  	console.log(response);//iterate here the object
+                  	if (response.error){
+                  		$("#flash-message-block").html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>'+response.error+'</p></div>');
+                  	} else {
+                  		$('#group').append('<div><img src="http://graph.facebook.com/'+response.id+'/picture?width=100&height=100" alt="friend" width="60px" class="img-circle"><p>'+response.name+'</div>').fadeIn();
+						$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ response.name +'</b> to the group<p><p>Tell her/him to simply login to Twinkler to access the group</p></div>');
+                  	}                  	
+             }
+         });
 	});
 
 	// ajax remove added member
@@ -58,9 +55,9 @@ $(document).ready(function() {
 		var user_id = $(this).data('user');
 		var name = $(this).closest('.member').find('p').text();
 		$(this).closest('.member').remove();
-		$("#flash-message-block").hide().html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You removed <b>'+ name +'</b> from the group<p></div>').show();;
-		$('#tr-user-'+user_id).fadeIn();
 		$.get('add/remove/member/'+id+'', function(response){
+			$("#flash-message-block").hide().html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You removed <b>'+ name +'</b> from the group<p></div>').show();;
+			$('#tr-user-'+user_id).fadeIn();
 		});
 	});
 });
