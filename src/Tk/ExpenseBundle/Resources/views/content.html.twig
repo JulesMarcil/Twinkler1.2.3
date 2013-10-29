@@ -31,7 +31,7 @@
 						Group Total Spending
 					</td>
 					<td>
-						12 dols
+						{{ currency }} {{ app.user.currentMember.tgroup.totalPaid }}
 					</td>
 				</tr>
 				<tr>
@@ -39,12 +39,15 @@
 						Your Total Spending
 					</td>
 					<td>
-						12 dols
+						{{ currency }} {{ app.user.currentMember.totalPaid }}
 					</td>
 				</tr>
 			</table>
 			<a id="send-summary" class="btn" href="#sendSummaryModal" role="button"  data-toggle="modal">Send Everybody a Summary</a>
 		</div>
+		<div id="modal" class="modal fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" align="center">
+		</div>
+
 	</div>		
 	<div class="col-md-8" >
 		<div id="timeline-expense-container">
@@ -124,7 +127,7 @@
 							</td>
 							<td id="amount-column" style="vertical-align: middle;">
 								<font style="color:#99B335;">
-									{{ expense[0].amount }} {{ currency }}
+									{{ currency }} {{ expense[0].amount }}
 								</font> 
 							</td>
 							<td style=" text-align: center;vertical-align: middle">
@@ -194,14 +197,14 @@
 									You gave<br>
 								</font>
 								<font style="color:rgb(153,179,53); font-weight: bold">
-									{{ expense[1] }} {{ currency }}
+									{{ currency }} {{ expense[1] }}
 								</font>
 								{% elseif  expense[0].users[0].user == app.user %}
 								<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
 									You received<br>
 								</font>
 								<font style="color:rgba(227,79,52,1); font-weight: bold">
-									{{ -expense[1] }} {{ currency }}
+									{{ currency }} {{ -expense[1] }}
 								</font>
 								{% endif %}
 								{% else %}
@@ -253,7 +256,7 @@
 							</td>
 							<td id="amount-column">
 								<font style="color:#0088CC;">
-									{{ expense[0].amount }} {{ currency }}
+									{{ currency }} {{ expense[0].amount }} 
 								</font> 
 							</td>
 							<td> 
@@ -282,14 +285,14 @@
 									You are owed<br>
 								</font>
 								<font style="color:rgb(153,179,53); font-weight: bold">
-									{{ expense[1] }} {{ currency }}
+									{{ currency }} {{ expense[1] }}
 								</font>
 								{% else %}
 								<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
 									You owe<br>
 								</font>
 								<font style="color:#fb786b; font-weight: bold">
-									{{ -expense[1] }} {{ currency }}
+									{{ currency }} {{ -expense[1] }} 
 								</font>
 								{% endif %}
 								{% else %}
