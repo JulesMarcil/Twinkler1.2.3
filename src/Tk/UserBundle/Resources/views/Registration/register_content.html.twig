@@ -1,6 +1,4 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<div id="user-layout" class="row">
-    <div align="center">
         {% if app.session.get('invitation_id') != null %}
         <h5 class="invitation-message">Hello {{ app.session.get('invitation_member') }},</br> you need to login or register to join the group </h5>
         {% endif %}
@@ -19,38 +17,20 @@
             		<h1>REGISTER</h1>	
             	</div>
                 <div>
-                    <div id="hip-way">
-                        <h3>Do it the hip way</h3>
-                        <p id="p2">Connect in a single click via Facebook.</p>
-                        <a class="btn btn-info" id="facebook-login" onclick="fbLogin()">
-                            <img src="{{ asset('img/landing-page/facebook-icon.png') }}" alt="Connect with Facebook" width="18px">Connect with Facebook</a>
-                        <p style="color: #999999; font-size: 12px;">Find your friends instantly on Twinkler and we'll never post anything on your behalf.</p>
-                    </div>
-
-                    <div id="old-school-way">
-                        <h3>Or the old school way</h3>
-                        <div id="register-form">
-                        	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" style="margin-top: 20px;">
-                                {{ form_errors(form) }}
-
-                        	    {{ form_errors(form.username) }}
-                                {{ form_widget(form.username) }}
-
-                                {{ form_errors(form.email) }}
-                                {{ form_widget(form.email) }}
-
-                                {{ form_errors(form.plainPassword) }}
-                                {{ form_widget(form.plainPassword) }}
-
-                                {{ form_rest(form) }}
-
-                        	    <div>
-                        	        <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}" style="width: 120px;margin-top: 20px; margin-bottom: 10px;" />
-                        	    </div>
-                                <div>
-                                </div>
-                        	</form>
-                        </div>
+                    <p>Connect in a single click via Facebook.</p>
+                    <a class="btn btn-info" id="facebook-login" onclick="fbLogin()">
+                        <img src="{{ asset('img/landing-page/facebook-icon.png') }}" alt="Connect with Facebook" width="18px">
+                        Connect with Facebook
+                    </a>
+                    <a data-toggle="collapse" data-target="#facebook-warning">
+                        <p style="color: #999999; font-size: 12px; cursor: pointer">Why do we use facebook?</p>
+                    </a>
+                    <div id="facebook-warning" class="collapse">
+                        <ul style="width: 80%; color: #999999; text-align: left; margin: auto; padding: 5px ">
+                            <li>We will NEVER post anything to Facebook on your behalf</li>
+                            <li>We only use your Friend list so you can find your friends more easily</li>
+                            <li>All information put on Twinkler will remain secure - we don't sell any data to third parties</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="flat-footer">
@@ -58,5 +38,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
