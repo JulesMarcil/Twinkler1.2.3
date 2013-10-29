@@ -419,6 +419,32 @@ input:focus{
 	margin: 0;
 }
 
+.amount-error{
+	margin-top:0p;
+}
+
+#add-expense-form >div> div.amount-error{
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.amount-error div{
+	border:1px solid transparent;
+  border-bottom-left-radius:4px;
+  border-bottom-right-radius:4px;
+  border-top-left-radius:4px;
+  border-top-right-radius:4px;
+  margin-bottom:20px;
+  padding:15px;
+  background-color:#F2DEDE;
+  border-color:#EED3D7;
+  color:#B94A48;
+  width:50%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 0px;
+}
+
 #addExpenseModal .modal-footer{
 	margin-top: 0px
 }
@@ -795,28 +821,3 @@ input:focus{
 	background-image: url("images/ui-icons_222222_256x240.png");
 }
 
-.amount-error{
-	margin-top:0p;
-}
-
-#add-expense-form >div> div.amount-error{
-	margin-top: 0px;
-	margin-bottom: 10px;
-}
-
-.amount-error div{
-	border:1px solid transparent;
-  border-bottom-left-radius:4px;
-  border-bottom-right-radius:4px;
-  border-top-left-radius:4px;
-  border-top-right-radius:4px;
-  margin-bottom:20px;
-  padding:15px;
-  background-color:#F2DEDE;
-  border-color:#EED3D7;
-  color:#B94A48;
-  width:50%;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top: 0px;
-}
