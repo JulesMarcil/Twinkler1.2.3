@@ -189,7 +189,14 @@ var expenseStart = function(){
 		} else {
 			console.log('nothing happen because '+amount.val());
 		}
-        
+	});
+
+	/* --- Send summary modal --- */
+	$("#send-summary").on("click", function(e){
+		e.defaultPrevented;
+		$.get('summary/modal', function(response){
+			$("#modal").html(response).modal('show');
+		});
 	});
 }
 
