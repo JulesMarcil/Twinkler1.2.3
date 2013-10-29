@@ -183,6 +183,21 @@ header li{
 	overflow: hidden;
 }
 
+#catchphrase .download-cta{
+	font-size:18px;
+	color: #fff;
+  text-shadow:#000000 0 1px 1px;
+  line-height: 50px
+}
+
+#catchphrase .download-cta:hover{
+	font-size:18px;
+	color: rgb(230,230,230);
+  text-shadow:#000 0 1px 1px;
+  line-height: 50px
+}
+
+
 .wrapper{
 	height:50px;
 	overflow:hidden;
@@ -314,7 +329,7 @@ header li{
 
 .feature-payback{
 	border-bottom: solid 1px rgb(235,235,232);
-	padding-bottom: 300px;
+	padding-bottom: 120px;
 	background-image: none;
 }
 
@@ -335,6 +350,22 @@ header li{
 	margin-top: 80px;
 	width: 470px;
 }
+
+.feature-description a{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.feature-description a>img{
+	width: 250px;
+	margin-right: 20px;
+}
+
+.download-the-app-button{
+	text-align: center;
+}
+
 
 .feature-description > div{
 	margin-top: 5%;
@@ -447,6 +478,10 @@ header li{
 	position: absolute;
 	top: 25px;
 	left:800px;
+}
+
+.platform .btn{
+	font-size: 24px; width: 180px; padding: 10px
 }
 
 @media only screen and (max-width: 991px) {
@@ -599,7 +634,6 @@ header li{
 		background-repeat:no-repeat;
 		background-size: auto 100%; 
 		background-attachment:fixed;
-		background-position: 40%;
 		height: 400px;
 		width: 100%;
 		text-align: center;
@@ -643,6 +677,7 @@ header li{
 }
 #tk-groups{
 	display: inline-block;
+	margin-bottom: 50px;
 }
 #tk-groups div{
 	display: inline-block;
