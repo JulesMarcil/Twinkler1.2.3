@@ -795,6 +795,14 @@ input:focus{
 	background-image: url("images/ui-icons_222222_256x240.png");
 }
 
+.amount-error{
+	margin-top:0p;
+}
+
+#add-expense-form >div> div.amount-error{
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
 
 .amount-error div{
 	border:1px solid transparent;

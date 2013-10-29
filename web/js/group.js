@@ -185,7 +185,7 @@ var expenseStart = function(){
     	if(isNaN(amount.val())) {
 		    e.preventDefault();
 		    console.log('submit stopped '+amount.val());
-			form.find('.amount-error').html('<div>Please enter a valid amount</div>').fadeIn();
+			form.find('.amount-error').html('<div>Please enter a valid amount</div>');
 		} else {
 			console.log('nothing happen because '+amount.val());
 		}
