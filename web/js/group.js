@@ -36,7 +36,7 @@ var getChart=function(){
 		var newRow = document.createElement("tr");
 		newRow.setAttribute("id", i);
 		if (balances[i]<0){
-			$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div><div class="neg-bar"></div></div></td><td class="positive-balance"><div></div></td>');
+			$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div style="position:relative"><div class="neg-bar"></div></div></td><td class="positive-balance"><div></div></td>');
 			$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+ balances[i]);
 			$('#'+i+' #balance-owner').addClass('neg');
 			$('#'+i+' .pos-bar').width(0+'px');
@@ -45,7 +45,7 @@ var getChart=function(){
 					duration: 800,
 				}); 
 		}else{
-			$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div><div class="pos-bar"></div></div></td>');
+			$('#'+i).html('<td id="balance-owner"></td><td class="negative-balance"><div></div></td><td class="positive-balance"><div style="position:relative"><div class="pos-bar"></div></div></td>');
 			$('#'+i+' #balance-owner').html(members[i] +'</br>'+ currency +' '+  balances[i]);
 			$('#'+i+' #balance-owner').addClass('pos');
 			$('#'+i+' .neg-bar').width(0+'px');
@@ -106,8 +106,6 @@ var expenseStart = function(){
 
 	addScrollOnChart();
 	getChart();
-
-
 
 	$('.datepicker').datepicker();
 

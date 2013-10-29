@@ -425,6 +425,44 @@ input:focus{
 	overflow: hidden;
 }
 
+#edit-expense .expense-header.flat-header{
+	background-color: #BDC3C7;
+}
+
+#edit-expense .expense-info div{
+	display: inline-block;
+	padding-top: 5px;
+	padding-bottom:5px;
+}
+
+#edit-expense .expense-info div>span{
+  color:#8C8C8C;
+}
+
+#edit-expense .expense-info .form-group{
+	margin-top: 0px;
+}
+
+
+#edit-expense .expense-info input{
+	height: 35px;
+    margin: 2px 5px;
+}
+
+#edit-expense .expense-info .glyphicon-calendar{
+	margin-top: 20px;
+	background-color:transparent;
+	color: #B2BCC5;
+}
+
+#edit-expense .edit-expense-footer{
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-bottom: 20px
+}
+
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*--expense table----*/
