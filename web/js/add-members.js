@@ -42,7 +42,7 @@ $(document).ready(function() {
                   	if (response.error){
                   		$("#flash-message-block").html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>'+response.error+'</p></div>');
                   	} else {
-                  		$('#group').append('<div><img src="http://graph.facebook.com/'+response.id+'/picture?width=100&height=100" alt="friend" width="60px" class="img-circle"><p>'+response.name+'</div>').fadeIn();
+                  		$('#group').find('tr').append('<td><div class="member"><img src="http://graph.facebook.com/'+response.id+'/picture?width=100&height=100" alt="friend" class="img-circle" style="position: relative"><p>'+response.name+'</p></div></td>').fadeIn();
 						$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ response.name +'</b> to the group<p><p>Tell her/him to simply login to Twinkler to access the group</p></div>');
                   	}                  	
              }
