@@ -303,19 +303,20 @@ var dashboardStart = function(){
 	$('#my-settlement .payback-table tr').hover(
 		function(){
 			$(this).css({"background-color":"rgb(250,250,250)"});
-			$(this).find('#payback-cta').animate(
+			/*$(this).find('#payback-cta').animate(
 				{ left: 0 }, {
 					duration: 100,
-				}); 
+				}); */
 		},
 		function(){
 			$(this).css({"background-color":"#fff"});
-			$(this).find('#payback-cta').animate(
+			/*$(this).find('#payback-cta').animate(
 				{ left: -300 }, {
 					duration: 100,
-				}); 
+				}); */
 		}
 		);
+		
 
 	/* --- Prefilled payback form in modal --- */
 	$(".payback-table tr").on("click", function(e){
