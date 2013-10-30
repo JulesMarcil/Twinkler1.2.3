@@ -43,6 +43,13 @@ class Member
     private $invitationToken;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="facebookId", type="string", length=255, nullable=true)
+     */
+    protected $facebookId;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Tk\GroupBundle\Entity\TGroup", inversedBy="members", cascade={"persist"})
      */
     protected $tgroup;
@@ -412,5 +419,28 @@ class Member
         }
 
         return $picture_path;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     * @return Member
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string 
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
     }
 }

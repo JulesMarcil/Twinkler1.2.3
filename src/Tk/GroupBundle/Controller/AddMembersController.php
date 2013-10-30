@@ -24,39 +24,36 @@ class AddMembersController extends Controller
     public function addFriendAction(Request $request)
     {
         $data = $request->query->all();
-
         $em = $this->getDoctrine()->getManager();
+
         $user = $em->getRepository('TkUserBundle:User')->findOneByFacebookId($data['id']);
         $group = $this->getUser()->getCurrentMember()->getTGroup();
 
-        if ($user) {    
-            if($user->isInGroup($group)){
-                return new JsonResponse(array('error' => $data['name'].' is already in the group'));
-            }
-        } else {
+        if ($user and $user->isInGroup($group)){
+            return new JsonResponse(array('error' => $data['name'].' is already in the group'));
+        } else if($user){
+            $member = new Member();
+            $member->setUser($user);
+            $member->setName($user->getUsername());
             
-            $user = new User();
-            $user->setUsername($data['name']);
-            $user->setEmail($data['username'].'@facebook.com');
-            $user->setFacebookId($data['id']);
-            $user->setEnabled(true);
-            $user->setPassword('');
+            $user->setCurrentMember($member);
+            $em->persist($user);
+            
+            $session = $this->get('session');
+            $new_ids = $session->get('new_ids');           
+            $new_ids[] = $data['id'];
+            $session->set('new_ids', $new_ids);
+
+        } else {
+            $member = new Member();
+            $member->setName($data['name']);
+
         }
 
-        $member = new Member();
-        $member->setUser($user);
-        $member->setName($user->getUsername());
+        $member->setFacebookId($data['id']);
         $member->setTGroup($group);
-        $user->setCurrentMember($member);
-
-        $em->persist($user);
         $em->persist($member);
         $em->flush();
-
-        $session = $this->get('session');
-        $new_ids = $session->get('new_ids');           
-        $new_ids[] = $data['id'];
-        $session->set('new_ids', $new_ids);
 
         return new JsonResponse(array('id' => $data['id'], 'name' => $data['name']));
     }
@@ -89,7 +86,6 @@ class AddMembersController extends Controller
         foreach($this->get('session')->get('new_ids') as $id){
 
             $u = $repo->findOneByFacebookId($id);
-
             if($u->getEmail()){
                 $message = \Swift_Message::newInstance();
                 $message->setSubject($user.' added you to a group on Twinkler')

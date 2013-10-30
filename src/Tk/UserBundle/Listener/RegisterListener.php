@@ -90,37 +90,20 @@ class RegisterListener implements EventSubscriberInterface
                 ->setBody($this->template->render(':emails:joinedApp.email.twig', array('user' => $user)))
         ;
         $this->mailer->send($message);
+       
+        $fbid = $user->getFacebookId();
+        $members = $this->em->getRepository('TkUserBundle:Member')->findByFacebookId($fbid);
 
-        $session = $event->getRequest()->getSession();
-
-        $id = $session->get('invitation_id');
-        if ($id) {
-            $member = $this->em->getRepository('TkUserBundle:Member')->find($id);
-
-            $add = true;
-            $user_members = $user->getMembers();
-            if ($user_members) {
-                foreach($user->getMembers() as $user_member){
-                    if ($user_member->getTGroup() == $member->getTGroup()){ 
-                        $add = false;
-                    }
-                }
-            }
-
-            if ($add){
+        foreach($members as $member){
+            if(!$member->getUser()){
                 $member->setUser($user);
-                $member->setName($user->getUsername());
-                $member->setInvitationToken(null);
-                $member->setActive(1);
-                $user->setCurrentMember($member);
-                $this->em->persist($user);
+                $member->setName('caca');
+                $this->em->persist($member);
                 $this->em->flush();
             }
-
-            $session->remove('invitation_id');
-            $session->remove('invitation_member');
         }
 
+        $session = $event->getRequest()->getSession();
         $group_id = $session->get('created_group_id');
         if ($group_id) {
             $group = $this->em->getRepository('TkGroupBundle:TGroup')->find($group_id);
@@ -136,70 +119,6 @@ class RegisterListener implements EventSubscriberInterface
         } 
 
         $this->dispatcher->addListener(KernelEvents::RESPONSE, array($this, 'onKernelResponse'));
-
-        /*
-	    
-	    $currency = $this->em->getRepository('TkGroupBundle:Currency')->find(1);	
-
-        $group = new TGroup();
-        $group->setName('Twinkler team (example)');
-        $group->setCurrency($currency);
-        $group->setInvitationToken($group->generateInvitationToken());
-
-        $jules  = $this->em->getRepository('TkUserBundle:User')->find(1);
-        $arnaud = $this->em->getRepository('TkUserBundle:User')->find(2);
-
-        $member = new Member();
-        $member->setUser($user);
-        $member->setName($user->getUsername());
-        $member->setTGroup($group);
-
-        $jules_member = new Member();
-        $jules_member->setUser($jules);
-        $jules_member->setName($jules->getUsername());
-        $jules_member->setTGroup($group);
-
-        $arnaud_member = new Member();
-        $arnaud_member->setUser($arnaud);
-        $arnaud_member->setName($arnaud);
-        $arnaud_member->setTGroup($group);
-
-        $message1 = New Message();
-		$date = new \DateTime('now');
-        $message1->setTimestamp($date->getTimestamp());
-		$message1->setBody('messageBody1');
-		$message1->setAuthor($jules_member);
-		$message1->setGroup($group);
-
-        $expense = new Expense();
-        $expense->setAmount(20);
-        $expense->setName('Breakfast at Tiffany\'s');
-        $expense->setAddedDate(new \DateTime('now'));
-        $expense->setDate(new \Datetime('yesterday'));
-        $expense->setActive(true);
-        $expense->setAuthor($arnaud_member);
-        $expense->setOwner($arnaud_member);
-        $expense->setGroup($group);
-        $expense->addUser($jules_member);
-        $expense->addUser($arnaud_member);
-
-        $message2 = New Message();
-		$date = new \DateTime('now');
-        $message2->setTimestamp($date->getTimestamp());
-		$message2->setBody('messageBody2');
-		$message2->setAuthor($arnaud_member);
-		$message2->setGroup($group);
-
-        $this->em->persist($user);
-        $this->em->persist($group);
-        $this->em->persist($member);
-        $this->em->persist($jules_member);
-        $this->em->persist($arnaud_member);
-        $this->em->persist($message1);
-        $this->em->persist($expense);
-        $this->em->persist($message2);
-        $this->em->flush();
-        */
 	}
 
     public function onKernelResponse(FilterResponseEvent $event)

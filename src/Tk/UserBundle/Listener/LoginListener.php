@@ -66,32 +66,18 @@ class LoginListener
 		$user = $event->getAuthenticationToken()->getUser();
 		
 		// ...
-		$session = $event->getRequest()->getSession();
-		$id = $session->get('invitation_id');
-		if ($id) {
-			$member = $this->em->getRepository('TkUserBundle:Member')->find($id);
+		$fbid = $user->getFacebookId();
+        $members = $this->em->getRepository('TkUserBundle:Member')->findByFacebookId($fbid);
 
-			$add = true;
-	        foreach($user->getMembers() as $user_member){
-	            if ($user_member->getTGroup() == $member->getTGroup()){ 
-	            	$add = false;
-	            }
-	        }
+        foreach($members as $member){
+            if(!$member->getUser()){
+                $member->setUser($user);
+                $this->em->persist($member);
+                $this->em->flush();
+            }
+        }
 
-	        if ($add){
-		        $member->setUser($user);
-		        $member->setName($user->getUsername());
-				$member->setInvitationToken(null);
-				$member->setActive(1);
-		        $user->setCurrentMember($member);
-		        $this->em->persist($user);
-				$this->em->flush();
-			}
-
-			$session->remove('invitation_id');
-			$session->remove('invitation_member');
-		}
-
+        $session = $event->getRequest()->getSession();
 		$group_id = $session->get('created_group_id');
 		if ($group_id) {
 			$group = $this->em->getRepository('TkGroupBundle:TGroup')->find($group_id);
