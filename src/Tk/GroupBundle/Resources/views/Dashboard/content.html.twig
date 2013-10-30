@@ -78,7 +78,7 @@
 		{% set balance = app.user.currentMember.balance %}
 
 		<div class="section-header">
-			<div class="navbar navbar-inverse">
+			<div id="central-navbar" class="navbar navbar-inverse">
 				<div class="navbar-header">
 					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
 				</div>            
@@ -95,12 +95,27 @@
 								{% endif %}
 							</h2>
 						</li>
+						<li>
+							<a class="info-link" data-toggle="collapse" data-target="#tuto">
+								<i class="icon icon-info-sign"></i>
+							</a>
+						</li>
 					</ul>
 				</div><!--/.nav -->
 			</div>
 		</div>
 
+
+		<div id="tuto" class="collapse">
+			<div>
+				Twinkler calculates for you the easiest way to pay back each other <br><br>
+				The table below show who you and your friends should send money to to make everyone happy :) <br><br>
+				Click on a row to record a payback
+			</div>
+		</div>
+
 		<div id="my-settlement" class="flat-container">
+
 			{% if debts|length == 0 %}
 			<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
 			{% else %}
@@ -126,64 +141,65 @@
 								</div>
 							</div>
 						</td> 
-						<td class="payback-text">gives </td>
+						<td class="payback-text">should give
+						</td>
 						<td style="color:#99B335;">{{ currency }} {{ debt[1] }}</td>
 						<td class="payback-text"> to </td>
 						<td style="text-align: left;">
-								{% if debt[2].user %}
-								{% if debt[2].user.facebookId %}
-								<img src="http://graph.facebook.com/{{debt[2].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-								{% else %}
-								<img src="{{ asset(debt[2].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-								{% endif %}
-								{% else %}
-								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-								{% endif %}
-						{{ debt[2].name }}</td>
-					</tr>
-					{% endfor %}
-				</table>
+							{% if debt[2].user %}
+							{% if debt[2].user.facebookId %}
+							<img src="http://graph.facebook.com/{{debt[2].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+							{% else %}
+							<img src="{{ asset(debt[2].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+							{% endif %}
+							{% else %}
+							<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+							{% endif %}
+							{{ debt[2].name }}</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+				{% endif %}
 			</div>
-			{% endif %}
-		</div>
-		{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
+			{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
 
-		<div class="payback-container">
-			<div class="btn-group">
-				<a  id="new-payback"  class="btn" role="button"  data-toggle="modal">Record a Payback</a>
-				<a class="btn" href="#settleDebtsModal" role="button"  data-toggle="modal" style="border-left: solid 2px #95a5a6;border-right: solid 2px #95a5a6">Settle all Debts</a>
-				<a id="send-summary" class="btn" href="#sendSummaryModal" role="button"  data-toggle="modal">Send a Summary</a>
+			<div class="payback-container">
+				<div class="btn-group">
+					<a  id="new-payback"  class="btn" role="button"  data-toggle="modal">Record a Payback</a>
+					<a class="btn" href="#settleDebtsModal" role="button"  data-toggle="modal" style="border-left: solid 2px #95a5a6;border-right: solid 2px #95a5a6">Settle all Debts</a>
+					<a id="send-summary" class="btn" href="#sendSummaryModal" role="button"  data-toggle="modal">Send a Summary</a>
+				</div>
 			</div>
+			<div id="modal" class="modal fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			</div>	
+
 		</div>
-		<div id="modal" class="modal fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		</div>	
-		
+		<div class="col-md-3">
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>
+									Balance
+								</h2>
+							</li>
+						</ul>
+					</div><!--/.nav -->
+				</div>
+			</div>
+
+			<div id="chart-balance" class="flat-container">
+				<div id="blce-tbl" class="balance-table-container">
+					<table id="balance-table">
+
+					</table>
+				</div>
+			</div>
+
+		</div>
 	</div>
-	<div class="col-md-3">
-		<div class="section-header">
-			<div class="navbar navbar-inverse">
-				<div class="navbar-header">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
-				</div>            
-				<div class="navbar-collapse collapse" id="nav-collapse-01">
-					<ul class="nav">
-						<li>
-							<h2>
-								Balance
-							</h2>
-						</li>
-					</ul>
-				</div><!--/.nav -->
-			</div>
-		</div>
-
-		<div id="chart-balance" class="flat-container">
-			<div id="blce-tbl" class="balance-table-container">
-				<table id="balance-table">
-
-				</table>
-			</div>
-		</div>
-		
-	</div>
-</div>
