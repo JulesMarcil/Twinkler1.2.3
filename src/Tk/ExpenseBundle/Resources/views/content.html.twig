@@ -149,12 +149,8 @@
 												</font>
 											</div>
 											<div>
-												{% if expense[0].owner.user %}
-												{% if expense[0].owner.user.facebookId %}
-												<img src="http://graph.facebook.com/{{expense[0].owner.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-												{% else %}
-												<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-												{% endif %}
+												{% if expense[0].owner.facebookId %}
+												<img src="http://graph.facebook.com/{{expense[0].owner.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 												{% else %}
 												<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 												{% endif %}
@@ -176,12 +172,8 @@
 												</font>
 											</div>
 											<div>
-												{% if expense[0].users[0].user %}
-												{% if expense[0].users[0].user.facebookId %}
-												<img src="http://graph.facebook.com/{{expense[0].users[0].user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-												{% else %}
-												<img src="{{ asset(expense[0].users[0].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-												{% endif %}
+												{% if expense[0].users[0].facebookId %}
+												<img src="http://graph.facebook.com/{{expense[0].users[0].facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 												{% else %}
 												<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 												{% endif %}
@@ -234,12 +226,8 @@
 						<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}">
 							<td id="profile-pic-row">
 								<div>
-									{% if expense[0].owner.user %}
-									{% if expense[0].owner.user.facebookId %}
-									<img src="http://graph.facebook.com/{{expense[0].owner.user.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-									{% else %}
-									<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-									{% endif %}
+									{% if expense[0].owner.facebookId %}
+									<img src="http://graph.facebook.com/{{expense[0].owner.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 									{% else %}
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 									{% endif %}

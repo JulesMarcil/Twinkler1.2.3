@@ -413,11 +413,15 @@ class Member
     public function getPicturePath()
     {
         $picture_path = 'local';
-        $member_user = $this->getUser();
-        if($member_user){
-            $picture_path = $member_user->getPicturePath();
+        $fbid = $this->getFacebookId();
+        if($fbid){
+            $picture_path = $fbid;
+        } else {
+            $member_user = $this->getUser();
+            if($member_user){
+                $picture_path = $member_user->getPicturePath();
+            }
         }
-
         return $picture_path;
     }
 
@@ -441,6 +445,13 @@ class Member
      */
     public function getFacebookId()
     {
-        return $this->facebookId;
+        $fbid = $this->facebookId; 
+        if (!$fbid) {
+            $user = $this->getUser();
+            if($user){
+                $fbid = $user->getFacebookId();
+            }
+        }
+        return $fbid;
     }
 }

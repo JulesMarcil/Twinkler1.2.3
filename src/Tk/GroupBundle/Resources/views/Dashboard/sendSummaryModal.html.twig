@@ -21,46 +21,33 @@
 							{% for member in group.members %}
 
 							<tr>
-								{% if member.user %}
 								<td class="td-checkbox">
 								<label class="checkbox" for="checkbox1">
 									<input type="checkbox" id="checkbox1"  name="_send_email_{{member.id}}" value="on" checked="checked" data-toggle="checkbox"/>
 									</label>
 								</td>
-								{% if member.user.facebookId %}
+								{% if member.facebookId %}
 								<td class="td-profilepic">
-									<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
+									<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=100&height=100" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
 								</td>
 								{% else %}
 								<td class="td-profilepic">
-									<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
+									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" width="30px" class="img-circle" alt="{{member.name}}" style="position: relative">
 								</td>
 								{% endif %}
 								<td>
 									<span>{{ member.name }}</span>
 								</td>
+								{% if member.user %}
 								<td style="overflow: hidden">
 									<strong>
 										<span>{{ member.user.email }}</span>
 									</strong>
 								</td>
 								{% else %}
-								<td class="td-checkbox">
-								<label class="checkbox" for="checkbox1">
-									<input id="checkbox1" type="checkbox" name="_send_email_{{member.id}}" value="on" checked="checked" data-toggle="checkbox"/>
-								</label>
-								</td>
-								<td class="td-profilepic">
-									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" width="30px" class="img-circle" alt="{{member.name}}">
-								</td>
-								<td>
-									<span>{{ member.name }}</span>
-								</td>
 								<td>
 									<input type="text" id="email-input" name="_email_{{member.id}}" maxlength="255" value="{{ member.email }}"/>
 								</td>
-
-
 								{% endif %}
 							</tr>
 							{% endfor %}
