@@ -104,4 +104,23 @@ class AddMembersController extends Controller
         }
         return $this->redirect($this->generateUrl('tk_group_homepage'));
     }
+
+    public function facebookAction(Request $request)
+    {
+        $fbID = $request->query->get('fbID');
+        $em = $this->getDoctrine()->getManager();
+        $fbuser = $em->getRepository('TkUserBundle:User')->findOneByFacebookId($fbID); 
+        
+        if(!$fbuser){
+            $user = $this->getUser();
+            $user->setFacebookId($fbID);
+
+            $em->persist($user);
+            $em->flush();
+
+            return new JsonResponse(array('message' => 'User connected'));
+        } else {
+            return new JsonResponse(array('error' => 'This facebook user already have an account on Twinkler. Please logout and login with facebook to access it.'));
+        }
+    }
 }

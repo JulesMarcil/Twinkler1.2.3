@@ -52,6 +52,18 @@
 				</div><!--/.nav -->
 			</div>
 
+			{% if not app.user.facebookId %}
+
+			<div>
+				<p>We now use Facebook to invite friends more easily on twinkler</p>
+				<p>Please connect your facebook account to find your friends</p>
+				<a class="btn btn-info" id="facebook-login" onclick="fbLogin()">
+					<img src="{{ asset('img/landing-page/facebook-icon.png') }}" alt="Connect with Facebook" width="18px">Connect with Facebook
+				</a>
+			</div>
+
+			{% else %}
+
 			<div class="flat-container">
 
 				<input placeholder="filter by name ..." id="friend-input">
@@ -68,6 +80,9 @@
 					</a>
 				</div>
 			</div>	
+
+			{% endif %}
+
 		</div>
 	</div>
 

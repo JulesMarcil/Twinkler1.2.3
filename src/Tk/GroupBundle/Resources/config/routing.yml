@@ -66,3 +66,6 @@ tk_group_add_remove:
 tk_group_add_validate:
     pattern:  /add/validate
     defaults: { _controller: TkGroupBundle:AddMembers:validateMembers }
+tk_group_add_facebook:
+    pattern:  /add/facebook
+    defaults: { _controller: TkGroupBundle:AddMembers:facebook }
