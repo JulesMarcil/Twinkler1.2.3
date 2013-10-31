@@ -145,9 +145,13 @@
 }
 
 .new-group .flat-container.add-new-member input{
-	margin-bottom: 20px;
+	margin: 20px;
+	margin-bottom: 10px;
 	height: 40px;
 	width: 60%;
+}
+.new-group .flat-container.add-new-member .slimScrollDiv{
+	margin: 20px;
 }
 
 #friend-table{
@@ -192,7 +196,7 @@
 }
 
 .new-group .flat-container{
-	padding: 20px;
+
 }
 
 .new-group .flat-container.invite .btn{
