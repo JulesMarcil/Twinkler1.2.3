@@ -8,6 +8,8 @@
 			<a href="#accordion-{{ member.id}}" data-toggle="collapse" data-parent="#accordion2">
 			{% if member.facebookId %}
 				<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" 	alt="{{ member.name }}" style="position: relative">
+			{% elseif member.user.picture.path %}
+				<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="30px" 	alt="{{ member.name }}" style="position: relative">
 			{% else %}
 				<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="{{ member.name }}" style="position: relative">
 			{% endif %}

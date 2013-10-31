@@ -67,15 +67,17 @@ class LoginListener
 		
 		// ...
 		$fbid = $user->getFacebookId();
-        $members = $this->em->getRepository('TkUserBundle:Member')->findByFacebookId($fbid);
+		if($fbid){
+			$members = $this->em->getRepository('TkUserBundle:Member')->findByFacebookId($fbid);
 
-        foreach($members as $member){
-            if(!$member->getUser()){
-                $member->setUser($user);
-                $this->em->persist($member);
-                $this->em->flush();
-            }
-        }
+	        foreach($members as $member){
+	            if(!$member->getUser()){
+	                $member->setUser($user);
+	                $this->em->persist($member);
+	                $this->em->flush();
+	            }
+	        }
+		}
 
         $session = $event->getRequest()->getSession();
 		$group_id = $session->get('created_group_id');

@@ -60,6 +60,8 @@
 											<div>
 												{% if member.facebookId %}
 												<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" width="50px">
+												{% elseif member.user.picture.path %}
+												<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" width="50px">
 												{% else %}
 												<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" width="50px">
 												{% endif %}

@@ -50,7 +50,9 @@
 								</a>
 								<ul class="section-header-dropdown">
 									<li><a href="{{ path('tk_user_profile_edit', { 'id' : app.user.id }) }}">Edit Information</a></li>
+									{% if not app.user.facebookId %}
 									<li><a href="#uploadPictureModal" role="button"	data-toggle="modal">Change Profile Picture</a></li>
+									{% endif %}
 									{% if app.user.password %}
 									<li><a href="#changePasswordModal" role="button" data-toggle="modal">Change Password</a></li>
 									{% endif %}

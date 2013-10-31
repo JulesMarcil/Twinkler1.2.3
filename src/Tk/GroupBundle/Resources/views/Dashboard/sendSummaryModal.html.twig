@@ -30,6 +30,10 @@
 								<td class="td-profilepic">
 									<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=100&height=100" class="img-circle" width="30px" alt="{{ member.name }}" style="position: relative">
 								</td>
+								{% elseif member.user.picture.path %}
+								<td class="td-profilepic">
+									<img src="{{ asset(member.user.picture.path) }}" width="30px" class="img-circle" alt="{{member.name}}" style="position: relative">
+								</td>
 								{% else %}
 								<td class="td-profilepic">
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" width="30px" class="img-circle" alt="{{member.name}}" style="position: relative">
