@@ -814,10 +814,12 @@ input:focus{
 }  
 
 .ui-state-hover.ui-datepicker-next-hover,.ui-state-hover.ui-datepicker-prev-hover{
-	background: url("images/ui-icons_222222_256x240.png") !important;
+	background: none;
 	border: none;
+
 }
+
 .ui-state-hover .ui-icon{
-	background-image: url("images/ui-icons_222222_256x240.png");
+	background-image: none;
 }
 
