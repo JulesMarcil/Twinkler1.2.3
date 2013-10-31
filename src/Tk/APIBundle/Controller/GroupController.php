@@ -91,31 +91,28 @@ class GroupController extends Controller
 
                 $user = $repo->findOneByFacebookId($friend['id']);
 
-                if(!$user){
-                    
-                    $user = new User();
-                    $user->setEnabled(true);
-                    $user->setPassword('');
-                    $user->setFirstname($friend['first_name']);
-                    $user->setLastname($friend['last_name']);
-                    $user->setUsername($friend['name']);
-                    $user->setFacebookId($friend['id']);
-                    $user->setEmail($friend['username'].'@facebook.com');
+                if ($user and $user->isInGroup($group)){
+                    //don't do anything
+                } else if($user){
 
-                    $em->persist($user);
+                    $member = new Member();
+                    $member->setUser($user);
+                    $member->setName($user->getUsername());
+                    $member->setTGroup($group);
+                    
+                    $user->setCurrentMember($member);
+
+                    $em->persist($member);
+                    $em->flush();
+                } else {
+                    $member = new Member();
+                    $member->setName($friend['name']);
+                    $member->setFacebookId($friend['id']);
+                    $member->setTGroup($group);
+
+                    $em->persist($member);
                     $em->flush();
                 }
-
-                $member = new Member();
-                $member->setUser($user);
-                $member->setName($user->getUsername());
-                $member->setTGroup($group);
-                
-                $user->setCurrentMember($member);
-
-                $em->persist($member);
-                $em->flush();
-
                 $user = null;
             }
 

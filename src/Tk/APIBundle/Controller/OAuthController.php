@@ -62,6 +62,19 @@ class OAuthController extends Controller
 
         }
 
+        $fbid = $user->getFacebookId();
+		if($fbid){
+			$members = $em->getRepository('TkUserBundle:Member')->findByFacebookId($fbid);
+
+	        foreach($members as $member){
+	            if(!$member->getUser()){
+	                $member->setUser($user);
+	                $em->persist($member);
+	                $em->flush();
+	            }
+	        }
+		}
+
 		return $this->getTokenAction($user);
 	}
 
