@@ -122,7 +122,13 @@ class Expense
      */
     public function getAmount()
     {
-        return $this->amount;
+        $amount = $this->amount;
+        $int = floor($amount);
+        if ($int == $amount){
+            return $int;
+        } else {
+            return $amount;
+        }
     }
 
     /**
