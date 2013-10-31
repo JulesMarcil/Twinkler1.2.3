@@ -144,6 +144,12 @@
 	padding: 0px 20px;
 }
 
+.new-group .flat-container.add-new-member input{
+	margin-bottom: 20px;
+	height: 40px;
+	width: 60%;
+}
+
 #friend-table{
 	border:2px solid #BDC3C7;
 	border-bottom-left-radius:6px;
@@ -185,9 +191,39 @@
 	height: 60px;
 }
 
+.new-group .flat-container{
+	padding: 20px;
+}
+
+.new-group .flat-container.invite .btn{
+	margin-top: 20px;
+}
+
 .new-group .flat-footer > a > div {
 	padding: 10px 20px;
 	margin: 10px 0px;
+}
+
+
+#facebook-login{
+	margin: 20px 0px;
+	padding: 15px 40px;
+	padding-left: 60px;
+	font-size: 18px;
+	background-color: #5d78af;
+}
+
+#facebook-login:hover{
+	margin: 20px 0px;
+	padding: 15px 40px;
+	padding-left: 60px;
+	background-color: #304a88;
+}
+
+#facebook-login img{
+	position: absolute;
+	margin-left: -40px;
+	margin-top: -6px
 }
 
 

@@ -57,9 +57,9 @@
 
 			{% if not app.user.facebookId %}
 
-			<div class='flat-container'>
-				<p>We now use Facebook to invite friends more easily on twinkler</p>
-				<p>Please connect your facebook account to find your friends</p>
+			<div class='flat-container invite'>
+				<p>As many of you asked for, we now use Facebook to invite friends in a tap on Twinkler. If you have any question about this switch, feel free to get in touch with us :)</p>
+				<p>Please, link your Facebook account to add your friends</p>
 				<a class="btn btn-info" id="facebook-login" onclick="fbLogin()">
 					<img src="{{ asset('img/landing-page/facebook-icon.png') }}" alt="Connect with Facebook" width="18px">Connect with Facebook
 				</a>
@@ -67,9 +67,9 @@
 
 			{% else %}
 
-			<div class="flat-container">
+			<div class="flat-container add-new-member">
 
-				<input placeholder="filter by name ..." id="friend-input">
+				<input type="text" placeholder="filter by name ..." id="friend-input">
 
 				<div id="friend-table">
 					<table style="border: none">
