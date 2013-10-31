@@ -151,7 +151,7 @@
 											<div>
 												{% if expense[0].owner.facebookId %}
 												<img src="http://graph.facebook.com/{{expense[0].owner.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-												{% elseif expense[0].owner.user.picture.path %}
+												{% elseif expense[0].owner.user %}
 												<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 												{% else %}
 												<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
@@ -232,7 +232,7 @@
 								<div>
 									{% if expense[0].owner.facebookId %}
 									<img src="http://graph.facebook.com/{{expense[0].owner.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-									{% elseif expense[0].owner.user.picture.path %}
+									{% elseif expense[0].owner.user %}
 									<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 									{% else %}
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">

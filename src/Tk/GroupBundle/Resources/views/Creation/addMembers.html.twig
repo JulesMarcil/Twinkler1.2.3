@@ -15,12 +15,10 @@
 					{% for member in app.user.currentMember.tgroup.members %}
 					<td>
 						<div class="member">
-							{% if member.user %}
-								{% if member.user.facebookId %}
-							<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
-							{% else %}
+							{% if member.facebookId %}
+							<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+							{% elseif member.user %}
 							<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
-							{% endif %}
 							{% else %}
 							<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
 							{% endif %}

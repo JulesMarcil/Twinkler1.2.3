@@ -64,6 +64,13 @@ class LoginListener
 		
 		// do some other magic here
 		$user = $event->getAuthenticationToken()->getUser();
+
+		if(!$user->getPicture()){
+			$picture = $this->em->getRepository('TkUserBundle:ProfilePicture')->find(1);
+			$user->setPicture($picture);
+			$this->em->persist($user);
+			$this->em->flush();
+		}
 		
 		// ...
 		$fbid = $user->getFacebookId();
