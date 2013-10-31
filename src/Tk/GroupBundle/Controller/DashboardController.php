@@ -132,8 +132,7 @@ class DashboardController extends Controller
 
         if ($this->getUser()->getCurrentMember()->getTGroup() != $group){
             throw new AccessDeniedException('You are not allowed to do this');
-        }
-        else{   
+        } else{   
             $user->setCurrentMember(null);
             $group->setActive(0);
             $em->flush();               
