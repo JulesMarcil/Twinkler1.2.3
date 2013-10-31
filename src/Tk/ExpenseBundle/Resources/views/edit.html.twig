@@ -78,6 +78,8 @@
 	<script language="javascript">
 		$(document).ready(function() {
 
+			$('.date').datepicker({ dateFormat: 'dd-mm-yy' });
+
 			$("#cancel-edit-expense").click(function(e){
 				e.preventDefault();
 				$('.edit-expense-container').html('');
