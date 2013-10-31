@@ -41,7 +41,6 @@ input:focus{
 	margin-bottom: 10px;
 }
 
-
 .info-link{
 	height: 55px;
 	cursor: pointer;
@@ -250,9 +249,7 @@ input:focus{
 	min-height: auto;
 }
 
-
 #tuto div{
-	height: 125px;
 	padding: 10px
 }
 /* --- PAYBACK (left) --- */
@@ -356,7 +353,6 @@ input:focus{
 }
 
 /*-----My payback -----*/
-
 
 #my-settlement{
 	width: 100%;
