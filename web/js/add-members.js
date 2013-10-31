@@ -4,7 +4,7 @@ $(document).ready(function() {
 		var friends = window.friends;
 		for (var i=0; i<friends.length; i++){
 			var friend = friends[i];
-			$('#friend-table').find('tbody').append('<tr><td><img src="http://graph.facebook.com/'+friend['id']+'/picture?width=10&height=10" alt="friend" width="30px"></td><td class="name">'+friend['name']+'</td><td class="add-button"><button data-id="'+friend['id']+'" data-name="'+friend['name']+'" data-username="'+friend['username']+'" class="btn btn-small">Add</button></td></tr>');
+			$('#friend-table').find('tbody').append('<tr><td><img src="http://graph.facebook.com/'+friend['id']+'/picture?width=30&height=30" alt="friend" width="30px"></td><td class="name">'+friend['name']+'</td><td class="add-button"><button data-id="'+friend['id']+'" data-name="'+friend['name']+'" data-username="'+friend['username']+'" class="btn btn-small">Add</button></td></tr>');
 		}
 	});
 
@@ -42,7 +42,8 @@ $(document).ready(function() {
                   	if (response.error){
                   		$("#flash-message-block").html('<div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p>'+response.error+'</p></div>');
                   	} else {
-                  		$('#group').find('tr').append('<td><div class="member"><img src="http://graph.facebook.com/'+response.id+'/picture?width=100&height=100" alt="friend" class="img-circle" style="position: relative"><p>'+response.name+'</p></div></td>').fadeIn();
+                  		$('#group').find('tr').first().append('<td><div class="member"><img src="http://graph.facebook.com/'+response.id+'/picture?width=100&height=100" alt="friend" class="img-circle" style="position: relative"></div></td>').fadeIn();
+                  		$('#group').find('tr').last().append('<td class="member-name-row"><div class="member"><p>'+response.name+'</p></div></td>').fadeIn();
 						$("#flash-message-block").html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button><p>You added <b>'+ response.name +'</b> to the group<p><p>Tell her/him to simply login to Twinkler to access the group</p></div>');
                   	}                  	
              }

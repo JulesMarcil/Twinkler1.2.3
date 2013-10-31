@@ -31,6 +31,8 @@ class AddMembersController extends Controller
 
         if ($user and $user->isInGroup($group)){
             return new JsonResponse(array('error' => $data['name'].' is already in the group'));
+        } else if($this->isInGroup($group, $data['id'])){
+            return new JsonResponse(array('error' => $data['name'].' is already in the group'));
         } else if($user){
             $member = new Member();
             $member->setUser($user);
@@ -56,6 +58,15 @@ class AddMembersController extends Controller
         $em->flush();
 
         return new JsonResponse(array('id' => $data['id'], 'name' => $data['name']));
+    }
+
+    private function isINGroup($group, $id){
+        foreach($group->getmembers() as $member){
+            if ($member->getFacebookId() == $id){
+                return true;
+            }
+        }
+        return false;
     }
 
     public function removeAddedMemberAction($id)

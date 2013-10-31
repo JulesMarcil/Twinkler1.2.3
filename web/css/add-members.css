@@ -2,6 +2,7 @@
 
 .alert{
 	margin-bottom: 0;
+	padding: 5px;
 }
 
 .alert-success{
@@ -11,7 +12,6 @@
 .alert-success button{
 	color: rgb(70,136,71);
 	opacity: 1;
-	margin-top: 5px;
 }
 
 .alert-warning{
@@ -21,7 +21,6 @@
 .alert-warning button{
 	color: rgb(192,152,83);
 	opacity: 1;
-	margin-top: 5px;
 }
 
 
