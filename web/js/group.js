@@ -198,6 +198,21 @@ var expenseStart = function(){
 			$("#modal").html(response).modal('show');
 		});
 	});
+
+	/* --- Send summary modal --- */
+	$("a.ui-datepicker-next").hover(function(){
+		console.log('yoooo');
+		$(this).removeClass('ui-state-hover');
+	});
+	$("a.ui-datepicker-next").click(function(){
+		console.log('yoooo');
+		$(this).removeClass('ui-state-hover');
+	});
+	$(".ui-datepicker-prev.ui-corner-all span").on("hover", function(e){
+		e.defaultPrevented;
+		$(this).removeClass('ui-state-hover');
+	});
+
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CHAT START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
