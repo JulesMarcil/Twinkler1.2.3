@@ -10,24 +10,34 @@
 <div id="second-row-big" class="row min-770" style="position: relative">
 	<div id="group">
 		<div id="pictures">
+
 			<table>
 				<tr>
 					{% for member in app.user.currentMember.tgroup.members %}
 					<td>
 						<div class="member">
 							{% if member.facebookId %}
-							<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
+								<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=100&height=100" class="img-circle" alt="{{ member.name }}" style="position: relative">
 							{% elseif member.user %}
-							<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+								<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
 							{% else %}
-							<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
+								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
 							{% endif %}
-							<p>{{ member.name }}</p>
 						</div>						
 					</td>
 					{% endfor %}
 				</tr>
+				<tr>
+					{% for member in app.user.currentMember.tgroup.members %}
+					<td class="member-name-row">
+						<div class="member">
+							<p>{{ member.name }}</p>
+						</div>
+					</td>
+					{% endfor %}
+				</tr>
 			</table>
+
 		</div>
 	</div>	
 </div>
