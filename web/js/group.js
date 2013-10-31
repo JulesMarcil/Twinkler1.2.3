@@ -107,8 +107,7 @@ var expenseStart = function(){
 	addScrollOnChart();
 	getChart();
 
-	$('.date').datepicker({ dateFormat: 'dd-mm-yy' })
-
+	$('.date').datepicker({ dateFormat: 'dd-mm-yy' });
 
 	/*--------CHARTS & TIMLINE SIZE--------*/
 	if (activePage!=="lists"){
