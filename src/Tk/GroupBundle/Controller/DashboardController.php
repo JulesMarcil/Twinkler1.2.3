@@ -58,42 +58,42 @@ class DashboardController extends Controller
                                 )));
                     $mailer->send($message);
                 }
-
             }
         }
         $em->flush();
         return $this->redirect($this->generateUrl('tk_group_dashboard'));
     }
 
-    private function removeMemberAction($member, $em)
+    public function removeMemberAction($id)
     {
-        $u = $member->getUser();
-        $group = $member->getTGroup();
-        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        $member = $em->getRepository('TkUserBundle:Member')->find($id);
+        $user = $member->getUser();
 
         $member->setActive(false);
-        $em->flush();
 
-        if($u){
-            if ($u->getCurrentMember() == $member){
-                $u->setCurrentMember(null);
+        if($user){
+
+            if ($user->getCurrentMember() == $member) {    
+                $user->setCurrentMember(null);
             }
-            if ($u != $user){
 
-                $mailer = $this->get('mailer');
+            if (($user != $this->getUser()) and ($user->getEmail())) {
 
                 $message = \Swift_Message::newInstance();
-                $message->setSubject($user.' removed you from a group')
+                $message->setSubject($u.' removed you from a group')
                         ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
-                        ->setTo($u->getEmail())
+                        ->setTo($user->getEmail())
                         ->setContentType('text/html')
-                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $user, 
-                                                                                                 'member' => $member,
-                                                                                                 'group'  => $group)))
+                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $this->getUser(), 
+                                                                                                 'member' => $member)))
                 ;
                 $mailer->send($message);
             }
         }
+        $em->flush();
+        return $this->redirect($this->generateUrl('tk_group_dashboard'));
     }
 
 
@@ -132,8 +132,7 @@ class DashboardController extends Controller
 
         if ($this->getUser()->getCurrentMember()->getTGroup() != $group){
             throw new AccessDeniedException('You are not allowed to do this');
-        }
-        else{   
+        } else{   
             $user->setCurrentMember(null);
             $group->setActive(0);
             $em->flush();               

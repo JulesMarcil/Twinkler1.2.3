@@ -27,13 +27,6 @@ tk_group_new:
     pattern:  /new
     defaults: { _controller: TkGroupBundle:Default:new }
 
-tk_group_remove_member:
-    pattern:  /remove/member/{id}
-    defaults: { _controller: TkGroupBundle:Default:removeMemberRequest }
-tk_group_close:
-    pattern:  /close/{id}
-    defaults: { _controller: TkGroupBundle:Default:closeGroup }
-
 tk_group_new_invitation:
     pattern: /invitation/{id}/{email}
     defaults: { _controller: TkGroupBundle:Default:emailForm }
@@ -51,6 +44,14 @@ tk_dashboard_summary_send:
 tk_group_edit:
     pattern:  /edit
     defaults: { _controller: TkGroupBundle:Dashboard:edit }
+
+tk_group_remove_member:
+    pattern:  /remove/member/{id}
+    defaults: { _controller: TkGroupBundle:Dashboard:removeMember }
+
+tk_group_close:
+    pattern:  /close/{id}
+    defaults: { _controller: TkGroupBundle:Dashboard:closeGroup }
 
 # --- Add members routes --- #
 
