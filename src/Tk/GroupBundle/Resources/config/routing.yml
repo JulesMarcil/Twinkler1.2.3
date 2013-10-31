@@ -52,6 +52,10 @@ tk_group_edit:
     pattern:  /edit
     defaults: { _controller: TkGroupBundle:Dashboard:edit }
 
+tk_group_remove_member:
+    pattern:  /remove/member/{id}
+    defaults: { _controller: TkGroupBundle:Dashboard:removeMember }
+
 # --- Add members routes --- #
 
 tk_group_add_members:

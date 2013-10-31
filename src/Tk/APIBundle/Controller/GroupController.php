@@ -185,19 +185,18 @@ class GroupController extends Controller
             }
             $member->setActive(false);
 
-            /*
-            if ($user and ($user != $u)) {
+            if ($user and ($user != $this->getUser()) and ($user->getEmail())) {
 
                 $message = \Swift_Message::newInstance();
                 $message->setSubject($u.' removed you from a group')
                         ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
                         ->setTo($user->getEmail())
                         ->setContentType('text/html')
-                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $u, 
+                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $this->getUser(), 
                                                                                                  'member' => $member)))
                 ;
                 $mailer->send($message);
-            }*/
+            }
 
             $em->flush();
         }
