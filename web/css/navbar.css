@@ -469,6 +469,10 @@ header #show-hide-members{
 	header #group-name{
 		font-size: 22px;
 	}
+	header #navbar-expenses, #navbar-chat, #navbar-dashboard{
+		width: 70px;
+		font-size: 11px;
+	}
 }
 
 
