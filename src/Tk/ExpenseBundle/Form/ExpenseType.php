@@ -36,8 +36,9 @@ class ExpenseType extends AbstractType
                 ->add('amount', 'money', array('currency' => $group->getCurrency()->getIso(),
                                                'required' => true))
                 ->add('date', 'date', array(
-                        'input'    => 'datetime',
-                        'widget'   => 'choice',
+                        'widget' => 'single_text',
+                        'format' => 'dd-MM-yyyy',
+                        'attr' => array('class' => 'date')
                         ))
                 ->add('users', 'entity', array(
                         'class'         => 'TkUserBundle:Member',

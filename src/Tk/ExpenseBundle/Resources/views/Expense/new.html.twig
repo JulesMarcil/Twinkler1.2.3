@@ -35,11 +35,8 @@
 							<div>
 								<span>When was it paid ?</span>
 								{{ form_errors(form.date) }}
-								{{ form_widget(form.date) }}
-
-
 								<div class="form-group"  style="width:140px; margin-top:30px; margin-left:auto; margin-right: auto" >
-									<input type="text" class="form-control datepicker" placeholder="When?"/>
+									<input type="text" id="tk_expensebundle_expensetype_date" name="tk_expensebundle_expensetype[date]" required="required" class="form-control date datepicker" value="{{ "now"|date('d-m-Y') }}"/>
 									<span class="input-icon glyphicon glyphicon-calendar" style='background-color:transparent'></span>
 								</div>
 							</div>

@@ -50,9 +50,9 @@ class Expense
     private $addedDate;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date")
      */
     private $date;
 
@@ -174,7 +174,7 @@ class Expense
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \Date $date
      * @return Expense
      */
     public function setDate($date)
@@ -187,7 +187,7 @@ class Expense
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \Date
      */
     public function getDate()
     {
