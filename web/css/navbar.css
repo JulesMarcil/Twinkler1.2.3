@@ -117,7 +117,7 @@ header .navbar .nav > li > ul:after{
 	left: 15px;
 	top: 5px;
 	border-right:10px solid transparent;
-	border-bottom:10px solid #F5F6F6;
+	border-bottom:10px solid rgb(225,228,231);
 	border-left:10px solid transparent;
 	content:""
 }
@@ -130,6 +130,9 @@ header .navbar .nav ul li{
 	padding: 0px;
 }
 
+header .navbar .nav ul li:first-child,header .navbar .nav ul li:last-child{
+	background-color: rgb(225,228,231);
+}
 
 header .navbar .nav ul li.active > a,
 header .navbar .nav ul li.active > a:hover,
