@@ -78,9 +78,17 @@ $(document).ready(function() {
 		if($(this).hasClass("icon-collapse-top")){
 			$(this).removeClass("icon-collapse-top");
 			$(this).addClass("icon-collapse");	
+
+			if(activePage=="chat"){
+				$("#content").animate({ marginTop: '60px'});
+			};
 		}else{
 			$(this).addClass("icon-collapse-top");
 			$(this).removeClass("icon-collapse");	
+
+			if(activePage=="chat"){
+				$("#content").animate({ marginTop: '150px'});
+			};
 		}
 	});
 
@@ -104,6 +112,7 @@ var expenseStart = function(){
 	activePage = document.URL.split("/").pop(); /*get page name*/
 	activePageHighlight();
 
+	$('header').removeClass('pos-fixed');
 	addScrollOnChart();
 	getChart();
 
@@ -167,7 +176,7 @@ var expenseStart = function(){
     	$(this).checkbox();
     });
 
-     $("#select-all-button").click(function(){
+    $("#select-all-button").click(function(){
 
     	$(".user-checkbox").prop("checked", "checked");
     });
@@ -183,35 +192,35 @@ var expenseStart = function(){
     $('#submit-expense').click(function(e){
     	console.log('submit clicked');
     	if(isNaN(amount.val())) {
-		    e.preventDefault();
-		    console.log('submit stopped '+amount.val());
-			form.find('.amount-error').html('<div>Please enter a valid amount</div>');
-		} else {
-			console.log('nothing happen because '+amount.val());
-		}
-	});
+    		e.preventDefault();
+    		console.log('submit stopped '+amount.val());
+    		form.find('.amount-error').html('<div>Please enter a valid amount</div>');
+    	} else {
+    		console.log('nothing happen because '+amount.val());
+    	}
+    });
 
-	/* --- Send summary modal --- */
-	$("#send-summary").on("click", function(e){
-		e.defaultPrevented;
-		$.get('summary/modal', function(response){
-			$("#modal").html(response).modal('show');
-		});
-	});
+    /* --- Send summary modal --- */
+    $("#send-summary").on("click", function(e){
+    	e.defaultPrevented;
+    	$.get('summary/modal', function(response){
+    		$("#modal").html(response).modal('show');
+    	});
+    });
 
-	/* --- Send summary modal --- */
-	$("a.ui-datepicker-next").hover(function(){
-		console.log('yoooo');
-		$(this).removeClass('ui-state-hover');
-	});
-	$("a.ui-datepicker-next").click(function(){
-		console.log('yoooo');
-		$(this).removeClass('ui-state-hover');
-	});
-	$(".ui-datepicker-prev.ui-corner-all span").on("hover", function(e){
-		e.defaultPrevented;
-		$(this).removeClass('ui-state-hover');
-	});
+    /* --- Send summary modal --- */
+    $("a.ui-datepicker-next").hover(function(){
+    	console.log('yoooo');
+    	$(this).removeClass('ui-state-hover');
+    });
+    $("a.ui-datepicker-next").click(function(){
+    	console.log('yoooo');
+    	$(this).removeClass('ui-state-hover');
+    });
+    $(".ui-datepicker-prev.ui-corner-all span").on("hover", function(e){
+    	e.defaultPrevented;
+    	$(this).removeClass('ui-state-hover');
+    });
 
 }
 
@@ -250,17 +259,9 @@ var chatStart = function(){
 
 				var rowCount=$('#chat-table tr').length
 
-				if(rowCount < 7){		
-					$('#message-list').slimScroll({
-						height: (rowCount+1)*($('#chat-table tr').height()+2),
-					});
-					$('#chat-container').height(40+(rowCount)*($('#chat-table tr').height()+2)+'px');
-					$('#chat-container .slimScrollDiv').height((rowCount)*($('#chat-table tr').height()+2)+'px');
-					$('#message-list').height((rowCount)*($('#chat-table tr').height()+2)+'px');
-
-				}
 
 				$("#message-list").animate({ scrollTop: 100000 }, "slow");
+				$(document).scrollTop($(document).height());
 			});
 		}
 	}
@@ -288,10 +289,18 @@ var chatStart = function(){
 		});
 	});
 
-	$('#message-list').slimScroll({
-		height: Math.min('280',$('#message-list').height())+'px',
-		start: 'bottom'
-	});
+
+	$('#send-box').width($('#message-list').width()+'px');
+	$(document).scrollTop($(document).height());
+	$('header').addClass('pos-fixed');
+
+
+	if($('#second-row-big').is(':visible')){
+		$("#content").css( { "margin-top" : "150px"} );
+	}else{
+		$("#content").css( { "margin-top" : "60px"} );
+	}
+
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DASHBOARD START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -302,6 +311,7 @@ var dashboardStart = function(){
 	activePage = document.URL.split("/").pop(); /*get page name*/
 	activePageHighlight();
 	getChart();
+	$('header').removeClass('pos-fixed');
 
 	$('#action-bar-first-child').hover(
 		function()
@@ -322,16 +332,16 @@ var dashboardStart = function(){
 				{ left: 0 }, {
 					duration: 100,
 				}); */
-		},
-		function(){
-			$(this).css({"background-color":"#fff"});
+},
+function(){
+	$(this).css({"background-color":"#fff"});
 			/*$(this).find('#payback-cta').animate(
 				{ left: -300 }, {
 					duration: 100,
 				}); */
-		}
-		);
-		
+}
+);
+
 
 	/* --- Prefilled payback form in modal --- */
 	$(".payback-table tr").on("click", function(e){
@@ -410,11 +420,13 @@ $(document).ready(function() {
 	// ---> ajax for going to expenses 
 	$("#navbar-expenses-link").on('click', function(e){
 		e.preventDefault();
-		$('#content-container').fadeOut();
+		$('#content').fadeOut();
+
+		$("#content").css( { "margin-top" : "0px"} );
 		$('#spinner').fadeIn();
 		$.get('ajax/expenses', function(response){
 			$('#spinner').fadeOut();
-			$('#content-container').html(response).fadeIn();
+			$('#content').html(response).fadeIn();
 			window.history.pushState("", "", 'expenses');
 			// rappeler les fonctions de mise en forme
 			addScrollOnChart();
@@ -426,11 +438,11 @@ $(document).ready(function() {
 	// ---> ajax for going to chat 
 	$("#navbar-chat-link").on('click', function(e){
 		e.defaultPrevented;
-		$('#content-container').fadeOut();
+		$('#content').fadeOut();
 		$('#spinner').fadeIn();
 		$.get('ajax/chat', function(response){
 			$('#spinner').fadeOut();
-			$('#content-container').html(response).fadeIn();
+			$('#content').html(response).fadeIn();
 			window.history.pushState("", "", 'chat');
 			// rappeler les fonctions de mise en forme
 			// rappel de listapp.js
@@ -446,11 +458,13 @@ $(document).ready(function() {
 	// ---> ajax for going to dashboard
 	$("#navbar-dashboard-link").on('click', function(e){
 		e.defaultPrevented;
-		$('#content-container').fadeOut();
+		$('#content').fadeOut();
+
+		$("#content").css( { "margin-top" : "0px"} );
 		$('#spinner').fadeIn();
 		$.get('ajax/dashboard', function(response){
 			$('#spinner').fadeOut();
-			$('#content-container').html(response).fadeIn();
+			$('#content').html(response).fadeIn();
 			window.history.pushState("", "", 'dashboard');
 			// rappeler les fonctions de mise en forme
 			// rappel de listapp.js

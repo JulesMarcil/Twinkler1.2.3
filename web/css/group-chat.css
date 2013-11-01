@@ -3,8 +3,21 @@ input:focus{
 	outline: none;
 }
 
+.content{
+	position: relative;
+}
+
 .group-title h2{
 	color: #fff;
+}
+
+
+#chat-container{
+	margin-bottom:120px;
+}
+
+#chat-table{
+	height: 60%
 }
 
 #chat-table tr{
@@ -14,6 +27,11 @@ input:focus{
 #chat-table tr td{
 	padding: 10px 0px;
 }
+
+#chat-table tr td p{
+	line-height: 18px;
+}
+
 
 #chat-table .message-date{
 	vertical-align: top;
@@ -42,21 +60,35 @@ input:focus{
 	line-height: 0.6
 }
 
+.chat-footer-container{
+	bottom: 0;
+    height: 100px;
+    position: fixed;
+}
+
 .chat-footer{
-	width: 100%;
 	min-height: 100px;
+	width: 100%;
+	position: fixed;
+	padding-left: 20px;
+	z-index: 10000;  
+	background-image: url(' ../img/Frame/bck.png');
 }
 
 #send-box{
+	position: relative;
 	display: block; 
 	width: 100%;
     vertical-align: middle;
     height: 50px;
+    z-index: 999999999;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #message-input{
 	margin-top:10px;
-	width:70%;
+	width:80%;
 }
 
 .span6 table tr{
@@ -92,4 +124,11 @@ input:focus{
 	.min-770{
 		display: none;
 	}
+}
+
+/*----NAVBAR-----*/
+.pos-fixed{
+	position: fixed;
+	width: 100%;
+	z-index: 99999999;
 }
