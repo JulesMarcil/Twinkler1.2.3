@@ -51,6 +51,13 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", nullable=true)
+     */
+    private $phone;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\ProfilePicture", cascade={"persist"})
      */
     protected $picture;
@@ -404,5 +411,28 @@ class User extends BaseUser
             }
         }
         return false;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }

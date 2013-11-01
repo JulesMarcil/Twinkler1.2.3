@@ -1,0 +1,20 @@
+smoney_action_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SmoneyActionBundle:Default:index }
+
+smoney_action_select:
+    pattern:  /smoney/select
+    defaults: { _controller: SmoneyActionBundle:Default:select }
+
+smoney_action_numbers:
+    pattern:  /smoney/numbers
+    defaults: { _controller: SmoneyActionBundle:Default:numbers }
+
+smoney_action_confirm:
+    pattern:  /smoney/numbers/confirm
+    defaults: { _controller: SmoneyActionBundle:Default:confirmNumbers }
+
+smoney_action_confirmed:
+    pattern:  /smoney/numbers/confirmed
+    defaults: { _controller: SmoneyActionBundle:Default:confirmed }
+

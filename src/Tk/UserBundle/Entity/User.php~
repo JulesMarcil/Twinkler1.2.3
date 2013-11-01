@@ -51,6 +51,13 @@ class User extends BaseUser
     protected $lastname;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="phone", type="integer", nullable=true)
+     */
+    private $phone;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\ProfilePicture", cascade={"persist"})
      */
     protected $picture;

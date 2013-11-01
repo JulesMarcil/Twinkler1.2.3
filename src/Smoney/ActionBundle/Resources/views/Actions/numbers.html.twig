@@ -1,0 +1,76 @@
+{% extends 'TkUserBundle::frame.html.twig' %}
+
+{% set group = app.user.currentMember.tgroup %}
+{% set currency = group.currency.symbol %}
+
+{% block title %}   
+<title> {{group.name}} - Send Money</title>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block navbar_title %}
+{{ group.name|capitalize }}
+{% endblock %}
+
+{% block selectionmenu %}
+<div id="navbar-row" class="selection-menu" style="padding-top:0">
+	<div class="container" style="height:100%;">
+		<div  class="row" style="height:100%;">
+			<div class="col-md-6 col-md-offset-3">
+				Send money for the group {{ group.name|capitalize }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div>
+				Please enter missing phone numbers
+			</div>
+
+			{% if debts|length == 0 %}
+			<p style="margin-top: 10px; color:rgb(67,113,191)">You did not select any debt!</p>
+			{% else %}
+
+			<div class="payback-table">
+				<form action="{{ path('smoney_action_confirm') }}" method="post">
+					<table>
+						{% for member in members %}
+						<tr>
+							<td style="text-align: left; overflow: hidden;">
+								<div id="my-payback-owner">
+									{% if member.facebookId %}
+									<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% elseif member.user %}
+									<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% else %}
+									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+									{% endif %}
+									{{ member.name }}
+								</div>
+							</td> 
+							<td><input type="text" name="{{ member.id }}" value="{{ member.phone }}" style="height: 40px"></td>
+						</tr>
+						{% endfor %}
+					</table>
+					<a class="btn" href="{{ path('smoney_action_select') }}">Back</a>
+					<input type="submit" class="btn btn-success" value="Next">
+				</form>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}

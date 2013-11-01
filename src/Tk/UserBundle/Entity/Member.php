@@ -38,6 +38,13 @@ class Member
     /**
      * @var string
      *
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="invitationToken", type="string", length=255, nullable=true)
      */
     private $invitationToken;
@@ -453,5 +460,35 @@ class Member
             }
         }
         return $fbid;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return Member
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        if ($this->getUser()){
+            $this->getUser()->setPhone($phone);
+        }
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        if ($this->getUser()){
+            if($this->getUser()->getPhone()){
+                return $this->getUser()->getPhone();
+            }
+        }
+        return $this->phone;
     }
 }

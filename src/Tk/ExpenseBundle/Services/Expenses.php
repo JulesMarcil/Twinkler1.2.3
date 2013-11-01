@@ -208,4 +208,16 @@ class Expenses {
         }
         return $balances;
     }
+
+    public function getMyCurrentDebts($member){
+        
+        $debts = $this->getCurrentDebts($member->getTGroup());
+        $my_debts = array();
+        foreach($debts as $debt){
+            if ($debt[0] == $member){
+                $my_debts[] = $debt;
+            }
+        }
+        return $my_debts;
+    }
 }

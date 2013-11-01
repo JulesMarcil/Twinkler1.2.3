@@ -1,3 +1,7 @@
+smoney_action:
+    resource: "@SmoneyActionBundle/Resources/config/routing.yml"
+    prefix:   /
+
 smoney_test:
     resource: "@SmoneyTestBundle/Resources/config/routing.yml"
     prefix:   /

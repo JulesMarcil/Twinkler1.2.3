@@ -1,0 +1,51 @@
+{% extends 'TkUserBundle::frame.html.twig' %}
+
+{% set group = app.user.currentMember.tgroup %}
+{% set currency = group.currency.symbol %}
+
+{% block title %}   
+<title> {{group.name}} - Send Money</title>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block navbar_title %}
+{{ group.name|capitalize }}
+{% endblock %}
+
+{% block selectionmenu %}
+<div id="navbar-row" class="selection-menu" style="padding-top:0">
+	<div class="container" style="height:100%;">
+		<div  class="row" style="height:100%;">
+			<div class="col-md-6 col-md-offset-3">
+				Send money for the group {{ group.name|capitalize }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div>
+				Please confirm you want to do those payments
+			</div>
+
+			{<form id="add-expense-form" style="height:100%" action="{{ path('smoney_action_confirm') }}" method="post" {{ form_enctype(form) }}>
+
+			{{ form_errors(form) }}
+
+			{{ form_widget(form) }}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}

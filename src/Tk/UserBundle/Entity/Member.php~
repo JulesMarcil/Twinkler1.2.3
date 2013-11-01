@@ -36,6 +36,13 @@ class Member
     private $email;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="phone", type="integer", nullable=true)
+     */
+    private $phone;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="invitationToken", type="string", length=255, nullable=true)
@@ -413,11 +420,45 @@ class Member
     public function getPicturePath()
     {
         $picture_path = 'local';
-        $member_user = $this->getUser();
-        if($member_user){
-            $picture_path = $member_user->getPicturePath();
+        $fbid = $this->getFacebookId();
+        if($fbid){
+            $picture_path = $fbid;
+        } else {
+            $member_user = $this->getUser();
+            if($member_user){
+                $picture_path = $member_user->getPicturePath();
+            }
         }
-
         return $picture_path;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     * @return Member
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string 
+     */
+    public function getFacebookId()
+    {
+        $fbid = $this->facebookId; 
+        if (!$fbid) {
+            $user = $this->getUser();
+            if($user){
+                $fbid = $user->getFacebookId();
+            }
+        }
+        return $fbid;
     }
 }

@@ -1,0 +1,89 @@
+{% extends 'TkUserBundle::frame.html.twig' %}
+
+{% set group = app.user.currentMember.tgroup %}
+{% set currency = group.currency.symbol %}
+
+{% block title %}   
+<title> {{group.name}} - Send Money</title>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+{% block navbar_title %}
+{{ group.name|capitalize }}
+{% endblock %}
+
+{% block selectionmenu %}
+<div id="navbar-row" class="selection-menu" style="padding-top:0">
+	<div class="container" style="height:100%;">
+		<div  class="row" style="height:100%;">
+			<div class="col-md-6 col-md-offset-3">
+				Send money for the group {{ group.name|capitalize }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div>
+				Select the payments you want to make
+			</div>
+
+			{% if debts|length == 0 %}
+			<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
+			{% else %}
+
+			<div class="payback-table">
+				<form action="{{ path('smoney_action_numbers') }}" method="post">
+					<table>
+						{% for debt in debts %}
+						<tr style="height: 30px;">
+							<td><input type="checkbox" name="{{ debt[2].id}}"></td>
+							<td style="text-align: left; overflow: hidden;">
+								<div id="my-payback-owner">
+									{% if debt[0].facebookId %}
+									<img src="http://graph.facebook.com/{{debt[0].facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% elseif debt[0].user %}
+									<img src="{{ asset(debt[0].user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+									{% else %}
+									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+									{% endif %}
+									{{ debt[0].name }}
+								</div>
+							</td> 
+							<td class="payback-text">should give</td>
+							<td style="color:#99B335;">{{ currency }} {{ debt[1] }}</td>
+							<td class="payback-text"> to </td>
+							<td style="text-align: left;">
+								{% if debt[2].facebookId %}
+								<img src="http://graph.facebook.com/{{debt[2].facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% elseif debt[2].user %}
+									<img src="{{ asset(debt[2].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% else %}
+								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% endif %}
+								{{ debt[2].name }}
+							</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<a class="btn" href="{{ path('tk_group_dashboard') }}">Cancel</a>
+					<input type="submit" class="btn btn-success" value="Next">
+				</form>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}
