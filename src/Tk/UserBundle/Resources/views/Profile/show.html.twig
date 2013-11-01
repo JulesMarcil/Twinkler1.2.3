@@ -157,10 +157,10 @@
 						<p>
 							{% if member.balance >= 0 %}
 							<font style="font-size: 14px; color:#BEB5B2">YOU ARE OWED:</font><br>
-							<span style="color: #a8bd44; font-family:'Asap-regular'; display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
+							<span style="color: #a8bd44; font-family:'Asap-regular'; display:inline-block"><b>{{member.tgroup.currency.symbol}} {{ member.balance }}</b></span>
 							{% else %}
 							<font style="font-size: 14px; color:#BEB5B2">YOU OWE:</font><br>
-							<span style="color: #f97e76; font-family:'Asap-regular';display:inline-block"><b>{{ member.balance }} {{member.tgroup.currency.symbol}}</b></span>
+							<span style="color: #f97e76; font-family:'Asap-regular';display:inline-block"><b>{{member.tgroup.currency.symbol}} {{ member.balance*-1 }}</b></span>
 							{% endif %}
 						</p>
 					</div>

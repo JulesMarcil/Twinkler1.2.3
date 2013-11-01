@@ -72,24 +72,12 @@ class DashboardController extends Controller
         $user = $member->getUser();
 
         $member->setActive(false);
+        $em->persist($member);
 
         if($user){
-
             if ($user->getCurrentMember() == $member) {    
                 $user->setCurrentMember(null);
-            }
-
-            if (($user != $this->getUser()) and ($user->getEmail())) {
-
-                $message = \Swift_Message::newInstance();
-                $message->setSubject($u.' removed you from a group')
-                        ->setFrom(array('no-reply@twinkler.co' => 'Twinkler'))
-                        ->setTo($user->getEmail())
-                        ->setContentType('text/html')
-                        ->setBody($this->renderView(':emails:removedFromGroup.email.twig', array('user'   => $this->getUser(), 
-                                                                                                 'member' => $member)))
-                ;
-                $mailer->send($message);
+                $em->persist($user);
             }
         }
         $em->flush();
