@@ -102,7 +102,7 @@ header .navbar .nav > li > ul:before {
 	-webkit-transform: rotate(360deg);
 }
 
-header .navbar .nav > li > ul:before{
+header .navbar .nav.nav-group-name-container > li > ul:before{
 	position:absolute;
 	left: 13px;
 	top: 2px;
@@ -112,7 +112,7 @@ header .navbar .nav > li > ul:before{
 	content:""
 }
 
-header .navbar .nav > li > ul:after{
+header .navbar .nav.nav-group-name-container > li > ul:after{
 	position:absolute;
 	left: 15px;
 	top: 5px;
@@ -130,7 +130,7 @@ header .navbar .nav ul li{
 	padding: 0px;
 }
 
-header .navbar .nav ul li:first-child,header .navbar .nav ul li:last-child{
+header .navbar .nav.nav-group-name-container ul li:first-child,header .navbar .nav.nav-group-name-container ul li:last-child{
 	background-color: rgb(225,228,231);
 }
 
