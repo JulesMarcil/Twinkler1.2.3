@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\JsonResponse;
 
 use Smoney\ActionBundle\Entity\Payment;
+use Tk\ExpenseBundle\Entity\Expense;
 
 class DefaultController extends Controller
 {
@@ -74,7 +75,7 @@ class DefaultController extends Controller
 	    			$member->setPhone($value);	
 	    			$em->persist($member);
 	    			$em->flush();
-	    			$members[] = $member;
+	    			$members[] = $key;
     			} else {
     				$invalid = true;
     			}
@@ -88,19 +89,29 @@ class DefaultController extends Controller
     	} else if ($invalid) {
     		return new JsonResponse('Invalid entry');
     	} else {
-    		return $this->confirmAction($request, $members);
+
+            $session = $this->get('session');
+            $session->set('receivers', $members);
+
+
+    		return $this->render('SmoneyActionBundle:Actions:confirm.html.twig');
     	}  	
     }
 
-    public function confirmAction($request, $members)
+    public function confirmAction(Request $request)
     {
     	$expenses_service = $this->container->get('tk_expense.expenses');
   		$member = $this->getUser()->getCurrentMember();
 	    $my_debts = $expenses_service->getMyCurrentDebts($member);
 	    $payments = array();
+        $paybacks = array();
+
+        $session = $this->get('session');
+        $receivers = $session->get('receivers');
 
 	    foreach($my_debts as $debt){
-	    	foreach($members as $m){
+	    	foreach($receivers as $id){
+                $m = $this->getDoctrine()->getRepository('TkUserBundle:Member')->find($id);
 	    		if($debt[2] == $m){
 	    			$payment = new Payment();
 	    			$payment->setDate(new \Datetime('now'));
@@ -109,16 +120,26 @@ class DefaultController extends Controller
 	    			$payment->setReceiver($m);
 
 		    		$payments[] = $payment;
+
+                    $expense = new Expense();
+                    $expense->setType('payback');
+                    $expense->setName('Payback S-money');
+                    $expense->setAuthor($member);
+                    $expense->setOwner($member);
+                    $expense->setAmount($debt[1]);
+                    $expense->setUsers($m);
+                    $expense->setGroup($member->getTGroup());
+                    $expense->setAddedDate(new \DateTime('now'));
+                    $expense->setDate(new \Datetime('today'));
+                    $expense->setActive(true);
+
+                    $paybacks[] = $expense;
 		    	}
 	    	}
 	    }
 
-	    $defaultData = array('message' => 'Type your message here');
-	    $form = $this->createFormBuilder($defaultData)
-	        ->add('name', 'text')
-	        ->add('email', 'email')
-	        ->add('message', 'textarea')
-	        ->getForm();
+	    $defaultData = null;
+	    $form = $this->createFormBuilder($defaultData)->getForm();
 
 	    if ($request->isMethod('POST')) {
 
@@ -128,15 +149,19 @@ class DefaultController extends Controller
 	           	
 	           	$em = $this->getDoctrine()->getManager();
 	           	foreach($payments as $payment){
+                    $payment->setConfirmed(1);
 	           		$em->persist($payment);
-	           	}	            	            
+	           	}
+                foreach($paybacks as $payback){
+                    $em->persist($payback);
+                }	            	            
 	            $em->flush();
 
 	            return $this->redirect($this->generateUrl('smoney_action_confirmed'));
 	        }
 	    }
 
-    	return $this->render('SmoneyActionBundle:Actions:confirm.html.twig', array(
+    	return $this->render('SmoneyActionBundle:Actions:confirmationForm.html.twig', array(
 			    				'form'     => $form->createView(),
 			    				'payments' => $payments
 			    			));

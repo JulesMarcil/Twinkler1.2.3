@@ -28,7 +28,7 @@ class PaybackController extends Controller
 
         $expense = new Expense();
         $expense->setType('payback');
-        $expense->setName('payback');
+        $expense->setName('Payback');
         $expense->setAuthor($member);
         $expense->setOwner($member1);
         $expense->setAmount($amount);

@@ -32,14 +32,10 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<div>
-				Please confirm you want to do those payments
+				Do you confirm you want to pass the following payments?
 			</div>
 
-			{<form id="add-expense-form" style="height:100%" action="{{ path('smoney_action_confirm') }}" method="post" {{ form_enctype(form) }}>
-
-			{{ form_errors(form) }}
-
-			{{ form_widget(form) }}
+			{% render(controller('SmoneyActionBundle:Default:confirm')) %}
 
 		</div>
 	</div>

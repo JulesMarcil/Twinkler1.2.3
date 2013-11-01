@@ -10,9 +10,13 @@ smoney_action_numbers:
     pattern:  /smoney/numbers
     defaults: { _controller: SmoneyActionBundle:Default:numbers }
 
-smoney_action_confirm:
+smoney_action_confirmNumbers:
     pattern:  /smoney/numbers/confirm
     defaults: { _controller: SmoneyActionBundle:Default:confirmNumbers }
+
+smoney_action_confirm:
+    pattern:  /smoney/confirm
+    defaults: { _controller: SmoneyActionBundle:Default:confirm }
 
 smoney_action_confirmed:
     pattern:  /smoney/numbers/confirmed
