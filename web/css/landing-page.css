@@ -110,6 +110,14 @@ header li{
 	padding:8px 8px;
 }
 
+#register-content #facebook-login{
+	margin: 10px;
+}
+
+#register-content #facebook-warning{
+	margin-bottom: 20px;
+}
+
 /* --- body  --- */
 
 #section1{
