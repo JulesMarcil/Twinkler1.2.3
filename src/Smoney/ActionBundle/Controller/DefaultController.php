@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Response,
     Symfony\Component\HttpFoundation\JsonResponse;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 use Smoney\ActionBundle\Entity\Payment;
 use Tk\ExpenseBundle\Entity\Expense;
 
@@ -147,17 +149,11 @@ class DefaultController extends Controller
 
 	        if ($form->isValid()) {
 	           	
-	           	$em = $this->getDoctrine()->getManager();
-	           	foreach($payments as $payment){
-                    $payment->setConfirmed(1);
-	           		$em->persist($payment);
-	           	}
-                foreach($paybacks as $payback){
-                    $em->persist($payback);
-                }	            	            
-	            $em->flush();
+                $response = $this->sendRequests($payments, $paybacks);
 
-	            return $this->redirect($this->generateUrl('smoney_action_confirmed'));
+                if($response['success']){
+                    return $this->redirect($this->generateUrl('smoney_action_confirmed'));
+                }
 	        }
 	    }
 
@@ -170,5 +166,105 @@ class DefaultController extends Controller
     public function confirmedAction()
     {
     	return $this->render('SmoneyActionBundle:Actions:confirmed.html.twig');
+    }
+
+    private function sendRequests($payments, $paybacks)
+    {
+        $token = $this->getToken();
+
+        if($token){
+            $em = $this->getDoctrine()->getManager();
+
+            //throw new NotFoundHttpException("Payments = ".count($payments));
+
+            for ($i = 0; $i<count($payments); $i++){
+                $payment = $payments[$i];
+
+                $amount = 100*($payment->getAmount());
+                $receiver = $payment->getReceiver()->getPhone();
+                $requester = null;
+                $message = null;
+
+                $request = $this->request($token, $amount, $receiver, $requester, $message);
+                
+                if ($request['success']){
+                    $payment->setConfirmed(1);
+                    $em->persist($payment);
+
+                    $payback = $paybacks[$i];
+                    $em->persist($payback);
+                }  
+            }
+            $em->flush();
+            return array('success' => 'Requests have been sent to confirm payments');
+        } else {
+            return array('error' => 'Impossible to get a valid token from S-money');
+        }
+    }
+
+    private function request($token, $amount, $receiver, $requester, $message)
+    {
+        $params = array ('receiver' => array( 'identifier' => $receiver ), 
+                         'amount'      => floatval($amount), 
+                         );
+
+        if($requester){
+            $params['requester'] = array( 'identifier' => $requester );
+        }
+        if($message){
+            $params['message'] = $message;
+        }
+
+        $json = json_encode($params);
+
+        $curl = curl_init('https://rest2.s-money.net/api/paymentrequests');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+            'Content-Type: application/json',                                                                                
+            'Content-Length: ' . strlen($json),
+            'Authorization: Bearer '.$token)                                                                       
+        );
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        return array('success' => $result);
+    }
+
+    private function getToken()
+    {
+        $params = array ('grant_type' => 'password', 
+                         'username'   => 'twinkler',
+                         'password'   => hash('sha256', '123450'),
+                         'scope'      => 'all',
+                         );
+        
+        // Build Http query using params
+        $query = http_build_query ($params);
+         
+        // Create Http context details
+        $contextData = array ( 
+                        'protocol_version'=> '1.1',
+                        'method'          => 'POST',
+                        'header'          => "Connection: close\r\n".
+                                             "Content-Type: application/x-www-form-urlencoded\r\n".
+                                             "Content-Length: ".strlen($query)."\r\n".
+                                             "Authorization: Basic ".base64_encode('twinkler:9dgDN9EoixFH2Ut1B95g4KdV7xQbFi'),
+                        'content'         => $query );
+         
+        // Create context resource for our request
+        $context = stream_context_create (array ( 'http' => $contextData ));
+         
+        // Read page rendered as result of your POST request
+        $result =  file_get_contents (
+                          'https://rest2.s-money.net/oauth/token',  // page url
+                          false,
+                          $context);
+
+        $result =  json_decode($result);
+        return $result->access_token;
     }
 }
