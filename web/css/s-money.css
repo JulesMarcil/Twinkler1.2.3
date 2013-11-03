@@ -1,0 +1,53 @@
+.payback-title{
+	padding:0px;
+}
+
+.payback-container{
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.payback-checkbox div{
+	width: 30px;
+}
+
+.payback-text{
+	width: 50px;
+	text-align: center;
+}
+
+.payback-table img{
+	margin: 0px 10px;
+}
+
+.action-button{
+	text-align: center;
+}
+
+.phone-number-table{
+	text-align: center;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.phone-number-table small{
+	padding: 20px 0px;
+}
+.phone-number-table table{
+	margin: auto;
+	margin-bottom: 20px
+}
+.phone-number-table #my-payback-owner{
+	margin: 10px 20px;
+}
+
+.send-money  .flat-container{
+	padding: 20px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.congratulations{
+	margin-bottom: 20px;
+}

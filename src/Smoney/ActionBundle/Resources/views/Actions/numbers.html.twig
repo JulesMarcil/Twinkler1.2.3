@@ -9,6 +9,7 @@
 
 {% block stylesheets %}
 {{ parent() }}
+<link href="{{ asset('css/s-money.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block navbar_title %}
@@ -20,7 +21,7 @@
 	<div class="container" style="height:100%;">
 		<div  class="row" style="height:100%;">
 			<div class="col-md-6 col-md-offset-3">
-				Send money for the group {{ group.name|capitalize }}
+				<p>Send money for the group {{ group.name|capitalize }}</p>
 			</div>
 		</div>
 	</div>
@@ -30,17 +31,36 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div>
-				<p>Please enter missing phone numbers</p>
-				<p>You need a French phone number to use S-money</p>
+
+
+		<div class="col-md-6 col-md-offset-3 payback-title">
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>Add your Friends' Phone Numbers to proceed to the payment</h2>
+							</li>
+						</ul>
+					</div><!--/.nav -->
+				</div>
 			</div>
+		</div>
 
-			{% if debts|length == 0 %}
+		{% if debts|length == 0 %}
+
+		<div class="col-md-6 col-md-offset-3 flat-container phone-number-table">
 			<p style="margin-top: 10px; color:rgb(67,113,191)">You did not select any debt!</p>
-			<a class="btn" href="{{ path('smoney_action_select') }}">Back</a>
-			{% else %}
+		</div>
+		<div class="col-md-6 col-md-offset-3" style="text-align:center">
+			<a class="btn" href="{{ path('smoney_action_select') }}" style="width: 100px;">Back</a>
+		</div>
+		{% else %}
 
+		<div class="col-md-6 col-md-offset-3 flat-container phone-number-table">
 			<div class="payback-table">
 				<form action="{{ path('smoney_action_confirmNumbers') }}" method="post">
 					<table>
@@ -62,13 +82,17 @@
 						</tr>
 						{% endfor %}
 					</table>
-					<a class="btn" href="{{ path('smoney_action_select') }}">Back</a>
-					<input type="submit" class="btn btn-success" value="Next">
-				</form>
-			</div>
-			{% endif %}
 
-		</div>
+					<small>Note: S-Money only works with French Phone Number</small>
+				</div>
+			</div>
+			<div class="col-md-6 col-md-offset-3" style="text-align:center">
+				<a class="btn" href="{{ path('smoney_action_select') }}">Back</a>
+				<input type="submit" class="btn btn-success" value="Next">
+			</div>
+		</form>
+		{% endif %}
+
 	</div>
 </div>
 {% endblock %}

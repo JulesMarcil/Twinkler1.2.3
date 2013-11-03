@@ -9,6 +9,7 @@
 
 {% block stylesheets %}
 {{ parent() }}
+<link href="{{ asset('css/s-money.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block navbar_title %}
@@ -20,7 +21,7 @@
 	<div class="container" style="height:100%;">
 		<div  class="row" style="height:100%;">
 			<div class="col-md-6 col-md-offset-3">
-				Send money for the group {{ group.name|capitalize }}
+				<p>Send money for the group {{ group.name|capitalize }}</p>
 			</div>
 		</div>
 	</div>
@@ -30,14 +31,32 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-6 col-md-offset-3 payback-title">
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>Congratulations</h2>
+							</li>
+						</ul>
+					</div><!--/.nav -->
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-md-offset-3 flat-container congratulations">
 			<div>
-				<p>Congratulation, you will receive a request from S-money to confirm the payment</p>
+				<p>You will receive a request from <strong>S-money</strong> to confirm the payment</p>
 				<p>We have recorded your payback in the expenses of the group</p>
 				<p>Once your payment is confirmed your friend(s) will receive the money</p>
 				<p>If they don't accept the money within 7 days, we will send you the money back and cancel the payback</p>
 				<p>For any question or query please contact us at <a href="mailto:contact@twinkler.co">contact@twinkler.co</a></p>
 			</div>
+		</div>
+		<div class="col-md-6 col-md-offset-3" style="text-align:center">
 			<a class="btn btn-warning" href="{{ path('tk_expense_homepage') }}">Back to expenses of the group</a>
 		</div>
 	</div>

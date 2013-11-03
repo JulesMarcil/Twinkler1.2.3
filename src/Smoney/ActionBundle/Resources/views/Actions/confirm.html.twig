@@ -7,8 +7,10 @@
 <title> {{group.name}} - Send Money</title>
 {% endblock %}
 
+
 {% block stylesheets %}
 {{ parent() }}
+<link href="{{ asset('css/s-money.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block navbar_title %}
@@ -20,7 +22,7 @@
 	<div class="container" style="height:100%;">
 		<div  class="row" style="height:100%;">
 			<div class="col-md-6 col-md-offset-3">
-				Send money for the group {{ group.name|capitalize }}
+				<p>Send money for the group {{ group.name|capitalize }}</p>
 			</div>
 		</div>
 	</div>
@@ -30,13 +32,13 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div>
+		<div class="col-md-6 col-md-offset-3 send-money">
+			<div class="flat-container">
 				Do you confirm you want to pass the following payments?
 			</div>
-
+			<div style="text-align: center">
 			{% render(controller('SmoneyActionBundle:Default:confirm')) %}
-
+			</div>
 		</div>
 	</div>
 </div>

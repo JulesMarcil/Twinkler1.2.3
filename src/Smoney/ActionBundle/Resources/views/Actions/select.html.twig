@@ -9,6 +9,7 @@
 
 {% block stylesheets %}
 {{ parent() }}
+<link href="{{ asset('css/s-money.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block navbar_title %}
@@ -20,7 +21,7 @@
 	<div class="container" style="height:100%;">
 		<div  class="row" style="height:100%;">
 			<div class="col-md-6 col-md-offset-3">
-				Send money for the group {{ group.name|capitalize }}
+				<p>Send money for the group {{ group.name|capitalize }}</p>
 			</div>
 		</div>
 	</div>
@@ -30,10 +31,25 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div>
-				Select the payments you want to make
+
+		<div class="col-md-6 col-md-offset-3 payback-title">
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>Select the payments you want to make</h2>
+							</li>
+						</ul>
+					</div><!--/.nav -->
+				</div>
 			</div>
+		</div>
+
+		<div class="col-md-6 col-md-offset-3 flat-container payback-container">
 
 			{% if debts|length == 0 %}
 			<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
@@ -44,20 +60,8 @@
 					<table>
 						{% for debt in debts %}
 						<tr style="height: 30px;">
-							<td><input type="checkbox" name="{{ debt[2].id}}"></td>
-							<td style="text-align: left; overflow: hidden;">
-								<div id="my-payback-owner">
-									{% if debt[0].facebookId %}
-									<img src="http://graph.facebook.com/{{debt[0].facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-									{% elseif debt[0].user %}
-									<img src="{{ asset(debt[0].user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-									{% else %}
-									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-									{% endif %}
-									{{ debt[0].name }}
-								</div>
-							</td> 
-							<td class="payback-text">should give</td>
+							<td class="payback-checkbox"><div><input type="checkbox" name="{{ debt[2].id}}"></div></td>
+							<td class="payback-text">Send</td>
 							<td style="color:#99B335;">{{ currency }} {{ debt[1] }}</td>
 							<td class="payback-text"> to </td>
 							<td style="text-align: left;">
@@ -68,18 +72,20 @@
 								{% else %}
 								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 								{% endif %}
-								{{ debt[2].name }}
+								<strong style="color:#FB786B">{{ debt[2].name }}</strong>
 							</td>
 						</tr>
 						{% endfor %}
 					</table>
-					<a class="btn" href="{{ path('tk_group_dashboard') }}">Cancel</a>
-					<input type="submit" class="btn btn-success" value="Next">
-				</form>
 			</div>
 			{% endif %}
 
 		</div>
+		<div class="col-md-6 col-md-offset-3 action-button">
+					<a class="btn" href="{{ path('tk_group_dashboard') }}">Cancel</a>
+					<input type="submit" class="btn btn-success" value="Next">
+		</div>
+		</form>
 	</div>
 </div>
 {% endblock %}
