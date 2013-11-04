@@ -208,6 +208,10 @@
 }
 
 
+.new-group .flat-container.invite{
+	padding: 10px
+}
+
 #facebook-login{
 	margin: 20px 0px;
 	padding: 15px 40px;

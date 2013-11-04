@@ -302,7 +302,14 @@ input:focus{
 }
 
 .btn.btn-info{
-	margin-bottom: 80px
+}
+
+.smoney-container{
+	width: 100%
+}
+
+.smoney-container img{
+	margin-right: 10px
 }
 /* --- BALANCE (left) --- */
 
