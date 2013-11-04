@@ -158,6 +158,49 @@
 				{% endif %}
 			</div>
 
+			{% if all_paybacks|length > 0 %}
+
+			<p>Recorded paybacks</p>
+
+			<div id="my-settlement" class="flat-container">
+
+				<div class="payback-table">
+					<table>
+						{% for payback in all_paybacks %}
+						<tr style="height: 30px;">
+							<td style="text-align: left; overflow: hidden;">
+								<div id="my-payback-owner">
+									{% if payback.owner.facebookId %}
+									<img src="http://graph.facebook.com/{{payback.owner.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% elseif payback.owner.user %}
+									<img src="{{ asset(payback.owner.user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+									{% else %}
+									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+									{% endif %}
+									{{ payback.owner.name }}
+								</div>
+							</td> 
+							<td class="payback-text">gave</td>
+							<td style="color:#99B335;">{{ currency }} {{ payback.amount }}</td>
+							<td class="payback-text"> to </td>
+							<td style="text-align: left;">
+								{% if payback.users[0].facebookId %}
+								<img src="http://graph.facebook.com/{{payback.users[0].facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+								{% elseif payback.users[0].user %}
+								<img src="{{ asset(payback.users[0].user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+								{% else %}
+								<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
+								{% endif %}
+								{{ payback.users[0].name }}
+							</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+
+			{% endif %}
+
 			{% include 'TkGroupBundle:Dashboard:settleDebtsModal.html.twig' %}
 
 			<div class="payback-container">

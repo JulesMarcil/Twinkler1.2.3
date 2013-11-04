@@ -108,120 +108,8 @@
 						</thead>
 						<tbody id="expense-table-body">
 
-							{% for expense in all_expenses %}			
-
-							<!-- PAYBACK -->
-							{% if expense[0].type == 'payback' %}
-							<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}">
-								<td id="profile-pic-row" style="vertical-align: middle;">
-									<div style="">
-										<font style="color:#99B335;">
-											PAYBACK
-										</font>
-									</div>
-								</td>
-								<td id="amount-column" style="vertical-align: middle;">
-									<font style="color:#99B335;">
-										{{ currency }} {{ expense[0].amount }}
-									</font> 
-								</td>
-								<td style=" text-align: center;vertical-align: middle">
-									<div class="expense-date">
-										<small>
-											{{ expense[0].date | date("M, d")}}
-										</small>
-									</div>
-									<div style="display: inline-block; text-align: center; margin-left: auto; margin-right:auto; width: 100%; height:100%; padding-top: -2px">
-										<div style="display: inline-block; margin: 0px 20px">
-											<font style="color:#fb786b;">
-												<div>
-													<font style="color:#fb786b">
-														{% if expense[0].owner.user == app.user %}
-														You
-														{% else %}
-														{{ expense[0].owner.name }} 
-														{% endif %}
-													</font>
-												</div>
-												<div>
-													{% if expense[0].owner.facebookId %}
-													<img src="http://graph.facebook.com/{{expense[0].owner.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-													{% elseif expense[0].owner.user %}
-													<img src="{{ asset(expense[0].owner.user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-													{% else %}
-													<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-													{% endif %}
-												</div>
-											</font>
-										</div>
-										<div style="display: inline-block; color:rgba(69, 69, 69, 0.6); margin-top: -2px">
-											<i class="icon-arrow-right icon-large"></i>
-										</div>	
-										<div style="display: inline-block;  margin: 0px 20px">
-											<font style="color:#fb786b;">
-												<div>
-													<font style="color:#fb786b">
-														{% if expense[0].users[0].user == app.user %}
-														You
-														{% else %}
-														{{ expense[0].users[0].name }} 
-														{% endif %}
-													</font>
-												</div>
-												<div>
-													{% if expense[0].users[0].facebookId %}
-													<img src="http://graph.facebook.com/{{expense[0].users[0].facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-													{% elseif expense[0].users[0].user %}
-													<img src="{{ asset(expense[0].users[0].user.picture.path) }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-													{% else %}
-													<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
-													{% endif %}
-												</div>
-											</font>
-										</div>
-									</div>
-								</td>
-								<td id="balance-column" style="vertical-align: middle; padding-top:0px">
-									{% if expense[1] != 0 %}
-									{% if expense[0].owner.user == app.user %}
-									<font style="color:rgba(69,69,69,0.6);; font-size: 10px">
-										You gave<br>
-									</font>
-									<font style="color:rgb(153,179,53); font-weight: bold">
-										{{ currency }} {{ expense[1] }}
-									</font>
-									{% elseif  expense[0].users[0].user == app.user %}
-									<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
-										You received<br>
-									</font>
-									<font style="color:rgba(227,79,52,1); font-weight: bold">
-										{{ currency }} {{ -expense[1] }}
-									</font>
-									{% endif %}
-									{% else %}
-									<font style="color:#C8C8C8; font-weight: bold">
-										_
-									</font>
-									{% endif %}
-								</td>
-								<td id="edit-column" style="vertical-align: middle;">
-									<div class="btn-group">
-										<i class="dropdown-arrow dropdown-arrow-inverse"></i>
-										<button class="btn dropdown-toggle" data-toggle="dropdown">
-											<span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu dropdown-inverse">
-											<li><a class='edit-button' data-id="{{expense[0].id }}"><i class="icon-edit icon-large"></i> Edit Expense</a></li>
-											<li><a href="{{ path('tk_expense_remove', {'id' : expense[0].id } ) }}"><i class="icon-trash icon-large"></i> Remove Expense</a></li>
-										</ul>
-									</div>
-								</td>
-							</tr>
+							{% for expense in all_expenses %}
 							
-
-							<!-- EXPENSE -->
-							{% else %}
-
 							<tr class="expense-row {% if expense[1] == 0 and expense[0].owner != app.user.currentMember %}nottagged{% endif %}">
 								<td id="profile-pic-row">
 									<div>
@@ -304,8 +192,7 @@
 								</td>
 							</tr>
 							<tr id="edit-expense-{{expense[0].id }}" class="edit-expense-container hidden"></tr>
-							{% endif %}
-							<!-- End of differenciation payback/expense -->
+
 							{% endfor %}
 						</tbody>
 					</table>

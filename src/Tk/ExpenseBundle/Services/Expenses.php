@@ -22,10 +22,26 @@ class Expenses {
         $all_expenses = array();
 
     	foreach($all_expenses_col as $expense){
-    		$all_expenses[] = array($expense, $this->youGet($member, $expense));
+            if ($expense->getType() == 'expense'){                            
+    		  $all_expenses[] = array($expense, $this->youGet($member, $expense));
+            }
     	}
 
     	return $all_expenses;
+    }
+
+    public function getAllPaybacks($member)
+    {
+        $all_expenses_col = $member->getTGroup()->getExpenses();
+        $all_expenses = array();
+
+        foreach($all_expenses_col as $expense){
+            if ($expense->getType() == 'payback'){ 
+                $all_expenses[] = $expense;
+            }
+        }
+
+        return $all_expenses;
     }
 
     public function getMyExpenses($member)
