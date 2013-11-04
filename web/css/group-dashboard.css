@@ -300,6 +300,10 @@ input:focus{
 .payback-table img{
 	margin-right: 10px;
 }
+
+.btn.btn-info{
+	margin-bottom: 80px
+}
 /* --- BALANCE (left) --- */
 
 #balance{

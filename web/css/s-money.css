@@ -41,9 +41,8 @@
 	margin: 10px 20px;
 }
 
-.send-money  .flat-container{
+.send-money.flat-container{
 	padding: 20px;
-	width: 100%;
 	text-align: center;
 	margin-bottom: 20px;
 }

@@ -32,11 +32,26 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3 send-money">
-			<div class="flat-container">
-				Do you confirm you want to pass the following payments?
+
+		<div class="col-md-6 col-md-offset-3 payback-title">
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>Do you confirm you want to pass the following payments?</h2>
+							</li>
+						</ul>
+					</div><!--/.nav -->
+				</div>
 			</div>
-			<div style="text-align: center">
+		</div>
+
+		<div class="">
+			<div class="" style="text-align: center">
 			{% render(controller('SmoneyActionBundle:Default:confirm')) %}
 			</div>
 		</div>
