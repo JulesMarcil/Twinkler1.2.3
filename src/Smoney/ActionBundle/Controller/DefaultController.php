@@ -181,9 +181,9 @@ class DefaultController extends Controller
                 $payment = $payments[$i];
 
                 $amount = 100*($payment->getAmount());
-                $receiver = $payment->getReceiver()->getPhone();
+                $receiver = $payment->getPayer()->getPhone(); // Warning: the receiver of the request is the payer of the payment
                 $requester = null;
-                $message = null;
+                $message = $this->getUser()->getCurrentMember()->getTGroup()->getName()." : Remboursement pour ".$payment->getReceiver()->getName();
 
                 $request = $this->request($token, $amount, $receiver, $requester, $message);
                 
