@@ -313,7 +313,9 @@ class User extends BaseUser
             }
         }
         if (isset($fbdata['email'])) {
-            $this->setEmail($fbdata['email']);
+            if(!$this->email){
+                $this->setEmail($fbdata['email']);
+            }
         }
     }
 
