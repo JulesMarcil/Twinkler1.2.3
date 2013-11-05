@@ -2,35 +2,33 @@
 
 namespace Tk\AdminBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    Symfony\Component\HttpFoundation\Request,
+    Symfony\Component\HttpFoundation\JsonResponse;
 
 class AdminController extends Controller
 {
 	public function defaultAction()
 	{
 		/*
-		if ($this->get('security.context')->isGranted('ROLE_ADMIN') === false) {
-		    return $this->redirect($this->generateUrl('tk_user_homepage'));
-		} else {
-			$groups = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->findAll();
-			$em = $this->getDoctrine()->getmanager();
-			foreach($groups as $group){
-				$members = $group->getMembers();
-				$all_members = $group->getAllMembers();
-				if (sizeof($members) > 0) {
-					$group->setActive(1);	
-				} else {
-					$group->setActive(0);
-					foreach($all_members as $m){
-						$m->setActive(1);
-						$em->persist($m);
-					}
-				}
-				$em->persist($group);
+		$mailer = $this->get('mailer');
+		$users = $this->getDoctrine()->getRepository('TkUserBundle:User')->findAll();
+		$sum = 0;
+		foreach($users as $user){
+			if($user->getEmail()){
+				$message = \Swift_Message::newInstance();
+                $message->setSubject('Anouncing the relase of Twinkler for iOS')
+                        ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+                        ->setTo($user->getEmail())
+                        ->setContentType('text/html')
+                        ->setBody($this->renderView(':emails:newsletter.email.twig'))
+                ;
+        		$mailer->send($message);
+        		$sum++;
 			}
-			$em->flush();
-			return $this->redirect($this->generateUrl('tk_admin_homepage'));
-		}*/	
+		}
+		return new JsonResponse(array('success' => $sum.' emails sent'));
+		*/       
 	}
 
     public function indexAction()

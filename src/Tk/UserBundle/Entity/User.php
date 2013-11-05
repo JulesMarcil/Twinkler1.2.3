@@ -316,6 +316,10 @@ class User extends BaseUser
             if(!$this->email){
                 $this->setEmail($fbdata['email']);
             }
+        } else {
+            if(!$this->email){
+                $this->setEmail($fbdata['username'].'@facebook.com');
+            }
         }
     }
 
