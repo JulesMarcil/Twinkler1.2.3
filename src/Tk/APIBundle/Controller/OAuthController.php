@@ -32,7 +32,7 @@ class OAuthController extends Controller
 		if ($fbdata['email']){
 			$email_user = $this->getDoctrine()->getRepository('TkUserBundle:User')->findOneByEmail($fbdata['email']);
 			if ($email_user){
-				$fbdata['email'] = null;
+				$user = $email_user;
 			}
 		}
 
