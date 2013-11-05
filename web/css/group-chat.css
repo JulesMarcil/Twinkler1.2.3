@@ -11,6 +11,9 @@ input:focus{
 	color: #fff;
 }
 
+.section-header{
+	background-image: url(' ../img/Frame/bck.png');
+}
 
 #chat-container{
 	margin-bottom:120px;

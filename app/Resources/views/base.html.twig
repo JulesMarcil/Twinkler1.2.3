@@ -56,7 +56,9 @@
 <script type="text/javascript" >
     $( document ).ready(function() { 
         if ($('body').height()<$(window).height()){
-            $('body').height($(window).height());
+            if (document.URL.split("/").pop()==="chat") {}else{
+            $('body').height($(window).height());};
+
         }
     });
 
