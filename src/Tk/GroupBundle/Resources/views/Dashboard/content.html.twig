@@ -210,51 +210,73 @@
 					<a id="send-summary" class="btn" href="#sendSummaryModal" role="button"  data-toggle="modal">Send a Summary</a>
 				</div>
 			</div>
-			<div class='flat-container smoney-container'>
-				<p>Settle up your Debts with S-Money for Free!</p>
-					<a href="{{ path('smoney_action_select') }}">
+			<div class='smoney-container'>
+				<a href="{{ path('smoney_action_select') }}">
 					<button class="btn btn-info">
 						<img src="{{ asset('img/Frame/S-money-logo.png') }}" width="30px" 	alt="Payer picture" style="position: relative">
-						Send Money with S-money</button>
-					</a>
-					<div>
-					<small>S-Money is the first online banking solution to send and receive money instantly from your smartphone - It is 100% free and secure. <a href="www.s-money.fr">Learn more</a></small>
-						
-					</div>
-				</div>
-				<div id="modal" class="modal fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="section-header">
-					<div class="navbar navbar-inverse">
-						<div class="navbar-header">
-							<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
-						</div>            
-						<div class="navbar-collapse collapse" id="nav-collapse-01">
-							<ul class="nav">
-								<li>
-									<h2>
-										Balance
-									</h2>
-								</li>
-							</ul>
-						</div><!--/.nav -->
-					</div>
-				</div>
-
-				<div id="chart-balance" class="flat-container">
-					<div id="blce-tbl" class="balance-table-container">
-						<table id="balance-table">
-
-						</table>
+						Send Money with S-money
+					</button>
+				</a>
+				<div>
+					<small>
+						S-Money is 100% free and secure.
+						<a href="#smoneyModal" role="button" data-toggle="modal">Learn more</a>
+					</small>
+					<!-- SMoney modal  -->
+					<div id="smoneyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title">Send Money to your Friends with S-Money</h4>
+								</div>
+								<div class="modal-body">
+									<img src="{{ asset('img/Frame/S-money - logo_part_transparent.png') }}"	alt="Payer picture" style="position: relative">
+									<p>S-Money enables you to pay, send and receive money directly from your smartphone</p>
+									<p>It is 100% free and secure</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<a href='http://www.s-money.fr' type="button" class="btn btn-primary"target="_blank">Visit S-Money's Website</a>
+								</div>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
 					</div>
 				</div>
 			</div>
-
+			<div id="modal" class="modal fade .paybackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			</div>
 		</div>
+
+		<div class="col-md-3">
+			<div class="section-header">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+					</div>            
+					<div class="navbar-collapse collapse" id="nav-collapse-01">
+						<ul class="nav">
+							<li>
+								<h2>
+									Balance
+								</h2>
+							</li>
+						</ul>
+					</div><!--/.nav -->
+				</div>
+			</div>
+
+			<div id="chart-balance" class="flat-container">
+				<div id="blce-tbl" class="balance-table-container">
+					<table id="balance-table">
+
+					</table>
+				</div>
+			</div>
+		</div>
+
 	</div>
+</div>
 
 
 
