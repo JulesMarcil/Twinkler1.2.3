@@ -301,6 +301,8 @@ var chatStart = function(){
 		$("#content").css( { "margin-top" : "60px"} );
 	}
 
+	var h=$('#page-body').height();
+	$('#page-body').height(h-100+'px');
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DASHBOARD START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
