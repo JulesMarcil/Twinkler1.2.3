@@ -5,6 +5,9 @@
 <link href="{{ asset('css/blog.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 
+{% block header_links %}
+{% endblock %}
+
 {% block content %}
 <section>
 	<div id="blog">
@@ -25,22 +28,25 @@
 			
 <!-- iOS APP RELEASE -->
 			<div id="ios-app-pre-release" class="blog-post col-md-6 col-md-offset-3">
-				<a rel="nofollow" href="{{ path('tk_welcome_blog_post', { 'date': '131105' }) }}">
+				<a rel="nofollow" href="{{ path('tk_welcome_blog_post', { 'date': '131106' }) }}">
 					<div style="text-align: center; font-family: 'Proxima-bold';">
-						<h3>Annoucing our new<br> iPhone app</h3>
-						<img src="{{ asset('img/links/blog/nyc-polaroid.png') }}" alt="NYC">
+						<h3>About the new iPhone app</h3>
+						<img src="{{ asset('img/links/blog/app-welcome.png') }}" style="width: 200px" alt="iphone app">
 					</div>
 				</a>
-				<p>We are excited to annouce you the official release of our brand new iPhone app, it's free and you can <a href="https://itunes.apple.com/app/twinkler/id702569884">download it here</a>.</p>
-				<p><b>The app brings Twinkler to the next step,</b> we have taken all the feedbacks we got from building the website and re designed a new experience for your iPhone. We focused on making three things really usefull and easy: <b>inviting your friends with facebook, adding new expenses quickly and navigating between your different groups smoothly.</b></p>
-				<p>We also made sure all your information was accessible offline by caching it into your iPhone memory. Yet you still need an internet connection to add new expenses, thus to make sure there is no conflict with what your friends add in the same time. Of course the website is still live and all your data is fully synchronised and securely safe on our secured servers.</p>
-				<p>Last, we would like to come back on a major decision we made. <b>Using "Facebook connect only"</b> for futur users. By conecting with Facebook, you will accept to share no more than your name, your picture, your email and your list of friends with Twinkler. This will enable you to add your friends in a tap from Twinkler and they will just have to download the app or go to the website and login to access all the information. No more link to share or invitation to send. Be sure that all the information you put on Twinkler will not be shared with third parties and we will never post anything in your name (we don't even have the permission for that).</p>
-				<p><b>Now we invite you to download Twinkler</b>, enjoy and let us know how you use it on our <a href="https://www.facebook.com/TwinklerCommunity">Facebook page</a>.</p>
+				<p>We are excited about the release of our brand new iPhone app, it's free and you can <a href="https://itunes.apple.com/app/twinkler/id702569884">download it here</a>.</p>
+				<p>Yesterday some of you had issues to login and here are some explainations on what happened. We now use Facebook connect only, doing so we ask Facebook for your name, profile picture, email and list of friends. This to enable you to add your friends to your groups in a tap - they just have to download the app or go to the website and login to access the  group information.</p>
+				<p>The issues we faced yesterday where of different origins:<br>
+				- you have an error message saying <b>"Facebook is not responding"</b> - it means that Twinkler is blocked by Facebook. To enable it just go to your iPhone settings > Facebook and enable Twinkler.<br>
+				- the screen blocks on <b>"retrieving data"</b> - this was an error due to facebook permissions, we could not access your email. It would work only if you were logged in to Facebook through the iOS settings and not through the app. It is now solved anyway and anyone should be able to login<br>
+				- last, if you already had an account linked to your email you could not login through facebook <b>with the same email</b>. You can still login with your email after clicking on "why we use facebook?" and "login with your email". But now it will merge your account so the issue is also solved.</p>
+				</p>
+				<p>We will make sure messages display correctly in the futur, if you still have issues please contact me at <a href="mailto:jules@twinkler.co">jules@twinkler.co</a>
 				<p>Have a good day,</p>
-				<p>The Twinkler team</p>
+				<p>Jules</p>
 				<div class="blog-post-footer">
-					Nov 5th, 2013<br>
-					<div class="fb-like" data-href="http://www.twinkler.co/blog/post/131105" data-send="true" data-width="Width of the plugin" data-font="arial"></div>
+					Nov 6th, 2013<br>
+					<div class="fb-like" data-href="http://www.twinkler.co/blog/post/131106" data-send="true" data-width="Width of the plugin" data-font="arial"></div>
 				</div>
 			</div>
 

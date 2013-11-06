@@ -1,0 +1,36 @@
+{% extends 'TkWelcomeBundle:BlogPosts:blogFrame.html.twig' %}
+
+{% block facebook_metatags %}
+<meta property="og:url"             content="http://www.twinkler.co/blog/post/131106" />
+<meta property="og:type"            content="article" />
+<meta property="og:site_name"       content="Twinkler"/>  
+<meta property="og:title"           content="About our new iPhone app" />
+<meta property="og:image"           content="http://www.twinkler.co/img/links/blog/app-welcome.png"  />
+{% endblock %}
+
+{% block facebook_like %}
+<div class="fb-like" data-href="http://www.twinkler.co/blog/post/131106" data-send="true" data-width="200" data-font="arial"></div>
+{% endblock %}
+
+{% block blog_post %}
+	<div style="text-align: center; font-family: 'Proxima-bold';">
+		<h3>About our new iPhone app</h3>
+		<img src="{{ asset('img/links/blog/app-welcome.png') }}" style="width: 200px" alt="iphone app">
+	</div>
+
+	<p>We are excited about the release of our brand new iPhone app, it's free and you can <a href="https://itunes.apple.com/app/twinkler/id702569884">download it here</a>.</p>
+	<p>Yesterday some of you had issues to login and here are some explainations on what happened. We now use Facebook connect only, doing so we ask Facebook for your name, profile picture, email and list of friends. This to enable you to add your friends to your groups in a tap - they just have to download the app or go to the website and login to access the  group information.</p>
+	<p>The issues we faced yesterday where of different origins:<br>
+	- you have an error message saying <b>"Facebook is not responding"</b> - it means that Twinkler is blocked by Facebook. To enable it just go to your iPhone settings > Facebook and enable Twinkler.<br>
+	- the screen blocks on <b>"retrieving data"</b> - this was an error due to facebook permissions, we could not access your email. It would work only if you were logged in to Facebook through the iOS settings and not through the app. It is now solved anyway and anyone should be able to login<br>
+	- last, if you already had an account linked to your email you could not login through facebook <b>with the same email</b>. You can still login with your email after clicking on "why we use facebook?" and "login with your email". But now it will merge your account so the issue is also solved.</p>
+	</p>
+	<p>We will make sure messages display correctly in the futur, if you still have issues please contact me at <a href="mailto:jules@twinkler.co">jules@twinkler.co</a>
+	<p>Have a good day,</p>
+	<p>Jules</p>
+
+	<div style="text-align:right; color:#d3d3d3; font-family: 'Proxima-bold'; font-size:16px"> 
+	 	<i class="icon-heart"></i> 223 <br> 
+	 	Nov 6th, 2013
+	</div>
+{% endblock %}
