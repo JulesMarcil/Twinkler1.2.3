@@ -315,6 +315,8 @@ class User extends BaseUser
         if (isset($fbdata['email'])) {
             if(!$this->email){
                 $this->setEmail($fbdata['email']);
+            } else if (substr($this->email, -12) == 'facebook.com'){
+                $this->setEmail($fbdata['email']);
             }
         } else {
             if(!$this->email){

@@ -89,31 +89,42 @@ class GroupController extends Controller
 
             foreach($friends as $friend){
 
-                $user = $repo->findOneByFacebookId($friend['id']);
-
-                if ($user and $user->isInGroup($group)){
-                    //don't do anything
-                } else if($user){
-
-                    $member = new Member();
-                    $member->setUser($user);
-                    $member->setName($user->getUsername());
-                    $member->setTGroup($group);
-                    
-                    $user->setCurrentMember($member);
-
-                    $em->persist($member);
-                    $em->flush();
-                } else {
-                    $member = new Member();
-                    $member->setName($friend['name']);
-                    $member->setFacebookId($friend['id']);
-                    $member->setTGroup($group);
-
-                    $em->persist($member);
-                    $em->flush();
-                }
                 $user = null;
+                $in_group = null;
+
+                $user = $repo->findOneByFacebookId($friend['id']);
+                $members = $this->getDoctrine()->getRepository('TkUserBundle:Member')->findByFacebookId($friend['id']);
+
+                foreach($members as $member){
+                    if ($member->getTGroup() == $group){
+                        $in_group = true;
+                    }      
+                }
+
+                if(!$in_group){
+                    if ($user and $user->isInGroup($group)){
+                        //don't do anything
+                    } else if($user){
+
+                        $member = new Member();
+                        $member->setUser($user);
+                        $member->setName($user->getUsername());
+                        $member->setTGroup($group);
+                        
+                        $user->setCurrentMember($member);
+
+                        $em->persist($member);
+                        $em->flush();
+                    } else {
+                        $member = new Member();
+                        $member->setName($friend['name']);
+                        $member->setFacebookId($friend['id']);
+                        $member->setTGroup($group);
+
+                        $em->persist($member);
+                        $em->flush();
+                    }
+                }
             }
 
             $group2 = $this->getDoctrine()->getRepository('TkGroupBundle:TGroup')->find($group_id);
