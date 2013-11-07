@@ -133,7 +133,14 @@
 								</td>
 								<td id="amount-column">
 									<font style="color:#0088CC;">
+										{% if expense[0].type != "payback" %}
 										{{ currency }} {{ expense[0].amount }} 
+										{% else %}
+										<font style="color:rgb(153,179,53)">
+											{{ currency }} {{ expense[0].amount }} 
+										</font>
+										{% endif %}
+
 									</font> 
 								</td>
 								<td> 
@@ -144,38 +151,59 @@
 									</div>
 									<div>
 										<font style="color:#fb786b;">
+
+											{% if expense[0].type != "payback" %}
 											{{ expense[0].name|capitalize }}
+											{% else %}
+											<font style="color:rgb(153,179,53)">Settle Up</font>
+											{% endif %}
 										</font>
 									</div>
 									<div>
-										{% if expense[0].users|length == expense[0].group.members|length %}
-										<small style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For all</font></small>
-										{% else %}
-										<small style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For who: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</small>
-										{% endif %}									
+										{% if expense[0].type != "payback" %}
+											{% if expense[0].users|length == expense[0].group.members|length %}
+											<small style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For all</font></small>
+											{% else %}
+											<small style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">For who: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</small>
+											{% endif %}
+										{% else %}	
+											<small>
+											{% if expense[0].owner.user == app.user %}
+											You
+											{% else %}
+											{{ expense[0].owner.name }} 
+											{% endif %}
+											<font style="color:rgb(140,140,140)">paid back</font> {% for member in expense[0].users %}{{ member.name }}, </small> {% endfor %}						
+										{% endif %}		
 									</div> 
 								</td>
 								<td id="balance-column">
-									{% if expense[1] != 0 %}
-									{% if expense[0].owner.user == app.user %}
-									<font style="color:rgba(69,69,69,0.6); font-size:12px">
-										You are owed<br>
-									</font>
-									<font style="color:rgb(153,179,53); font-weight: bold">
-										{{ currency }} {{ expense[1] }}
-									</font>
+									{% if expense[0].type != "payback" %}
+										{% if expense[1] != 0 %}
+										{% if expense[0].owner.user == app.user %}
+										<font style="color:rgba(69,69,69,0.6); font-size:12px">
+											You are owed<br>
+										</font>
+										<font style="color:rgb(153,179,53); font-weight: bold">
+											{{ currency }} {{ expense[1] }}
+										</font>
+										{% else %}
+										<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
+											You owe<br>
+										</font>
+										<font style="color:#fb786b; font-weight: bold">
+											{{ currency }} {{ -expense[1] }} 
+										</font>
+										{% endif %}
+										{% else %}
+										<font style="color:#C8C8C8; font-weight: bold">
+											_
+										</font>
+										{% endif %}
 									{% else %}
-									<font style="color:rgba(69,69,69,0.6);; font-size: 12px">
-										You owe<br>
-									</font>
-									<font style="color:#fb786b; font-weight: bold">
-										{{ currency }} {{ -expense[1] }} 
-									</font>
-									{% endif %}
-									{% else %}
-									<font style="color:#C8C8C8; font-weight: bold">
-										_
-									</font>
+										<font style="color:#C8C8C8; font-weight: bold">
+											_
+										</font>
 									{% endif %}
 								</td>
 								<td id="edit-column">
