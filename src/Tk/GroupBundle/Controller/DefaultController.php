@@ -29,8 +29,7 @@ class DefaultController extends Controller
             $member = $this->getUser()->getCurrentMember();
             $expenses_service = $this->container->get('tk_expense.expenses');
             return $this->render('TkGroupBundle:Dashboard:dashboard.html.twig', array(
-                    'debts'         => $expenses_service->getCurrentDebts($member->getTGroup()),
-                    'all_paybacks'  => $expenses_service->getAllPaybacks($member)
+                    'debts'         => $expenses_service->getCurrentDebts($member->getTGroup())
                 ));
         }
     }
@@ -40,8 +39,7 @@ class DefaultController extends Controller
         $member = $this->getUser()->getCurrentMember();
         $expenses_service = $this->container->get('tk_expense.expenses');
         return $this->render('TkGroupBundle:Dashboard:content.html.twig', array(
-                'debts'         => $expenses_service->getCurrentDebts($member->getTGroup()),
-                'all_paybacks'  => $expenses_service->getAllPaybacks($member)
+                'debts'         => $expenses_service->getCurrentDebts($member->getTGroup())
             ));
     }
 

@@ -16,7 +16,19 @@ class Expenses {
 		$this->em = $doctrine->getManager();
 	}
 
-	public function getAllExpenses($member)
+    public function getAllExpenses($member)
+    {
+        $all_expenses_col = $member->getTGroup()->getExpenses();
+        $all_expenses = array();
+
+        foreach($all_expenses_col as $expense){                            
+            $all_expenses[] = array($expense, $this->youGet($member, $expense));
+        }
+
+        return $all_expenses;
+    }    
+
+	public function getOnlyExpenses($member)
     {
     	$all_expenses_col = $member->getTGroup()->getExpenses();
         $all_expenses = array();
@@ -30,7 +42,7 @@ class Expenses {
     	return $all_expenses;
     }
 
-    public function getAllPaybacks($member)
+    public function getOnlyPaybacks($member)
     {
         $all_expenses_col = $member->getTGroup()->getExpenses();
         $all_expenses = array();

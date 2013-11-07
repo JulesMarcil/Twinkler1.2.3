@@ -10,25 +10,34 @@ class AdminController extends Controller
 {
 	public function defaultAction()
 	{
-		/*
 		$mailer = $this->get('mailer');
 		$users = $this->getDoctrine()->getRepository('TkUserBundle:User')->findAll();
-		$sum = 0;
+		
+		/*
 		foreach($users as $user){
 			if($user->getEmail()){
 				$message = \Swift_Message::newInstance();
                 $message->setSubject('Anouncing the relase of Twinkler for iOS')
-                        ->setFrom(array('emily@twinkler.co' => 'Emily from Twinkler'))
+                        ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
                         ->setTo($user->getEmail())
                         ->setContentType('text/html')
                         ->setBody($this->renderView(':emails:newsletter.email.twig'))
                 ;
         		$mailer->send($message);
-        		$sum++;
 			}
 		}
-		return new JsonResponse(array('success' => $sum.' emails sent'));
-		*/       
+		*/
+
+		$message = \Swift_Message::newInstance();
+        $message->setSubject('Anouncing the relase of Twinkler for iOS')
+                ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                ->setTo('jules.marcilhacy@gmail.com')
+                ->setContentType('text/html')
+                ->setBody($this->renderView(':emails:newsletter.email.twig'))
+        ;
+		$mailer->send($message);	
+
+		return $this->redirect($this->generateUrl('tk_admin_homepage'));      
 	}
 
     public function indexAction()
