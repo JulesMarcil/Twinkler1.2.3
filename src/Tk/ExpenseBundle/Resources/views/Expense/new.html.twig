@@ -21,8 +21,9 @@
 							<div style="display:inline-block;">
 								{{ form_errors(form.amount) }}
 								{{ form_widget(form.amount, 
-								{ 'attr': { 'placeholder' : 'How much ?',
-								'style' : 'width : 100px;'}}) }}
+								{ 'attr': { 'placeholder' : '0.00',
+								'style' : 'width : 100px;', 
+								'value' : '' }}) }}
 							</div>
 
 							<div style="display:inline-block">
