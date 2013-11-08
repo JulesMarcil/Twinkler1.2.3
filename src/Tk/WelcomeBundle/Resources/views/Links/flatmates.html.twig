@@ -1,0 +1,37 @@
+{% extends 'TkWelcomeBundle:Default:index.html.twig' %}
+
+{% block title %}<title>Twinkler for flatmates</title>{% endblock %}
+{% block css %}
+<link href="{{ asset('css/links.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block header_links %}{% endblock %}
+
+{% block content %}
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 suggestion-box">				
+				<img alt="Flatmates managing money with Twinkler" height="80" width="80" src="{{ asset('img/landing-page/suggestion-flatmates.jpg') }}" />
+				<h1>Twinkler for flatmates</h1>
+				<div>
+					<p>Hello flatmates,</p>
+					<p><strong>Sharing a house or an apartment with friends</strong> is a nice experience and everyone should do it at least once in his life. We also live in flathsares at Twinker, and we know it is so easy to start arguing over small details on money that become big issues. And it should not be!</p>
+					<p>This is why we created Twinkler, to help us <strong>manage money between flatmates</strong>. And now to help you <strong>split bills with your housemates</strong>. No need to remember what you paid and chase your flamtes for money back, it is all recorded on Twinkler.</p>
+					<p>Using Twinkler is dead easy:<br>
+					- <a href="{{ path('fos_user_registration_register')}}">Register</a> on this website or download our iPhone app <a href="https://itunes.apple.com/app/twinkler/id702569884">here</a><br>
+					- Create a group and invite your flatmates in a click from your facebook friends<br>
+					- Any time someone pays for something he just adds it on the group tab<br>
+					- See the balance everyone owes at any time and the easiest way to pay back<br>
+					- We are in the process of implementing payments so that you can settle all debts for free within Twinkler
+					</p>
+					<p>So why hesitating? Create a group right now and start using Twinkler, it is 100% free</p>
+					<div align="center"><a href="{{ path('tk_welcome_create_group')}}" class="btn btn-warning">Create a group</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

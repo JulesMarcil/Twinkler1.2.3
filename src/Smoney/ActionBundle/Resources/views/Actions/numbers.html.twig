@@ -42,7 +42,7 @@
 					<div class="navbar-collapse collapse" id="nav-collapse-01">
 						<ul class="nav">
 							<li>
-								<h2>Add your Friends' Phone Numbers to proceed to the payment</h2>
+								<h2>Add or confirm your Friends' Phone Numbers to proceed to the payment</h2>
 							</li>
 						</ul>
 					</div><!--/.nav -->
@@ -64,31 +64,49 @@
 			<div class="payback-table">
 				<form action="{{ path('smoney_action_confirmNumbers') }}" method="post">
 					<table>
-						{% for member in members %}
+						<tr style="border-bottom: solid 1px">
+							<td style="text-align: left; overflow: hidden;">
+								<div id="my-payback-owner">
+									{% set member = app.user.currentMember %}
+									{% if member.facebookId %}
+									<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% else %}
+									<img src="{{ asset(debt[2].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% endif %}
+									Your phone number
+								</div>
+							</td>
+							<td><input type="text" name="{{ member.id }}" value="{{ member.phone }}" style="height: 40px" placeholder="Ex: 0676326288"></td>
+						</tr>
+						{% for debt in debts %}
 						<tr>
 							<td style="text-align: left; overflow: hidden;">
 								<div id="my-payback-owner">
-									{% if member.facebookId %}
-									<img src="http://graph.facebook.com/{{member.facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
-									{% elseif member.user %}
-									<img src="{{ asset(member.user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% if debt[2].facebookId %}
+									<img src="http://graph.facebook.com/{{debt[2].facebookId}}/picture?width=60&height=60" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
+									{% elseif debt[2].user %}
+									<img src="{{ asset(debt[2].user.picture.path) }}" class="img-circle" width="30px" alt="Payer picture" style="position: relative">
 									{% else %}
 									<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="30px" 	alt="Payer picture" style="position: relative">
 									{% endif %}
-									{{ member.name }}
+									{{ debt[2].name }}
 								</div>
 							</td> 
-							<td><input type="text" name="{{ member.id }}" value="{{ member.phone }}" style="height: 40px"></td>
+							<td><input type="text" name="{{ debt[2].id }}" value="{{ debt[2].phone }}" style="height: 40px" placeholder="Ex: 0676326288"></td>
 						</tr>
 						{% endfor %}
 					</table>
 
 					<small>Note: S-Money only works with French Phone Number</small>
+
+					<div style="margin-top: 10px; border-top: solid 1px">
+						<p>You will be redirected to S-Money to confirm a payment of € {{ sum }} to Twinkler, which will be transfered to your friends instantly and with no commission.</p>						
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6 col-md-offset-3" style="text-align:center">
 				<a class="btn" href="{{ path('smoney_action_select') }}">Back</a>
-				<input type="submit" class="btn btn-success" value="Next">
+				<input type="submit" class="btn btn-success" value="Confirm">
 			</div>
 		</form>
 		{% endif %}

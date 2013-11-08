@@ -183,30 +183,38 @@
 	<div class="container">
 		<h3>Twinkler makes it easy to manage money with the people in your life.</h3>
 		<div id="tk-groups" class="row">
-			<div class="col-md-3">
-				<img alt="Friends managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-friends.jpg') }}" />
-				<h4>
-					Friends
-				</h4>
-			</div>
-			<div class="col-md-3">
-				<img alt="Flatmates managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-flatmates.jpg') }}" />
-				<h4>
-					Flatmates
-				</h4>
-			</div>			
-			<div class="col-md-3">
-				<img alt="holidays managed with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-holidays.jpg') }}" />
-				<h4>
-					Holidays
-				</h4>
-			</div>
-			<div class="col-md-3">
-				<img alt="Clubs managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-sport.jpg') }}" />
-				<h4>
-					Clubs
-				</h4>
-			</div>
+			<a href="{{ path('tk_welcome_friends') }}">
+				<div class="col-md-3">
+					<img alt="Friends managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-friends.jpg') }}" />
+					<h4>
+						Friends
+					</h4>
+				</div>
+			</a>
+			<a href="{{ path('tk_welcome_flatmates') }}">
+				<div class="col-md-3">
+					<img alt="Flatmates managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-flatmates.jpg') }}" />
+					<h4>
+						Flatmates
+					</h4>
+				</div>	
+			</a>
+			<a href="{{ path('tk_welcome_holidays') }}">		
+				<div class="col-md-3">
+					<img alt="Holidays managed with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-holidays.jpg') }}" />
+					<h4>
+						Holidays
+					</h4>
+				</div>
+			</a>
+			<a href="{{ path('tk_welcome_clubs') }}">
+				<div class="col-md-3">
+					<img alt="Clubs managing money with Twinkler" height="185" width="185" src="{{ asset('img/landing-page/suggestion-sport.jpg') }}" />
+					<h4>
+						Clubs
+					</h4>
+				</div>
+			</a>
 		</div>
 	</div>
 </section>

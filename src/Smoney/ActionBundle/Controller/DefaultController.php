@@ -39,23 +39,19 @@ class DefaultController extends Controller
     	$member = $this->getUser()->getCurrentMember();
 	    $expenses_service = $this->container->get('tk_expense.expenses');
 	    $my_debts = $expenses_service->getMyCurrentDebts($member);
-	    $chosen_debts = array();
-
+	    
+        $chosen_debts = array();
+        $sum = 0;
 	    foreach($my_debts as $debt){
 	    	if(isset($data[$debt[2]->getId()])){
 	    		$chosen_debts[] = $debt;
+                $sum += $debt[1];
 	    	}
-	    }
-
-	    $members = array();
-	    $members[] = $member;
-	    foreach($chosen_debts as $debt){
-	    	$members[] = $debt[2];
 	    }
 
         return $this->render('SmoneyActionBundle:Actions:numbers.html.twig', array(
         			'debts'   => $chosen_debts,
-        			'members' => $members
+                    'sum'     => $sum
         		));
     }
 
@@ -77,7 +73,7 @@ class DefaultController extends Controller
 	    			$member->setPhone($value);	
 	    			$em->persist($member);
 	    			$em->flush();
-	    			$members[] = $key;
+	    			$members[] = $member;
     			} else {
     				$invalid = true;
     			}
@@ -92,13 +88,126 @@ class DefaultController extends Controller
     		return new JsonResponse('Invalid entry');
     	} else {
 
-            $session = $this->get('session');
-            $session->set('receivers', $members);
-
-
-    		return $this->render('SmoneyActionBundle:Actions:confirm.html.twig');
+            return $this->redirect($this->sendMoney($members));
     	}  	
     }
+
+    private function sendMoney($members)
+    {
+        $token = $this->getToken();
+
+        $expenses_service = $this->container->get('tk_expense.expenses');
+        $em = $this->getDoctrine()->getManager();
+
+        $member = $this->getUser()->getCurrentMember();
+        $my_debts = $expenses_service->getMyCurrentDebts($member);
+
+        $payment = new Payment();
+        $payment->setDate(new \Datetime('now'));
+        $payment->setPayer($member);
+
+        $em->persist($payment);
+
+        $amount = 0;
+        foreach($my_debts as $debt){
+            foreach($members as $m){
+                if ($debt[2] == $m){
+
+                    $payback = new Expense();
+                    $payback->setType('payback');
+                    $payback->setName('Payback with S-money');
+                    $payback->setAuthor($member);
+                    $payback->setOwner($member);
+                    $payback->setAmount($debt[1]);
+                    $payback->setUsers($m);
+                    $payback->setGroup($member->getTGroup());
+                    $payback->setAddedDate(new \DateTime('now'));
+                    $payback->setDate(new \Datetime('today'));
+                    $payback->setActive(3);
+                    $em->persist($payback);
+
+                    $payment->addPayback($payback);
+                    $amount += $payback->getAmount();
+                }
+            }
+        }
+
+        $payment->setAmount($amount);
+        $em->flush();
+
+        // Now call S-Money API
+
+        $params = array ('Amount'           => $payment->getAmount(),
+                         'Receiver'         => 'twinkler',
+                         'TransactionID'    => $payment->getId(),
+                         'AmountEditable'   => false,
+                         'ReceiverEditable' => false,
+                         'Agent'            => 'other',
+                         'Source'           => 'web',
+                         'Identifier'       => $member->getPhone()
+                         );
+
+        $json = json_encode($params);
+
+        $curl = curl_init('https://rest2.s-money.net/ecommerce/payments/smoney');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_COOKIESESSION, true); 
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+            'Content-Type: application/json',                                                                                
+            'Content-Length: ' . strlen($json),
+            'Authorization: Bearer '.$token)                                                                       
+        );
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        $result = json_decode($result);
+
+        return $result->url;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function confirmAction(Request $request)
     {
@@ -167,6 +276,8 @@ class DefaultController extends Controller
     {
     	return $this->render('SmoneyActionBundle:Actions:confirmed.html.twig');
     }
+
+    
 
     private function sendRequests($payments, $paybacks)
     {

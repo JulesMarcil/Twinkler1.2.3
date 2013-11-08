@@ -85,6 +85,11 @@ class Expense
     protected $group;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Smoney\ActionBundle\Entity\Payment", inversedBy="paybacks", cascade={"persist"})
+     */
+    protected $payment;
+
+    /**
      * Constructor
      */
     public function __construct()

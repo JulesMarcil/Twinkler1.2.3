@@ -6,10 +6,6 @@ tk_welcome_subscribe:
     pattern: /subscribe
     defaults: { _controller: TkWelcomeBundle:Default:subscribe }
 
-tk_welcome_about:
-    pattern: /about
-    defaults: { _controller: TkWelcomeBundle:Default:about }
-
 tk_welcome_blog:
     pattern: /blog
     defaults: { _controller: TkWelcomeBundle:Default:blog }
@@ -17,10 +13,25 @@ tk_welcome_blog_post:
     pattern: /blog/post/{date}
     defaults: { _controller: TkWelcomeBundle:Default:blogPost }
 
+tk_welcome_friends:
+    pattern: /friends
+    defaults: { _controller: TkWelcomeBundle:Default:friends }
+tk_welcome_flatmates:
+    pattern: /flatmates
+    defaults: { _controller: TkWelcomeBundle:Default:flatmates }
+tk_welcome_holidays:
+    pattern: /holidays
+    defaults: { _controller: TkWelcomeBundle:Default:holidays }
+tk_welcome_clubs:
+    pattern: /clubs
+    defaults: { _controller: TkWelcomeBundle:Default:clubs }
+
+tk_welcome_about:
+    pattern: /about
+    defaults: { _controller: TkWelcomeBundle:Default:about }
 tk_welcome_press:
     pattern: /press
     defaults: { _controller: TkWelcomeBundle:Default:press }
-
 tk_welcome_contact:
     pattern: /contact
     defaults: { _controller: TkWelcomeBundle:Default:contact }

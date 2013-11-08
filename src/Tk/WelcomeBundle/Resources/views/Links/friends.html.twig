@@ -1,0 +1,37 @@
+{% extends 'TkWelcomeBundle:Default:index.html.twig' %}
+
+{% block title %}<title>Twinkler for friends</title>{% endblock %}
+{% block css %}
+<link href="{{ asset('css/links.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block header_links %}{% endblock %}
+
+{% block content %}
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 suggestion-box">				
+				<img alt="Friends managing money with Twinkler" height="80" width="80" src="{{ asset('img/landing-page/suggestion-friends.jpg') }}" />
+				<h1>Twinkler for friends</h1>
+				<div>
+					<p>Hello my friends,</p>
+					<p>The best moments in your life are the ones you share with friends. Think of all these <strong>nights out, restaurants, movies, games,</strong> you name it. But in all these situations you have experienced this akward moment where it comes to <strong>pay the bill</strong> and some don't have cash, or they don't take the credit card. So you pick up the bill and everyone promises to pay you back later. But it is hard to remember <strong>who owes you what</strong> and then you have the probleme of how ask politely for the money back.</p>
+					<p>At Twinkler we don't have this issue anymore, we just created a group and put <strong>all our shared excpenses</strong> on it. No need to remember who pays what and who owes what, it's all recorded on Twinkler and you too can use it now.</p>
+					<p>Using Twinkler is dead easy:<br>
+					- <a href="{{ path('fos_user_registration_register')}}">Register</a> on this website or download our iPhone app <a href="https://itunes.apple.com/app/twinkler/id702569884">here</a><br>
+					- Create a group and invite your friends in click a from facebook<br>
+					- Any time someone pays for something he just adds it on the group tab<br>
+					- See the balance everyone owes at any time and the easiest way to pay back<br>
+					- We are in the process of implementing payments so that you can settle all debts for free within Twinkler
+					</p>
+					<p>So why hesitating? Create a group right now and start using Twinkler, it is 100% free</p>
+					<div align="center"><a href="{{ path('tk_welcome_create_group')}}" class="btn btn-warning">Create a group</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

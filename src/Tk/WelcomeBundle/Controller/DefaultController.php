@@ -60,19 +60,30 @@ class DefaultController extends Controller
         return $this->render('TkWelcomeBundle:Default:blog.html.twig');
     }
 
-    public function aboutAction(){
-        return $this->render('TkWelcomeBundle:Links:about.html.twig');
-    }
-
     public function blogPostAction($date)
     {
         return $this->render('TkWelcomeBundle:BlogPosts:post'.$date.'.html.twig');
     }
 
+    public function friendsAction(){
+        return $this->render('TkWelcomeBundle:Links:friends.html.twig');
+    }
+    public function flatmatesAction(){
+        return $this->render('TkWelcomeBundle:Links:flatmates.html.twig');
+    }
+    public function holidaysAction(){
+        return $this->render('TkWelcomeBundle:Links:holidays.html.twig');
+    }
+    public function clubsAction(){
+        return $this->render('TkWelcomeBundle:Links:clubs.html.twig');
+    }
+
+    public function aboutAction(){
+        return $this->render('TkWelcomeBundle:Links:about.html.twig');
+    }
     public function pressAction(){
         return $this->render('TkWelcomeBundle:Links:press.html.twig');
     }
-
     public function contactAction(){
         return $this->render('TkWelcomeBundle:Links:contact.html.twig');
     }

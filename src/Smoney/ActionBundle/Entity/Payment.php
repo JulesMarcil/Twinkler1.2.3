@@ -69,9 +69,9 @@ class Payment
     protected $payer;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Tk\UserBundle\Entity\Member", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Tk\ExpenseBundle\Entity\Expense", mappedBy="payment", cascade={"persist"})
      */
-    protected $receiver;
+    protected $paybacks;
 
     /**
      * Constructor

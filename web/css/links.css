@@ -145,3 +145,19 @@ strong{
 	width: 100%;
 	text-align: center;
 }
+
+/* --- Suggestion links --- */
+
+.suggestion-box {
+	margin-top: 100px;
+	margin-bottom: 20px;
+	background-color:rgba(235, 235, 232, 0.6);
+	padding: 10px;
+}
+
+.suggestion-box h1 {
+	display: inline-block;
+	font-size: 56px;
+	vertical-align: middle;
+	padding-left: 10px;
+}
