@@ -677,6 +677,7 @@ header li{
 #groups-section *{
 	text-align:center;
 	font-family: "Proxima-light";
+	cursor: default;
 }
 #groups-section h3{
 	margin-top:60px; 
