@@ -1201,7 +1201,9 @@ footer p{
 	padding: 5px 0px;
 }
 
-
+.new-group-content{
+	margin: 80px 0px;
+}
 /* ---  Alert --- */
 .alert-danger{
 	border: solid 2px #B94A48;
